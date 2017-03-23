@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="constellations">
+        <item>水瓶座</item>
+        <item>双鱼座</item>
+        <item>白羊座</item>
+        <item>金牛座</item>
+        <item>双子座</item>
+        <item>巨蟹座</item>
+        <item>狮子座</item>
+        <item>处女座</item>
+        <item>天秤座</item>
+        <item>天蝎座</item>
+        <item>射手座</item>
+        <item>天蝎座</item>
+        <item>摩羯座</item>
+    </string-array>
+    <string-array name="detail_camer_pic">
+        <item>拍照</item>
+        <item>从相册选择</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="detail_profile_avatar">
+        <item>更换头像</item>
+        <item>查看大图</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="detail_profile_menu_sel_gender">
+        <item>女</item>
+        <item>男</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="detail_video_pic">
+        <item>拍摄视频</item>
+        <item>从本地选择</item>
+        <item>取消</item>
+    </string-array>
+    <string-array name="jazzy_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
+    <color name="action_sheet_button_blue">#0079ff</color>
+    <color name="action_sheet_button_gray">#738394</color>
+    <color name="action_sheet_button_red">#fd472b</color>
+    <color name="bar_color">#5080d8</color>
+    <color name="bar_selected_color">#8EE5EE</color>
+    <color name="bg_easy_sliding_tabs_pressed">#ff63a5</color>
+    <color name="bg_f7f8f9">#f7f8f9</color>
+    <color name="black">#000000</color>
+    <color name="btn_selected_color">#D1EEEE</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="gray">#f8f9fd</color>
+    <color name="green">#32CD32</color>
+    <color name="possible_result_points">#c0ffbd21</color>
+    <color name="red">#FF0000</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="scan_bg">#7f000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="text_selected_color">#262626</color>
+    <color name="title_color">#ececec</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="white">#ffffff</color>
+    <declare-styleable name="SlidingTabs"><attr format="color" name="indicatorColor"/><attr format="color" name="underlineColor"/><attr format="color" name="slidingTabTextColor"/><attr format="color" name="selectedTagTextColor"/><attr format="color" name="dividerColor"/><attr format="dimension" name="indicatorHeight"/><attr format="dimension" name="underlineHeight"/><attr format="dimension" name="slidingDividerPadding"/><attr format="dimension" name="tabPaddingLeftRight"/><attr format="reference" name="slingTabBackground"/><attr format="dimension" name="scrollOffset"/><attr format="boolean" name="shouldExpand"/><attr format="boolean" name="slidingTextAllCaps"/><attr format="reference" name="indicatorDrawable"/></declare-styleable>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="common_action_sheet_layout_padding">8dp</dimen>
+    <dimen name="common_action_sheet_layout_paddingLeftAndRight">0dp</dimen>
+    <dimen name="gd_arrow_offset">5dp</dimen>
+    <item name="decode" type="id"/>
+    <item name="decode_failed" type="id"/>
+    <item name="decode_succeeded" type="id"/>
+    <item name="launch_product_query" type="id"/>
+    <item name="quit" type="id"/>
+    <item name="restart_preview" type="id"/>
+    <item name="return_scan_result" type="id"/>
+    <string name="app_name">慧医</string>
+    <string msgid="2430166148737975604" name="button_cancel_download">"取消"</string>
+    <string name="button_ok">OK</string>
+    <string msgid="422576726189179221" name="button_queue_for_wifi">"排队"</string>
+    <string msgid="792123674007840864" name="button_start_now">"立即开始"</string>
+    <string name="common_error_msg">抱歉,系统出错了!\n请点击重试~</string>
+    <string name="common_no_network_msg">暂未连接上网络!\n请连接后点击重试~</string>
+    <string name="common_not_login_msg">登录已失效!\n请重新登录~</string>
+    <string name="download">下载</string>
+    <string name="download_alert_cancel">下载被取消。</string>
+    <string name="download_complete">已下载完成(%s)</string>
+    <string name="download_downloading">正在下载(%s)</string>
+    <string name="download_error">下载失败，请重新下载</string>
+    <string name="download_error_md5">网络原因文件下载不完整，请重新下载</string>
+    <string name="download_install">请安装</string>
+    <string name="download_pending">等待中</string>
+    <string name="download_remain_bytes">剩余%1$s%2$s</string>
+    <string name="download_running">下载中</string>
+    <string name="download_try">正在连接，请稍后…</string>
+    <string name="download_unknown_title">"&lt;未命名>"</string>
+    <string name="install_fail_file_not_exist">安装文件已不存在</string>
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="network_unavailable">网络失联中，么么哒</string>
+    <string name="notification_download_complete">"下载完成"</string>
+    <string msgid="5343637375905111462" name="notification_download_failed">"下载失败"</string>
+    <string name="notification_filename_extras">" 还有%1$d项"</string>
+    <string name="notification_filename_separator">", "</string>
+    <string msgid="5973127997598540499" name="notification_need_wifi_for_size">"此大小的文件需要通过 Wi-Fi 下载"</string>
+    <string name="notification_paused_by_app">被暂停</string>
+    <string msgid="4575801130424505112" name="permdesc_accessAllDownloads">"允许该应用程序查看和修改由系统中的任意程序所发起的所有下载。"</string>
+    <string msgid="1089583021652571424" name="permdesc_downloadCacheNonPurgeable">"允许应用程序将文件下载到下载缓存（系统不会因为下载管理器需要更多空间而自动删除下载缓存）。"</string>
+    <string msgid="8672701687104399228" name="permdesc_downloadCompletedIntent">"允许应用程序发送关于已完成下载的通知。恶意应用程序可借此干扰下载文件的其他应用程序。"</string>
+    <string msgid="4240298564918160337" name="permdesc_downloadManager">"允许应用程序访问下载管理器以及用它下载文件。恶意应用程序可借此干扰下载，以及访问隐私信息。"</string>
+    <string msgid="6985743912436565114" name="permdesc_downloadManagerAdvanced">"允许应用程序使用下载管理器的高级功能。恶意应用程序可能会借此中断下载以及访问私密信息。"</string>
+    <string msgid="2436240495424393717" name="permlab_accessAllDownloads">"访问所有系统下载内容"</string>
+    <string msgid="3069534308882047412" name="permlab_downloadCacheNonPurgeable">"保留下载缓存中的空间"</string>
+    <string msgid="945913803765675685" name="permlab_downloadCompletedIntent">"发送下载通知。"</string>
+    <string msgid="7779544811202855500" name="permlab_downloadManager">"访问下载管理器。"</string>
+    <string msgid="7103642833308809655" name="permlab_downloadManagerAdvanced">"高级下载管理器功能。"</string>
+    <string name="request_failed">服务器不给力了,过一会儿再试试。</string>
+    <string name="scan_allcode_hint">将二维码或条形码对入取景框，即可自动扫描</string>
+    <string name="warning_sdcard_unmounted">无法安装，请检查SD卡状态</string>
+    <string msgid="7574517147645381271" name="wifi_recommended_body">"立即开始此 <ns1:g id="SIZE">%s </ns1:g> 文件的下载可能会缩短电池的使用时间并/或导致超额使用移动数据连接（这会导致移动运营商依照流量套餐中的超额规定向您收费）。"\n\n"点击下面的<ns1:g id="QUEUE_TEXT">%s</ns1:g>可在下次连接到 Wi-Fi 网络时开始此下载。"</string>
+    <string msgid="7441589306734687400" name="wifi_recommended_title">"稍后再加入下载队列吗？"</string>
+    <string msgid="1675692697446715831" name="wifi_required_body">"您必须使用 Wi-Fi 才能完成此 <ns1:g id="SIZE">%s </ns1:g> 文件的下载。"\n\n"点击<ns1:g id="QUEUE_TEXT">%s </ns1:g>可在下次连接到 Wi-Fi 网络时开始此下载。"</string>
+    <string msgid="1995971416871498179" name="wifi_required_title">"文件太大，不适于通过运营商网络下载"</string>
+    <style mce_bogus="1" name="ActivityAnim" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/right_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/right_out</item>
+    </style>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="Grid">
+        <item name="android:cacheColorHint">@null</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="List">
+        <item name="android:cacheColorHint">@null</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="LoadingDialog" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="MenuDialogAnimation" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+    <style name="MenuDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Space">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+    <style name="SpaceAutoFit" parent="Space">
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="TextAppearance"/>
+    <style name="ThemeActivity" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowAnimationStyle">@style/ActivityAnim</item>
+    </style>
+    <style name="action_sheet_btn_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="action_sheet_content_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/common_action_sheet_layout_padding</item>
+        <item name="android:paddingLeft">@dimen/common_action_sheet_layout_paddingLeftAndRight</item>
+        <item name="android:paddingRight">@dimen/common_action_sheet_layout_paddingLeftAndRight</item>
+    </style>
+    <style name="action_sheet_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="action_sheet_secondary_title_style">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/skin_action_sheet_title</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="action_sheet_title_style">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/skin_action_sheet_title</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="progressbar_horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/download_progress_horizontal</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:minHeight">10.5dip</item>
+        <item name="android:maxHeight">10.5dip</item>
+    </style>
+</resources>

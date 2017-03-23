@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">醒客行</string>
+
+    <string name="check_new_version">检测到新版本</string>
+    <string name="home_page">首页</string>
+    <string name="mine">我的</string>
+    <string name="edit">编辑</string>
+    <string name="complete">完成</string>
+
+    <!-- date define -->
+    <string name="rightnow">刚刚</string>
+    <string name="minuteBefore">分钟前</string>
+    <string name="hourBefore">小时前</string>
+    <string name="today">今天</string>
+    <string name="yestoday">昨天</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="splithe">-</string>
+    <string name="day">日</string>
+    <string name="hours">时</string>
+    <string name="minutes">分</string>
+    <string name="seconds">秒</string>
+    <!-- date define -->
+
+    <!--edit-->
+    <string name="alubm_title">相册</string>
+    <string name="plz_sd">请检查SD卡是否正确安装</string>
+    <string name="album_error_prompt">相册加载失败</string>
+    <string name="image_noloading">进入相册失败</string>
+    <string name="select_picture">选择图片</string>
+    <string name="edit_nickname">编辑昵称</string>
+    <string name="edit_sign">编辑签名</string>
+    <string name="image_count_limited">最多只能选择%d张商品图片</string>
+    <string name="handle">操作</string>
+    <string name="choose_picture">选择图片上传方式</string>
+    <string name="change_avatar">更换头像</string>
+
+    <string name="please_set_business_card">请选择您的名片</string>
+    <string name="please_input_email">请填写您的邮箱</string>
+    <string name="please_input_position">请填写您的职务</string>
+    <string name="please_input_realname">请填写您的真实姓名</string>
+    <string name="please_input_company">请填写您的公司</string>
+    <string name="please_set_avatar">请设置您的头像</string>
+    <string name="please_input_introduce">请填写您的自我介绍</string>
+    <string name="email_not_right">邮箱格式不正确</string>
+    <!--edit-->
+
+    <!-- 登陆注册相关 start-->
+    <string name="register">注册</string>
+    <string name="forget_psd">忘记密码</string>
+    <string name="enter_phone_num">请输入手机号码</string>
+    <string name="enter_right_phone_num">请输入正确的手机号码</string>
+    <string name="get_validate_code_success">获取验证码成功，请留意短信</string>
+    <string name="validate_code_error">验证码错误或已过期</string>
+    <string name="phone_num_exist">手机号码已注册</string>
+    <string name="enter_password">请输入密码</string>
+    <string name="enter_right_validate_code">请输入正确的验证码</string>
+    <string name="incorrect_passowrd_length">请输入6位至18位字符密码</string>
+    <string name="perfect_data">完善资料</string>
+    <string name="register_success">注册成功!</string>
+    <string name="name_missing_tips">请填写姓名</string>
+    <string name="company_missing_tips">请填写公司</string>
+    <string name="officePosition_missing_tips">请填写职务</string>
+    <string name="store_missing_tips">请填写所在门店</string>
+    <string name="industry_missing_tips">请填写所在行业</string>
+    <string name="phase_missing_tips">请填写经营阶段</string>
+    <!-- 登陆注册相关 end-->
+
+    <!-- HotFragment start-->
+    <string name="hot_notice_zh">__ 热门预告 __</string>
+    <string name="hot_notice_en">HOT NOTICE</string>
+    <string name="more_hot">更多热门</string>
+    <string name="professor_zh">__ 行家推荐 __</string>
+    <string name="professor_en">PROFESSOR</string>
+    <string name="living_zh">__ 正在直播 __</string>
+    <string name="living_en">LIVE</string>
+    <string name="more_living">全部直播</string>
+    <string name="play_back_zh">__ 往期回放 __</string>
+    <string name="play_back_en">PAST EVENTS</string>
+    <string name="more_play_back">更多精彩</string>
+    <string name="whole_prev">全部预告</string>
+    <string name="whole_now_living">全部直播</string>
+    <string name="whole_play_back">往期回放</string>
+    <string name="professor">导师</string>
+    <string name="search_result">搜索结果</string>
+    <string name="whole_prev_result">预告搜索结果</string>
+    <string name="whole_now_living_result">直播搜索结果</string>
+    <string name="whole_play_back_result">回放搜索结果</string>
+    <string name="service_result">服务搜索结果</string>
+    <string name="professor_result">导师搜索结果</string>
+    <!-- HotFragment end-->
+
+    <!-- 我的相关 start-->
+    <string name="choose_coupon">选择优惠券</string>
+    <string name="become_professor">成为导师</string>
+    <string name="authenticate_history">审核历史</string>
+    <string name="my_follow">关注的人</string>
+    <string name="my_living">我的直播</string>
+    <string name="had_post_living">发布的直播</string>
+    <string name="post_new_living">发布新直播</string>
+    <string name="my_service">我的服务</string>
+    <string name="had_post_service">发布的服务</string>
+    <string name="post_new_service">发布新服务</string>
+    <string name="my_wallet">我的钱包</string>
+    <string name="my_order">我的订单</string>
+    <string name="sys_setting">系统设置</string>
+    <string name="invitation_friend">邀请好友</string>
+    <string name="recharge">充值</string>
+    <string name="add_bank_card">添加银行卡</string>
+    <string name="choose_bank_card">选择银行卡</string>
+    <string name="edit_bank_card">编辑银行卡</string>
+    <string name="coupon_list">优惠券列表</string>
+    <string name="input_introduce_self">填写自我介绍</string>
+    <string name="pay_pre_fee">支付预约费用</string>
+    <string name="pay_living_fee">支付直播费用</string>
+    <string name="pay_fee">支付费用</string>
+    <string name="manager_bank_card">银行卡管理</string>
+    <string name="manager">管理</string>
+
+    <string name="select_bank_tips">请选择开户银行</string>
+    <string name="input_user_name_tips">请填写开户人姓名</string>
+    <string name="input_bank_code">请填写银行卡号</string>
+    <string name="input_bank_branch">请填写开户支行</string>
+
+    <string name="post_service">发布服务</string>
+    <string name="service_detail">服务详情</string>
+    <string name="input_title_tips">请填写标题</string>
+    <string name="select_photo_tips">请选择商品图标</string>
+    <string name="input_goods_tips">请填写商品描述</string>
+    <string name="select_service_area_tips">请选择服务地</string>
+    <string name="input_service_price_tips">请填写服务价格</string>
+    <string name="select_price_unit_tips">请填写价格单位</string>
+    <string name="pay_service_fee">支付服务费用</string>
+    <string name="edit_service">编辑服务</string>
+    <string name="edit_post_living">编辑直播</string>
+    <string name="content_introduce">内容介绍</string>
+
+    <!-- 我的相关 end-->
+
+    <!-- 订单支付相关 start-->
+    <string name="order_pay">订单支付</string>
+    <string name="appointment_success">预约成功</string>
+    <string name="appointment_failed">预约失败</string>
+    <string name="recharge_success">充值成功</string>
+    <string name="recharge_failed">充值失败</string>
+    <string name="prev_success_tips">恭喜你，预约成功！</string>
+    <string name="pay_failed_tips">支付失败，请重新支付</string>
+    <string name="back_to_prev">返回我的预约课程</string>
+    <string name="back_to_wallet">返回我的钱包</string>
+    <string name="back_to_living">返回直播</string>
+    <string name="back_to_order">返回我的订单</string>
+    <string name="back_to">返回</string>
+    <string name="re_pay">重新支付</string>
+    <string name="re_pre">重新预约</string>
+    <string name="take_cash">提现</string>
+    <string name="take_cash_record">提现记录</string>
+    <string name="account_record">账户往来</string>
+    <string name="buy_success">购买成功</string>
+    <string name="buy_failed">购买失败</string>
+    <string name="buy_success_tips">恭喜你，购买成功！</string>
+    <string name="company_in">企业用户入口</string>
+    <string name="choose_pay_type">请选择支付方式</string>
+
+    <!-- 订单支付相关 end-->
+
+    <!-- 消息相关 start-->
+    <string name="message">消息</string>
+    <!-- 消息相关 end-->
+
+    <string name="rmb">¥%.2f</string>
+    <string name="yuan">%.2f元</string>
+    <string name="gold_txt">金币</string>
+    <string name="gold">%.2f金币</string>
+    <string name="diamond">钻石</string>
+
+    <string name="input_live_title_tips">请填写直播标题</string>
+    <string name="set_industry_missing_tips">请选择所在行业</string>
+    <string name="set_classify_missing_tips">请选择直播分类</string>
+    <string name="set_living_date_tips">请选择直播日期</string>
+    <string name="set_start_date_tips">请选择开始时间</string>
+    <string name="set_end_date_tips">请选择结束时间</string>
+    <string name="set_publicity_img_tips">请选择宣传图片</string>
+    <string name="set_fee_tips">请填写培训费用</string>
+    <string name="input_content_introduce">请填写内容介绍</string>
+    <string name="set_city_tips">请选择所在城市</string>
+
+    <string name="anchor_agreement">脉响主播协议</string>
+
+    <string name="flash_light_on">ON</string>
+    <string name="flash_light_off">OFF</string>
+    <string name="string_state_ready">READY</string>
+    <string name="string_state_preparing">PREPARING</string>
+    <string name="string_state_connecting">CONNECTING</string>
+    <string name="string_state_streaming">STREAMING</string>
+    <string name="string_state_netblocking">NETBLOCKING, STOPPING</string>
+    <string name="string_state_con_timeout">CONNECTION TIMEOUT</string>
+    <string name="title_activity_audio_streaming">AudioStreamingActivity</string>
+
+    <string name="cd_et_input_url">cd_et_input_url</string>
+    <string name="cd_btn_hw_codec">cd_btn_hw_codec</string>
+    <string name="cd_btn_sw_codec">cd_btn_sw_codec</string>
+    <string name="cd_btn_pure_audio">cd_btn_pure_audio</string>
+    <string name="cd_tv_version_info">cd_tv_version_info</string>
+    <string name="cd_tv_log_info">cd_tv_log_info</string>
+    <string name="cd_et_input_method">cd_et_input_method</string>
+    <string name="cd_btn_camera_switcher">cd_btn_camera_switcher</string>
+    <string name="cd_tv_stream_status">cd_tv_stream_status</string>
+    <string name="cd_btn_torch">cd_btn_torch</string>
+    <string name="cd_btn_capture">cd_btn_capture</string>
+    <string name="cd_btn_orientation">cd_btn_orientation</string>
+    <string name="cd_btn_mute">cd_btn_mute</string>
+    <string name="cd_btn_fb">cd_btn_fb</string>
+    <string name="cd_tv_streaming_state_hint">cd_tv_streaming_state_hint</string>
+    <string name="cd_shutter_button">cd_shutter_button</string>
+    <string name="cd_btn_screen_recorder">cd_btn_screen_recorder</string>
+
+    <string name="appbar_fling_behavior" translatable="false">com.godo.maixiang.widget.FlingBehavior</string>
+    <string name="header_scrolling_behavior" translatable="false">com.godo.maixiang.widget.HeaderScrollingBehavior</string>
+</resources>

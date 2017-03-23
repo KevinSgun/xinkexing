@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_bottom_left.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_bottom_left.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_laser.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_laser.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_top_right.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_top_right.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_top_left.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_top_left.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\scan_corner_bottom_right.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\scan_corner_bottom_right.png"
+    }
+]

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/windowBackground">
+    <FrameLayout
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_color">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/action_bar_size">
+
+            <LinearLayout
+                android:id="@+id/actionBarLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/w24"
+                android:background="@drawable/sl_common_item"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/locationTv"
+                    style="@style/CommonText"
+                    android:text="深圳市"/>
+
+                <ImageView
+                    android:id="@+id/actionLeftIv"
+                    android:layout_width="@dimen/w26"
+                    android:layout_height="@dimen/w36"
+                    android:layout_marginLeft="@dimen/w8"
+                    android:src="@mipmap/ic_location" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/action_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/w10"
+                android:gravity="center"
+                android:maxWidth="@dimen/w550"
+                android:text="首页"
+                android:textColor="@color/textTitle"
+                android:textSize="@dimen/w34" />
+
+        </FrameLayout>
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_gravity="bottom" />
+    </FrameLayout>
+</LinearLayout>
