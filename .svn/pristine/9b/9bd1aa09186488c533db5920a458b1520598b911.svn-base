@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5080d8</color>
+    <color name="colorSecondary">#5080d8</color>
+    <color name="colorPrimaryDark">#204f73</color>
+    <color name="colorAccent">#5080d8</color>
+    <color name="windowBackground">#EFEFEF</color>
+    <color name="textColorPrimary">#333333</color>
+    <color name="textColorPrimaryDark">#666666</color>
+    <color name="textColorPrimaryGray">#999999</color>
+    <color name="textColorSecondary">#AFB8C0</color>
+    <color name="textTitle">#202020</color>
+    <color name="divider_color">#E3E6E9</color>
+    <color name="blue_00B6DF">#00B6DF</color>
+    <color name="blue_37ceef">#37CEEF</color>
+    <color name="blue_44f2a">#44A2FF</color>
+    <color name="blue_204f73">#204f73</color>
+    <color name="blue_5080d8">#5080d8</color>
+    <color name="blue_5d97ed">#5d97ed</color>
+    <color name="blue_92c2ff">#92c2ff</color>
+    <color name="light_white">#d0fefefe</color>
+    <color name="red_ea6568">#ea6568</color>
+    <color name="green_light">#92d6be</color>
+    <color name="text_home_tab">#798394</color>
+    <color name="text_gray">#c1c1c1</color>
+    <color name="text_light_gray">#dcdee1</color>
+    <color name="text_red">#ea6568</color>
+    <color name="yellow_fff8e3">#fff8e3</color>
+    <color name="orange_e85308">#e85308</color>
+    <color name="text_pink">#fb7299</color>
+    <color name="gray_798394">#798394</color>
+    <color name="text_green">#78be09</color>
+    <color name="text_light_blue">#a5bdeb</color>
+    <color name="gray_f8f8fa">#f8f8fa</color>
+    <color name="text_blue">#50bdf7</color>
+    <color name="text_soft_green">#7dd6b4</color>
+    <color name="gray_b2b2b2">#b2b2b2</color>
+    <color name="gray_f8f8f8">#f8f8f8</color>
+    <color name="gray_f9f9f9">#f9f9f9</color>
+
+    <color name="pldroid_streaming_white">#fff</color>
+    <color name="pldroid_streaming_red">#f00</color>
+    <color name="pldroid_streaming_yellow">#FFFF00</color>
+
+    <color name="bg_video_view">#80000000</color>
+
+    <color name="seek_background">#809e9e9e</color>
+    <color name="seek_progress">#5080d8</color>
+    <color name="seek_secondary_progress">#00B6DF</color>
+    <color name="seek_ball">#ffffffff</color>
+
+    <color name="background_gray">#ffa5a5a5</color>
+    <color name="background_gray_light">#ffbababa</color>
+    <color name="video_bg">#323232</color>
+</resources>

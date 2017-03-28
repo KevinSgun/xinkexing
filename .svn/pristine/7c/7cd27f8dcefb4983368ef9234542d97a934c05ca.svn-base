@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.thinkeract.tka.widget.CircularProgressBar
+        android:id="@+id/loading_progress"
+        android:layout_width="@dimen/w55"
+        android:layout_height="@dimen/w55"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/h150"
+        android:indeterminate="true"
+        android:indeterminateOnly="false"
+        app:cpb_colors="@array/gplus_colors" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <!--android:background="@mipmap/ic_network_err"-->
+        <Button
+            android:id="@+id/retry_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="@dimen/h18"
+            android:layout_marginTop="0dp"
+            />
+
+        <TextView
+            android:id="@+id/error_prompt_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/h250"
+            android:gravity="center"
+            android:text="出错啦,点击重试"
+            android:textColor="@color/text_light_blue"
+            android:textSize="@dimen/w28" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/no_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/white"
+        >
+
+        <!--android:src="@mipmap/ic_no_data_def"-->
+        <ImageView
+            android:id="@+id/no_data_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            />
+
+        <TextView
+            android:id="@+id/no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/w20"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/w15"
+            android:drawablePadding="@dimen/w20"
+            android:layout_marginBottom="@dimen/h250"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:textColor="@color/text_light_blue"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</merge>

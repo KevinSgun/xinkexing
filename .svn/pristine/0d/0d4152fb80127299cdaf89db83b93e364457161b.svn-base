@@ -1,0 +1,188 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="NoBackgroundAndTitleMain" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+
+    <style name="CommonButton">
+        <item name="android:layout_marginLeft">@dimen/w60</item>
+        <item name="android:layout_marginRight">@dimen/w60</item>
+        <item name="android:textSize">@dimen/w32</item>
+        <item name="android:layout_height">@dimen/h90</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/sl_common_text</item>
+        <item name="android:background">@drawable/sl_common_button</item>
+    </style>
+
+    <style name="CommonText">
+        <item name="android:textSize">@dimen/w28</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/text_gray</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="SmallText">
+        <item name="android:textSize">@dimen/w24</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="LargeText">
+        <item name="android:textSize">@dimen/w32</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="HotTypeZhText" parent="CommonText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/text_home_tab</item>
+        <item name="android:gravity">left</item>
+        <item name="android:paddingTop">@dimen/w18</item>
+        <item name="android:paddingBottom">@dimen/w18</item>
+        <item name="android:paddingLeft">@dimen/w24</item>
+    </style>
+
+    <style name="HotTypeEnText" parent="SmallText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/w32</item>
+        <item name="android:gravity">center</item>
+         <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="CommonDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.DropDownUp</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="BottomPushDialog" parent="android:Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/AnimBottomPush</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="AnimBottomPush" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <!--普通的横线-->
+    <style name="DividerLineVertical">
+        <item name="android:layout_width">@dimen/h1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+    <!--普通的竖线-->
+    <style name="DividerLineHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/h1</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <style name="TextTag" parent="SmallText">
+        <item name="android:textColor">@color/text_soft_green</item>
+        <item name="android:textSize">@dimen/w24</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/h90</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:paddingLeft">@dimen/w24</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/text_gray</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/w30</item>
+    </style>
+    <style name="CommonRelativeLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/w24</item>
+        <item name="android:paddingRight">@dimen/w24</item>
+    </style>
+
+    <style name="CommonLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/w95</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/w24</item>
+        <item name="android:paddingRight">@dimen/w24</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="SelectDialog" parent="android:Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/AnimTopGrow</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="AnimTopGrow" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/gd_grow_from_top</item>
+        <item name="android:windowExitAnimation">@anim/gd_shrink_from_bottom</item>
+    </style>
+
+    <style name="ContentRelativeLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/h88</item>
+        <item name="android:background">@drawable/white_color</item>
+    </style>
+
+    <style name="ShadowTextStyle" parent="CommonText">
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AnimationPreview">
+        <item name="android:windowEnterAnimation">@anim/scale_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/scale_fade_out</item>
+    </style>
+
+    <style name="WXPayActivityThem" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+</resources>

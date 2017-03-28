@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_toolbar">
+    <com.thinkeract.tka.widget.MaterialRippleLayout
+        android:layout_width="@dimen/action_bar_size"
+        android:layout_height="match_parent"
+        android:layout_gravity="left">
+        <LinearLayout
+            android:id="@+id/action_bar_left"
+            android:layout_width="@dimen/action_bar_size"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/action_left_img"
+                android:layout_width="@dimen/w25"
+                android:layout_height="@dimen/w42"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_back_arrow"
+                android:visibility="visible" />
+        </LinearLayout>
+    </com.thinkeract.tka.widget.MaterialRippleLayout>
+
+    <TextView
+        android:id="@+id/action_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:drawablePadding="@dimen/w10"
+        android:gravity="center"
+        android:maxWidth="@dimen/w550"
+        android:singleLine="true"
+        android:textColor="@color/textTitle"
+        android:textSize="@dimen/w34" />
+
+    <FrameLayout
+        android:id="@+id/action_bar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"
+        android:paddingRight="@dimen/w20"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/action_right_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/textTitle"
+            android:textSize="@dimen/w24"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/action_right_img"
+            android:layout_width="@dimen/w48"
+            android:layout_height="@dimen/w39"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/w15"
+            android:layout_marginRight="@dimen/w20"
+            android:visibility="gone" />
+    </FrameLayout>
+</FrameLayout>
