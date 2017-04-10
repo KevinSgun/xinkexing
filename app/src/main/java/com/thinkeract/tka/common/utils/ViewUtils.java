@@ -3,6 +3,9 @@ package com.thinkeract.tka.common.utils;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.thinkeract.tka.R;
+import com.thinkeract.tka.data.api.entity.OrderItem;
+
 /**
  * Created by ymh on 16/11/29
  */
@@ -27,48 +30,57 @@ public class ViewUtils extends com.zitech.framework.utils.ViewUtils {
         return false;
     }
 
-//    public static void setIndicator(Context context, TabLayout tabs, int leftDip, int rightDip) {
-//        Class<?> tabLayout = tabs.getClass();
-//        Field tabStrip = null;
-//        try {
-//            tabStrip = tabLayout.getDeclaredField("mTabStrip");
-//        } catch (NoSuchFieldException e) {
-//            e.printStackTrace();
-//        }
-//
-//        tabStrip.setAccessible(true);
-//        LinearLayout ll_tab = null;
-//        try {
-//            ll_tab = (LinearLayout) tabStrip.get(tabs);
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
-//
-//        int left = (int) (getDisplayMetrics(context).density * leftDip);
-//        int right = (int) (getDisplayMetrics(context).density * rightDip);
-//        if(ll_tab != null)
-//            for (int i = 0; i < ll_tab.getChildCount(); i++) {
-//                View child = ll_tab.getChildAt(i);
-//                child.setPadding(0, 0, 0, 0);
-//                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
-//                params.leftMargin = left;
-//                params.rightMargin = right;
-//                child.setLayoutParams(params);
-//                child.invalidate();
-//            }
-//    }
 
-//    public static int getHotViewTypeIvRes(int hotType){
-//        switch (hotType){
-//            case HotAdapter.PROFESSOR:
-//                return R.mipmap.ic_professor_hot;
-//            case HotAdapter.LIVING:
-//                return R.mipmap.ic_livingnow_hot;
-//            case HotAdapter.HOT_TRAILER:
-//                return R.mipmap.ic_prelive_hot;
-//            default:
-//                return R.mipmap.ic_playback_hot;
-//        }
-//    }
+    public static int getOrderStatusColorRes(int orderStatus){
+        switch (orderStatus){
+            case OrderItem.IS_FINISH:
+                return R.color.text_green_light;
+            case OrderItem.WAIT_PAY:
+                return R.color.text_red;
+            case OrderItem.IS_CANCEL:
+                return R.color.textColorPrimaryGray;
+            default:
+                return R.color.textColorPrimary;
+        }
+    }
+
+    public static String getOrderStatusString(int orderStatus){
+        switch (orderStatus){
+            case OrderItem.IS_FINISH:
+                return "已完成";
+            case OrderItem.WAIT_PAY:
+                return "待支付";
+            case OrderItem.IS_CANCEL:
+                return "已取消";
+            default:
+                return "已发货";
+        }
+    }
+
+    public static int getOrderBusinessBgRes(int orderStatus){
+        switch (orderStatus){
+            case OrderItem.IS_FINISH:
+                return R.drawable.bg_black_stroke_rectangle_corner_r100;
+            case OrderItem.WAIT_PAY:
+                return R.drawable.bg_red_stroke_rectangle_corner_r100;
+            case OrderItem.IS_CANCEL:
+                return R.drawable.bg_black_stroke_rectangle_corner_r100;
+            default:
+                return R.drawable.bg_black_stroke_rectangle_corner_r100;
+        }
+    }
+
+    public static String getOrderBusinessString(int orderStatus){
+        switch (orderStatus){
+            case OrderItem.IS_FINISH:
+                return "已完成";
+            case OrderItem.WAIT_PAY:
+                return "立即支付";
+            case OrderItem.IS_CANCEL:
+                return "已取消";
+            default:
+                return "查看物流";
+        }
+    }
 
 }

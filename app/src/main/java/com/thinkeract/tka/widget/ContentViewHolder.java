@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -63,6 +64,8 @@ public class ContentViewHolder extends ViewAnimator {
 
     protected void initView() {
         View v = inflateLayout();
+        setInAnimation(new AlphaAnimation(0,1.0f));
+        setOutAnimation(new AlphaAnimation(1.0f,0));
         retry = (Button) v.findViewById(R.id.retry_btn);
         noData = (TextView) v.findViewById(R.id.no_data);
         errorPromptView = (TextView) findViewById(R.id.error_prompt_view);

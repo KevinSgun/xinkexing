@@ -9,63 +9,59 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
     <View style="@style/DividerLineHorizontal" />
-    <FrameLayout
+
+
+    <com.thinkeract.tka.widget.MultiRadioGroup
+        android:id="@+id/mainRadioGroup"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h100">
+        android:layout_height="@dimen/h100"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <com.thinkeract.tka.widget.MultiRadioGroup
-            android:id="@+id/mainRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/h100"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/mainMenuHomeLayout"
+            android:layout_width="@dimen/w120"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/w150">
 
-            <FrameLayout
-                android:id="@+id/mainMenuHomeLayout"
-                android:layout_width="@dimen/w120"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/w100"
-                >
+            <RadioButton
+                android:id="@+id/mainMenuHomeRb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="@dimen/w4"
+                android:drawableTop="@drawable/sl_tab_home"
+                android:text="@string/home_page"
+                android:textColor="@color/sl_tab_text"
+                android:textSize="@dimen/w26" />
+        </FrameLayout>
 
-                <RadioButton
-                    android:id="@+id/mainMenuHomeRb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:button="@null"
-                    android:checked="true"
-                    android:drawablePadding="@dimen/w4"
-                    android:drawableTop="@drawable/sl_tab_home"
-                    android:text="@string/home_page"
-                    android:textColor="@color/sl_tab_text"
-                    android:textSize="@dimen/w26" />
-            </FrameLayout>
+        <View style="@style/SpaceAutoFit" />
 
-            <View style="@style/SpaceAutoFit" />
+        <FrameLayout
+            android:id="@+id/mainMenuMineLayout"
+            android:layout_width="@dimen/w120"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/w150">
 
-            <FrameLayout
-                android:id="@+id/mainMenuMineLayout"
-                android:layout_width="@dimen/w120"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/w100"
-                >
+            <RadioButton
+                android:id="@+id/mainMenuMineRb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:button="@null"
+                android:checked="false"
+                android:drawablePadding="@dimen/w4"
+                android:drawableTop="@drawable/sl_tab_mine"
+                android:text="@string/mine"
+                android:textColor="@color/sl_tab_text"
+                android:textSize="@dimen/w26" />
+        </FrameLayout>
+    </com.thinkeract.tka.widget.MultiRadioGroup>
 
-                <RadioButton
-                    android:id="@+id/mainMenuMineRb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:button="@null"
-                    android:checked="false"
-                    android:drawablePadding="@dimen/w4"
-                    android:drawableTop="@drawable/sl_tab_mine"
-                    android:text="@string/mine"
-                    android:textColor="@color/sl_tab_text"
-                    android:textSize="@dimen/w26" />
-            </FrameLayout>
-        </com.thinkeract.tka.widget.MultiRadioGroup>
-
-    </FrameLayout>
 </LinearLayout>

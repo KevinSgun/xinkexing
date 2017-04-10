@@ -1,11 +1,16 @@
 package com.thinkeract.tka.data.api;
 
 
-import com.thinkeract.tka.data.api.request.FindPasswordBody;
+import com.thinkeract.tka.data.api.entity.AddressItem;
+import com.thinkeract.tka.data.api.request.DoctorDataReviewBody;
+import com.thinkeract.tka.data.api.request.IdRequest;
+import com.thinkeract.tka.data.api.request.ListBody;
 import com.thinkeract.tka.data.api.request.LoginBody;
-import com.thinkeract.tka.data.api.request.RegisterBody;
 import com.thinkeract.tka.data.api.request.Request;
+import com.thinkeract.tka.data.api.request.UpdateAddressBody;
+import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
+import com.thinkeract.tka.data.api.response.ListData;
 import com.thinkeract.tka.data.api.response.UserData;
 import com.zitech.framework.data.network.response.ApiResponse;
 
@@ -40,16 +45,6 @@ public interface AccountService {
     Observable<ApiResponse> getValidationCode(@Body Request<ValidationCodeBody> request);
 
     /**
-     * 注册
-     *
-     * @param request
-     * @return
-     */
-    @POST(ApiConstants.COMMON_REQUEST)
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-   Observable<ApiResponse<UserData>> register(@Body Request<RegisterBody> request);
-
-    /**
      * 用户登录
      *
      * @param request
@@ -59,37 +54,79 @@ public interface AccountService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
    Observable<ApiResponse<UserData>> login(@Body Request<LoginBody> request);
 
-
     /**
-     * 找回密码
+     * 绑定手机
      *
      * @param request
      * @return
      */
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-   Observable<ApiResponse> findPassword(@Body Request<FindPasswordBody> request);
-//
-//    /**
-//     * 完善用户资料
-//     *
-//     * @param request
-//     * @return
-//     */
-//    @POST(ApiConstants.COMMON_REQUEST)
-//    @Headers({"Content-Type: application/json", "Accept: application/json"})
-//   io.reactivex.Observable<ApiResponse> completeProfile(@Body Request request);
-//
-//
-//    /**
-//     * 获取所在行业和经营阶段列表
-//     *
-//     * @param request
-//     * @return
-//     */
-//    @POST(ApiConstants.COMMON_REQUEST)
-//    @Headers({"Content-Type: application/json", "Accept: application/json"})
-//   io.reactivex.Observable<ApiResponse<IndustryAndPhaseResponse>> getIndustryAndPhase(@Body Request request);
+    Observable<ApiResponse> bindingPhone(@Body Request<LoginBody> request);
+
+
+    /**
+     * 修改用户资料
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse> updateUserData(@Body Request<UpdateUserDataBody> request);
+
+    /**
+     * 用户收货地址列表
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<ListData<AddressItem>>> getUserAddressList(@Body Request<ListBody> request);
+
+    /**
+     * 新增用户收货地址
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse> addAddress(@Body Request<UpdateAddressBody> request);
+
+
+    /**
+     * 用户收货地址删除接口
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse> deleteAddress(@Body Request<IdRequest> request);
+
+    /**
+     * 用户收货地址修改接口
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse> modifyAddress(@Body Request<UpdateAddressBody> request);
+
+    /**
+     * 医生审核资料
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse> doctorDataReview(@Body Request<DoctorDataReviewBody> request);
+
+    //------------------------------------------------------------------------------------------------
     /**
      * 多文件上传
      *
@@ -100,7 +137,7 @@ public interface AccountService {
     @POST(ApiConstants.UPLOAD_REQUEST)
     io.reactivex.Observable<ApiResponse<String>> upload(@Query("type") String type,
                                                         @Query("userId") String userId,
-                                                        @Query("datecode") String datecode,
+                                                        @Query("datacode") String datecode,
                                                         @PartMap Map<String, RequestBody> params);
     /**
      * 单文件上传
@@ -111,7 +148,7 @@ public interface AccountService {
     @POST(ApiConstants.UPLOAD_REQUEST)
    io.reactivex.Observable<ApiResponse<String>> upload(@Query("type") String type,
                                                        @Query("userId") String userId,
-                                                       @Query("datecode") String datecode,
+                                                       @Query("datacode") String datecode,
                                                        @Body MultipartBody partBody);
 
 }

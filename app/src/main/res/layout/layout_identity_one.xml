@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/ContentRelativeLayout"
+                android:background="@drawable/sl_common_item_bottom_corner">
+
+                <TextView
+                    android:id="@+id/userName"
+                    style="@style/CommonText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:text="姓名" />
+
+                <EditText
+                    android:id="@+id/userNameEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w76"
+                    android:gravity="right|center_vertical"
+                    android:maxLength="10"
+                    android:hint="请务必填写本人真实姓名" />
+
+                <View
+                    style="@style/DividerLineHorizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:layout_marginRight="@dimen/w24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/hospitalLayout"
+                style="@style/ContentRelativeLayout"
+                android:background="@drawable/sl_common_item_bottom_corner">
+
+                <TextView
+                    android:id="@+id/hospitalName"
+                    style="@style/CommonText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:text="所在医院" />
+
+                <EditText
+                    android:id="@+id/hospitalNameEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w76"
+                    android:maxLength="16"
+                    android:text="阿萨德发生的方法大阿萨德发生的方"
+                    android:hint="请填写医院" />
+
+                <View
+                    style="@style/DividerLineHorizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:layout_marginRight="@dimen/w24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/departmentLayout"
+                style="@style/ContentRelativeLayout"
+                android:background="@drawable/sl_common_item_bottom_corner">
+
+                <TextView
+                    android:id="@+id/departmentName"
+                    style="@style/CommonText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:text="所在科室" />
+
+                <TextView
+                    android:id="@+id/departmentNameTv"
+                    style="@style/CommonText"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w76"
+                    android:gravity="right|center_vertical"
+                    android:hint="请选择科室" />
+
+                <ImageView
+                    android:layout_width="@dimen/w20"
+                    android:layout_height="@dimen/w34"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w24"
+                    android:src="@mipmap/ic_arrow_right" />
+
+                <View
+                    style="@style/DividerLineHorizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:layout_marginRight="@dimen/w24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/positionsLayout"
+                style="@style/ContentRelativeLayout"
+                android:background="@drawable/sl_common_item_bottom_corner">
+
+                <TextView
+                    android:id="@+id/positionName"
+                    style="@style/CommonText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:text="职称" />
+
+                <TextView
+                    android:id="@+id/positionNameTv"
+                    style="@style/CommonText"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right|center_vertical"
+                    android:layout_marginRight="@dimen/w76"
+                    android:hint="请选择职称" />
+
+                <ImageView
+                    android:layout_width="@dimen/w20"
+                    android:layout_height="@dimen/w34"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w24"
+                    android:src="@mipmap/ic_arrow_right" />
+
+                <View
+                    style="@style/DividerLineHorizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:layout_marginRight="@dimen/w24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/departmentPhoneLayout"
+                style="@style/ContentRelativeLayout"
+                android:background="@drawable/sl_common_item_bottom_corner">
+
+                <TextView
+                    android:id="@+id/departmentPhoneName"
+                    style="@style/CommonText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:text="科室电话" />
+
+                <EditText
+                    android:id="@+id/areaNumNameEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:maxLength="4"
+                    android:inputType="number"
+                    android:hint="区号" />
+
+                <EditText
+                    android:id="@+id/departmentPhoneNameEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:maxLength="8"
+                    android:layout_marginRight="@dimen/w76"
+                    android:inputType="number"
+                    android:gravity="right|center_vertical"
+                    android:hint="电话号码" />
+
+                <View
+                    style="@style/DividerLineHorizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:layout_marginRight="@dimen/w24" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/w24">
+
+                <TextView
+                    style="@style/CommonText"
+                    android:text="擅长及诊所介绍" />
+
+                <EditText
+                    android:id="@+id/goodAtIntroduceEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/h24"
+                    android:gravity="top|left"
+                    android:hint="200字以内"
+                    android:minHeight="@dimen/h160" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/SpaceAutoFit" />
+
+        <Button
+            android:id="@+id/nextBtn"
+            style="@style/CommonButton"
+            android:layout_marginBottom="@dimen/h40"
+            android:text="下一步" />
+    </LinearLayout>
+</ScrollView>

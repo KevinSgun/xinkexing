@@ -3,6 +3,8 @@ package com.thinkeract.tka;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.shizhefei.mvc.MVCHelper;
+import com.thinkeract.tka.widget.MyLoadViewFactory;
 import com.zitech.framework.BaseApplication;
 
 /**
@@ -14,12 +16,17 @@ public class ThinkerActApplication extends BaseApplication{
 
     private User user;
     private Handler mainThreadHandler;
+    private Config config;
 
     @Override
     public void onCreate() {
         super.onCreate();
         user = new User();
+        config = new Config();
         mainThreadHandler = new Handler(Looper.getMainLooper());
+
+        // 设置LoadView的factory，用于创建使用者自定义的加载失败，加载中，加载更多等布局,写法参照DeFaultLoadViewFactory
+        MVCHelper.setLoadViewFactory(new MyLoadViewFactory());
     }
 
     public static ThinkerActApplication getInstance() {
@@ -36,5 +43,9 @@ public class ThinkerActApplication extends BaseApplication{
 
     public User getUser(){
         return user;
+    }
+
+    public Config getConfig() {
+        return config;
     }
 }

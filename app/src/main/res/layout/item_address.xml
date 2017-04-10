@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toAddressLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_color"
+    android:paddingTop="@dimen/h40">
+
+    <TextView
+        android:id="@+id/contactNameTv"
+        style="@style/CommonText"
+        android:layout_marginLeft="@dimen/w24"
+        android:text="张三" />
+
+    <TextView
+        android:id="@+id/phoneNumTv"
+        style="@style/CommonText"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_toRightOf="@id/contactNameTv"
+        android:text="188888888" />
+
+    <TextView
+        android:id="@+id/addressTv"
+        style="@style/CommonText"
+        android:layout_alignLeft="@id/contactNameTv"
+        android:layout_below="@id/contactNameTv"
+        android:layout_marginRight="@dimen/w36"
+        android:layout_marginTop="@dimen/h20"
+        android:layout_toLeftOf="@id/arrowAddressIv"
+        android:text="说的发生放大大方撒旦飞洒地方撒，阿萨德发生说的发生放大大方撒旦飞洒地方撒，阿萨德发生" />
+
+    <View
+        android:id="@+id/addressDividerLine"
+        style="@style/DividerLineHorizontal"
+        android:layout_below="@id/addressTv"
+        android:layout_marginTop="@dimen/h36" />
+    <LinearLayout
+        android:id="@+id/addressBottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addressDividerLine"
+        android:paddingBottom="@dimen/h10"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24"
+        android:paddingTop="@dimen/h10">
+        <LinearLayout
+            android:id="@+id/defaultAddressLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/w15"
+            android:paddingBottom="@dimen/w15"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/defaultAddressIv"
+                android:layout_width="@dimen/w40"
+                android:layout_height="@dimen/w40"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/ic_check_sel"/>
+            <TextView
+                android:id="@+id/defaultAddressTv"
+                style="@style/SmallText"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/w15"
+                android:text="默认地址"
+                android:textColor="@color/textColorPrimaryGray"
+                />
+        </LinearLayout>
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/editTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/w55"
+            android:drawableLeft="@mipmap/ic_edit"
+            android:drawablePadding="@dimen/w10"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="编辑"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w24" />
+        <TextView
+            android:id="@+id/delTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_delete"
+            android:drawablePadding="@dimen/w10"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:text="删除"
+            android:textColor="@color/textColorPrimaryGray"
+            android:textSize="@dimen/w24" />
+    </LinearLayout>
+    <View
+        style="@style/DividerLineHorizontal"
+        android:layout_below="@id/addressBottomLayout"
+        />
+</RelativeLayout>

@@ -5,10 +5,8 @@
             android:shape="rectangle">
             <corners android:radius="@dimen/w7"
                 />
-            <gradient
-                android:startColor="#5080d8"
-                android:endColor="#5080d8"
-                android:angle="0"
+            <solid
+                android:color="@color/theme_color"
                 />
 
         </shape>
@@ -28,10 +26,8 @@
         <shape>
             <corners android:radius="@dimen/w7"
                 />
-            <gradient
-                android:startColor="#a05080d8"
-                android:endColor="#a05080d8"
-                android:angle="0"
+            <solid
+                android:color="@color/purple_dark"
                 />
         </shape>
     </item>

@@ -32,9 +32,9 @@
     <color name="base_bg">#ffeeeeee</color>
     <color name="gplus_color">#cc33b5e5</color>
     <color name="base_msg_color">#ff999999</color>
-    <color name="gplus_color_1">#5080d8</color>
-    <color name="gplus_color_2">#4891ef</color>
-    <color name="gplus_color_3">#33b5e5</color>
+    <color name="gplus_color_1">#deaeea</color>
+    <color name="gplus_color_2">#938de7</color>
+    <color name="gplus_color_3">#5c9fd9</color>
     <color name="gplus_color_4">#37CEEF</color>
 
     <declare-styleable name="CircularProgressBar">

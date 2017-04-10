@@ -18,6 +18,7 @@ public class RequestHeader {
     private String token;
     private String version;
     private String sign;
+    private String appKey;
 
     public RequestHeader() {
         super();

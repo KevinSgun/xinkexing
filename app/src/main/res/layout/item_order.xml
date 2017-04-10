@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h90"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/totalGoodsCountTv"
+            style="@style/SmallText"
+            android:text="@string/total_goods_count"
+            android:textColor="@color/textColorPrimaryDark" />
+
+        <View style="@style/SpaceAutoFit" />
+
+        <TextView
+            android:id="@+id/orderStatusTv"
+            android:textColor="@color/text_green_light"
+            style="@style/SmallText"
+            android:text="已完成" />
+
+    </LinearLayout>
+
+    <View style="@style/DividerLineHorizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h220"
+        android:background="@drawable/sl_common_item"
+        android:descendantFocusability="beforeDescendants"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/goodsPicIv"
+            android:layout_width="@dimen/h160"
+            android:layout_height="@dimen/h160"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w20"
+            android:layout_toRightOf="@id/checkItem"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_loading_square"
+
+            />
+
+        <TextView
+            android:id="@+id/goodsTitleTv"
+            style="@style/SmallText"
+            android:layout_alignTop="@id/goodsPicIv"
+            android:layout_marginTop="@dimen/w4"
+            android:layout_toRightOf="@id/goodsPicIv"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="京东方说的得到的飒飒啊,京东方说的得到的飒飒啊京东方说的得到的飒飒啊,京东方说的得到的飒飒啊" />
+
+        <TextView
+            android:id="@+id/goodsPriceTv"
+            style="@style/CommonText"
+            android:layout_width="@dimen/w160"
+            android:layout_alignBottom="@id/goodsPicIv"
+            android:layout_marginBottom="@dimen/w4"
+            android:layout_toRightOf="@id/goodsPicIv"
+            android:text="¥9999999"
+            android:textColor="@color/text_red" />
+    </RelativeLayout>
+    <View style="@style/DividerLineHorizontal"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h90"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            style="@style/CommonText"
+            android:text="实付："
+            android:textColor="@color/textColorPrimary" />
+        <TextView
+            android:id="@+id/actuallyPayTv"
+            style="@style/CommonText"
+            android:text="@string/rmb"
+            android:textColor="@color/text_red" />
+
+        <View style="@style/SpaceAutoFit" />
+
+        <Button
+            android:id="@+id/businessBtn"
+            android:layout_width="@dimen/w160"
+            android:layout_height="@dimen/h50"
+            android:background="@drawable/bg_black_stroke_rectangle_corner_r100"
+            android:text="查看物流" />
+
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal" />
+</LinearLayout>

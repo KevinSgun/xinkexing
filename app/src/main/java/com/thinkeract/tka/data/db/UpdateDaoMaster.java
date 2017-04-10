@@ -8,12 +8,8 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 import com.thinkeract.tka.data.db.greendao.DaoMaster;
-import com.thinkeract.tka.data.db.greendao.GDBankCardItemDao;
-import com.thinkeract.tka.data.db.greendao.GDBankItemDao;
-import com.thinkeract.tka.data.db.greendao.GDGagUserItemDao;
-import com.thinkeract.tka.data.db.greendao.GDHistoryRecordDao;
-import com.thinkeract.tka.data.db.greendao.GDIndustryDao;
-import com.thinkeract.tka.data.db.greendao.GDPhaseDao;
+import com.thinkeract.tka.data.db.greendao.GDAddressDao;
+import com.thinkeract.tka.data.db.greendao.GDGoodsItemDao;
 
 /**
  * <pre>
@@ -48,42 +44,18 @@ public class UpdateDaoMaster extends DaoMaster {
 
     private static void upgradeTables(SQLiteDatabase db) {
         try {
-            String[] industryColumns = getColumnNames(db, GDIndustryDao.TABLENAME);
-            if (industryColumns != null) {
-                upgradeTable(db, GDIndustryDao.TABLENAME, buildColumnsString(industryColumns));
+            String[] goodsColumns = getColumnNames(db, GDGoodsItemDao.TABLENAME);
+            if (goodsColumns != null) {
+                upgradeTable(db, GDGoodsItemDao.TABLENAME, buildColumnsString(goodsColumns));
             } else {
-                GDIndustryDao.createTable(db, false);
+                GDGoodsItemDao.createTable(db, false);
             }
 
-            String[] phaseColumns = getColumnNames(db, GDPhaseDao.TABLENAME);
-            if (phaseColumns != null) {
-                upgradeTable(db, GDPhaseDao.TABLENAME, buildColumnsString(phaseColumns));
+            String[] addressColumns = getColumnNames(db, GDAddressDao.TABLENAME);
+            if (addressColumns != null) {
+                upgradeTable(db, GDAddressDao.TABLENAME, buildColumnsString(addressColumns));
             } else {
-                GDPhaseDao.createTable(db, false);
-            }
-            String[] bankColumns = getColumnNames(db, GDBankItemDao.TABLENAME);
-            if (bankColumns != null) {
-                upgradeTable(db, GDBankItemDao.TABLENAME, buildColumnsString(bankColumns));
-            } else {
-                GDBankItemDao.createTable(db, false);
-            }
-            String[] bankCardColums = getColumnNames(db, GDBankCardItemDao.TABLENAME);
-            if (bankCardColums != null) {
-                upgradeTable(db, GDBankCardItemDao.TABLENAME, buildColumnsString(bankCardColums));
-            } else {
-                GDBankCardItemDao.createTable(db, false);
-            }
-            String[] gagItemColums = getColumnNames(db, GDGagUserItemDao.TABLENAME);
-            if (gagItemColums != null) {
-                upgradeTable(db, GDGagUserItemDao.TABLENAME, buildColumnsString(gagItemColums));
-            } else {
-                GDGagUserItemDao.createTable(db, false);
-            }
-            String[] historyColums = getColumnNames(db, GDHistoryRecordDao.TABLENAME);
-            if (historyColums != null) {
-                upgradeTable(db, GDHistoryRecordDao.TABLENAME, buildColumnsString(historyColums));
-            } else {
-                GDHistoryRecordDao.createTable(db, false);
+                GDAddressDao.createTable(db, false);
             }
 
         } catch (SQLException ex) {
@@ -171,34 +143,18 @@ public class UpdateDaoMaster extends DaoMaster {
     }
 
     private static void createTable(SQLiteDatabase db, String tableName, boolean ifNotExists) {
-        if (GDIndustryDao.TABLENAME.equals(tableName)) {
-            GDIndustryDao.createTable(db, ifNotExists);
-        } else if (GDPhaseDao.TABLENAME.equals(tableName)) {
-            GDPhaseDao.createTable(db, ifNotExists);
-        } else if (GDBankItemDao.TABLENAME.equals(tableName)) {
-            GDBankItemDao.createTable(db, ifNotExists);
-        } else if (GDBankCardItemDao.TABLENAME.equals(tableName)) {
-            GDBankCardItemDao.createTable(db, ifNotExists);
-        } else if (GDGagUserItemDao.TABLENAME.equals(tableName)) {
-            GDGagUserItemDao.createTable(db, ifNotExists);
-        } else if (GDHistoryRecordDao.TABLENAME.equals(tableName)) {
-            GDHistoryRecordDao.createTable(db, ifNotExists);
+        if (GDGoodsItemDao.TABLENAME.equals(tableName)) {
+            GDGoodsItemDao.createTable(db, ifNotExists);
+        } else if (GDAddressDao.TABLENAME.equals(tableName)) {
+            GDAddressDao.createTable(db, ifNotExists);
         }
     }
 
     public static void dropTables(SQLiteDatabase db, String tableName, boolean ifExists) {
-        if (GDIndustryDao.TABLENAME.equals(tableName)) {
-            GDIndustryDao.dropTable(db, ifExists);
-        } else if (GDPhaseDao.TABLENAME.equals(tableName)) {
-            GDPhaseDao.dropTable(db, ifExists);
-        } else if (GDBankItemDao.TABLENAME.equals(tableName)) {
-            GDBankItemDao.dropTable(db, ifExists);
-        } else if (GDBankCardItemDao.TABLENAME.equals(tableName)) {
-            GDBankCardItemDao.dropTable(db, ifExists);
-        } else if (GDGagUserItemDao.TABLENAME.equals(tableName)) {
-            GDGagUserItemDao.dropTable(db, ifExists);
-        } else if (GDHistoryRecordDao.TABLENAME.equals(tableName)) {
-            GDHistoryRecordDao.dropTable(db, ifExists);
+        if (GDGoodsItemDao.TABLENAME.equals(tableName)) {
+            GDGoodsItemDao.dropTable(db, ifExists);
+        } else if (GDAddressDao.TABLENAME.equals(tableName)) {
+            GDAddressDao.dropTable(db, ifExists);
         }
     }
 

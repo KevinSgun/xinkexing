@@ -2,47 +2,27 @@ package com.thinkeract.tka.data.api.response;
 
 
 /**
- * Created by lu on 2016/10/30.
+ * Created by ymh on 2016/10/30 17:40
+ * e-mail:minhengyan@gmail.com
  */
 
 public class UserData {
 
-    /**
-     * id : 3
-     * mobile : 15913101558
-     * isProfessional : 0
-     * isUpdate : 0
-     * lastLoginDate : 2016-12-02 07:15:12
-     * token : rBFVxul+nqRLMmV7yvL3DM79a2aOW8MBHQ7fSn2izjY=
-     * balance : 0
-     * name : 159****1558
-     * company : null
-     * concernNumber : 0
-     * fansNumber : 0
-     * industries : 0
-     * phase : 0
-     * stores : null
-     * position : null
-     * portrait : null
-     */
-
     private int id;
     private int concernNumber;//关注数
     private int fansNumber;//粉丝数
-    private int industries;//行业信息
-    private int phase;//运营阶段
     private int isProfessional;//是否为专家，0不是，1是
     private int isUpdate;//是否已完善资料，0未完善，1完善
+    private int age;
     private float balance;//余额
-    private float diamonds;//钻石
     private String mobile;
-    private String lastLoginDate;
-    private String token;
-    private String name;
-    private String company;
-    private String stores;//所在店铺
+    private String nickName;
     private String position;//所在职位
     private String portrait;//头像
+    private String createDate;//注册时间
+    private String status;//1.正常，2已被禁用
+    private String token;
+    private String gender;
 
     public int getId() {
         return id;
@@ -76,22 +56,6 @@ public class UserData {
         this.isUpdate = isUpdate;
     }
 
-    public String getLastLoginDate() {
-        return lastLoginDate;
-    }
-
-    public void setLastLoginDate(String lastLoginDate) {
-        this.lastLoginDate = lastLoginDate;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public float getBalance() {
         return balance;
     }
@@ -100,20 +64,12 @@ public class UserData {
         this.balance = balance;
     }
 
-    public String getName() {
-        return name;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public int getConcernNumber() {
@@ -132,30 +88,6 @@ public class UserData {
         this.fansNumber = fansNumber;
     }
 
-    public int getIndustries() {
-        return industries;
-    }
-
-    public void setIndustries(int industries) {
-        this.industries = industries;
-    }
-
-    public int getPhase() {
-        return phase;
-    }
-
-    public void setPhase(int phase) {
-        this.phase = phase;
-    }
-
-    public String getStores() {
-        return stores;
-    }
-
-    public void setStores(String stores) {
-        this.stores = stores;
-    }
-
     public String getPosition() {
         return position;
     }
@@ -172,11 +104,43 @@ public class UserData {
         this.portrait = portrait;
     }
 
-    public float getDiamonds() {
-        return diamonds;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setDiamonds(float diamonds) {
-        this.diamonds = diamonds;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

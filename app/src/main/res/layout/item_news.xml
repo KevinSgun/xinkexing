@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/newsTopLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <View style="@style/DividerLineHorizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h20"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h80"
+            android:paddingLeft="@dimen/w200"
+            android:paddingRight="@dimen/w200"
+            android:background="@color/white"
+            android:gravity="center"
+            >
+            <View style="@style/DividerLineHorizontal"
+                android:layout_width="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                style="@style/SmallText"
+                android:textSize="@dimen/w22"
+                android:textColor="@color/textColorPrimaryGray"
+                android:layout_marginLeft="@dimen/w14"
+                android:layout_marginRight="@dimen/w14"
+                android:text="健康知识"/>
+            <View style="@style/DividerLineHorizontal"
+                android:layout_width="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/newsItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sl_white_item"
+        android:paddingTop="@dimen/h24"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/newsItemPicIv"
+            android:layout_width="@dimen/w240"
+            android:layout_height="@dimen/h135"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_loading_square"/>
+        <TextView
+            android:id="@+id/newsTitleTv"
+            style="@style/CommonText"
+            android:layout_toRightOf="@id/newsItemPicIv"
+            android:layout_marginTop="@dimen/h4"
+            android:layout_marginLeft="@dimen/w24"
+            android:singleLine="true"
+            android:text="谈“癌”色变？带你认知癌症真相"/>
+        <TextView
+            android:id="@+id/newsSubTitleTv"
+            style="@style/SmallText"
+            android:textColor="@color/textColorPrimaryGray"
+            android:layout_alignLeft="@id/newsTitleTv"
+            android:layout_marginTop="@dimen/h24"
+            android:layout_below="@id/newsTitleTv"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="年纪轻轻的姑娘，竟然得了乳腺癌……你身边是否也听到过这样离奇古怪不堪的事情呢"/>
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_below="@id/newsItemPicIv"
+            android:layout_marginTop="@dimen/h24"/>
+    </RelativeLayout>
+</LinearLayout>

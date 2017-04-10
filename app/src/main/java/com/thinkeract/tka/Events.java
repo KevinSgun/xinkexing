@@ -31,4 +31,15 @@ public class Events {
         }
     }
 
+    public static class GoodsSelectedStatusChange{
+        public int selectedStatus;//0代表只是状态改变，1代表全选，2代表全未选,3代表状态不改变
+
+        /**
+         * @param selectedStatus 0代表只是状态改变，1代表全选，2代表全未选,3代表状态不改变
+         */
+        public GoodsSelectedStatusChange(int selectedStatus){
+            this.selectedStatus = selectedStatus;
+        }
+    }
+
 }

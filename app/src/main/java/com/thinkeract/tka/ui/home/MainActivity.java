@@ -1,5 +1,7 @@
 package com.thinkeract.tka.ui.home;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -76,7 +78,7 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener, 
                 break;
             case R.id.mainMenuMineRb:
                 if (!mainMenuMine.isChecked()) return;
-                showFragment(MyFragment.class);
+                showFragment(MineFragment.class);
                 break;
             default:
                 break;
@@ -101,4 +103,8 @@ public class MainActivity extends BaseActivity implements View.OnTouchListener, 
         return super.onKeyDown(keyCode, event);
     }
 
+    public static void launch(Activity activity) {
+        Intent intent = new Intent(activity, MainActivity.class);
+        activity.startActivity(intent);
+    }
 }

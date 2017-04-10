@@ -1,9 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorSecondary</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
@@ -11,11 +11,12 @@
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="NoBackgroundAndTitleMain" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorSecondary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
@@ -23,16 +24,37 @@
         <item name="android:background">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowFrame">@null</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="CommonButton">
-        <item name="android:layout_marginLeft">@dimen/w60</item>
-        <item name="android:layout_marginRight">@dimen/w60</item>
+        <item name="android:layout_marginLeft">@dimen/w24</item>
+        <item name="android:layout_marginRight">@dimen/w24</item>
         <item name="android:textSize">@dimen/w32</item>
         <item name="android:layout_height">@dimen/h90</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/sl_common_text</item>
         <item name="android:background">@drawable/sl_common_button</item>
+    </style>
+
+    <style name="RoundButton">
+        <item name="android:layout_marginLeft">@dimen/w24</item>
+        <item name="android:layout_marginRight">@dimen/w24</item>
+        <item name="android:textSize">@dimen/w32</item>
+        <item name="android:layout_height">@dimen/h90</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/sl_common_text</item>
+        <item name="android:background">@drawable/sl_round_button</item>
+    </style>
+
+    <style name="RoundRedButton">
+        <item name="android:layout_marginLeft">@dimen/w24</item>
+        <item name="android:layout_marginRight">@dimen/w24</item>
+        <item name="android:textSize">@dimen/w32</item>
+        <item name="android:layout_height">@dimen/h90</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/text_red</item>
+        <item name="android:background">@drawable/bg_red_stroke_rectangle_corner_r100</item>
     </style>
 
     <style name="CommonText">
@@ -62,6 +84,25 @@
         <item name="android:background">@null</item>
     </style>
 
+    <style name="TitleText">
+        <item name="android:textSize">@dimen/w36</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ContentText">
+        <item name="android:textSize">@dimen/w30</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/textColorPrimaryDark</item>
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+        <item name="android:lineSpacingExtra">@dimen/h10</item>
+        <item name="android:background">@null</item>
+    </style>
+
     <style name="HotTypeZhText" parent="CommonText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/text_home_tab</item>
@@ -88,7 +129,7 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
-    <style name="BottomPushDialog" parent="android:Theme.Dialog">
+    <style name="BottomPushDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowAnimationStyle">@style/AnimBottomPush</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -130,7 +171,7 @@
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorHint">@color/text_gray</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textSize">@dimen/w30</item>
+        <item name="android:textSize">@dimen/w32</item>
     </style>
     <style name="CommonRelativeLayout">
         <item name="android:layout_width">match_parent</item>
@@ -162,7 +203,7 @@
     <style name="ContentRelativeLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/h88</item>
-        <item name="android:background">@drawable/white_color</item>
+        <item name="android:background">@drawable/sl_white_item</item>
     </style>
 
     <style name="ShadowTextStyle" parent="CommonText">

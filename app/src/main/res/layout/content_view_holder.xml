@@ -22,11 +22,11 @@
         <!--android:background="@mipmap/ic_network_err"-->
         <Button
             android:id="@+id/retry_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
+            style="@style/CommonButton"
+            android:layout_width="@dimen/w400"
             android:layout_marginBottom="@dimen/h18"
             android:layout_marginTop="0dp"
+            android:text="点击重试~"
             />
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
+            android:src="@mipmap/ic_no_data_def"
             />
 
         <TextView

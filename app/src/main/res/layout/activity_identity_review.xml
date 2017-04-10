@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.thinkeract.tka.widget.MultiRadioGroup
+        android:id="@+id/mainRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h140"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/basicRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/w24"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="false"
+            android:drawableBottom="@drawable/sl_tab_check"
+            android:drawablePadding="@dimen/w4"
+            android:text="基本信息"
+            android:textColor="@color/sl_tab_text"
+            android:textSize="@dimen/w26" />
+
+        <View
+            android:layout_width="@dimen/w140"
+            android:layout_height="@dimen/h10"
+            android:layout_marginTop="@dimen/h18"
+            android:background="@mipmap/ic_arrow_line" />
+
+        <RadioButton
+            android:id="@+id/identityRb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:checked="false"
+            android:clickable="false"
+            android:drawableBottom="@drawable/sl_tab_check"
+            android:drawablePadding="@dimen/w4"
+            android:text="身份证明"
+            android:textColor="@color/sl_tab_text"
+            android:textSize="@dimen/w26" />
+
+        <View
+            android:layout_width="@dimen/w140"
+            android:layout_height="@dimen/h10"
+            android:layout_marginTop="@dimen/h18"
+            android:background="@mipmap/ic_arrow_line" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:checked="false"
+            android:clickable="false"
+            android:drawableBottom="@drawable/sl_tab_check"
+            android:drawablePadding="@dimen/w4"
+            android:text="提交审核"
+            android:textColor="@color/sl_tab_text"
+            android:textSize="@dimen/w26" />
+    </com.thinkeract.tka.widget.MultiRadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/w30"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"
+        android:layout_marginTop="@dimen/w30"
+        android:drawableLeft="@mipmap/ic_note_introduce"
+        android:drawablePadding="@dimen/w10"
+        android:text="以下信息仅作认证使用，不会公开"
+        android:textColor="@color/textColorPrimaryGray"
+        android:textSize="@dimen/w24" />
+
+    <ViewAnimator
+        android:id="@+id/identityAnimator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inAnimation="@anim/right_in"
+        android:outAnimation="@anim/slide_out_left">
+
+        <include layout="@layout/layout_identity_one" />
+
+        <include layout="@layout/layout_identity_two" />
+    </ViewAnimator>
+</LinearLayout>

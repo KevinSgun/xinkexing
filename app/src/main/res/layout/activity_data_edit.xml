@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editContentEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/w88"
+        android:layout_marginTop="@dimen/h20"
+        android:background="@drawable/white_color"
+        android:gravity="top|left"
+        android:padding="@dimen/w30"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w28"
+        android:textColorHint="@color/textColorPrimaryGray"
+        android:hint="输入姓名"
+        android:text=""
+        />
+    <View style="@style/SpaceAutoFit"/>
+    <Button
+        android:id="@+id/commitBtn"
+        style="@style/CommonButton"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@color/theme_color"
+        android:text="提交"/>
+</LinearLayout>

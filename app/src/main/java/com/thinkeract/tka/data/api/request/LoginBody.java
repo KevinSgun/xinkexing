@@ -13,6 +13,7 @@ public class LoginBody {
      */
     private String mobile;
     private String password;
+    private String code;
 
 
     public String getMobile() {
@@ -29,5 +30,13 @@ public class LoginBody {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

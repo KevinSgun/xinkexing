@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_animator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/w10"
+        android:text="购物车竟然是空的"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/w40" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/selAllLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h90"
+            android:layout_marginTop="@dimen/h24"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkAll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/w24"
+                android:paddingRight="@dimen/w24"
+                android:button="@null"
+                android:drawableLeft="@drawable/sl_purple_check"
+                android:drawablePadding="@dimen/w10"
+                android:text="全选"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w28" />
+
+            <View style="@style/DividerLineHorizontal"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cartListRv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:splitMotionEvents="false"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h100"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/w24"
+            android:background="@color/white">
+            <TextView
+                style="@style/LargeText"
+                android:text="总计："/>
+            <TextView
+                android:id="@+id/totalAmountTv"
+                style="@style/LargeText"
+                android:textColor="@color/text_red"
+                android:text="@string/rmb"/>
+            <View style="@style/SpaceAutoFit"/>
+            <Button
+                android:id="@+id/settlementBtn"
+                android:layout_width="@dimen/w248"
+                android:layout_height="match_parent"
+                android:background="@color/text_red"
+                android:textColor="@color/white"
+                android:textSize="@dimen/w28"
+                android:text="结算"/>
+        </LinearLayout>
+    </LinearLayout>
+</ViewAnimator>
+

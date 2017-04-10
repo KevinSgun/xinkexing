@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toAddressLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sl_common_item"
+    android:paddingTop="@dimen/h40">
+
+    <TextView
+        android:id="@+id/contactNameTv"
+        style="@style/CommonText"
+        android:layout_marginLeft="@dimen/w24"
+        android:text="张三" />
+
+    <TextView
+        android:id="@+id/phoneNumTv"
+        style="@style/CommonText"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_toRightOf="@id/contactNameTv"
+        android:text="188888888" />
+
+    <TextView
+        android:id="@+id/arrowAddressIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorPrimaryGray"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/w24"
+        android:drawableTop="@mipmap/ic_edit"
+        android:drawablePadding="@dimen/w10"
+        android:textSize="@dimen/w24"
+        android:text="编辑"/>
+
+    <TextView
+        android:id="@+id/addressTv"
+        style="@style/CommonText"
+        android:layout_alignLeft="@id/contactNameTv"
+        android:layout_below="@id/contactNameTv"
+        android:layout_marginRight="@dimen/w36"
+        android:layout_marginTop="@dimen/h20"
+        android:layout_toLeftOf="@id/arrowAddressIv"
+        android:text="说的发生放大大方撒旦飞洒地方撒，阿萨德发生" />
+
+    <View
+        style="@style/DividerLineHorizontal"
+        android:layout_below="@id/addressTv"
+        android:layout_marginTop="@dimen/h36" />
+</RelativeLayout>

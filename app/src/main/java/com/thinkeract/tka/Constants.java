@@ -76,6 +76,9 @@ public class Constants {
         String PHOTOS = "photos";
         String LAUNCH_HOME = "launch_home";
         String IS_FROM_LOGIN = "is_from_login";
+        String DATA_CONTENT = "data_content";
+        String DATA_EDIT_VO = "data_edit_vo";
+        String NEWS_ID = "news_id";
 
     }
 
@@ -85,9 +88,9 @@ public class Constants {
     }
 
     public interface ImageDefResId{
-//        int DEF_AVA_NORMAL = R.mipmap.ic_avatar_def;
-//        int DEF_SQUARE_PIC_NORMAL = R.mipmap.ic_loading_square;
+        int DEF_AVA_NORMAL = R.mipmap.ic_avatar_def;
+        int DEF_SQUARE_PIC_NORMAL = R.mipmap.ic_loading_square;
 //        int DEF_BANNER_PIC_NORMAL = R.mipmap.ic_loading_home_banner;
-//        int DEF_LAND_PIC_NORMAL = R.mipmap.ic_loading_land;
+        int DEF_LAND_PIC_NORMAL = R.mipmap.ic_loading_square;
     }
 }

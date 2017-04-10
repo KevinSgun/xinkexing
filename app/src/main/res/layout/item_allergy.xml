@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/w24"
+    android:background="@drawable/bg_gray_tiny_stroke_rectangle">
+    <com.zitech.framework.widget.RemoteImageView
+        android:id="@+id/allergyIv"
+        android:layout_width="@dimen/w72"
+        android:layout_height="@dimen/w72"
+        android:src="@mipmap/ic_organ"/>
+    <TextView
+        android:id="@+id/itemsName"
+        style="@style/SmallText"
+        android:textSize="@dimen/w22"
+        android:layout_marginTop="@dimen/w24"
+        android:textColor="@color/text_light_gray"
+        android:text="总体器官检查"/>
+</LinearLayout>

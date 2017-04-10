@@ -1,13 +1,18 @@
 package com.thinkeract.tka.ui.preview;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.User;
+import com.thinkeract.tka.common.utils.PermissionUtils;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.widget.BottomLinearPicker;
+import com.thinkeract.tka.widget.CommonDialog;
 import com.zitech.framework.crop.CropActivity;
 import com.zitech.framework.utils.ImageUtils;
 import com.zitech.framework.utils.ToastMaster;
@@ -33,6 +38,9 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
     public static final int EFFECT_TYPE_NONE = 0;
     private int effecType;
     private float ratio = 1f;
+
+    protected static final int READ_WRITE_FOR_AVATAR = 103;//读写权限
+    protected static final int CAMERA_AVATAR = 105;//相机权限
 
     public interface PhotoTakeListener {
         /**
@@ -155,14 +163,49 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
     public void onItemClick(int itemId) {
         switch (itemId) {
             case 2:
-                selectFromAlbum(listener);
+                if (PermissionUtils.isGrantExternalRW(this, READ_WRITE_FOR_AVATAR)) {
+                    selectFromAlbum(listener);
+                }
                 break;
             case 1:
-                takePhoto(listener);
+                if (PermissionUtils.isGrantCamera(this, CAMERA_AVATAR)) {
+                    takePhoto(listener);
+                }
                 break;
 
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //业务逻辑
+            if (requestCode == CAMERA_AVATAR) {
+                takePhoto(listener);
+            }else if (requestCode == READ_WRITE_FOR_AVATAR){
+                selectFromAlbum(listener);
+            }
+        } else {
+            //授权被拒绝，不再进行基于该权限的功能
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    //用户已经完全拒绝，或手动关闭了权限
+                    //开启此对话框缓解一下尴尬...
+                    CommonDialog commonDialog = new CommonDialog(this, "不开读写权限将无法正常上传照片，请在设置中手动开启！");
+                    commonDialog.show();
+                } else if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                    CommonDialog commonDialog = new CommonDialog(this, "不开相机权限将无法拍照，请在设置中手动开启！");
+                    commonDialog.show();
+                } else {
+                    //用户一直拒绝并一直不勾选“不再提醒”
+                    ToastMaster.shortToast("无法取得访问相机或相册权限，请在设置中开启");
+                }
+            }
+
         }
     }
 

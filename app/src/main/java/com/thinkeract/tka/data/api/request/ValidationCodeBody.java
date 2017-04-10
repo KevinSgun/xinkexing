@@ -8,6 +8,8 @@ package com.thinkeract.tka.data.api.request;
 public class ValidationCodeBody {
     public static final String REGISTER = "register" ;
     public static final String FIND_PASSWORD = "retrievePwd" ;
+    public static final String LOG_IN = "login" ;
+    public static final String BINDING = "binding" ;
     private String apkind;//验证码类型，注册为register,找回密码为retrievePwd
     private String mobile;
 

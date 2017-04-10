@@ -1,42 +1,45 @@
 package com.thinkeract.tka.ui.login;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.Events;
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.common.utils.StringUtils;
 import com.thinkeract.tka.common.utils.ViewUtils;
-import com.thinkeract.tka.ui.BaseActivity;
+import com.thinkeract.tka.data.api.request.ValidationCodeBody;
+import com.thinkeract.tka.data.api.entity.GoodsSpec;
 import com.thinkeract.tka.ui.home.MainActivity;
 import com.thinkeract.tka.ui.login.contract.LoginContract;
 import com.thinkeract.tka.ui.login.presenter.LoginPresenter;
+import com.thinkeract.tka.widget.ChooseGoodsSpecDialog;
 import com.zitech.framework.utils.ToastMaster;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by minHeng on 2017/3/14 17:51.
  * mail:minhengyan@gmail.com
  */
 
-public class LoginActivity extends BaseActivity implements LoginContract.View {
+public class LoginActivity extends ValidateActivity implements LoginContract.View {
     private EditText inputPhoneNumEt;
-    private EditText inputPassWordEt;
-    private Button forgetPsdBtn;
+    private EditText inputValidateNumEt;
+    private Button doctorLoginBtn;
     private Button loginBtn;
-    private TextView registerTv;
+    private LoginPresenter loginPresenter;
+    private LinearLayout weChatLoginLayout;
+    private TextView userProtocolTv;
     private long exitTime;
     private boolean launchHome;
-    private LoginPresenter loginPresenter;
 
     @Override
     protected int getContentViewId() {
@@ -45,19 +48,26 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     protected void initView() {
+        setTitle(R.string.sign_in);
+        launchHome = getIntent().getBooleanExtra(Constants.ActivityExtra.LAUNCH_HOME,false);
         setTranslucentStatus(true);
         initializeView();
-        registerTv.setOnClickListener(this);
-        forgetPsdBtn.setOnClickListener(this);
+        doctorLoginBtn.setOnClickListener(this);
         loginBtn.setOnClickListener(this);
+        weChatLoginLayout.setOnClickListener(this);
+        userProtocolTv.setOnClickListener(this);
     }
 
     private void initializeView() {
         inputPhoneNumEt = (EditText) findViewById(R.id.inputPhoneNumEt);
-        inputPassWordEt = (EditText) findViewById(R.id.inputPassWordEt);
+        inputValidateNumEt = (EditText) findViewById(R.id.inputValidateNumEt);
         loginBtn = (Button) findViewById(R.id.loginBtn);
-        registerTv = (TextView) findViewById(R.id.registerTv);
-        forgetPsdBtn = (Button) findViewById(R.id.forgetPsdBtn);
+        doctorLoginBtn = (Button) findViewById(R.id.doctorLoginBtn);
+        weChatLoginLayout = (LinearLayout) findViewById(R.id.weChatLoginLayout);
+        userProtocolTv = (TextView) findViewById(R.id.userProtocolTv);
+
+        userProtocolTv.getPaint().setUnderlineText(true);
+        userProtocolTv.getPaint().setAntiAlias(true);
     }
 
     @Override
@@ -66,57 +76,121 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
+    protected int getValidateCodeButtonId() {
+        return R.id.getValidateBtn;
+    }
+
+    @Override
+    protected String getPhoneNumber() {
+        return inputPhoneNumEt.getText().toString();
+    }
+
+    @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-//            case R.id.actionBarLeft:
-//                back();
-//                break;
-            case R.id.loginBtn:
-                //登陆请求
+            case R.id.loginBtn://普通登录请求
                 String name = this.inputPhoneNumEt.getText().toString();
                 if (!validatePhone(name)) {
                     return;
                 }
-                String password = this.inputPassWordEt.getText().toString();
-                if (!validatePassword(inputPassWordEt.getText().toString())) {
+                String validateNum = this.inputValidateNumEt.getText().toString();
+                if (!validateCode(inputValidateNumEt.getText().toString())) {
                     return;
                 }
-                loginPresenter.login(name, password);
+                loginPresenter.login(name, validateNum);
                 break;
-            case R.id.registerTv:
-//                RegisterActivity.launch(this);
+            case R.id.doctorLoginBtn: //医生登录请求
+//                showActivity(MainActivity.class);
+//                showActivity(IdentityReviewActivity.class);
+//                showActivity(ShoppingCartActivity.class);
+                ChooseGoodsSpecDialog chooseGoodsSpecDialog = new ChooseGoodsSpecDialog(this);
+                List<GoodsSpec> gList = new ArrayList<>();
+                GoodsSpec goodsSpec = new GoodsSpec();
+                GoodsSpec goodsSpec2 = new GoodsSpec();
+                GoodsSpec goodsSpec3 = new GoodsSpec();
+                List<GoodsSpec.Spec> gSpecList = new ArrayList<>();
+                List<GoodsSpec.Spec> gSpecList2 = new ArrayList<>();
+                List<GoodsSpec.Spec> gSpecList3 = new ArrayList<>();
+                GoodsSpec.Spec gs1 = new GoodsSpec.Spec();
+                gs1.setSpecValue("500ml");
+                GoodsSpec.Spec gs11 = new GoodsSpec.Spec();
+                gs11.setSpecValue("1000ml");
+                GoodsSpec.Spec gs22 = new GoodsSpec.Spec();
+                gs22.setSpecValue("2000ml");
+                GoodsSpec.Spec gs23 = new GoodsSpec.Spec();
+                gs23.setSpecValue("20000ml");
+                GoodsSpec.Spec gs24 = new GoodsSpec.Spec();
+                gs24.setSpecValue("40000ml");
+                GoodsSpec.Spec gs25 = new GoodsSpec.Spec();
+                gs25.setSpecValue("800000ml");
+                gSpecList.add(gs1);
+                gSpecList.add(gs11);
+                gSpecList.add(gs22);
+//                gSpecList.add(gs23);
+//                gSpecList.add(gs24);
+//                gSpecList.add(gs25);
+                goodsSpec.setSpecType("容量");
+                goodsSpec.setSpecItems(gSpecList);
+
+                GoodsSpec.Spec gs2 = new GoodsSpec.Spec();
+                gs2.setSpecValue("黄色");
+                GoodsSpec.Spec gs3 = new GoodsSpec.Spec();
+                gs3.setSpecValue("红色");
+                GoodsSpec.Spec gs4 = new GoodsSpec.Spec();
+                gs4.setSpecValue("蓝色");
+                GoodsSpec.Spec gs5 = new GoodsSpec.Spec();
+                gs5.setSpecValue("绿色");
+                GoodsSpec.Spec gs6 = new GoodsSpec.Spec();
+                gs6.setSpecValue("梦幻紫色");
+                gSpecList2.add(gs2);
+                gSpecList2.add(gs3);
+                gSpecList2.add(gs4);
+                gSpecList2.add(gs5);
+                gSpecList2.add(gs6);
+
+                goodsSpec2.setSpecType("炫酷的颜色");
+                goodsSpec2.setSpecItems(gSpecList2);
+
+                GoodsSpec.Spec gs44 = new GoodsSpec.Spec();
+                gs44.setSpecValue("黄色");
+                GoodsSpec.Spec gs41 = new GoodsSpec.Spec();
+                gs41.setSpecValue("红色");
+                GoodsSpec.Spec gs42 = new GoodsSpec.Spec();
+                gs42.setSpecValue("蓝色");
+                GoodsSpec.Spec gs43 = new GoodsSpec.Spec();
+                gs43.setSpecValue("绿色");
+                GoodsSpec.Spec gs45 = new GoodsSpec.Spec();
+                gs45.setSpecValue("梦幻紫色");
+                gSpecList3.add(gs44);
+                gSpecList3.add(gs41);
+                gSpecList3.add(gs42);
+                gSpecList3.add(gs43);
+                gSpecList3.add(gs45);
+
+                goodsSpec3.setSpecType("不同的颜色");
+                goodsSpec3.setSpecItems(gSpecList3);
+
+                gList.add(goodsSpec);
+                gList.add(goodsSpec2);
+                gList.add(goodsSpec3);
+
+                chooseGoodsSpecDialog.setData(gList);
+                chooseGoodsSpecDialog.show();
                 break;
-            case R.id.forgetPsdBtn:
-//                Bundle bundle = new Bundle();
-//                bundle.putBoolean(Constants.ActivityExtra.IS_FROM_LOGIN, true);
-//                showActivity(ForgetPsdActivity.class, bundle);
+            case R.id.weChatLoginLayout: //微信登录请求
+
+                break;
+            case R.id.userProtocolTv: //查看用户协议
+
                 break;
         }
     }
 
-    /**
-     * 验证用户 名是否有效
-     */
-    protected boolean validatePhone(String name) {
-        if (StringUtils.isPhoneNum(name)) {
-            return true;
-        } else {
-            ToastMaster.longToast(R.string.enter_right_phone_num);
-            return false;
-        }
-    }
 
-    /**
-     * 验证密码
-     */
-    protected boolean validatePassword(String password) {
-        if (!StringUtils.isPasswordValid(password)) {
-            ToastMaster.longToast(R.string.incorrect_passowrd_length);
-            return false;
-        }
-        return true;
-
+    @Override
+    public String getValidateCodeType() {
+        return ValidationCodeBody.LOG_IN;
     }
 
     private void exitApp() {
@@ -136,49 +210,31 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void showSuccess() {
-
+        EventBus.getDefault().post(new Events.CloseEvent(Events.CloseEvent.FINISH_PERFECT_DATA));
     }
 
     @Override
     public void onNotifyClose(Events.CloseEvent closeEvent) {
         super.onNotifyClose(closeEvent);
-//        if (Events.CloseEvent.FINISH_REGISTER.equals(closeEvent.enventType)) {
-//            if (!User.get().isCompleted()) {
-//                showActivity(PerfectDataActivity.class);
-//                return;
-//            }
-//            launchHome();
-//        } else if (Events.CloseEvent.FINISH_PERFECT_DATA.equals(closeEvent.enventType)) {
-//            launchHome();
-//        }
+        if (Events.CloseEvent.FINISH_PERFECT_DATA.equals(closeEvent.eventType)) {
+            launchHome();
+        }
     }
 
     private void launchHome() {
-        finish();
         if (launchHome) {
             showActivity(MainActivity.class);
         }
+        finish();
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if (ViewUtils.isTouchedOutsideView(v, ev)) {
-                InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-            return super.dispatchTouchEvent(ev);
-        }
-        // 必不可少，否则所有的组件都不会有TouchEvent了
-        if (getWindow().superDispatchTouchEvent(ev)) {
-            return true;
-        }
-        return onTouchEvent(ev);
+    public void onBackPressed() {
+        if (launchHome)
+            exitApp();
+        else
+            super.onBackPressed();
     }
-
 
     /**
      * @param context
@@ -188,5 +244,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra(Constants.ActivityExtra.LAUNCH_HOME, launchHome);
         context.startActivity(intent);
+        ViewUtils.anima(ViewUtils.RIGHT_IN,context);
     }
 }

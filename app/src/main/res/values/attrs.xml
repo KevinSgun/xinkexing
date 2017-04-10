@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TagCloudView">
+        <attr name="tcvBackground" format="reference" />
+        <attr name="tcvChooseBackground" format="reference" />
+        <attr name="tcvTextColor" format="color" />
+        <attr name="tcvBorder" format="dimension" />
+        <attr name="tcvTextSize" format="dimension" />
+        <attr name="tcvBorderItem" format="dimension" />
+        <attr name="tcvItemBorderVertical" format="dimension" />
+        <attr name="tcvItemBorderHorizontal" format="dimension" />
+
+        <attr name="tcvCanTagClick" format="boolean" />
+        <attr name="tcvTagTextPadding" format="dimension" />
+        <attr name="tcvRowNum" format="integer" />
+        <attr name="tcvIsStayRight" format="boolean" />
+        <attr name="tcvIsSingleSelect" format="boolean" />
+        <attr name="tcvBackgroundRandom" format="boolean" />
+    </declare-styleable>
+</resources>

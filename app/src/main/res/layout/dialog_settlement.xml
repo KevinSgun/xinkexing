@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ViewAnimator
+        android:id="@+id/contentAnimator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <include
+            layout="@layout/layout_settlement_nor"/>
+        <com.thinkeract.tka.widget.SettlementAddressView
+            android:id="@+id/addressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.thinkeract.tka.widget.SettlementDetailView
+            android:id="@+id/detailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ViewAnimator>
+
+    <View style="@style/SpaceAutoFit" />
+
+    <Button
+        android:id="@+id/commitOrderBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:background="@color/text_red"
+        android:text="提交订单"
+        android:textColor="@color/white"
+        android:textSize="@dimen/w32" />
+</LinearLayout>

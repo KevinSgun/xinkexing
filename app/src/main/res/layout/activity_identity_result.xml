@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/w24">
+
+            <TextView
+                style="@style/LargeText"
+                android:layout_marginTop="@dimen/h100"
+                android:text="待审核"
+                android:textColor="@color/text_theme_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h16"
+                android:text="您的资料已提交成功！我们将尽快审核，预计5个工作日返回审核结果，请随时留意软件信息。"
+                android:textColor="@color/textColorPrimaryGray"
+                android:textSize="@dimen/w24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h30"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SmallText"
+                    android:text="提交的信息有误？您可以选择 "
+                    android:textColor="@color/textColorPrimaryGray" />
+
+                <TextView
+                    android:id="@+id/identityAgainTv"
+                    style="@style/SmallText"
+                    android:text="重新填写 >>"
+                    android:textColor="@color/sl_purple_text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/SpaceAutoFit" />
+
+        <TextView
+            style="@style/SmallText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/h80"
+            android:text="审核专线：5555555"
+            android:textColor="@color/textColorPrimaryGray" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/w24">
+
+            <TextView
+                style="@style/LargeText"
+                android:layout_marginTop="@dimen/h100"
+                android:text="尊敬的用户："
+                android:textColor="@color/text_theme_color" />
+
+            <TextView
+                android:id="@+id/resultContentTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/h16"
+                android:text="由于您提交的资料不能确认医生或者实习期医学生身份，管理员暂时未通过您的申请，您可以在客户端重新填写资料后再次提交。\n\n感谢您的理解和配合。"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/w24" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/identityAgainBtn"
+            style="@style/CommonButton"
+            android:layout_marginTop="@dimen/h40"
+            android:text="重新填写信息" />
+        <TextView
+            android:id="@+id/connectCustomServiceTv"
+            style="@style/SmallText"
+            android:layout_marginTop="@dimen/h30"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_gravity="right"
+            android:text="如有问题，联系客服"
+            android:textColor="@color/sl_purple_text" />
+
+    </LinearLayout>
+</ViewAnimator>

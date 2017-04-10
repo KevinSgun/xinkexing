@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_color"
+     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w132"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/w32"
+        >
+
+        <View
+            android:id="@+id/dividerLine"
+            android:layout_width="@dimen/w90"
+            android:layout_height="1px"
+            android:layout_marginRight="@dimen/w124"
+            android:layout_centerInParent="true"/>
+        <ImageView
+            android:id="@+id/logoIv"
+            android:layout_width="@dimen/w132"
+            android:layout_height="@dimen/w132"
+            android:layout_toLeftOf="@id/dividerLine"
+            />
+        <TextView
+            android:id="@+id/mainName"
+            style="@style/LargeText"
+            android:layout_toRightOf="@id/logoIv"
+            android:layout_marginTop="@dimen/w26"
+            android:textSize="@dimen/w36"
+            android:text="醒客行"/>
+        <TextView
+            style="@style/SmallText"
+            android:layout_alignLeft="@id/mainName"
+            android:layout_below="@id/mainName"
+            android:layout_toRightOf="@id/logoIv"
+            android:layout_marginTop="@dimen/w2"
+            android:textSize="@dimen/w20"
+            android:textColor="@color/textColorPrimaryDark"
+            android:text="您身边的健康专家"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -20,8 +20,8 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String username, String password) {
-        ApiFactory.login(username, password).subscribe(new ProgressSubscriber<ApiResponse<UserData>>(mView.getContext()) {
+    public void login(String username, String validateCode) {
+        ApiFactory.login(username, validateCode).subscribe(new ProgressSubscriber<ApiResponse<UserData>>(mView.getContext()) {
             @Override
             public void onNext(ApiResponse<UserData> userDataApiResponse) {
                 User.get().updateFrom(userDataApiResponse.getData());

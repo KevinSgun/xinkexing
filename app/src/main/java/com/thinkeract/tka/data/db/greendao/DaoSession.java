@@ -14,92 +14,44 @@ import de.greenrobot.dao.internal.DaoConfig;
 /**
  * {@inheritDoc}
  * 
- * @see AbstractDaoSession
+ * @see de.greenrobot.dao.AbstractDaoSession
  */
 public class DaoSession extends AbstractDaoSession {
 
-    private final DaoConfig gDIndustryDaoConfig;
-    private final DaoConfig gDPhaseDaoConfig;
-    private final DaoConfig gDBankItemDaoConfig;
-    private final DaoConfig gDBankCardItemDaoConfig;
-    private final DaoConfig gDGagUserItemDaoConfig;
-    private final DaoConfig gDHistoryRecordDaoConfig;
+    private final DaoConfig gDGoodsItemDaoConfig;
+    private final DaoConfig gDAddressDaoConfig;
 
-    private final GDIndustryDao gDIndustryDao;
-    private final GDPhaseDao gDPhaseDao;
-    private final GDBankItemDao gDBankItemDao;
-    private final GDBankCardItemDao gDBankCardItemDao;
-    private final GDGagUserItemDao gDGagUserItemDao;
-    private final GDHistoryRecordDao gDHistoryRecordDao;
+    private final GDGoodsItemDao gDGoodsItemDao;
+    private final GDAddressDao gDAddressDao;
 
     public DaoSession(SQLiteDatabase db, IdentityScopeType type, Map<Class<? extends AbstractDao<?, ?>>, DaoConfig>
             daoConfigMap) {
         super(db);
 
-        gDIndustryDaoConfig = daoConfigMap.get(GDIndustryDao.class).clone();
-        gDIndustryDaoConfig.initIdentityScope(type);
+        gDGoodsItemDaoConfig = daoConfigMap.get(GDGoodsItemDao.class).clone();
+        gDGoodsItemDaoConfig.initIdentityScope(type);
 
-        gDPhaseDaoConfig = daoConfigMap.get(GDPhaseDao.class).clone();
-        gDPhaseDaoConfig.initIdentityScope(type);
+        gDAddressDaoConfig = daoConfigMap.get(GDAddressDao.class).clone();
+        gDAddressDaoConfig.initIdentityScope(type);
 
-        gDBankItemDaoConfig = daoConfigMap.get(GDBankItemDao.class).clone();
-        gDBankItemDaoConfig.initIdentityScope(type);
+        gDGoodsItemDao = new GDGoodsItemDao(gDGoodsItemDaoConfig, this);
+        gDAddressDao = new GDAddressDao(gDAddressDaoConfig, this);
 
-        gDBankCardItemDaoConfig = daoConfigMap.get(GDBankCardItemDao.class).clone();
-        gDBankCardItemDaoConfig.initIdentityScope(type);
-
-        gDGagUserItemDaoConfig = daoConfigMap.get(GDGagUserItemDao.class).clone();
-        gDGagUserItemDaoConfig.initIdentityScope(type);
-
-        gDHistoryRecordDaoConfig = daoConfigMap.get(GDHistoryRecordDao.class).clone();
-        gDHistoryRecordDaoConfig.initIdentityScope(type);
-
-        gDIndustryDao = new GDIndustryDao(gDIndustryDaoConfig, this);
-        gDPhaseDao = new GDPhaseDao(gDPhaseDaoConfig, this);
-        gDBankItemDao = new GDBankItemDao(gDBankItemDaoConfig, this);
-        gDBankCardItemDao = new GDBankCardItemDao(gDBankCardItemDaoConfig, this);
-        gDGagUserItemDao = new GDGagUserItemDao(gDGagUserItemDaoConfig, this);
-        gDHistoryRecordDao = new GDHistoryRecordDao(gDHistoryRecordDaoConfig, this);
-
-        registerDao(GDIndustry.class, gDIndustryDao);
-        registerDao(GDPhase.class, gDPhaseDao);
-        registerDao(GDBankItem.class, gDBankItemDao);
-        registerDao(GDBankCardItem.class, gDBankCardItemDao);
-        registerDao(GDGagUserItem.class, gDGagUserItemDao);
-        registerDao(GDHistoryRecord.class, gDHistoryRecordDao);
+        registerDao(GDGoodsItem.class, gDGoodsItemDao);
+        registerDao(GDAddress.class, gDAddressDao);
     }
     
     public void clear() {
-        gDIndustryDaoConfig.getIdentityScope().clear();
-        gDPhaseDaoConfig.getIdentityScope().clear();
-        gDBankItemDaoConfig.getIdentityScope().clear();
-        gDBankCardItemDaoConfig.getIdentityScope().clear();
-        gDGagUserItemDaoConfig.getIdentityScope().clear();
-        gDHistoryRecordDaoConfig.getIdentityScope().clear();
+        gDGoodsItemDaoConfig.getIdentityScope().clear();
+        gDAddressDaoConfig.getIdentityScope().clear();
     }
 
-    public GDIndustryDao getGDIndustryDao() {
-        return gDIndustryDao;
+    public GDGoodsItemDao getGDGoodsItemDao() {
+        return gDGoodsItemDao;
     }
 
-    public GDPhaseDao getGDPhaseDao() {
-        return gDPhaseDao;
-    }
-
-    public GDBankItemDao getGDBankItemDao() {
-        return gDBankItemDao;
-    }
-
-    public GDBankCardItemDao getGDBankCardItemDao() {
-        return gDBankCardItemDao;
-    }
-
-    public GDGagUserItemDao getGDGagUserItemDao() {
-        return gDGagUserItemDao;
-    }
-
-    public GDHistoryRecordDao getGDHistoryRecordDao() {
-        return gDHistoryRecordDao;
+    public GDAddressDao getGDAddressDao() {
+        return gDAddressDao;
     }
 
 }

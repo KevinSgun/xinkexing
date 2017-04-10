@@ -46,7 +46,9 @@
     <!--edit-->
 
     <!-- 登陆注册相关 start-->
+    <string name="sign_in">登录</string>
     <string name="register">注册</string>
+    <string name="bing_phone_num">绑定手机号</string>
     <string name="forget_psd">忘记密码</string>
     <string name="enter_phone_num">请输入手机号码</string>
     <string name="enter_right_phone_num">请输入正确的手机号码</string>
@@ -66,31 +68,15 @@
     <string name="phase_missing_tips">请填写经营阶段</string>
     <!-- 登陆注册相关 end-->
 
-    <!-- HotFragment start-->
-    <string name="hot_notice_zh">__ 热门预告 __</string>
-    <string name="hot_notice_en">HOT NOTICE</string>
-    <string name="more_hot">更多热门</string>
-    <string name="professor_zh">__ 行家推荐 __</string>
-    <string name="professor_en">PROFESSOR</string>
-    <string name="living_zh">__ 正在直播 __</string>
-    <string name="living_en">LIVE</string>
-    <string name="more_living">全部直播</string>
-    <string name="play_back_zh">__ 往期回放 __</string>
-    <string name="play_back_en">PAST EVENTS</string>
-    <string name="more_play_back">更多精彩</string>
-    <string name="whole_prev">全部预告</string>
-    <string name="whole_now_living">全部直播</string>
-    <string name="whole_play_back">往期回放</string>
-    <string name="professor">导师</string>
-    <string name="search_result">搜索结果</string>
-    <string name="whole_prev_result">预告搜索结果</string>
-    <string name="whole_now_living_result">直播搜索结果</string>
-    <string name="whole_play_back_result">回放搜索结果</string>
-    <string name="service_result">服务搜索结果</string>
-    <string name="professor_result">导师搜索结果</string>
-    <!-- HotFragment end-->
+    <!-- Order start-->
+    <string name="total_goods_count">共%d件商品</string>
+    <!-- Order end-->
 
     <!-- 我的相关 start-->
+    <string name="account_setting">账户设置</string>
+    <string name="shipping_address">收货地址</string>
+    <string name="custom_service_helper">客服帮助</string>
+    <string name="about_us">关于我们</string>
     <string name="choose_coupon">选择优惠券</string>
     <string name="become_professor">成为导师</string>
     <string name="authenticate_history">审核历史</string>
@@ -116,6 +102,8 @@
     <string name="pay_fee">支付费用</string>
     <string name="manager_bank_card">银行卡管理</string>
     <string name="manager">管理</string>
+    <string name="body_checkup_report">体检报告</string>
+    <string name="watch_live">观看直播</string>
 
     <string name="select_bank_tips">请选择开户银行</string>
     <string name="input_user_name_tips">请填写开户人姓名</string>
@@ -134,6 +122,8 @@
     <string name="edit_service">编辑服务</string>
     <string name="edit_post_living">编辑直播</string>
     <string name="content_introduce">内容介绍</string>
+    <string name="identity_review">身份审核</string>
+    <string name="age">%d岁</string>
 
     <!-- 我的相关 end-->
 
@@ -160,6 +150,7 @@
     <string name="buy_success_tips">恭喜你，购买成功！</string>
     <string name="company_in">企业用户入口</string>
     <string name="choose_pay_type">请选择支付方式</string>
+    <string name="my_shopping_cart">我的购物车</string>
 
     <!-- 订单支付相关 end-->
 
@@ -173,18 +164,7 @@
     <string name="gold">%.2f金币</string>
     <string name="diamond">钻石</string>
 
-    <string name="input_live_title_tips">请填写直播标题</string>
-    <string name="set_industry_missing_tips">请选择所在行业</string>
-    <string name="set_classify_missing_tips">请选择直播分类</string>
-    <string name="set_living_date_tips">请选择直播日期</string>
-    <string name="set_start_date_tips">请选择开始时间</string>
-    <string name="set_end_date_tips">请选择结束时间</string>
-    <string name="set_publicity_img_tips">请选择宣传图片</string>
-    <string name="set_fee_tips">请填写培训费用</string>
-    <string name="input_content_introduce">请填写内容介绍</string>
-    <string name="set_city_tips">请选择所在城市</string>
-
-    <string name="anchor_agreement">脉响主播协议</string>
+   <string name="topic_detail">帖子详情</string>
 
     <string name="flash_light_on">ON</string>
     <string name="flash_light_off">OFF</string>
@@ -214,6 +194,5 @@
     <string name="cd_shutter_button">cd_shutter_button</string>
     <string name="cd_btn_screen_recorder">cd_btn_screen_recorder</string>
 
-    <string name="appbar_fling_behavior" translatable="false">com.godo.maixiang.widget.FlingBehavior</string>
-    <string name="header_scrolling_behavior" translatable="false">com.godo.maixiang.widget.HeaderScrollingBehavior</string>
+    <string name="com.thinkeract.tka.widget.FlingBehavior" translatable="false">com.thinkeract.tka.widget.FlingBehavior</string>
 </resources>

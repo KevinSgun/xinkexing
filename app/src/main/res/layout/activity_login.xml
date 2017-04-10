@@ -4,77 +4,135 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingRight="@dimen/w24">
-
-    <View android:layout_width="match_parent"
-        android:layout_height="@dimen/h400"/>
-    <EditText
-        android:id="@+id/inputPhoneNumEt"
-        style="@style/EditTextStyle"
-        android:layout_marginLeft="@dimen/w48"
-        android:layout_marginRight="@dimen/w24"
-        android:layout_marginTop="@dimen/h60"
-        android:background="@drawable/bg_gray_stroke_rectangle_corner_r10"
-        android:hint="请输入手机号"
-        android:maxLength="11"
-        android:text=""
-        />
+    android:paddingRight="@dimen/w24"
+    android:paddingLeft="@dimen/w24">
 
     <LinearLayout
-        style="@style/CommonRelativeLayout"
-        android:layout_marginLeft="@dimen/w48"
-        android:layout_marginRight="@dimen/w24"
-        android:layout_height="@dimen/h90"
-        android:layout_marginTop="@dimen/w24"
-        android:background="@drawable/bg_gray_stroke_rectangle_corner_r10"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/h100"
+        >
+
+        <TextView
+            style="@style/LargeText"
+            android:layout_gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/textColorPrimaryGray" />
 
         <EditText
-            android:id="@+id/inputPassWordEt"
+            android:id="@+id/inputPhoneNumEt"
+            style="@style/EditTextStyle"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:maxLength="11"
+            android:text="" />
+    </LinearLayout>
+
+    <View style="@style/DividerLineHorizontal"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:orientation="horizontal"
+        >
+        <TextView
+            style="@style/LargeText"
+            android:layout_gravity="center_vertical"
+            android:text="验证码"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <EditText
+            android:id="@+id/inputValidateNumEt"
             style="@style/EditTextStyle"
             android:paddingLeft="0dp"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/bg_translucent"
-            android:hint="请输入密码"
-            android:inputType="textPassword"
-            android:maxLength="18"
-            />
-        <View
-            android:layout_width="@dimen/w1"
-            android:layout_height="@dimen/h46"
-            android:layout_marginRight="@dimen/w10"
-            android:layout_gravity="center_vertical"
-            android:background="@color/textColorPrimaryGray" />
-        <Button
-            android:id="@+id/forgetPsdBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w24"
+            android:layout_marginRight="@dimen/w24"
             android:layout_gravity="center_vertical"
             android:background="@color/transparent"
-            android:text="找回密码"
-            android:textColor="@color/blue_5080d8"
-            android:textSize="@dimen/w28" />
+            android:inputType="number"
+            android:text=""
+            android:maxLength="6" />
+        <Button
+            android:id="@+id/getValidateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:textSize="@dimen/w28"
+            android:text="发送验证码"
+            android:textColor="@color/sl_purple_text" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/loginBtn"
-        style="@style/CommonButton"
-        android:layout_marginLeft="@dimen/w48"
-        android:layout_marginRight="@dimen/w24"
-        android:layout_marginTop="@dimen/w48"
-        android:text="确定" />
-
-    <View style="@style/SpaceAutoFit" />
-
+    <View style="@style/DividerLineHorizontal"/>
 
     <TextView
-        android:id="@+id/registerTv"
+        style="@style/SmallText"
+        android:textColor="@color/textColorPrimaryGray"
+        android:layout_marginTop="@dimen/h30"
+        android:text="未注册过的手机号将自动注册为醒客行账户"/>
+    <Button
+        android:id="@+id/loginBtn"
+        style="@style/RoundButton"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="@dimen/h80"
+        android:text="登录" />
+
+    <Button
+        android:id="@+id/doctorLoginBtn"
+        style="@style/RoundButton"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@drawable/bg_purple_stroke_rectangle_corner_r100"
+        android:layout_marginTop="@dimen/h40"
+        android:textColor="@color/text_theme_color"
+        android:text="医生登入" />
+
+    <TextView
         style="@style/LargeText"
-        android:layout_height="@dimen/h100"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/h80"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:text="还没有账户？立即注册"
-        android:textColor="@color/sl_gray_blue_text" />
+        android:text="或者，您可以"
+        android:textColor="@color/text_gray" />
+
+    <LinearLayout
+        android:id="@+id/weChatLoginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h40"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="@dimen/w100"
+            android:layout_height="@dimen/w100"
+            android:src="@mipmap/ic_we_chat"/>
+        <TextView
+            style="@style/CommonText"
+            android:layout_marginTop="@dimen/h18"
+            android:textColor="@color/textColorPrimaryDark"
+            android:text="微信快捷登录"/>
+    </LinearLayout>
+    <View style="@style/SpaceAutoFit"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/h40"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/SmallText"
+            android:textColor="@color/textColorPrimaryGray"
+            android:text="注册表明您同意 "/>
+        <TextView
+            android:id="@+id/userProtocolTv"
+            style="@style/SmallText"
+            android:textColor="@color/sl_purple_text"
+            android:text="醒客行用户协议"/>
+    </LinearLayout>
 </LinearLayout>

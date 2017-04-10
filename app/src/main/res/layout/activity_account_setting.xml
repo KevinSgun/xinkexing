@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/uploadAvatarLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/w160"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+
+        <TextView
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:text="头像" />
+
+        <ImageView
+            android:id="@+id/uploadAvatarArrowIv"
+            android:layout_width="@dimen/w20"
+            android:layout_height="@dimen/w34"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/avatarIv"
+            android:layout_width="@dimen/w126"
+            android:layout_height="@dimen/w126"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/uploadAvatarArrowIv"
+            android:src="@mipmap/ic_avatar_def" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/userNameLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/userName"
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:text="姓名" />
+
+        <ImageView
+            android:id="@+id/userNameArrow"
+            android:layout_width="@dimen/w20"
+            android:layout_height="@dimen/w34"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/userNameTv"
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/userNameArrow"
+            android:text="132***8976"
+              />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/genderLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/gender"
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:text="性别" />
+
+        <ImageView
+            android:id="@+id/genderArrow"
+            android:layout_width="@dimen/w20"
+            android:layout_height="@dimen/w34"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/genderTv"
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/genderArrow"
+            android:hint="请选择性别"
+              />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ageLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/age"
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:text="年龄" />
+
+        <ImageView
+            android:id="@+id/ageArrow"
+            android:layout_width="@dimen/w20"
+            android:layout_height="@dimen/w34"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/ageTv"
+            style="@style/LargeText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/ageArrow"
+            android:hint="请填写年龄"
+              />
+
+    </RelativeLayout>
+
+    <View style="@style/DividerLineHorizontal" />
+
+    <View style="@style/SpaceAutoFit" />
+    <LinearLayout
+        android:id="@+id/identityLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h30"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/SmallText"
+            android:text="需要修改医生资质？您可以选择 "
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <TextView
+            android:id="@+id/identityAgainTv"
+            style="@style/SmallText"
+            android:text="重新审核 >>"
+            android:textColor="@color/sl_purple_text" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/logoutBtn"
+        style="@style/RoundRedButton"
+        android:layout_marginTop="@dimen/w80"
+        android:layout_marginBottom="@dimen/h48"
+        android:background="@drawable/bg_red_stroke_rectangle_corner_r100"
+        android:text="退出登录" />
+</LinearLayout>

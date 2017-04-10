@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingRight="@dimen/w24"
+    android:paddingLeft="@dimen/w24">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/h100"
+        >
+
+        <TextView
+            style="@style/LargeText"
+            android:layout_gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <EditText
+            android:id="@+id/inputPhoneNumEt"
+            style="@style/EditTextStyle"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:maxLength="11"
+            android:text="" />
+    </LinearLayout>
+
+    <View style="@style/DividerLineHorizontal"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        android:orientation="horizontal"
+        >
+        <TextView
+            style="@style/LargeText"
+            android:layout_gravity="center_vertical"
+            android:text="验证码"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <EditText
+            android:id="@+id/inputValidateNumEt"
+            style="@style/EditTextStyle"
+            android:paddingLeft="0dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/w24"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:inputType="number"
+            android:text=""
+            android:maxLength="6" />
+        <Button
+            android:id="@+id/getValidateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:textSize="@dimen/w28"
+            android:text="发送验证码"
+            android:textColor="@color/sl_purple_text" />
+    </LinearLayout>
+
+    <View style="@style/DividerLineHorizontal"/>
+
+    <TextView
+        style="@style/SmallText"
+        android:textColor="@color/textColorPrimaryGray"
+        android:layout_marginTop="@dimen/h30"
+        android:text="醒客行需要您【验证手机号】才能进行下一步哦~验证成功才可以读取体检报告等资料"/>
+    <Button
+        android:id="@+id/commitBtn"
+        style="@style/RoundButton"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="@dimen/h80"
+        android:text="提交" />
+</LinearLayout>

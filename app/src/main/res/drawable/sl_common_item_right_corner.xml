@@ -5,7 +5,7 @@
             <solid android:color="#90e0e0e0"/>
             <corners
                 android:topLeftRadius="0dp"
-                android:topRightRadius="0dp"
+                android:topRightRadius="@dimen/w10"
                 android:bottomLeftRadius="0dp"
                 android:bottomRightRadius="@dimen/w10"/>
         </shape>
@@ -15,7 +15,7 @@
             <solid android:color="#ffffffff"/>
             <corners
                 android:topLeftRadius="0dp"
-                android:topRightRadius="0dp"
+                android:topRightRadius="@dimen/w10"
                 android:bottomLeftRadius="0dp"
                 android:bottomRightRadius="@dimen/w10"/>
         </shape>

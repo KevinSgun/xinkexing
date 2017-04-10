@@ -30,16 +30,16 @@ public abstract class AppBarActivity extends BaseActivity {
 //            findViewById(R.id.contentLayout).setPadding(0, ViewUtils.getStatuBarHeight(this), 0, 0);
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.drawable.bg_toolbar);
+        tintManager.setStatusBarTintResource(R.drawable.bg_black_shadow_light);
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         //在Swipebacklayout里面的attachToActivity方法里面再用SystemBarTint设置一下状态栏的颜色即可。
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.drawable.bg_toolbar);
+//        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//        tintManager.setStatusBarTintEnabled(true);
+//        tintManager.setStatusBarTintResource(R.drawable.bg_toolbar);
     }
 
     @Override
