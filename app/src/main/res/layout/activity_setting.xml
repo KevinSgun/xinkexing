@@ -36,11 +36,10 @@
         <RelativeLayout
             android:id="@+id/helpAndFeedBackLayout"
             style="@style/ContentRelativeLayout"
-            android:background="@color/transparent"
+            android:background="@drawable/sl_common_item"
             android:layout_height="@dimen/h90"
             android:paddingLeft="@dimen/w24"
             android:paddingRight="@dimen/w24">
-
 
             <TextView
                 style="@style/LargeText"

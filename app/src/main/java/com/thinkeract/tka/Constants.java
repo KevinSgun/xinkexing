@@ -73,12 +73,14 @@ public class Constants {
     public static final String SHARE_LIVE_URL = ApiConstants.getRootUrl() + "mb/live/";
 
     public interface ActivityExtra {
+        String BUSI_ID = "busi_id";
         String PHOTOS = "photos";
         String LAUNCH_HOME = "launch_home";
         String IS_FROM_LOGIN = "is_from_login";
         String DATA_CONTENT = "data_content";
         String DATA_EDIT_VO = "data_edit_vo";
         String NEWS_ID = "news_id";
+        String GOODS_ID = "goods_id";
 
     }
 

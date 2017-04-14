@@ -104,6 +104,8 @@
     <string name="manager">管理</string>
     <string name="body_checkup_report">体检报告</string>
     <string name="watch_live">观看直播</string>
+    <string name="go_to_mall">进入商城</string>
+    <string name="mall">商城</string>
 
     <string name="select_bank_tips">请选择开户银行</string>
     <string name="input_user_name_tips">请填写开户人姓名</string>
@@ -151,6 +153,9 @@
     <string name="company_in">企业用户入口</string>
     <string name="choose_pay_type">请选择支付方式</string>
     <string name="my_shopping_cart">我的购物车</string>
+    <string name="organ_burden">脏器负担</string>
+    <string name="surroundings_burden">环境负担</string>
+    <string name="allergy_view">过敏检测</string>
 
     <!-- 订单支付相关 end-->
 

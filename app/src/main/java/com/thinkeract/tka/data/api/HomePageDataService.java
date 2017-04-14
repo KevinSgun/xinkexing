@@ -1,8 +1,12 @@
 package com.thinkeract.tka.data.api;
 
 import com.thinkeract.tka.data.api.entity.NewsItem;
+import com.thinkeract.tka.data.api.entity.SecondReportItem;
 import com.thinkeract.tka.data.api.request.IdRequest;
+import com.thinkeract.tka.data.api.request.ListBody;
 import com.thinkeract.tka.data.api.request.Request;
+import com.thinkeract.tka.data.api.response.HomePageData;
+import com.thinkeract.tka.data.api.response.ListData;
 import com.thinkeract.tka.data.api.response.NewsDetailData;
 import com.zitech.framework.data.network.response.ApiResponse;
 
@@ -39,4 +43,34 @@ public interface HomePageDataService {
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     Observable<ApiResponse<NewsDetailData>> newsDetail(@Body Request<IdRequest> request);
+
+    /**
+     * 所有新闻列表
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<ListData<NewsItem>>> allNews(@Body Request<ListBody> request);
+
+    /**
+     * 首页数据接口
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<HomePageData>> homePageData(@Body Request request);
+
+    /**
+     * 二级检测页面
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<List<SecondReportItem>>> secondReport(@Body Request<IdRequest> request);
 }

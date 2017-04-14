@@ -37,6 +37,7 @@
     <color name="text_theme_color">#d385e7</color>
     <color name="purple_dark">#c065e7</color>
     <color name="green_93c94d">#93c94d</color>
+    <color name="gray_d2d2d2">#d2d2d2</color>
 
     <color name="pldroid_streaming_white">#fff</color>
     <color name="pldroid_streaming_red">#f00</color>

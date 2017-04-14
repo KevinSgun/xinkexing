@@ -20,6 +20,8 @@ import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.ui.mine.contract.PerfectDataContract;
 import com.thinkeract.tka.ui.mine.presenter.PerfectDataPresenter;
 import com.thinkeract.tka.ui.preview.PhotoPickingActivity;
+import com.thinkeract.tka.widget.AgePicker;
+import com.thinkeract.tka.widget.BottomLinearPicker;
 import com.thinkeract.tka.widget.CommonDialog;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.transform.CropCircleTransformation;
@@ -50,6 +52,10 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
     private PerfectDataPresenter perfectDataPresenter;
     private boolean setAvatar;
     private static int EDIT_USER_NAME = 0x31;
+    private String mGender;
+    private AgePicker mAgePicker;
+    private int mAge = 18;
+    private BottomLinearPicker mBottomLinearPicker;
 
     @Override
     protected int getContentViewId() {
@@ -81,11 +87,11 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
         }
 
         if (!TextUtils.isEmpty(User.get().getGenderValue())) {
-            genderTv.setText(User.get().getName());
+            genderTv.setText(User.get().getGenderValue());
         }
 
         if (User.get().getAge()>0) {
-            genderTv.setText(String.format(getString(R.string.age),User.get().getAge()));
+            ageTv.setText(String.format(getString(R.string.age),User.get().getAge()));
         }
 
     }
@@ -125,15 +131,56 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
                 DataEditActivity.launchForResult(this,EDIT_USER_NAME,nameData);
                 break;
             case R.id.genderLayout:
-                //TODO 选择性别
+                chooseGender();
                 break;
             case R.id.ageLayout:
-                //TODO 选择年龄
+                chooseAge();
                 break;
             case R.id.logoutBtn:
                 showLogOutDialog();
                 break;
         }
+    }
+
+    private void chooseAge() {
+        if(mAgePicker == null) {
+            mAgePicker = new AgePicker(this);
+            mAgePicker.setListener(new AgePicker.AgePickerListener() {
+                @Override
+                public void onPicked(int selectedAge) {
+                    mAge = selectedAge;
+                    ageTv.setText(String.format(getString(R.string.age),selectedAge));
+                    UpdateUserDataBody body = new UpdateUserDataBody();
+                    body.setAge(String.valueOf(selectedAge));
+                    perfectDataPresenter.completeProfile(body);
+                }
+            });
+        }
+        mAgePicker.setLastSelect(mAge);
+        mAgePicker.show();
+    }
+
+    private void chooseGender() {
+        if(mBottomLinearPicker == null) {
+            mBottomLinearPicker = new BottomLinearPicker(this, "选择性别");
+            mBottomLinearPicker.addText("男", R.color.blue_5080d8);
+            mBottomLinearPicker.addText("女", R.color.text_pink);
+            mBottomLinearPicker.setPickerListener(new BottomLinearPicker.ItemPickerListener() {
+                @Override
+                public void onPicked(int itemIndex, String itemStr) {
+                    if (itemIndex == 1) {
+                        mGender = "1";
+                    } else if (itemIndex == 2) {
+                        mGender = "0";
+                    }
+                    genderTv.setText(itemStr);
+                    UpdateUserDataBody body = new UpdateUserDataBody();
+                    body.setGender(mGender);
+                    perfectDataPresenter.completeProfile(body);
+                }
+            });
+        }
+        mBottomLinearPicker.show();
     }
 
 
@@ -150,7 +197,7 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
     }
 
     private void chooseAndUploadAvatar() {
-        requestTakePhoto(getString(R.string.choose_picture), EFFECT_TYPE_CUT, new PhotoTakeListener() {
+        requestTakePhoto(getString(R.string.change_avatar), EFFECT_TYPE_CUT, new PhotoTakeListener() {
             @Override
             public void onPhotoTake(String picturePath) {
 

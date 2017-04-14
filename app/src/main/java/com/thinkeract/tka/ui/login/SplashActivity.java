@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.User;
 import com.thinkeract.tka.ui.home.MainActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -41,11 +42,11 @@ public class SplashActivity extends Activity {
         Observable.just(new Object()).delaySubscription(1, TimeUnit.SECONDS).subscribe(new Consumer<Object>() {
             @Override
             public void accept(Object o) throws Exception {
-//                if (User.get().isVisitor()) {
-//                    LoginActivity.launch(SplashActivity.this, true);
-//                } else {
+                if (User.get().isVisitor()) {
+                    LoginActivity.launch(SplashActivity.this, true);
+                } else {
                     MainActivity.launch(SplashActivity.this);
-//                }
+                }
 //                if (!isFinishing()) {
 //                    if (Config.get().isFirstOpenApp()) {
 //                        GuideActivity.launch(SplashActivity.this);

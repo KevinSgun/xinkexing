@@ -41,6 +41,7 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
 
     protected static final int READ_WRITE_FOR_AVATAR = 103;//读写权限
     protected static final int CAMERA_AVATAR = 105;//相机权限
+    private BottomLinearPicker bottomLinearPicker;
 
     public interface PhotoTakeListener {
         /**
@@ -229,16 +230,17 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
 //        });
 //        sheet.addCancelButton(items[2]);
 //        sheet.show();
-
-        BottomLinearPicker bottomLinearPicker = new BottomLinearPicker(this, title);
-        bottomLinearPicker.addText("拍照", R.color.blue_5080d8);
-        bottomLinearPicker.addText("从手机相册选择", R.color.text_pink);
-        bottomLinearPicker.setPickerListener(new BottomLinearPicker.ItemPickerListener() {
-            @Override
-            public void onPicked(int itemIndex, String itemStr) {
-                onItemClick(itemIndex);
-            }
-        });
+        if(bottomLinearPicker == null) {
+            bottomLinearPicker = new BottomLinearPicker(this, title);
+            bottomLinearPicker.addText("拍照", R.color.blue_5080d8);
+            bottomLinearPicker.addText("从手机相册选择", R.color.text_pink);
+            bottomLinearPicker.setPickerListener(new BottomLinearPicker.ItemPickerListener() {
+                @Override
+                public void onPicked(int itemIndex, String itemStr) {
+                    onItemClick(itemIndex);
+                }
+            });
+        }
         bottomLinearPicker.show();
     }
 

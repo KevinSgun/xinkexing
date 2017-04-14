@@ -4,7 +4,10 @@ package com.thinkeract.tka.data.api;
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.User;
 import com.thinkeract.tka.data.api.entity.AddressItem;
+import com.thinkeract.tka.data.api.entity.GoodsComment;
+import com.thinkeract.tka.data.api.entity.GoodsItem;
 import com.thinkeract.tka.data.api.entity.NewsItem;
+import com.thinkeract.tka.data.api.entity.SecondReportItem;
 import com.thinkeract.tka.data.api.request.DoctorDataReviewBody;
 import com.thinkeract.tka.data.api.request.IdRequest;
 import com.thinkeract.tka.data.api.request.ListBody;
@@ -14,6 +17,8 @@ import com.thinkeract.tka.data.api.request.RequestHeader;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
+import com.thinkeract.tka.data.api.response.GoodsDetailData;
+import com.thinkeract.tka.data.api.response.HomePageData;
 import com.thinkeract.tka.data.api.response.ListData;
 import com.thinkeract.tka.data.api.response.NewsDetailData;
 import com.thinkeract.tka.data.api.response.UserData;
@@ -52,8 +57,8 @@ public class ApiFactory {
         return getService(ApiConstants.getRootUrl(), MineService.class);
     }
 
-    public static OrderPayService getOrderPayService() {
-        return getService(ApiConstants.getRootUrl(), OrderPayService.class);
+    public static MallService getMallService() {
+        return getService(ApiConstants.getRootUrl(), MallService.class);
     }
 
     public static <T> T getService(String baseUrl, Class<T> cls) {
@@ -86,7 +91,7 @@ public class ApiFactory {
         LoginBody loginBody = new LoginBody();
         loginBody.setCode(validateCode);
         loginBody.setMobile(phoneNumber);
-        Request<LoginBody> request = new Request<LoginBody>(RequestHeader.create(ApiConstants.LONGIN), loginBody);
+        Request<LoginBody> request = new Request<LoginBody>(RequestHeader.create(ApiConstants.LOGIN), loginBody);
         return getApiService().login(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<UserData>>applyExecutorSchedulers());
     }
 
@@ -183,6 +188,74 @@ public class ApiFactory {
     public static Observable<ApiResponse<NewsDetailData>> newsDetail(IdRequest body) {
         Request<IdRequest> request = new Request<>(RequestHeader.create(ApiConstants.NEWS_DETAIL), body);
         return getHomePageDataService().newsDetail(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<NewsDetailData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 所有新闻列表
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<ListData<NewsItem>>> allNews(ListBody body) {
+        Request<ListBody> request = new Request<>(RequestHeader.create(ApiConstants.ALL_NEWS), body);
+        return getHomePageDataService().allNews(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<NewsItem>>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 首页接口
+     * @return
+     */
+    public static Observable<ApiResponse<HomePageData>> homePageData() {
+        Request request = new Request<>(RequestHeader.create(ApiConstants.HOME_PAGE_DATA), null);
+        return getHomePageDataService().homePageData(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<HomePageData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 二级检测页面接口
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<List<SecondReportItem>>> secondReport(IdRequest body) {
+        Request<IdRequest> request = new Request<>(RequestHeader.create(ApiConstants.SECOND_REPORT), body);
+        return getHomePageDataService().secondReport(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<List<SecondReportItem>>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 所有商品列表
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<ListData<GoodsItem>>> allGoods(ListBody body) {
+        Request<ListBody> request = new Request<>(RequestHeader.create(ApiConstants.ALL_GOODS), body);
+        return getMallService().allGoods(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<GoodsItem>>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 商品检索分类列表
+     * @return
+     */
+    public static Observable<ApiResponse<String>> goodsClassify() {
+        Request request = new Request<>(RequestHeader.create(ApiConstants.GOODS_CLASSIFY), null);
+        return getMallService().goodsClassify(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<String>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 商品详情
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<GoodsDetailData>> goodsDetail(IdRequest body) {
+        Request<IdRequest> request = new Request<>(RequestHeader.create(ApiConstants.GOODS_DETAIL), body);
+        return getMallService().goodsDetail(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<GoodsDetailData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 商品评论列表
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<ListData<GoodsComment>>> goodsCommentList(ListBody body) {
+        Request<ListBody> request = new Request<>(RequestHeader.create(ApiConstants.ALL_GOODS_COMMENT), body);
+        return getMallService().goodsCommentList(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<GoodsComment>>>applyExecutorSchedulers());
     }
 
    //-----------------------------------------------------------------------------------------------

@@ -34,7 +34,13 @@
         <activity android:name=".ui.mall.ShoppingCartActivity"/>
         <activity android:name=".ui.home.NewsDetailActivity"/>
         <activity android:name=".ui.home.OrganListActivity"/>
+        <activity android:name=".ui.home.SurroundingsListActivity"/>
+        <activity android:name=".ui.home.AllergyListActivity"/>
         <activity android:name=".ui.mine.SettingActivity"/>
+        <activity android:name=".ui.mine.AccountSettingActivity"/>
+        <activity android:name=".ui.mine.DataEditActivity"/>
+        <activity android:name=".ui.mall.MallMainActivity"/>
+        <activity android:name=".ui.mall.GoodsDetailActivity"/>
     </application>
 
 </manifest>

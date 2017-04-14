@@ -3,6 +3,7 @@ package com.thinkeract.tka;
 import android.text.TextUtils;
 
 import com.thinkeract.tka.common.utils.StringUtils;
+import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.response.UserData;
 import com.zitech.framework.SP;
 
@@ -312,5 +313,17 @@ public class User {
 
     public int getAge(){
         return age;
+    }
+
+    public void updateFrom(UpdateUserDataBody body) {
+        if(!TextUtils.isEmpty(body.getNickName())){
+            storeName(body.getNickName());
+        }
+        if(!TextUtils.isEmpty(body.getAge())){
+            storeAge(Integer.parseInt(body.getAge()));
+        }
+        if(!TextUtils.isEmpty(body.getGender())){
+            storeGender(body.getGender());
+        }
     }
 }

@@ -5,15 +5,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.common.utils.StringUtils;
 import com.thinkeract.tka.data.api.entity.NewsItem;
 import com.thinkeract.tka.data.api.response.NewsDetailData;
 import com.thinkeract.tka.ui.home.NewsDetailActivity;
+import com.thinkeract.tka.widget.SimpleWebView;
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.List;
@@ -50,9 +54,9 @@ public class NewsDetailAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == NEWS_ITEM_TYPE)
-            return new NewsHeadHolder(LayoutInflater.from(mContext).inflate(R.layout.item_news_head, parent, false));
-        else
             return new NewsItemHolder(LayoutInflater.from(mContext).inflate(R.layout.item_news, parent, false));
+        else
+            return new NewsHeadHolder(LayoutInflater.from(mContext).inflate(R.layout.item_news_head, parent, false));
     }
 
     @Override
@@ -72,7 +76,6 @@ public class NewsDetailAdapter extends RecyclerView.Adapter {
                 newsItemHolder.newsItemLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //TODO 进入新闻详情页面
                         NewsDetailActivity.launch(mContext,newsItem.getId());
                     }
                 });
@@ -82,7 +85,13 @@ public class NewsDetailAdapter extends RecyclerView.Adapter {
             NewsDetailData.NewsHead newsHead = item.getNews();
             if(newsHead != null){
                 newsHeadHolder.titleTv.setText(newsHead.getTitle());
-                newsHeadHolder.contentTv.setText(newsHead.getDescr());
+                newsHeadHolder.contentWebView.setWebViewClient(new WebViewClient(){
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                   return true;
+                    }});
+                newsHeadHolder.contentWebView.loadDataWithBaseURL(
+                        null, StringUtils.convertHtmlTxt(newsHead.getDescr()),
+                        "text/html", "utf-8", null);
             }
         }
     }
@@ -112,13 +121,13 @@ public class NewsDetailAdapter extends RecyclerView.Adapter {
 
     public static class NewsHeadHolder extends RecyclerView.ViewHolder {
         private TextView titleTv;
-        private TextView contentTv;
+        private SimpleWebView contentWebView;
 
         public NewsHeadHolder(View itemView) {
             super(itemView);
 
             titleTv = (TextView) itemView.findViewById(R.id.titleTv);
-            contentTv = (TextView) itemView.findViewById(R.id.contentTv);
+            contentWebView = (SimpleWebView) itemView.findViewById(R.id.contentWebView);
 
         }
     }

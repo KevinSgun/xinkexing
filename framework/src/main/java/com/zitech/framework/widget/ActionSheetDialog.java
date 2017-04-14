@@ -2,10 +2,12 @@ package com.zitech.framework.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
@@ -53,6 +55,14 @@ public class ActionSheetDialog extends ValidDialog {
 
 		mActionView = (LinearLayout) mRootView.findViewById(com.zitech.framework.R.id.action_dialog);
         mActionView.setOnClickListener(null);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Window window = getWindow();
+		if (window != null)
+			window.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 	}
 
 	/**

@@ -23,7 +23,7 @@ import java.util.List;
  * e-mail:minhengyan@gmail.com
  */
 
-public class NewsListAdapter extends RecyclerView.Adapter  implements IDataAdapter<List<NewsItem>> {
+public class NewsListAdapter extends RecyclerView.Adapter implements IDataAdapter<List<NewsItem>> {
 
     private List<NewsItem> mList;
     private Activity mContext;

@@ -1,15 +1,18 @@
 package com.thinkeract.tka.ui.home.adapter;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.shizhefei.mvc.IDataAdapter;
+import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.data.api.entity.OrganItem;
+import com.thinkeract.tka.data.api.entity.SecondReportItem;
+import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.List;
@@ -19,35 +22,84 @@ import java.util.List;
  * e-mail:minhengyan@gmail.com
  */
 
-public class OrganListAdapter extends RecyclerView.Adapter  implements IDataAdapter<List<OrganItem>> {
+public class OrganListAdapter extends RecyclerView.Adapter{
 
-    private List<OrganItem> mList;
+    private List<SecondReportItem> mList;
     private Activity mContext;
+    private static final int CONTENT = 0;
+    private static final int EMPTY = 1;
 
     public OrganListAdapter(Activity activity){
         mContext = activity;
     }
 
-    public void setItemList(List<OrganItem> itemList){
+    public void setItemList(List<SecondReportItem> itemList){
         mList = itemList;
         notifyDataSetChanged();
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if(mList.get(position).getId() == 0)
+            return EMPTY;
+        else
+            return CONTENT;
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new OrganHolder(LayoutInflater.from(mContext).inflate(R.layout.item_organ,parent,false));
+        if(viewType == CONTENT)
+            return new OrganHolder(LayoutInflater.from(mContext).inflate(R.layout.item_organ,parent,false));
+        else
+            return new EmptyHolder(LayoutInflater.from(mContext).inflate(R.layout.item_organ_empty,parent,false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final OrganItem item = mList.get(position);
-        OrganHolder organHolder = (OrganHolder) holder;
+        int itemType = getItemViewType(position);
+        if(itemType == CONTENT){
+            final SecondReportItem item = mList.get(position);
+            OrganHolder organHolder = (OrganHolder) holder;
+            organHolder.organIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,item.isChecked()?item.getCheckedIcon():item.getNoCheckedIcon());
+            organHolder.itemsName.setTextColor(mContext.getResources().getColor(item.isChecked()?R.color.textColorPrimary:R.color.text_light_gray));
+            reSizeTextView(organHolder.itemsName,item.getName());
+            organHolder.itemsName.setText(item.getName());
+            organHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO 进入查看详细数据
+                }
+            });
+        }
 
     }
 
     @Override
     public int getItemCount() {
         return mList!=null?mList.size():0;
+    }
+
+    private void reSizeTextView(TextView textView, String text){
+        if(text==null) return;
+        int textSizeInPx = ViewUtils.getDimenPx(R.dimen.w22);
+        if(text.length()>5) {
+            Paint paint = textView.getPaint();
+            float textWidth = paint.measureText(text);
+            int maxWidth = ViewUtils.getDimenPx(R.dimen.w150);
+            if (textWidth > maxWidth) {
+                for (; textSizeInPx > 0; textSizeInPx--) {
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeInPx);
+                    paint = textView.getPaint();
+                    textWidth = paint.measureText(text);
+                    if (textWidth <= maxWidth) {
+                        break;
+                    }
+                }
+            }
+            textView.invalidate();
+        }else{
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeInPx);
+        }
     }
 
     public static class OrganHolder extends RecyclerView.ViewHolder{
@@ -61,34 +113,9 @@ public class OrganListAdapter extends RecyclerView.Adapter  implements IDataAdap
         }
     }
 
-    @Override
-    public void notifyDataChanged(List<OrganItem> items, boolean isRefresh) {
-        boolean empty = this.mList.isEmpty();
-        int sizeBeforeChange = this.mList.size();
-        if (isRefresh) {
-            this.mList.clear();
-        }
-        int size = this.mList.size();
-        this.mList.addAll(items);
-        if (isRefresh || empty) {
-            if (items.size() >= sizeBeforeChange) {
-                notifyItemRangeChanged(0, items.size());
-            } else {
-                notifyDataSetChanged();
-            }
-        } else {
-            notifyItemRangeInserted(size, items.size());
+    public static class EmptyHolder extends RecyclerView.ViewHolder{
+        public EmptyHolder(View itemView) {
+            super(itemView);
         }
     }
-
-    @Override
-    public List<OrganItem> getData() {
-        return mList;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return mList.isEmpty();
-    }
-
 }

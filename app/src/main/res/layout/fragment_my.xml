@@ -139,7 +139,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/h10"
+            android:layout_marginBottom="@dimen/h24"
             android:layout_marginLeft="@dimen/w20"
             android:layout_marginRight="@dimen/w20"
             android:layout_marginTop="@dimen/h10"
@@ -167,6 +167,41 @@
                     android:layout_marginLeft="@dimen/w28"
                     android:layout_toRightOf="@id/accountSettingIv"
                     android:text="@string/account_setting" />
+
+                <ImageView
+                    android:layout_width="@dimen/w20"
+                    android:layout_height="@dimen/w34"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w24"
+                    android:src="@mipmap/ic_arrow_right" />
+
+                <View
+                    style="@style/DividerLineHorizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:layout_marginRight="@dimen/w24" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mallLayout"
+                style="@style/ContentRelativeLayout"
+                android:layout_height="@dimen/h98"
+                android:background="@drawable/sl_common_item"
+                >
+                <ImageView
+                    android:id="@+id/mallIv"
+                    android:layout_width="@dimen/w44"
+                    android:layout_height="@dimen/w44"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w24"
+                    android:src="@mipmap/ic_mall" />
+
+                <TextView
+                    style="@style/CommonText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/w28"
+                    android:layout_toRightOf="@id/mallIv"
+                    android:text="@string/go_to_mall" />
 
                 <ImageView
                     android:layout_width="@dimen/w20"

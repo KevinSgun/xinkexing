@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.data.api.entity.GoodsSpec;
+import com.thinkeract.tka.data.api.entity.Sku;
 import com.thinkeract.tka.widget.TagCloudView;
 
 import java.util.ArrayList;
@@ -22,13 +22,13 @@ import java.util.List;
 public class GoodsSpecAdapter extends RecyclerView.Adapter<GoodsSpecAdapter.GoodsSpecViewHolder> {
 
     private Activity mContext;
-    private List<GoodsSpec> mList;
+    private List<Sku> mList;
 
     public GoodsSpecAdapter(Activity context){
         mContext = context;
     }
 
-    public void setItemList(List<GoodsSpec> itemList){
+    public void setItemList(List<Sku> itemList){
         mList = itemList;
         notifyDataSetChanged();
     }
@@ -40,9 +40,9 @@ public class GoodsSpecAdapter extends RecyclerView.Adapter<GoodsSpecAdapter.Good
 
     @Override
     public void onBindViewHolder(GoodsSpecAdapter.GoodsSpecViewHolder holder, int position) {
-        GoodsSpec item = mList.get(position);
-        holder.specTypeTv.setText(item.getSpecType()+":");
-        holder.specNameTag.setTags(getTagStrList(item.getSpecItems()));
+        Sku item = mList.get(position);
+        holder.specTypeTv.setText(item.getName()+":");
+        holder.specNameTag.setTags(getTagStrList(item.getItems()));
         holder.specNameTag.setOnTagClickListener(new TagCloudView.OnTagClickListener() {
             @Override
             public void onTagClick(int position, String attrNameString, boolean isChoose) {
@@ -51,10 +51,10 @@ public class GoodsSpecAdapter extends RecyclerView.Adapter<GoodsSpecAdapter.Good
         });
     }
 
-    private List<String> getTagStrList(List<GoodsSpec.Spec> specItems) {
+    private List<String> getTagStrList(List<Sku.Spec> specItems) {
         List<String> stringList = new ArrayList<>();
-        for(GoodsSpec.Spec specItem:specItems){
-            stringList.add(specItem.getSpecValue());
+        for(Sku.Spec specItem:specItems){
+            stringList.add(specItem.getName());
         }
         return stringList;
     }

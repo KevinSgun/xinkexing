@@ -698,7 +698,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
     }
 
 //    public static Uri urlToUri(String url) {
-//        if(TextUtils.isEmpty(url))
+//        if(TextUtils.isDataEmpty(url))
 //            return resourceIdToUri(BaseApplication.getInstance(),R.mipmap.ic_avatar_def);
 //        else
 //            return Uri.parse(url);

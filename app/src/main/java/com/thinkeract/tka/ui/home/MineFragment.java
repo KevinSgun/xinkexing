@@ -14,6 +14,8 @@ import com.thinkeract.tka.R;
 import com.thinkeract.tka.User;
 import com.thinkeract.tka.ui.BaseFragment;
 import com.thinkeract.tka.ui.login.LoginActivity;
+import com.thinkeract.tka.ui.mall.MallMainActivity;
+import com.thinkeract.tka.ui.mine.AccountSettingActivity;
 import com.thinkeract.tka.ui.mine.SettingActivity;
 import com.zitech.framework.transform.CropCircleTransformation;
 import com.zitech.framework.utils.ViewUtils;
@@ -39,6 +41,7 @@ public class MineFragment extends BaseFragment {
     private RelativeLayout customerServiceLayout;
     private RelativeLayout sysSettingLayout;
     private RelativeLayout aboutUsLayout;
+    private RelativeLayout mallLayout;
 
     @Override
     protected void onPreInflate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class MineFragment extends BaseFragment {
     public void onMainThreadUserDataChange(Events.UserDataEvent data) {
         if (getActivity() != null && isAdded()) {
             removeCacheImageUrl();
-//            mPresenter.getUserInfo();
+            refreshUI(User.get());
         }
     }
 
@@ -77,6 +80,7 @@ public class MineFragment extends BaseFragment {
         customerServiceLayout = (RelativeLayout) contentView.findViewById(R.id.customerServiceLayout);
         sysSettingLayout = (RelativeLayout) contentView.findViewById(R.id.sysSettingLayout);
         aboutUsLayout = (RelativeLayout) contentView.findViewById(R.id.aboutUsLayout);
+        mallLayout = (RelativeLayout) contentView.findViewById(R.id.mallLayout);
 
         avatarLayout.setOnClickListener(this);
         orderLayout.setOnClickListener(this);
@@ -87,6 +91,7 @@ public class MineFragment extends BaseFragment {
         customerServiceLayout.setOnClickListener(this);
         sysSettingLayout.setOnClickListener(this);
         aboutUsLayout.setOnClickListener(this);
+        mallLayout.setOnClickListener(this);
     }
 
     @Override
@@ -118,7 +123,8 @@ public class MineFragment extends BaseFragment {
         }
         switch (v.getId()) {
             case R.id.avatarLayout://当未登录时点击跳转登陆
-                showActivity(LoginActivity.class);
+                if(User.get().isVisitor())
+                    showActivity(LoginActivity.class);
                 break;
             case R.id.orderLayout://跳转到我的订单页面
                 break;
@@ -129,6 +135,7 @@ public class MineFragment extends BaseFragment {
             case R.id.shippingAddressLayout:////跳转到收货地址页面
                 break;
             case R.id.accountSettingLayout:////跳转到账户设置页面
+                showActivity(AccountSettingActivity.class);
                 break;
             case R.id.customerServiceLayout:////跳转到在线客服页面
                 break;
@@ -136,6 +143,9 @@ public class MineFragment extends BaseFragment {
                 showActivity(SettingActivity.class);
                 break;
             case R.id.aboutUsLayout:////跳转到关于我们页面
+                break;
+            case R.id.mallLayout://跳转到商城
+                showActivity(MallMainActivity.class);
                 break;
         }
     }

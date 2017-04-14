@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/com.thinkeract.tka.widget.FlingBehavior">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:collapsedTitleGravity="center"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
+
+            <RelativeLayout
+                android:id="@+id/coverLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/h750"
+                android:background="@color/white">
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:navigationIcon="@null">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp">
+
+                    <LinearLayout
+                        android:id="@+id/actionBarLeft"
+                        android:layout_width="@dimen/action_bar_size"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/w25"
+                            android:layout_height="@dimen/w42"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_back_arrow"
+                            android:visibility="visible" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/actionBarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:maxWidth="@dimen/w550"
+                        android:minHeight="@dimen/action_bar_size"
+                        android:singleLine="true"
+                        android:text="商品详情"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/w34" />
+
+                    <View
+                        android:id="@+id/goodsBarLine"
+                        style="@style/DividerLineHorizontal"
+                        android:layout_gravity="bottom" />
+                </FrameLayout>
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/goodsDetailRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>

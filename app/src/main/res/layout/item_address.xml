@@ -26,7 +26,6 @@
         android:layout_below="@id/contactNameTv"
         android:layout_marginRight="@dimen/w36"
         android:layout_marginTop="@dimen/h20"
-        android:layout_toLeftOf="@id/arrowAddressIv"
         android:text="说的发生放大大方撒旦飞洒地方撒，阿萨德发生说的发生放大大方撒旦飞洒地方撒，阿萨德发生" />
 
     <View

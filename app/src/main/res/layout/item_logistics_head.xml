@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/h32"
+    android:background="@color/white"
+    >
+    <TextView
+        android:id="@+id/expressCompany"
+        style="@style/CommonText"
+        android:layout_marginLeft="@dimen/w24"
+        android:textColor="@color/textColorPrimaryGray"
+        android:text="快递公司："/>
+    <TextView
+        android:id="@+id/expressCompanyTv"
+        style="@style/CommonText"
+        android:layout_toRightOf="@id/expressCompany"
+        android:text="顺丰速运"/>
+    <TextView
+        android:id="@+id/waybillNum"
+        style="@style/CommonText"
+        android:layout_below="@id/expressCompany"
+        android:layout_alignLeft="@id/expressCompany"
+        android:layout_marginTop="@dimen/h24"
+        android:textColor="@color/textColorPrimaryGray"
+        android:layout_marginBottom="@dimen/h32"
+        android:text="运单号："/>
+    <TextView
+        android:id="@+id/waybillNumTv"
+        style="@style/CommonText"
+        android:layout_toRightOf="@id/waybillNum"
+        android:layout_alignTop="@id/waybillNum"
+        android:text="1354654986516354654"/>
+    <View style="@style/DividerLineHorizontal"
+        android:layout_below="@id/waybillNum"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h20"
+        />
+</RelativeLayout>

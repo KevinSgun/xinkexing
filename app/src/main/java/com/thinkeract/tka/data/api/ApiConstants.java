@@ -4,14 +4,15 @@ package com.thinkeract.tka.data.api;
 import com.zitech.framework.BuildConfig;
 
 /**
- * Created by ymh on 2016/6/30 0030.
+ * Created by minHeng on 2016/6/30 0030 15:17.
+ * mail:minhengyan@gmail.com
  */
 public class ApiConstants {
 
     static final String UPLOAD ="" ;//上传文件统一接口
 
     static final String GET_VALIDATION_CODE = "xk001";//获取验证码
-    static final String LONGIN = "xk002";//登录
+    static final String LOGIN = "xk002";//登录
     static final String BINDING_PHONE = "xk003";//绑定手机
     static final String MODIFY_USER_DATA = "xk004";//修改用户资料
     static final String USER_ADDRESS_LIST = "xk005";//用户收货地址列表
@@ -19,9 +20,15 @@ public class ApiConstants {
     static final String DELETE_ADDRESS = "xk007";//用户收货地址删除接口
     static final String MODIFY_ADDRESS = "xk008";//用户收货地址修改接口
     static final String DOCTOR_DATA_REVIEW = "xk009";//医生审核资料
-    static final String NEWS_RECOMMEND = "xk010";//11)推荐新闻列表
-    static final String NEWS_DETAIL = "xk012";//12)新闻详情
-
+    static final String NEWS_RECOMMEND = "xk010";//推荐新闻列表
+    static final String NEWS_DETAIL = "xk011";//新闻详情
+    static final String ALL_NEWS = "xk012";//所有新闻列表
+    static final String HOME_PAGE_DATA = "xk013";//首页接口
+    static final String SECOND_REPORT = "xk014";//二级检测页面
+    static final String ALL_GOODS = "xk015";//所有商品列表
+    static final String GOODS_CLASSIFY = "xk016";//商品检索分类列表
+    static final String GOODS_DETAIL = "xk017";//商品详情
+    static final String ALL_GOODS_COMMENT = "xk018";//所有商品评论列表
 
     /*
          * 线上环境

@@ -45,15 +45,17 @@ public class NewsDetailPresenter implements NewsDetailContract.Presenter {
 
     private List<NewsDetailData> convertToListData(NewsDetailData data) {
         List<NewsDetailData> newsDetailDataList = new ArrayList<>();
-        NewsDetailData newsDetailDataHead = new NewsDetailData();
-        newsDetailDataHead.setNews(data.getNews());
-        newsDetailDataList.add(newsDetailDataHead);
-        List<NewsItem> newsItems = data.getCommendList();
-        if(newsItems != null&&newsItems.size()>0){
-            for(NewsItem item:newsItems){
-                NewsDetailData newsDetailDataItem = new NewsDetailData();
-                newsDetailDataItem.setNewsItem(item);
-                newsDetailDataList.add(newsDetailDataItem);
+        if(data.getNews() != null) {
+            NewsDetailData newsDetailDataHead = new NewsDetailData();
+            newsDetailDataHead.setNews(data.getNews());
+            newsDetailDataList.add(newsDetailDataHead);
+            List<NewsItem> newsItems = data.getCommendList();
+            if (newsItems != null && newsItems.size() > 0) {
+                for (NewsItem item : newsItems) {
+                    NewsDetailData newsDetailDataItem = new NewsDetailData();
+                    newsDetailDataItem.setNewsItem(item);
+                    newsDetailDataList.add(newsDetailDataItem);
+                }
             }
         }
         return newsDetailDataList;

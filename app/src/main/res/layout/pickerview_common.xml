@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/h400"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h100"
+        >
+        <TextView
+            android:id="@+id/close"
+            android:layout_width="@dimen/w120"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="行业选择"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+
+        <TextView
+            android:id="@+id/sure"
+            android:layout_width="@dimen/w120"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/w32" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <com.thinkeract.tka.widget.timepicker.lib.WheelView
+            android:id="@+id/itemWV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white" />
+    </LinearLayout>
+</LinearLayout>

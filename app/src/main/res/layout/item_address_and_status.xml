@@ -1,21 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <TextView
+        android:id="@+id/orderStatusTopTv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
+        android:background="@color/green_93c94d"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/w24"
         android:paddingRight="@dimen/w24"
-        android:textSize="@dimen/w32"
+        android:text="交易成功"
         android:textColor="@color/white"
-        android:background="@color/green_93c94d"
-        android:text="交易成功"/>
+        android:textSize="@dimen/w32" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:padding="@dimen/w24">
 
+        <ImageView
+            android:id="@+id/locationIv"
+            android:layout_width="@dimen/w33"
+            android:layout_height="@dimen/h34"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_location" />
+
+        <View
+            android:id="@+id/dividerVertical"
+            style="@style/DividerLineVertical"
+            android:layout_height="@dimen/h122"
+            android:layout_marginLeft="@dimen/w30"
+            android:layout_marginRight="@dimen/w30"
+            android:layout_toRightOf="@id/locationIv" />
+
+        <TextView
+            android:id="@+id/addressTv"
+            style="@style/CommonText"
+            android:layout_toRightOf="@id/dividerVertical"
+            android:text="广东省深圳市南山区深南大道1号1234楼1234，答复都是撒地方"
+            android:textColor="@color/textColorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/contactNameTv"
+            style="@style/CommonText"
+            android:layout_alignBottom="@id/dividerVertical"
+            android:layout_alignLeft="@id/addressTv"
+            android:text="李四"
+            android:textColor="@color/textColorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/phoneNumTv"
+            style="@style/CommonText"
+            android:layout_alignBottom="@id/dividerVertical"
+            android:layout_marginLeft="@dimen/w16"
+            android:layout_toRightOf="@id/contactNameTv"
+            android:text="13888888888"
+            android:textColor="@color/textColorPrimaryDark" />
     </RelativeLayout>
+
+    <View style="@style/DividerLineHorizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h80"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/orderNumTv"
+            style="@style/SmallText"
+            android:text="订单号：1234567986546213" />
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/dateTv"
+            style="@style/SmallText"
+            android:text="2017-10-14 10:10" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h80"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/orderNameTv"
+            style="@style/SmallText"
+            android:text="包裹" />
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/shippingStatusTv"
+            style="@style/SmallText"
+            android:textColor="@color/green_93c94d"
+            android:text="已签收" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal" />
 </LinearLayout>

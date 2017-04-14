@@ -68,6 +68,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/w24"
             android:layout_toLeftOf="@id/userNameArrow"
+            android:gravity="right"
             android:text="132***8976"
               />
 
@@ -103,8 +104,10 @@
             style="@style/LargeText"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/w24"
+            android:gravity="right"
             android:layout_toLeftOf="@id/genderArrow"
             android:hint="请选择性别"
+            android:text="女"
               />
 
         <View
@@ -140,6 +143,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/w24"
             android:layout_toLeftOf="@id/ageArrow"
+            android:gravity="right"
             android:hint="请填写年龄"
               />
 

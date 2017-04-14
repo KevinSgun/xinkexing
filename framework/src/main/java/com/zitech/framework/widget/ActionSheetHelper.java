@@ -18,7 +18,7 @@ public class ActionSheetHelper {
 
 	public static ActionSheetDialog createActionDialog(Context context, View view) {
 
-		final ActionSheetDialog dialog = new ActionSheetDialog(context);
+		ActionSheetDialog dialog = new ActionSheetDialog(context);
 		dialog.getWindow().setWindowAnimations(com.zitech.framework.R.style.MenuDialogAnimation);
 		dialog.setActionContentView(view, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT));

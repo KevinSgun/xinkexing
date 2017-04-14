@@ -78,31 +78,23 @@ public class DataEditActivity extends AppBarActivity {
     }
 
     @Override
-    protected void onActionBarItemClick(int position) {
-        super.onActionBarItemClick(position);
-        if(position == ITEM_RIGHT){
-
-        }
-    }
-
-    @Override
     public void onClick(View v) {
         super.onClick(v);
         if(v.getId() == R.id.commitBtn){
-
+            if(TextUtils.isEmpty(editContentEt.getText().toString())){
+                ToastMaster.shortToast("内容不能为空");
+                return;
+            }
+            Intent intent = new Intent();
+            intent.putExtra(Constants.ActivityExtra.DATA_CONTENT,editContentEt.getText().toString());
+            setResult(RESULT_OK,intent);
+            finish();
         }
     }
 
     @Override
     protected void initData() {
-        if(TextUtils.isEmpty(editContentEt.getText().toString())){
-            ToastMaster.shortToast("内容不能为空");
-            return;
-        }
-        Intent intent = new Intent();
-        intent.putExtra(Constants.ActivityExtra.DATA_CONTENT,editContentEt.getText().toString());
-        setResult(RESULT_OK,intent);
-        finish();
+
     }
 
     public static void launchForResult(Activity act, int requestCode, DataEditVO dataEditVO){

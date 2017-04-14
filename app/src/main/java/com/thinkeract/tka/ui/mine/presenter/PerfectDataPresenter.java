@@ -1,5 +1,6 @@
 package com.thinkeract.tka.ui.mine.presenter;
 
+import com.thinkeract.tka.User;
 import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.ui.mine.contract.PerfectDataContract;
@@ -19,10 +20,11 @@ public class PerfectDataPresenter implements PerfectDataContract.Presenter {
     }
 
     @Override
-    public void completeProfile(UpdateUserDataBody body) {
+    public void completeProfile(final UpdateUserDataBody body) {
         ApiFactory.updateUserData(body).subscribe(new ProgressSubscriber<ApiResponse>(mView.getContext()) {
             @Override
             public void onNext(ApiResponse apiResponse) {
+                User.get().updateFrom(body);
                 mView.showSuccess();
             }
             @Override

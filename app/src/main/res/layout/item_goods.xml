@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/h248"
+    android:background="@drawable/sl_white_item"
+    android:descendantFocusability="beforeDescendants"
+    >
+
+    <com.zitech.framework.widget.RemoteImageView
+        android:id="@+id/goodsPicIv"
+        android:layout_width="@dimen/h200"
+        android:layout_height="@dimen/h200"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/w24"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_toRightOf="@id/checkItem"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_loading_square"
+
+        />
+
+    <TextView
+        android:id="@+id/goodsTitleTv"
+        style="@style/SmallText"
+        android:layout_alignTop="@id/goodsPicIv"
+        android:layout_marginTop="@dimen/w4"
+        android:layout_toRightOf="@id/goodsPicIv"
+        android:layout_marginRight="@dimen/w24"
+        android:textColor="@color/textColorPrimaryDark"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="京东方说的得到的飒飒啊,京东方说的得到的飒飒啊京东方说的得到的飒飒啊,京东方说的得到的飒飒啊" />
+
+    <TextView
+        android:id="@+id/goodsPriceTv"
+        style="@style/CommonText"
+        android:layout_below="@id/goodsTitleTv"
+        android:layout_toRightOf="@id/goodsPicIv"
+        android:layout_marginTop="@dimen/w24"
+        android:text="¥9999999"
+        android:textColor="@color/text_red" />
+    <TextView
+        android:id="@+id/commentCountTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/goodsPicIv"
+        android:layout_marginBottom="@dimen/w4"
+        android:textSize="@dimen/w22"
+        android:drawablePadding="@dimen/w8"
+        android:layout_alignLeft="@id/goodsTitleTv"
+        android:drawableLeft="@mipmap/ic_comment"
+        android:gravity="top"
+        android:textColor="@color/textColorPrimaryGray"
+        android:text="1"
+        />
+    <ImageView
+        android:id="@+id/addToCartBtn"
+        android:layout_width="@dimen/w60"
+        android:layout_height="@dimen/w60"
+        android:layout_alignBottom="@id/goodsPicIv"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/w14"
+        android:scaleType="centerInside"
+        android:src="@mipmap/ic_cart_red"
+        />
+    <View style="@style/DividerLineHorizontal"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

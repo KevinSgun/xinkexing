@@ -94,9 +94,9 @@ public class BottomLinearPicker {
 		cancelTv.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(listener!=null){
-					listener.onPicked(mTextList.size()-1,cancelStr);
-				}
+//				if(listener!=null){
+//					listener.onPicked(mTextList.size()-1,cancelStr);
+//				}
 				sheetDialog.dismiss();
 			}
 		});

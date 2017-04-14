@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.data.api.entity.GoodsSpec;
+import com.thinkeract.tka.data.api.entity.Sku;
 import com.thinkeract.tka.ui.mall.adapter.GoodsSpecAdapter;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
@@ -70,7 +70,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog{
         goodsSpecRv.setAdapter(mAdapter);
     }
 
-    public void setData(List<GoodsSpec> specsList){
+    public void setData(List<Sku> specsList){
         mAdapter.setItemList(specsList);
     }
 

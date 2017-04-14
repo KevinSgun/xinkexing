@@ -13,14 +13,21 @@
         android:paddingLeft="@dimen/w24"
         android:paddingRight="@dimen/w24"
         android:text="过度减肥可能会影响心脏功能"/>
-    <TextView
-        android:id="@+id/contentTv"
-        style="@style/ContentText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/h60"
-        android:paddingLeft="@dimen/w24"
-        android:paddingRight="@dimen/w24"
-        android:text="   对单纯的肥胖人群来说，每个月减重3-4斤是比较科学而安全的，如果过度减肥可能会影响心脏功能。因为心脏很怕“饿”，如果缺少足够的营养物质例如葡萄糖等，心脏即使没病变也会无法完成跳动，饥饿持续过长会引发心力衰竭。脏即使没病变也会无法完成跳动，饥饿持续过长会引发心力衰竭。"/>
+    <!--<TextView-->
+        <!--android:id="@+id/contentTv"-->
+        <!--style="@style/ContentText"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginBottom="@dimen/h60"-->
+        <!--android:paddingLeft="@dimen/w24"-->
+        <!--android:paddingRight="@dimen/w24"-->
+        <!--android:text="   对单纯的肥胖人群来说，每个月减重3-4斤是比较科学而安全的，如果过度减肥可能会影响心脏功能。因为心脏很怕“饿”，如果缺少足够的营养物质例如葡萄糖等，心脏即使没病变也会无法完成跳动，饥饿持续过长会引发心力衰竭。脏即使没病变也会无法完成跳动，饥饿持续过长会引发心力衰竭。"/>-->
+    <com.thinkeract.tka.widget.SimpleWebView
+        android:id="@+id/contentWebView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"
+        android:layout_marginBottom="@dimen/w24"/>
     <View style="@style/DividerLineHorizontal"/>
     <View
         android:layout_width="match_parent"

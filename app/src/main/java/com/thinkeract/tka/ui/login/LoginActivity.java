@@ -13,17 +13,12 @@ import com.thinkeract.tka.Events;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
-import com.thinkeract.tka.data.api.entity.GoodsSpec;
 import com.thinkeract.tka.ui.home.MainActivity;
 import com.thinkeract.tka.ui.login.contract.LoginContract;
 import com.thinkeract.tka.ui.login.presenter.LoginPresenter;
-import com.thinkeract.tka.widget.ChooseGoodsSpecDialog;
 import com.zitech.framework.utils.ToastMaster;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by minHeng on 2017/3/14 17:51.
@@ -104,79 +99,77 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
 //                showActivity(MainActivity.class);
 //                showActivity(IdentityReviewActivity.class);
 //                showActivity(ShoppingCartActivity.class);
-                ChooseGoodsSpecDialog chooseGoodsSpecDialog = new ChooseGoodsSpecDialog(this);
-                List<GoodsSpec> gList = new ArrayList<>();
-                GoodsSpec goodsSpec = new GoodsSpec();
-                GoodsSpec goodsSpec2 = new GoodsSpec();
-                GoodsSpec goodsSpec3 = new GoodsSpec();
-                List<GoodsSpec.Spec> gSpecList = new ArrayList<>();
-                List<GoodsSpec.Spec> gSpecList2 = new ArrayList<>();
-                List<GoodsSpec.Spec> gSpecList3 = new ArrayList<>();
-                GoodsSpec.Spec gs1 = new GoodsSpec.Spec();
-                gs1.setSpecValue("500ml");
-                GoodsSpec.Spec gs11 = new GoodsSpec.Spec();
-                gs11.setSpecValue("1000ml");
-                GoodsSpec.Spec gs22 = new GoodsSpec.Spec();
-                gs22.setSpecValue("2000ml");
-                GoodsSpec.Spec gs23 = new GoodsSpec.Spec();
-                gs23.setSpecValue("20000ml");
-                GoodsSpec.Spec gs24 = new GoodsSpec.Spec();
-                gs24.setSpecValue("40000ml");
-                GoodsSpec.Spec gs25 = new GoodsSpec.Spec();
-                gs25.setSpecValue("800000ml");
-                gSpecList.add(gs1);
-                gSpecList.add(gs11);
-                gSpecList.add(gs22);
-//                gSpecList.add(gs23);
-//                gSpecList.add(gs24);
-//                gSpecList.add(gs25);
-                goodsSpec.setSpecType("容量");
-                goodsSpec.setSpecItems(gSpecList);
-
-                GoodsSpec.Spec gs2 = new GoodsSpec.Spec();
-                gs2.setSpecValue("黄色");
-                GoodsSpec.Spec gs3 = new GoodsSpec.Spec();
-                gs3.setSpecValue("红色");
-                GoodsSpec.Spec gs4 = new GoodsSpec.Spec();
-                gs4.setSpecValue("蓝色");
-                GoodsSpec.Spec gs5 = new GoodsSpec.Spec();
-                gs5.setSpecValue("绿色");
-                GoodsSpec.Spec gs6 = new GoodsSpec.Spec();
-                gs6.setSpecValue("梦幻紫色");
-                gSpecList2.add(gs2);
-                gSpecList2.add(gs3);
-                gSpecList2.add(gs4);
-                gSpecList2.add(gs5);
-                gSpecList2.add(gs6);
-
-                goodsSpec2.setSpecType("炫酷的颜色");
-                goodsSpec2.setSpecItems(gSpecList2);
-
-                GoodsSpec.Spec gs44 = new GoodsSpec.Spec();
-                gs44.setSpecValue("黄色");
-                GoodsSpec.Spec gs41 = new GoodsSpec.Spec();
-                gs41.setSpecValue("红色");
-                GoodsSpec.Spec gs42 = new GoodsSpec.Spec();
-                gs42.setSpecValue("蓝色");
-                GoodsSpec.Spec gs43 = new GoodsSpec.Spec();
-                gs43.setSpecValue("绿色");
-                GoodsSpec.Spec gs45 = new GoodsSpec.Spec();
-                gs45.setSpecValue("梦幻紫色");
-                gSpecList3.add(gs44);
-                gSpecList3.add(gs41);
-                gSpecList3.add(gs42);
-                gSpecList3.add(gs43);
-                gSpecList3.add(gs45);
-
-                goodsSpec3.setSpecType("不同的颜色");
-                goodsSpec3.setSpecItems(gSpecList3);
-
-                gList.add(goodsSpec);
-                gList.add(goodsSpec2);
-                gList.add(goodsSpec3);
-
-                chooseGoodsSpecDialog.setData(gList);
-                chooseGoodsSpecDialog.show();
+//                ChooseGoodsSpecDialog chooseGoodsSpecDialog = new ChooseGoodsSpecDialog(this);
+//                List<Sku> gList = new ArrayList<>();
+//                Sku goodsSpec = new Sku();
+//                Sku goodsSpec2 = new Sku();
+//                Sku goodsSpec3 = new Sku();
+//                List<Sku.Spec> gSpecList = new ArrayList<>();
+//                List<Sku.Spec> gSpecList2 = new ArrayList<>();
+//                List<Sku.Spec> gSpecList3 = new ArrayList<>();
+//                Sku.Spec gs1 = new Sku.Spec();
+//                gs1.setName("500ml");
+//                Sku.Spec gs11 = new Sku.Spec();
+//                gs11.setName("1000ml");
+//                Sku.Spec gs22 = new Sku.Spec();
+//                gs22.setName("2000ml");
+//                Sku.Spec gs23 = new Sku.Spec();
+//                gs23.setName("20000ml");
+//                Sku.Spec gs24 = new Sku.Spec();
+//                gs24.setName("40000ml");
+//                Sku.Spec gs25 = new Sku.Spec();
+//                gs25.setName("800000ml");
+//                gSpecList.add(gs1);
+//                gSpecList.add(gs11);
+//                gSpecList.add(gs22);
+//
+//                goodsSpec.setName("容量");
+//                goodsSpec.setItems(gSpecList);
+//
+//                Sku.Spec gs2 = new Sku.Spec();
+//                gs2.setName("黄色");
+//                Sku.Spec gs3 = new Sku.Spec();
+//                gs3.setName("红色");
+//                Sku.Spec gs4 = new Sku.Spec();
+//                gs4.setName("蓝色");
+//                Sku.Spec gs5 = new Sku.Spec();
+//                gs5.setName("绿色");
+//                Sku.Spec gs6 = new Sku.Spec();
+//                gs6.setName("梦幻紫色");
+//                gSpecList2.add(gs2);
+//                gSpecList2.add(gs3);
+//                gSpecList2.add(gs4);
+//                gSpecList2.add(gs5);
+//                gSpecList2.add(gs6);
+//
+//                goodsSpec2.setName("炫酷的颜色");
+//                goodsSpec2.setItems(gSpecList2);
+//
+//                Sku.Spec gs44 = new Sku.Spec();
+//                gs44.setName("黄色");
+//                Sku.Spec gs41 = new Sku.Spec();
+//                gs41.setName("红色");
+//                Sku.Spec gs42 = new Sku.Spec();
+//                gs42.setName("蓝色");
+//                Sku.Spec gs43 = new Sku.Spec();
+//                gs43.setName("绿色");
+//                Sku.Spec gs45 = new Sku.Spec();
+//                gs45.setName("梦幻紫色");
+//                gSpecList3.add(gs44);
+//                gSpecList3.add(gs41);
+//                gSpecList3.add(gs42);
+//                gSpecList3.add(gs43);
+//                gSpecList3.add(gs45);
+//
+//                goodsSpec3.setName("不同的颜色");
+//                goodsSpec3.setItems(gSpecList3);
+//
+//                gList.add(goodsSpec);
+//                gList.add(goodsSpec2);
+//                gList.add(goodsSpec3);
+//
+//                chooseGoodsSpecDialog.setData(gList);
+//                chooseGoodsSpecDialog.show();
                 break;
             case R.id.weChatLoginLayout: //微信登录请求
 
@@ -190,7 +183,7 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
 
     @Override
     public String getValidateCodeType() {
-        return ValidationCodeBody.LOG_IN;
+        return ValidationCodeBody.REGISTER;
     }
 
     private void exitApp() {

@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h90"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
 
+        <View style="@style/SpaceAutoFit"/>
+        <Button
+            android:id="@+id/viewLogisticsBtn"
+            android:layout_width="@dimen/w160"
+            android:layout_height="@dimen/h48"
+            android:textSize="@dimen/w24"
+            android:textColor="@color/textColorPrimaryDark"
+            android:background="@drawable/bg_gray_stroke_rectangle_corner_r100"
+            android:text="查看物流" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal"
+       />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h80"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            style="@style/SmallText"
+            android:textColor="@color/textColorPrimary"
+            android:text="商品总额：" />
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/goodsAmountTv"
+            style="@style/SmallText"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/rmb" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h80"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            style="@style/SmallText"
+            android:textColor="@color/textColorPrimary"
+            android:text="运费：" />
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/freightTv"
+            style="@style/SmallText"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/rmb" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h90"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/h20"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            style="@style/CommonText"
+            android:text="总计" />
+        <View style="@style/SpaceAutoFit"/>
+        <TextView
+            android:id="@+id/actuallyAmountTv"
+            style="@style/CommonText"
+            android:textColor="@color/text_red"
+            android:text="@string/rmb" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal"
+        />
+    <Button
+        android:id="@+id/deleteOrderBtn"
+        style="@style/RoundButton"
+        android:background="@drawable/bg_gray_stroke_gray_rectangle_corner_r10"
+        android:textColor="@color/text_gray"
+        android:layout_marginTop="@dimen/h50"
+        android:text="删除订单"/>
 </LinearLayout>

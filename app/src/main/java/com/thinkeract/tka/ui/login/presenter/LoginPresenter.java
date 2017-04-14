@@ -9,7 +9,8 @@ import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.utils.ToastMaster;
 
 /**
- * Created by lu on 2016/10/23.
+ * Created by minHeng on 2016/10/23 16:04.
+ * mail:minhengyan@gmail.com
  */
 
 public class LoginPresenter implements LoginContract.Presenter {
