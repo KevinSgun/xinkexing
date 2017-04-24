@@ -32,7 +32,7 @@ public class BindingActivity extends ValidateActivity{
     private void initializeView() {
         inputPhoneNumEt = (EditText) findViewById(R.id.inputPhoneNumEt);
         inputValidateNumEt = (EditText) findViewById(R.id.inputValidateNumEt);
-        commitBtn = (Button) findViewById(R.id.commitBtn);
+        commitBtn = (Button) findViewById(R.id.submitBtn);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class BindingActivity extends ValidateActivity{
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        if(v.getId() == R.id.commitBtn){
+        if(v.getId() == R.id.submitBtn){
             String name = this.inputPhoneNumEt.getText().toString();
             if (!validatePhone(name)) {
                 return;

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/nameTv"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:text="收件人名"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <EditText
+            android:id="@+id/contactNameEt"
+            style="@style/EditTextStyle"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/nameTv"
+            android:paddingLeft="@dimen/w54"
+            android:text=""
+            android:textSize="@dimen/w28" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/phoneTv"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:text="手机号码"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <EditText
+            android:id="@+id/phoneNumEt"
+            style="@style/EditTextStyle"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/phoneTv"
+            android:inputType="numberDecimal"
+            android:paddingLeft="@dimen/w54"
+            android:text=""
+            android:textSize="@dimen/w28" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/provinceLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:background="@drawable/sl_white_item"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/province"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:text="选择省份"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <ImageView
+            android:id="@+id/provinceArrow"
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/provinceTv"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/provinceArrow"
+            android:gravity="right"
+            android:hint="请选择"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/cityLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:background="@drawable/sl_white_item"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/city"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:text="选择城市"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <ImageView
+            android:id="@+id/cityArrow"
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/cityTv"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/cityArrow"
+            android:gravity="right"
+            android:hint="请选择"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/areaLayout"
+        style="@style/ContentRelativeLayout"
+        android:layout_height="@dimen/h90"
+        android:background="@drawable/sl_white_item"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24">
+
+        <TextView
+            android:id="@+id/area"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:text="选择区县"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <ImageView
+            android:id="@+id/areaArrow"
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/areaTv"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:layout_toLeftOf="@id/areaArrow"
+            android:gravity="right"
+            android:hint="请选择"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/CommonLinearLayout"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="top"
+        android:minHeight="@dimen/w90"
+        android:paddingBottom="@dimen/w20"
+        android:paddingLeft="0dp"
+        android:paddingTop="@dimen/w20">
+
+        <TextView
+            style="@style/CommonText"
+            android:layout_marginLeft="@dimen/w24"
+            android:text="详细地址"
+            android:textColor="@color/textColorPrimaryGray" />
+
+        <EditText
+            android:id="@+id/detailAddressEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:paddingLeft="@dimen/w54"
+            android:text=""
+            android:textSize="@dimen/w28" />
+    </LinearLayout>
+    <View style="@style/DividerLineHorizontal"/>
+    <Button
+        android:id="@+id/saveBtn"
+        style="@style/CommonButton"
+        android:layout_marginTop="@dimen/h80"
+        android:text="保存收货地址"/>
+</LinearLayout>

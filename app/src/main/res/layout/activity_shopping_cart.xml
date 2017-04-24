@@ -69,7 +69,7 @@
                 android:id="@+id/settlementBtn"
                 android:layout_width="@dimen/w248"
                 android:layout_height="match_parent"
-                android:background="@color/text_red"
+                android:background="@drawable/sl_red_item"
                 android:textColor="@color/white"
                 android:textSize="@dimen/w28"
                 android:text="结算"/>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/goodsNameTv"
+        style="@style/LargeText"
+        android:layout_marginBottom="@dimen/w24"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"
+        android:layout_marginTop="@dimen/w32"
+        android:text="超级无敌三尸脑神丹" />
+
+    <TextView
+        android:id="@+id/subTitleTv"
+        style="@style/CommonText"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"
+        android:text="真的很无敌,不信你买一瓶回去吃着试试看"
+        android:textColor="@color/text_gray" />
+
+    <View
+        style="@style/DividerLineHorizontal"
+        android:layout_margin="@dimen/w24" />
+
+    <TextView
+        android:id="@+id/goodsPriceTv"
+        style="@style/LargeText"
+        android:layout_marginLeft="@dimen/w24"
+        android:layout_marginRight="@dimen/w24"
+        android:text="@string/rmb"
+        android:textColor="@color/text_red" />
+
+    <LinearLayout
+        android:id="@+id/chooseSpecLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h88"
+        android:layout_margin="@dimen/w24"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_gray_rectangle_corner_r10">
+        <TextView
+            style="@style/CommonText"
+            android:text="选择规格"
+            />
+        <View style="@style/SpaceAutoFit"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_arrow_down"/>
+    </LinearLayout>
+    <com.thinkeract.tka.widget.SimpleWebView
+        android:id="@+id/introduceWebView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/w24"/>
+    <View
+        style="@style/DividerLineHorizontal"
+        />
+    <LinearLayout
+        android:id="@+id/serviceDescriptionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h88"
+        android:paddingLeft="@dimen/w24"
+        android:paddingRight="@dimen/w24"
+        android:gravity="center_vertical"
+        android:background="@drawable/sl_white_item"
+        >
+        <TextView
+            android:id="@+id/serviceDescriptionA"
+            style="@style/SmallText"
+            android:text="七天无理由退货"
+            android:singleLine="true"
+            android:maxWidth="@dimen/w260"
+            android:textColor="@color/textColorPrimaryDark"
+            android:drawableLeft="@mipmap/ic_red_point"
+            android:drawablePadding="@dimen/w6"
+            />
+        <TextView
+            android:id="@+id/serviceDescriptionB"
+            style="@style/SmallText"
+            android:text="正品保障"
+            android:singleLine="true"
+            android:maxWidth="@dimen/w260"
+            android:textColor="@color/textColorPrimaryDark"
+            android:layout_marginLeft="@dimen/w24"
+            android:drawableLeft="@mipmap/ic_red_point"
+            android:drawablePadding="@dimen/w6"
+            />
+        <View style="@style/SpaceAutoFit"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_arrow_right"/>
+    </LinearLayout>
+    <View
+        style="@style/DividerLineHorizontal"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h20"
+        android:background="@color/windowBackground"/>
+    <TextView
+        style="@style/CommonText"
+        android:drawableLeft="@mipmap/ic_purple_ver_line"
+        android:layout_margin="@dimen/w24"
+        android:drawablePadding="@dimen/w8"
+        android:text="商品评价"/>
+    <TextView
+        android:id="@+id/noCommentTv"
+        style="@style/SmallText"
+        android:layout_height="@dimen/h100"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:background="@color/windowBackground"
+        android:textColor="@color/textColorPrimaryGray"
+        android:text="暂时还没有人评价~"
+        android:visibility="gone"/>
+</LinearLayout>

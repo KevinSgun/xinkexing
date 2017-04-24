@@ -15,6 +15,7 @@ import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.Events;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.ThinkerActApplication;
+import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.common.utils.Utils;
 import com.thinkeract.tka.data.db.greendao.GDGoodsItem;
 import com.thinkeract.tka.widget.CommonDialog;
@@ -142,7 +143,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             public void run() {
                 notifyItemChanged(mList.size() - 1);
             }
-        }, 500);
+        }, 300);
     }
 
     private void showDeleteTips(final int position) {
@@ -150,21 +151,21 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         deleteDialog.setOnPositiveButtonClickListener(new CommonDialog.OnPositiveButtonClickListener() {
             @Override
             public void onClick(Dialog dialog) {
+                DBUtils.deleteGoods(mList.get(position).getUserGoodsId());
                 mList.remove(position);
                 notifyItemRemoved(position);
                 checkAndSendSelectedStatus();
-
             }
         });
         deleteDialog.show();
     }
 
     private void plusGoodsCount(GDGoodsItem item, int currentPosition) {
-        if (item.getGoodsCount() < 99) {
+        if (item.getGoodsCount() < item.getInventory()) {
             item.setGoodsCount(item.getGoodsCount() + 1);
             notifyItemChanged(currentPosition);
             EventBus.getDefault().post(new Events.GoodsSelectedStatusChange(3));
-        } else if (item.getGoodsCount() == 99) {
+        } else if (item.getGoodsCount() == item.getInventory()) {
             ToastMaster.shortToast("已经超出商品最大库存啦");
         }
     }

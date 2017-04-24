@@ -16,10 +16,17 @@ import com.thinkeract.tka.R;
 import com.thinkeract.tka.ThinkerActApplication;
 import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.common.utils.Utils;
+import com.thinkeract.tka.data.api.ApiFactory;
+import com.thinkeract.tka.data.api.entity.AddressItem;
+import com.thinkeract.tka.data.api.request.ListBody;
+import com.thinkeract.tka.data.db.greendao.GDAddress;
 import com.thinkeract.tka.data.db.greendao.GDGoodsItem;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.ui.mall.adapter.ShoppingCartAdapter;
 import com.thinkeract.tka.widget.SettlementDialog;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.utils.ToastMaster;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -69,6 +76,7 @@ public class ShoppingCartActivity extends AppBarActivity {
      * @param isSelector 全选或全不选
      */
     private void resetGoodsSelectorStatus(boolean isSelector, List<GDGoodsItem> goodsItemList) {
+        if(goodsItemList == null || goodsItemList.size() == 0) return;
         for (GDGoodsItem goodsItem : goodsItemList) {
             if (goodsItem.getGoodsId() != 0) {
                 goodsItem.setIsCheck(isSelector);
@@ -97,7 +105,7 @@ public class ShoppingCartActivity extends AppBarActivity {
                         public void run() {
                             mAdapter.notifyDataSetChanged();
                         }
-                    },400);
+                    },200);
                 } else {
                     noNeedChangeAll = false;
                 }
@@ -115,20 +123,30 @@ public class ShoppingCartActivity extends AppBarActivity {
     public void onClick(View v) {
         super.onClick(v);
         if (v.getId() == R.id.settlementBtn) {
-            SettlementDialog settlementDialog = new SettlementDialog(this);
-            settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
-                @Override
-                public void onSettlementClick() {
-                    //提交订单
-                }
-            });
-            settlementDialog.show();
+            if(DBUtils.queryDefAddress() != null) {
+                SettlementDialog settlementDialog = new SettlementDialog(this);
+                settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
+                    @Override
+                    public void onSettlementClick() {
+                        //提交订单
+                    }
+                });
+                settlementDialog.setData(mAdapter.getItemList(), totalAmount, totalGoodsPrice, totalFreight);
+                settlementDialog.show();
+            }else{
+                //TODO 去添加收获地址
+                ToastMaster.shortToast("您还没有收获地址哦");
+            }
         }
     }
 
     @Override
     protected void initData() {
         List<GDGoodsItem> goodsItemList = DBUtils.queryAllGoodsList();
+        GDAddress gdAddress = DBUtils.queryDefAddress();
+        if(gdAddress == null){
+            requestAddressFromService();
+        }
         if (goodsItemList != null && goodsItemList.size() > 0) {
             viewanimator.setDisplayedChild(GOODS_CART);
             goodsItemList.add(new GDGoodsItem());
@@ -141,9 +159,28 @@ public class ShoppingCartActivity extends AppBarActivity {
         }
     }
 
+    private void requestAddressFromService() {
+        ListBody body=new ListBody();
+        body.setPage(1);
+        body.setPageSize(20);
+        ApiFactory.getUserAddressList(body).subscribe(new ProgressSubscriber<ApiResponse<List<AddressItem>>>(getContext(),false){
+            @Override
+            public void onNext(ApiResponse<List<AddressItem>> value) {
+                super.onNext(value);
+                DBUtils.insertAddressList(DBUtils.convertToGDAddressItemList(value.getData()));
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+            }
+        });
+    }
+
     private void refreshUI() {
         if (mAdapter.getItemList() != null && mAdapter.getItemList().size() > 1) {
             totalAmountTv.setText(String.format(getResources().getString(R.string.rmb), totalAmount));
+            settlementBtn.setEnabled(totalAmount>0);
         } else {
             viewanimator.setDisplayedChild(EMPTY);
         }
@@ -157,7 +194,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     private void checkAllSelectedStatus(List<GDGoodsItem> goodsItemList) {
         boolean allIsSelected = true;
         for (GDGoodsItem goodsItem : goodsItemList) {
-            if (!(allIsSelected = goodsItem.getIsCheck())) {
+            if (goodsItem.getGoodsId()!=0&&!(allIsSelected = goodsItem.getIsCheck())) {
                 break;
             }
         }

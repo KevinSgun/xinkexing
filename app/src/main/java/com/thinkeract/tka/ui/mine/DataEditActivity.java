@@ -1,20 +1,23 @@
 package com.thinkeract.tka.ui.mine;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.entity.DataEditVO;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.zitech.framework.utils.ToastMaster;
-import com.zitech.framework.utils.ViewUtils;
 
 import java.util.Locale;
 
@@ -43,7 +46,7 @@ public class DataEditActivity extends AppBarActivity {
         setTitle(title);
         editContentEt = (EditText) findViewById(R.id.editContentEt);
 
-        commitBtn = (Button) findViewById(R.id.commitBtn);
+        commitBtn = (Button) findViewById(R.id.submitBtn);
 
         if(!TextUtils.isEmpty(content)){
             editContentEt.setText(content);
@@ -80,7 +83,7 @@ public class DataEditActivity extends AppBarActivity {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        if(v.getId() == R.id.commitBtn){
+        if(v.getId() == R.id.submitBtn){
             if(TextUtils.isEmpty(editContentEt.getText().toString())){
                 ToastMaster.shortToast("内容不能为空");
                 return;
@@ -95,6 +98,25 @@ public class DataEditActivity extends AppBarActivity {
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (ViewUtils.isTouchedOutsideView(v, ev)) {
+                InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
     }
 
     public static void launchForResult(Activity act, int requestCode, DataEditVO dataEditVO){

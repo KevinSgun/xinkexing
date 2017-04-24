@@ -17,6 +17,6 @@ public interface HomeDataContract {
     }
 
     interface Presenter extends BasePresenter {
-        void getHomeData();
+        void getHomeData(boolean showProgress);
     }
 }

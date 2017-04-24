@@ -12,6 +12,7 @@ public class GDGoodsItem {
     private int goodsCount;
     private int inventory;
     private int originalCount;
+    private int sid;
     private float price;
     private float freight;
     private String userGoodsId;
@@ -27,13 +28,14 @@ public class GDGoodsItem {
         this.id = id;
     }
 
-    public GDGoodsItem(Long id, int userId, int goodsId, int goodsCount, int inventory, int originalCount, float price, float freight, String userGoodsId, String name, String goodsImg, String spec, boolean isCheck) {
+    public GDGoodsItem(Long id, int userId, int goodsId, int goodsCount, int inventory, int originalCount, int sid, float price, float freight, String userGoodsId, String name, String goodsImg, String spec, boolean isCheck) {
         this.id = id;
         this.userId = userId;
         this.goodsId = goodsId;
         this.goodsCount = goodsCount;
         this.inventory = inventory;
         this.originalCount = originalCount;
+        this.sid = sid;
         this.price = price;
         this.freight = freight;
         this.userGoodsId = userGoodsId;
@@ -89,6 +91,14 @@ public class GDGoodsItem {
 
     public void setOriginalCount(int originalCount) {
         this.originalCount = originalCount;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 
     public float getPrice() {

@@ -74,7 +74,7 @@
         android:layout_marginTop="@dimen/h30"
         android:text="醒客行需要您【验证手机号】才能进行下一步哦~验证成功才可以读取体检报告等资料"/>
     <Button
-        android:id="@+id/commitBtn"
+        android:id="@+id/submitBtn"
         style="@style/RoundButton"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"

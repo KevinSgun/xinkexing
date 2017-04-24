@@ -89,9 +89,13 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
         healthKnowledgeRv.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
         healthKnowledgeRv.setAdapter(mAdapter);
+        mPresenter.getHomeData(true);
+    }
 
-        mPresenter.getHomeData();
-
+    @Override
+    public void onRefreshData() {
+        super.onRefreshData();
+        mPresenter.getHomeData(false);
     }
 
     @Override

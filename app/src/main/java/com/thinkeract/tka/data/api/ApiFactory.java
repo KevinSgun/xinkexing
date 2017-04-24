@@ -7,20 +7,30 @@ import com.thinkeract.tka.data.api.entity.AddressItem;
 import com.thinkeract.tka.data.api.entity.GoodsComment;
 import com.thinkeract.tka.data.api.entity.GoodsItem;
 import com.thinkeract.tka.data.api.entity.NewsItem;
+import com.thinkeract.tka.data.api.entity.OrderDetailData;
+import com.thinkeract.tka.data.api.entity.OrderItem;
 import com.thinkeract.tka.data.api.entity.SecondReportItem;
+import com.thinkeract.tka.data.api.request.CommentOrderBody;
 import com.thinkeract.tka.data.api.request.DoctorDataReviewBody;
+import com.thinkeract.tka.data.api.request.GIdListBody;
 import com.thinkeract.tka.data.api.request.IdRequest;
 import com.thinkeract.tka.data.api.request.ListBody;
 import com.thinkeract.tka.data.api.request.LoginBody;
+import com.thinkeract.tka.data.api.request.PoBody;
 import com.thinkeract.tka.data.api.request.Request;
 import com.thinkeract.tka.data.api.request.RequestHeader;
+import com.thinkeract.tka.data.api.request.StatusListBody;
+import com.thinkeract.tka.data.api.request.SubmitOrderBody;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
 import com.thinkeract.tka.data.api.response.HomePageData;
 import com.thinkeract.tka.data.api.response.ListData;
+import com.thinkeract.tka.data.api.response.LogisticsData;
 import com.thinkeract.tka.data.api.response.NewsDetailData;
+import com.thinkeract.tka.data.api.response.PayResultData;
+import com.thinkeract.tka.data.api.response.PoData;
 import com.thinkeract.tka.data.api.response.UserData;
 import com.zitech.framework.data.network.HttpResultFunc;
 import com.zitech.framework.data.network.RetrofitClient;
@@ -125,7 +135,7 @@ public class ApiFactory {
      * @param body
      * @return
      */
-    public static Observable<ApiResponse<ListData<AddressItem>>> getUserAddressList(ListBody body) {
+    public static Observable<ApiResponse<List<AddressItem>>> getUserAddressList(ListBody body) {
         Request<ListBody> request = new Request<>(RequestHeader.create(ApiConstants.USER_ADDRESS_LIST), body);
         return getApiService().getUserAddressList(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<AddressItem>>>applyExecutorSchedulers());
     }
@@ -253,9 +263,69 @@ public class ApiFactory {
      * @param body
      * @return
      */
-    public static Observable<ApiResponse<ListData<GoodsComment>>> goodsCommentList(ListBody body) {
-        Request<ListBody> request = new Request<>(RequestHeader.create(ApiConstants.ALL_GOODS_COMMENT), body);
+    public static Observable<ApiResponse<ListData<GoodsComment>>> goodsCommentList(GIdListBody body) {
+        Request<GIdListBody> request = new Request<>(RequestHeader.create(ApiConstants.ALL_GOODS_COMMENT), body);
         return getMallService().goodsCommentList(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<GoodsComment>>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 提交订单
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<PoData>> submit(SubmitOrderBody body) {
+        Request<SubmitOrderBody> request = new Request<>(RequestHeader.create(ApiConstants.SUBMIT_ORDER), body);
+        return getMallService().submit(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<PoData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 订单支付
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<PayResultData>> payForOrder(PoBody body) {
+        Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.PAY_FOR_ORDER), body);
+        return getMallService().payForOrder(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<PayResultData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 我的订单列表
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<ListData<OrderItem>>> myOrderList(StatusListBody body) {
+        Request<StatusListBody> request = new Request<>(RequestHeader.create(ApiConstants.MY_ORDER_LIST), body);
+        return getMallService().myOrderList(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<OrderItem>>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 订单详情
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<OrderDetailData>> orderDetail(PoBody body) {
+        Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.ORDER_DETAIL), body);
+        return getMallService().orderDetail(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<OrderDetailData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 评论订单
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse> commentOrder(CommentOrderBody body) {
+        Request<CommentOrderBody> request = new Request<>(RequestHeader.create(ApiConstants.COMMENT_ORDER), body);
+        return getMallService().commentOrder(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse>applyExecutorSchedulers());
+    }
+
+    /**
+     * 查看订单物流信息
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse> lookOrderLogistics(PoBody body) {
+        Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.ORDER_LOGISTICS), body);
+        return getMallService().lookOrderLogistics(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<LogisticsData>>applyExecutorSchedulers());
     }
 
    //-----------------------------------------------------------------------------------------------

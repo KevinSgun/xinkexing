@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.OnRefreshStateChangeListener;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.data.api.entity.GoodsItem;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.ui.mall.adapter.GoodsListAdapter;
@@ -50,13 +51,14 @@ public class MallMainActivity extends AppBarActivity implements FilterDataContra
     protected void initView() {
         setTitle(R.string.mall);
         initializationView();
+        addCartLayout.setOnClickListener(this);
     }
 
     private void initializationView() {
         filterView = (FilterView) findViewById(R.id.filterView);
         mallMainRv = (RecyclerView) findViewById(R.id.mallMainRv);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        addCartLayout = (FrameLayout) findViewById(R.id.addCartLayout);
+        addCartLayout = (FrameLayout) findViewById(R.id.goToCartLayout);
         cartGoodsCountTv = (TextView) findViewById(R.id.cartGoodsCountTv);
 
         mallMainRv.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
@@ -72,7 +74,7 @@ public class MallMainActivity extends AppBarActivity implements FilterDataContra
         goodsListAdapter.setAddToCartListener(new GoodsListAdapter.AddToCartListener() {
             @Override
             public void addToCart(GoodsItem item) {
-
+                showCartGoodsCount();
             }
         });
         mvcHelper = new MVCSwipeRefreshHelper<List<GoodsItem>>(swipeRefreshLayout);
@@ -95,22 +97,34 @@ public class MallMainActivity extends AppBarActivity implements FilterDataContra
                     filterDataPresenter.getGoodsClassify();
             }
         });
+
+        showCartGoodsCount();
     }
 
     /**
      * 是否需要显示购物车商品数目
      */
-    private void isShowCartGoodsCount(){
+    private void showCartGoodsCount(){
+        goodsCount = DBUtils.queryAllGoodsCount();
         if (goodsCount == 0){
             cartGoodsCountTv.setVisibility(View.GONE);
         }else {
             cartGoodsCountTv.setVisibility(View.VISIBLE);
+            cartGoodsCountTv.setText(String.valueOf(goodsCount));
         }
     }
 
     @Override
     public void showError(String errorMsg) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        if(v.getId() == R.id.goToCartLayout){
+            showActivity(ShoppingCartActivity.class);
+        }
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.shizhefei.mvc.IDataAdapter;
-import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.entity.OrderItem;
@@ -46,24 +45,24 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         final OrderItem item = mList.get(position);
         OrderHolder viewHolder = (OrderHolder) holder;
 
-        viewHolder.totalGoodsCountTv.setText(String.format(mContext.getResources().getString(R.string.total_goods_count),item.getTotalGoodsCount()));
-        viewHolder.orderStatusTv.setTextColor(mContext.getResources().getColor(ViewUtils.getOrderStatusColorRes(item.getOrderStatus())));
-        viewHolder.orderStatusTv.setText(ViewUtils.getOrderStatusString(item.getOrderStatus()));
+//        viewHolder.totalGoodsCountTv.setText(String.format(mContext.getResources().getString(R.string.total_goods_count),item.getTotalGoodsCount()));
+        viewHolder.orderStatusTv.setTextColor(mContext.getResources().getColor(ViewUtils.getOrderStatusColorRes(item.getStatus())));
+        viewHolder.orderStatusTv.setText(ViewUtils.getOrderStatusString(item.getStatus()));
 
-        viewHolder.goodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,item.getGoodsImg());
+//        viewHolder.goodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,item.getC());
         viewHolder.goodsPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb),item.getAmount()));
         viewHolder.actuallyPayTv.setText(String.format(mContext.getResources().getString(R.string.rmb),item.getActuallyAmount()));
-        viewHolder.goodsTitleTv.setText(item.getGoodsName());
+        viewHolder.goodsTitleTv.setText(item.getName());
 
-        viewHolder.businessBtn.setBackgroundResource(ViewUtils.getOrderBusinessBgRes(item.getOrderStatus()));
-        viewHolder.businessBtn.setText(ViewUtils.getOrderStatusString(item.getOrderStatus()));
+        viewHolder.businessBtn.setBackgroundResource(ViewUtils.getOrderBusinessBgRes(item.getStatus()));
+        viewHolder.businessBtn.setText(ViewUtils.getOrderStatusString(item.getStatus()));
 
         viewHolder.businessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(item.getOrderStatus() == OrderItem.IS_SEND) {
+                if(item.getStatus() == OrderItem.IS_SEND) {
                     //TODO 查看物流
-                }else if(item.getOrderStatus() == OrderItem.WAIT_PAY){
+                }else if(item.getStatus() == OrderItem.WAIT_PAY){
                     //TODO 立即支付
                 }
             }

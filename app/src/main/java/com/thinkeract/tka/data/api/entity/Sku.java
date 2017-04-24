@@ -29,10 +29,20 @@ public class Sku {
         this.items = items;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public static class Spec{
         private int id;
         private int pid;
         private String name;
+        private boolean hasStock = true;
+        private boolean isSel;
 
         public String getName() {
             return name;
@@ -56,6 +66,22 @@ public class Sku {
 
         public void setPid(int pid) {
             this.pid = pid;
+        }
+
+        public boolean isHasStock() {
+            return hasStock;
+        }
+
+        public void setHasStock(boolean hasStock) {
+            this.hasStock = hasStock;
+        }
+
+        public boolean isSel() {
+            return isSel;
+        }
+
+        public void setSel(boolean sel) {
+            isSel = sel;
         }
     }
 }

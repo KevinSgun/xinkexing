@@ -73,9 +73,10 @@ public class RetrofitClient {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(mOkHttpClient)
-                //拓展添加RxJava的功能，导入的库：compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+                //拓展添加RxJava的功能，导入的库：com.squareup.retrofit2:adapter-rxjava2:latest.integration
+                //和io.reactivex.rxjava2:rxjava:2.0.7 ，io.reactivex.rxjava2:rxandroid:2.0.1
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                //使用Gson对Json进行解析，导入的库：compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+                //使用Gson对Json进行解析，导入的库：com.squareup.retrofit2:converter-gson:latest.integration
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -100,9 +101,9 @@ public class RetrofitClient {
 
                     mOkHttpClient = new OkHttpClient.Builder()
                             .cache(cache)
-                            //拓展功能：网络请求的log，compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
 //                            .addInterceptor(mRewriteCacheControlInterceptor)
 //                            .addNetworkInterceptor(mRewriteCacheControlInterceptor)
+                            //拓展功能：网络请求的log，compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
                             .addInterceptor(interceptor)
 //                            .addNetworkInterceptor(new StethoInterceptor())
 //                            .cookieJar(new CookiesManager())

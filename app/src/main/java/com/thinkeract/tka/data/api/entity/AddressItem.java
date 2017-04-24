@@ -1,5 +1,8 @@
 package com.thinkeract.tka.data.api.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.thinkeract.tka.User;
 import com.thinkeract.tka.data.db.greendao.GDAddress;
 
@@ -8,7 +11,7 @@ import com.thinkeract.tka.data.db.greendao.GDAddress;
  * mail:minhengyan@gmail.com
  */
 
-public class AddressItem {
+public class AddressItem implements Parcelable{
 
     /**
      * contact : 刘先生
@@ -28,6 +31,45 @@ public class AddressItem {
     private String address;
     private String phone;
 
+    public AddressItem(){}
+
+    protected AddressItem(Parcel in) {
+        id = in.readInt();
+        uid = in.readInt();
+        status = in.readInt();
+        contact = in.readString();
+        cityname = in.readString();
+        address = in.readString();
+        phone = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(uid);
+        dest.writeInt(status);
+        dest.writeString(contact);
+        dest.writeString(cityname);
+        dest.writeString(address);
+        dest.writeString(phone);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<AddressItem> CREATOR = new Creator<AddressItem>() {
+        @Override
+        public AddressItem createFromParcel(Parcel in) {
+            return new AddressItem(in);
+        }
+
+        @Override
+        public AddressItem[] newArray(int size) {
+            return new AddressItem[size];
+        }
+    };
 
     public String getContact() {
         return contact;

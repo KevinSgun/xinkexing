@@ -9,7 +9,7 @@
     <View
         android:id="@+id/secondBg"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/h210"
+        android:layout_height="@dimen/h200"
         android:background="@color/white"
         android:layout_below="@id/topPlaceHolder"
         />
@@ -17,6 +17,7 @@
         android:id="@+id/goodsPicIv"
         android:layout_width="@dimen/w232"
         android:layout_height="@dimen/w232"
+        android:scaleType="centerCrop"
         android:layout_marginLeft="@dimen/w24"
         android:src="@mipmap/ic_loading_square"/>
     <TextView
@@ -28,6 +29,14 @@
         android:layout_toRightOf="@id/goodsPicIv"
         android:layout_alignTop="@id/secondBg"
         android:layout_margin="@dimen/w24"/>
+    <ImageView
+        android:id="@+id/cancelIv"
+        android:layout_width="@dimen/w50"
+        android:layout_height="@dimen/w50"
+        android:scaleType="centerInside"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/goodsNameTv"
+        android:src="@mipmap/ic_cancel"/>
 
     <TextView
         android:id="@+id/goodsPriceTv"
@@ -89,7 +98,7 @@
                 android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/w24"
                 android:gravity="center"
-                android:text="99"/>
+                android:text="1"/>
             <ImageView
                 android:id="@+id/plusIv"
                 android:layout_width="@dimen/w80"
@@ -99,12 +108,13 @@
         </LinearLayout>
     </LinearLayout>
     <Button
-        android:id="@+id/commitBtn"
+        android:id="@+id/submitBtn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h100"
         android:layout_below="@id/chooseCountLayout"
         android:textSize="@dimen/w32"
         android:textColor="@color/white"
-        android:background="@color/text_red"
+        android:background="@drawable/sl_red_item"
+        android:enabled="false"
         android:text="加入购物车"/>
 </RelativeLayout>

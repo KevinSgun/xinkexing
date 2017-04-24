@@ -10,10 +10,10 @@ import com.thinkeract.tka.data.api.request.Request;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
-import com.thinkeract.tka.data.api.response.ListData;
 import com.thinkeract.tka.data.api.response.UserData;
 import com.zitech.framework.data.network.response.ApiResponse;
 
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -83,7 +83,7 @@ public interface AccountService {
      */
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    Observable<ApiResponse<ListData<AddressItem>>> getUserAddressList(@Body Request<ListBody> request);
+    Observable<ApiResponse<List<AddressItem>>> getUserAddressList(@Body Request<ListBody> request);
 
     /**
      * 新增用户收货地址

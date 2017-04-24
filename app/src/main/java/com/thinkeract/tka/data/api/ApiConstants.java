@@ -29,6 +29,12 @@ public class ApiConstants {
     static final String GOODS_CLASSIFY = "xk016";//商品检索分类列表
     static final String GOODS_DETAIL = "xk017";//商品详情
     static final String ALL_GOODS_COMMENT = "xk018";//所有商品评论列表
+    static final String SUBMIT_ORDER = "xk019";//提交订单
+    static final String PAY_FOR_ORDER = "xk020";//支付订单
+    static final String MY_ORDER_LIST = "xk021";//我的订单列表
+    static final String ORDER_DETAIL = "xk022";//订单详情
+    static final String COMMENT_ORDER = "xk023";//评论订单
+    static final String ORDER_LOGISTICS = "xk023";//查看订单物流信息
 
     /*
          * 线上环境

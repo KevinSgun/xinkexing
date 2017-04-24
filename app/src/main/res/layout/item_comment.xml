@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingRight="@dimen/w24">
+
+    <FrameLayout
+        android:id="@+id/userAvatarLayout"
+        android:layout_width="@dimen/w84"
+        android:layout_height="@dimen/w84"
+        >
+        <com.zitech.framework.widget.RemoteImageView
+            android:id="@+id/userAvatarIv"
+            android:layout_width="@dimen/w60"
+            android:layout_height="@dimen/w60"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_avatar_def" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/userNameTv"
+        style="@style/CommonText"
+        android:layout_marginBottom="@dimen/w10"
+        android:layout_marginTop="@dimen/w28"
+        android:layout_toRightOf="@id/userAvatarLayout"
+        android:textColor="@color/textColorPrimaryDark"
+        android:singleLine="true"
+        android:text="大方撒发生地方撒地方阿萨德发生法啊" />
+
+    <LinearLayout
+        android:id="@+id/replyContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/userNameTv"
+        android:layout_below="@id/userAvatarLayout"
+        android:layout_marginTop="@dimen/w8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/commentContentTv"
+            style="@style/CommonText"
+            android:text="一小时前,放的发生的发生地方，得到的钱偶尔看到哦，大方的飞洒发发,拍拍拍拍群请求鹅鹅鹅"
+            android:textSize="@dimen/w28" />
+    </LinearLayout>
+
+    <View
+        style="@style/DividerLineHorizontal"
+        android:layout_alignLeft="@id/userNameTv"
+        android:layout_below="@id/replyContentLayout"
+        android:layout_marginTop="@dimen/w24" />
+</RelativeLayout>

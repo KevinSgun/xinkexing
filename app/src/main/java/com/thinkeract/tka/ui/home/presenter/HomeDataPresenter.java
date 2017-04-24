@@ -19,8 +19,8 @@ public class HomeDataPresenter implements HomeDataContract.Presenter {
     }
 
     @Override
-    public void getHomeData() {
-        ApiFactory.homePageData().subscribe(new ProgressSubscriber<ApiResponse<HomePageData>>(mView.getContext()){
+    public void getHomeData(boolean showProgress) {
+        ApiFactory.homePageData().subscribe(new ProgressSubscriber<ApiResponse<HomePageData>>(mView.getContext(),showProgress){
             @Override
             public void onNext(ApiResponse<HomePageData> value) {
                 super.onNext(value);

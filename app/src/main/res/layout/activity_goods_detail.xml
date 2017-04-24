@@ -20,13 +20,13 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false">
 
-            <RelativeLayout
-                android:id="@+id/coverLayout"
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/h750"
-                android:background="@color/white">
-
-            </RelativeLayout>
+                android:background="@color/white"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.9" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -71,11 +71,6 @@
                         android:text="商品详情"
                         android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/w34" />
-
-                    <View
-                        android:id="@+id/goodsBarLine"
-                        style="@style/DividerLineHorizontal"
-                        android:layout_gravity="bottom" />
                 </FrameLayout>
             </android.support.v7.widget.Toolbar>
 
@@ -83,9 +78,82 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/goodsDetailRv"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/goodsDetailRv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/h100"
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w100"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:id="@+id/goToShoppingCartLayout"
+            android:layout_width="@dimen/w254"
+            android:layout_height="match_parent"
+            android:background="@drawable/sl_white_item"
+            android:orientation="vertical">
+
+            <View style="@style/DividerLineHorizontal" />
+
+            <ImageView
+                android:layout_width="@dimen/w48"
+                android:layout_height="@dimen/w48"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/w10"
+                android:src="@mipmap/ic_cart_gray" />
+
+            <TextView
+                style="@style/SmallText"
+                android:layout_gravity="center"
+                android:text="购物车"
+                android:textColor="@color/text_gray" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/addToCartLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/sl_light_red_item"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/LargeText"
+                android:layout_gravity="center"
+                android:text="加入购物车"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/buyNowLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/sl_red_item"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/LargeText"
+                android:layout_gravity="center"
+                android:text="立即购买"
+                android:textColor="@color/white" />
+        </FrameLayout>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

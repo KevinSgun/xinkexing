@@ -28,13 +28,14 @@ public class GDGoodsItemDao extends AbstractDao<GDGoodsItem, Long> {
         public final static Property GoodsCount = new Property(3, int.class, "goodsCount", false, "GOODS_COUNT");
         public final static Property Inventory = new Property(4, int.class, "inventory", false, "INVENTORY");
         public final static Property OriginalCount = new Property(5, int.class, "originalCount", false, "ORIGINAL_COUNT");
-        public final static Property Price = new Property(6, float.class, "price", false, "PRICE");
-        public final static Property Freight = new Property(7, float.class, "freight", false, "FREIGHT");
-        public final static Property UserGoodsId = new Property(8, String.class, "userGoodsId", false, "USER_GOODS_ID");
-        public final static Property Name = new Property(9, String.class, "name", false, "NAME");
-        public final static Property GoodsImg = new Property(10, String.class, "goodsImg", false, "GOODS_IMG");
-        public final static Property Spec = new Property(11, String.class, "spec", false, "SPEC");
-        public final static Property IsCheck = new Property(12, boolean.class, "isCheck", false, "IS_CHECK");
+        public final static Property Sid = new Property(6, int.class, "sid", false, "SID");
+        public final static Property Price = new Property(7, float.class, "price", false, "PRICE");
+        public final static Property Freight = new Property(8, float.class, "freight", false, "FREIGHT");
+        public final static Property UserGoodsId = new Property(9, String.class, "userGoodsId", false, "USER_GOODS_ID");
+        public final static Property Name = new Property(10, String.class, "name", false, "NAME");
+        public final static Property GoodsImg = new Property(11, String.class, "goodsImg", false, "GOODS_IMG");
+        public final static Property Spec = new Property(12, String.class, "spec", false, "SPEC");
+        public final static Property IsCheck = new Property(13, boolean.class, "isCheck", false, "IS_CHECK");
     };
 
 
@@ -56,13 +57,14 @@ public class GDGoodsItemDao extends AbstractDao<GDGoodsItem, Long> {
                 "\"GOODS_COUNT\" INTEGER NOT NULL ," + // 3: goodsCount
                 "\"INVENTORY\" INTEGER NOT NULL ," + // 4: inventory
                 "\"ORIGINAL_COUNT\" INTEGER NOT NULL ," + // 5: originalCount
-                "\"PRICE\" REAL NOT NULL ," + // 6: price
-                "\"FREIGHT\" REAL NOT NULL ," + // 7: freight
-                "\"USER_GOODS_ID\" TEXT UNIQUE ," + // 8: userGoodsId
-                "\"NAME\" TEXT," + // 9: name
-                "\"GOODS_IMG\" TEXT," + // 10: goodsImg
-                "\"SPEC\" TEXT," + // 11: spec
-                "\"IS_CHECK\" INTEGER NOT NULL );"); // 12: isCheck
+                "\"SID\" INTEGER NOT NULL ," + // 6: sid
+                "\"PRICE\" REAL NOT NULL ," + // 7: price
+                "\"FREIGHT\" REAL NOT NULL ," + // 8: freight
+                "\"USER_GOODS_ID\" TEXT UNIQUE ," + // 9: userGoodsId
+                "\"NAME\" TEXT," + // 10: name
+                "\"GOODS_IMG\" TEXT," + // 11: goodsImg
+                "\"SPEC\" TEXT," + // 12: spec
+                "\"IS_CHECK\" INTEGER NOT NULL );"); // 13: isCheck
     }
 
     /** Drops the underlying database table. */
@@ -85,29 +87,30 @@ public class GDGoodsItemDao extends AbstractDao<GDGoodsItem, Long> {
         stmt.bindLong(4, entity.getGoodsCount());
         stmt.bindLong(5, entity.getInventory());
         stmt.bindLong(6, entity.getOriginalCount());
-        stmt.bindDouble(7, entity.getPrice());
-        stmt.bindDouble(8, entity.getFreight());
+        stmt.bindLong(7, entity.getSid());
+        stmt.bindDouble(8, entity.getPrice());
+        stmt.bindDouble(9, entity.getFreight());
  
         String userGoodsId = entity.getUserGoodsId();
         if (userGoodsId != null) {
-            stmt.bindString(9, userGoodsId);
+            stmt.bindString(10, userGoodsId);
         }
  
         String name = entity.getName();
         if (name != null) {
-            stmt.bindString(10, name);
+            stmt.bindString(11, name);
         }
  
         String goodsImg = entity.getGoodsImg();
         if (goodsImg != null) {
-            stmt.bindString(11, goodsImg);
+            stmt.bindString(12, goodsImg);
         }
  
         String spec = entity.getSpec();
         if (spec != null) {
-            stmt.bindString(12, spec);
+            stmt.bindString(13, spec);
         }
-        stmt.bindLong(13, entity.getIsCheck() ? 1L: 0L);
+        stmt.bindLong(14, entity.getIsCheck() ? 1L: 0L);
     }
 
     /** @inheritdoc */
@@ -126,13 +129,14 @@ public class GDGoodsItemDao extends AbstractDao<GDGoodsItem, Long> {
             cursor.getInt(offset + 3), // goodsCount
             cursor.getInt(offset + 4), // inventory
             cursor.getInt(offset + 5), // originalCount
-            cursor.getFloat(offset + 6), // price
-            cursor.getFloat(offset + 7), // freight
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // userGoodsId
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // name
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // goodsImg
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // spec
-            cursor.getShort(offset + 12) != 0 // isCheck
+            cursor.getInt(offset + 6), // sid
+            cursor.getFloat(offset + 7), // price
+            cursor.getFloat(offset + 8), // freight
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // userGoodsId
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // name
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // goodsImg
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // spec
+            cursor.getShort(offset + 13) != 0 // isCheck
         );
         return entity;
     }
@@ -146,13 +150,14 @@ public class GDGoodsItemDao extends AbstractDao<GDGoodsItem, Long> {
         entity.setGoodsCount(cursor.getInt(offset + 3));
         entity.setInventory(cursor.getInt(offset + 4));
         entity.setOriginalCount(cursor.getInt(offset + 5));
-        entity.setPrice(cursor.getFloat(offset + 6));
-        entity.setFreight(cursor.getFloat(offset + 7));
-        entity.setUserGoodsId(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setName(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setGoodsImg(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setSpec(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setIsCheck(cursor.getShort(offset + 12) != 0);
+        entity.setSid(cursor.getInt(offset + 6));
+        entity.setPrice(cursor.getFloat(offset + 7));
+        entity.setFreight(cursor.getFloat(offset + 8));
+        entity.setUserGoodsId(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setName(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setGoodsImg(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setSpec(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setIsCheck(cursor.getShort(offset + 13) != 0);
      }
     
     /** @inheritdoc */

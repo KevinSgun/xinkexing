@@ -40,7 +40,10 @@
         <activity android:name=".ui.mine.AccountSettingActivity"/>
         <activity android:name=".ui.mine.DataEditActivity"/>
         <activity android:name=".ui.mall.MallMainActivity"/>
-        <activity android:name=".ui.mall.GoodsDetailActivity"/>
+        <activity android:name=".ui.mall.GoodsDetailActivity"
+            android:theme="@style/GoodsDetailTheme"/>
+        <activity android:name=".ui.mine.UpdateAddressActivity"/>
+        <activity android:name=".ui.mine.ShippingAddressListActivity"/>
     </application>
 
 </manifest>

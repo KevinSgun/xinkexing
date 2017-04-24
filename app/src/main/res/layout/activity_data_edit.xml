@@ -21,7 +21,7 @@
         />
     <View style="@style/SpaceAutoFit"/>
     <Button
-        android:id="@+id/commitBtn"
+        android:id="@+id/submitBtn"
         style="@style/CommonButton"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"

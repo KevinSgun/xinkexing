@@ -7,7 +7,6 @@ import com.thinkeract.tka.common.utils.PagedProxy;
 import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.entity.AddressItem;
 import com.thinkeract.tka.data.api.request.ListBody;
-import com.thinkeract.tka.data.api.response.ListData;
 import com.zitech.framework.data.network.response.ApiResponse;
 
 import java.util.List;
@@ -21,7 +20,7 @@ import io.reactivex.functions.Consumer;
  */
 
 public class UserAddressDataSource implements IAsyncDataSource<List<AddressItem>> {
-    private PagedProxy proxy = new PagedProxy(10);
+    private PagedProxy proxy = new PagedProxy(20);
     private boolean mIsOnlyOnePage;
 
     public UserAddressDataSource() {
@@ -53,17 +52,19 @@ public class UserAddressDataSource implements IAsyncDataSource<List<AddressItem>
         body.setPage(page);
         body.setPageSize(proxy.getPageSize());
 
-        final Disposable subscription = ApiFactory.getUserAddressList(body).subscribe(new Consumer<ApiResponse<ListData<AddressItem>>>() {
+        final Disposable subscription = ApiFactory.getUserAddressList(body).subscribe(new Consumer<ApiResponse<List<AddressItem>>>() {
             @Override
-            public void accept(ApiResponse<ListData<AddressItem>> listDataApiResponse) throws Exception {
-                if (!proxy.isPageCountSet()) {
-                    proxy.setDataCount(listDataApiResponse.getData().getPageInfo().getCountX());
-                }
-                mIsOnlyOnePage = listDataApiResponse.getData().getPageInfo().getPageCount() == 1;
-                List<AddressItem> items = listDataApiResponse.getData().getItems();
-                if (items == null || items.size() == 0) {
-                    proxy.setReachEnd(true);
-                }
+            public void accept(ApiResponse<List<AddressItem>> listDataApiResponse) throws Exception {
+//                if (!proxy.isPageCountSet()) {
+//                    proxy.setDataCount(listDataApiResponse.getData().getPageInfo().getCountX());
+//                }
+                proxy.setPageCount(1);
+                mIsOnlyOnePage = true;
+                List<AddressItem> items = listDataApiResponse.getData();
+//                if (items == null || items.size() == 0) {
+//                    proxy.setReachEnd(true);
+//                }
+                proxy.setReachEnd(false);
                 sender.sendData(items);
             }
 

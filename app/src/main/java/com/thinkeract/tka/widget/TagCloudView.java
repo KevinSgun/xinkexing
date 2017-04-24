@@ -11,8 +11,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.data.api.entity.Sku;
 import com.zitech.framework.utils.ViewUtils;
+
 import java.util.List;
 
 /**
@@ -26,6 +29,7 @@ public class TagCloudView extends ViewGroup {
     private boolean mIsSingleSelect;
     private boolean mBackgroundRandom;
     private int mChooseBackground;
+    private int mUnEnableBackground;
 
     private List<String> tags;
 
@@ -35,6 +39,7 @@ public class TagCloudView extends ViewGroup {
 
     private float mTagSize;
     private int mTagColor;
+    private int mUnEnableTextColor;
     private int mBackground;
     private int mViewBorder;
     private int mTagBorderHor;
@@ -47,7 +52,7 @@ public class TagCloudView extends ViewGroup {
     private static final int DEFAULT_TEXT_SIZE = ViewUtils.getDimenPx(R.dimen.w28);
     private static final int DEFAULT_TEXT_BACKGROUND = R.drawable.bg_black_stroke_rectangle_corner_r10;
     private static final int DEFAULT_CHOOSE_BACKGROUND = R.drawable.bg_red_stroke_rectangle_corner_r10;
-    private static final int DEFAULT_UN_ENABLE_BACKGROUND = R.drawable.bg_gray_stroke_rectangle_corner_r10;
+    private static final int DEFAULT_UN_ENABLE_BACKGROUND = R.drawable.bg_light_gray_stroke_rectangle_corner_r10;
     private static final int DEFAULT_VIEW_BORDER = ViewUtils.getDimenPx(R.dimen.w24);
     private static final int DEFAULT_TEXT_BORDER_HORIZONTAL = 0;
     private static final int DEFAULT_TEXT_BORDER_VERTICAL = ViewUtils.getDimenPx(R.dimen.w20);
@@ -61,7 +66,8 @@ public class TagCloudView extends ViewGroup {
     //	private int[] backRoundResList = {R.drawable.bg_green_round_corner_02e1c3_r80,R.drawable.bg_yellow_round_corner_ff9b05_r80
 //	,R.drawable.bg_yellow_round_corner_fcda17_r80,R.drawable.bg_purple_round_corner_f06aff_r80};
     protected SparseArray<TextView> chooseList = new SparseArray<>();
-    private TextView mChoosed;
+    private TextView mChosenTv;
+    private List<Sku.Spec> specTags;
 
     public TagCloudView(Context context) {
         this(context, null);
@@ -81,11 +87,15 @@ public class TagCloudView extends ViewGroup {
                 defStyleAttr
         );
         int DEFAULT_TEXT_COLOR = context.getResources().getColor(R.color.textColorPrimary);
-        mChooseTextColor = context.getResources().getColor(R.color.text_red);
-        mTagSize = a.getDimensionPixelSize(R.styleable.TagCloudView_tcvTextSize, DEFAULT_TEXT_SIZE);
+        int UN_ENABLE_TEXT_COLOR = context.getResources().getColor(R.color.text_light_gray);
+        int CHOSEN_TEXT_COLOR = context.getResources().getColor(R.color.text_red);
         mTagColor = a.getColor(R.styleable.TagCloudView_tcvTextColor, DEFAULT_TEXT_COLOR);
+        mChooseTextColor = a.getColor(R.styleable.TagCloudView_tcvChosenTextColor, CHOSEN_TEXT_COLOR);
+        mUnEnableTextColor = a.getColor(R.styleable.TagCloudView_tcvUnEnableTextColor, UN_ENABLE_TEXT_COLOR);
+        mTagSize = a.getDimensionPixelSize(R.styleable.TagCloudView_tcvTextSize, DEFAULT_TEXT_SIZE);
         mBackground = a.getResourceId(R.styleable.TagCloudView_tcvBackground, DEFAULT_TEXT_BACKGROUND);
         mChooseBackground = a.getResourceId(R.styleable.TagCloudView_tcvChooseBackground, DEFAULT_CHOOSE_BACKGROUND);
+        mUnEnableBackground = a.getResourceId(R.styleable.TagCloudView_tcvUnEnableBackground, DEFAULT_UN_ENABLE_BACKGROUND);
         mViewBorder = a.getDimensionPixelSize(R.styleable.TagCloudView_tcvBorder, DEFAULT_VIEW_BORDER);
         mTagBorderHor = a.getDimensionPixelSize(
                 R.styleable.TagCloudView_tcvItemBorderHorizontal, DEFAULT_TEXT_BORDER_HORIZONTAL);
@@ -113,7 +123,6 @@ public class TagCloudView extends ViewGroup {
 
     /**
      * 计算 ChildView 宽高
-     *
      */
     @SuppressLint("DrawAllocation")
     @Override
@@ -145,7 +154,6 @@ public class TagCloudView extends ViewGroup {
 
     /**
      * 为 singleLine 模式布局，并计算视图高度
-     *
      */
     private int getSingleTotalHeight(int totalWidth, int totalHeight) {
         int childWidth;
@@ -188,7 +196,6 @@ public class TagCloudView extends ViewGroup {
 
     /**
      * 为 multiLine 模式布局，并计算视图高度
-     *
      */
     private int getMultiTotalHeight(int totalWidth, int totalHeight) {
         int childWidth;
@@ -271,6 +278,67 @@ public class TagCloudView extends ViewGroup {
         return super.generateLayoutParams(attrs);
     }
 
+    public void setSpecTags(List<Sku.Spec> tagList) {
+        if (specTags != null && specTags.size() > 0) {
+            mChosenTv = null;
+            chooseList.clear();
+            removeAllViews();
+        }
+        this.specTags = tagList;
+        if (tagList != null && tagList.size() > 0) {
+            for (int i = 0; i < tagList.size(); i++) {
+                TextView tagView = new TextView(getContext());
+                Sku.Spec spec = tagList.get(i);
+
+                tagView.setBackgroundResource(mBackground);
+                tagView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTagSize);
+                tagView.setTextColor(mTagColor);
+                LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                tagView.setPadding(mTextPadding * 2, mTextPadding, mTextPadding * 2, mTextPadding);
+                tagView.setLayoutParams(layoutParams);
+                final String attrNameString = spec.getName();
+                tagView.setText(attrNameString);
+                tagView.setTag(TYPE_TEXT_NORMAL);
+                final int finalI = i;
+                if (mCanTagClick) {
+                    if (spec.isHasStock()) {
+                        if (spec.isSel()) {
+                            mChosenTv = tagView;
+                            chooseList.put(i,tagView);
+                            tagView.setBackgroundResource(mChooseBackground);
+                            tagView.setTextColor(mChooseTextColor);
+                        } else {
+                            tagView.setBackgroundResource(mBackground);
+                            tagView.setTextColor(mTagColor);
+                        }
+
+                        tagView.setOnClickListener(new OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (mIsSingleSelect)
+                                    markSingleChooseView((TextView) v, finalI, attrNameString);
+                                else
+                                    markChooseView((TextView) v, finalI, attrNameString);
+                            }
+                        });
+                    } else {
+                        tagView.setBackgroundResource(mUnEnableBackground);
+                        tagView.setTextColor(mUnEnableTextColor);
+                    }
+                } else if (mBackgroundRandom) {
+                    tagView.setBackgroundResource(RandomBackRoundRes());
+                    tagView.setTextColor(Color.WHITE);
+                } else {
+                    tagView.setBackgroundResource(mBackground);
+                    tagView.setTextColor(mTagColor);
+                }
+
+                addView(tagView);
+            }
+        }
+        postInvalidate();
+    }
+
     public void setTags(List<String> tagList) {
         if (tags == tagList) return;
         if (tags != null && tags.size() > 0) {
@@ -318,8 +386,8 @@ public class TagCloudView extends ViewGroup {
     }
 
     public void markChooseView(TextView current, int position, String attrNameString) {
-        TextView choosed = chooseList.get(position);
-        if (current != choosed) {
+        TextView chosen = chooseList.get(position);
+        if (current != chosen) {
             current.setBackgroundResource(RandomBackRoundRes());
             current.setTextColor(Color.WHITE);
             chooseList.put(position, current);
@@ -331,25 +399,30 @@ public class TagCloudView extends ViewGroup {
             if (onTagClickListener != null)
                 onTagClickListener.onTagClick(position, attrNameString, false);
         }
-
-
     }
 
     public void markSingleChooseView(TextView current, int position, String attrNameString) {
-        TextView choosed = chooseList.get(position);
-        if (mChoosed != null && mChoosed != choosed) {
-            mChoosed.setBackgroundResource(mBackground);
-            mChoosed.setTextColor(mTagColor);
-        }
-        if (mChoosed != null && mChoosed != choosed || mChoosed == null) {
-            if (onTagClickListener != null)
-                onTagClickListener.onTagClick(position, attrNameString, true);
+        TextView chosen = chooseList.get(position);
+        if (mChosenTv != null) {
+            mChosenTv.setBackgroundResource(mBackground);
+            mChosenTv.setTextColor(mTagColor);
         }
 
-        mChoosed = current;
-        current.setBackgroundResource(RandomBackRoundRes());
-        current.setTextColor(mChooseTextColor);
-        chooseList.put(position, current);
+        if (mChosenTv != chosen || mChosenTv == null) {
+            mChosenTv = current;
+            current.setBackgroundResource(RandomBackRoundRes());
+            current.setTextColor(mChooseTextColor);
+            chooseList.put(position, current);
+            if (onTagClickListener != null)
+                onTagClickListener.onTagAgainClick(position, attrNameString, true);
+        } else if (mChosenTv == chosen) {
+            mChosenTv = null;
+            current.setBackgroundResource(mBackground);
+            current.setTextColor(mTagColor);
+            chooseList.remove(position);
+            if (onTagClickListener != null)
+                onTagClickListener.onTagClick(position, attrNameString, false);
+        }
     }
 
     public int RandomBackRoundRes() {
@@ -369,6 +442,7 @@ public class TagCloudView extends ViewGroup {
          * @param isChoose       是选择该标签还是取消
          */
         void onTagClick(int position, String attrNameString, boolean isChoose);
-    }
 
+        void onTagAgainClick(int position, String attrNameString, boolean isChoose);
+    }
 }

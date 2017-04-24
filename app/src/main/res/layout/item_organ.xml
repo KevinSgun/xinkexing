@@ -6,7 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_gray_tiny_stroke_rectangle"
+        android:background="@drawable/white_color"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingBottom="@dimen/w24"

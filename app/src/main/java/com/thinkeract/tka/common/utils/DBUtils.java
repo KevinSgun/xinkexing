@@ -11,6 +11,8 @@ import com.thinkeract.tka.data.db.greendao.GDGoodsItemDao;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.thinkeract.tka.data.db.DaoFactory.sharedSessions;
+
 /**
  * Created by minHeng on 2016/12/5 14:51.
  * mail:minhengyan@gmail.com
@@ -23,8 +25,8 @@ public class DBUtils {
      * @param item
      */
     public static void insertOrReplaceGoods(GDGoodsItem item) {
-        if (item == null) return;
-        DaoFactory.sharedSessions()//
+        if (item == null||item.getGoodsId() == 0) return;
+        sharedSessions()//
                 .getGDGoodsItemDao().insertOrReplace(item);
         DaoFactory.notifyDBDataChanged(GDGoodsItemDao.class, DaoFactory.DATA_UPDATE, wrap(item));
     }
@@ -34,8 +36,8 @@ public class DBUtils {
      * @param item
      */
     public static void updateGoods(GDGoodsItem item) {
-        if (item == null) return;
-        DaoFactory.sharedSessions()//
+        if (item == null||item.getGoodsId() == 0) return;
+        sharedSessions()//
                 .getGDGoodsItemDao().update(item);
         DaoFactory.notifyDBDataChanged(GDGoodsItemDao.class, DaoFactory.DATA_UPDATE, wrap(item));
     }
@@ -44,7 +46,7 @@ public class DBUtils {
         if(goodsItemList == null) return;
         for(GDGoodsItem goodsItem:goodsItemList){
             if(goodsItem.getGoodsId() != 0)
-            DaoFactory.sharedSessions()//
+            sharedSessions()//
                     .getGDGoodsItemDao().insertOrReplace(goodsItem);
         }
         DaoFactory.notifyDBDataChanged(GDGoodsItemDao.class, DaoFactory.DATA_UPDATE, goodsItemList);
@@ -54,7 +56,7 @@ public class DBUtils {
      * 删除所有商品记录
      */
     public static void deleteAllWatchHistory() {
-        DaoFactory.sharedSessions()//
+        sharedSessions()//
                 .getGDGoodsItemDao().deleteAll();
         DaoFactory.notifyDBDataChanged(GDGoodsItemDao.class, DaoFactory.DATA_DELETE, queryAllGoodsList());
     }
@@ -66,7 +68,7 @@ public class DBUtils {
     public static void deleteGoods(String userAndGoodsId) {
         GDGoodsItem item = queryGoods(userAndGoodsId);
         if (item != null)
-            DaoFactory.sharedSessions()//
+            sharedSessions()//
                     .getGDGoodsItemDao().delete(item);
         DaoFactory.notifyDBDataChanged(GDGoodsItemDao.class, DaoFactory.DATA_DELETE, wrap(item));
     }
@@ -77,7 +79,7 @@ public class DBUtils {
      * @return
      */
     public static GDGoodsItem queryGoods(String userAndGoodsId) {
-        return DaoFactory.sharedSessions()
+        return sharedSessions()
                 .getGDGoodsItemDao()
                 .queryBuilder().where(GDGoodsItemDao.Properties.UserGoodsId.eq(userAndGoodsId)).unique();
     }
@@ -87,9 +89,13 @@ public class DBUtils {
      * @return
      */
     public static List<GDGoodsItem> queryAllGoodsList() {
-        return DaoFactory.sharedSessions()
+        return sharedSessions()
                 .getGDGoodsItemDao()
                 .queryBuilder().where(GDGoodsItemDao.Properties.UserId.eq(User.get().getId())).list();
+    }
+
+    public static int queryAllGoodsCount(){
+        return queryAllGoodsList().size();
     }
 
     /**
@@ -98,9 +104,19 @@ public class DBUtils {
      */
     public static void insertOrReplaceAddress(GDAddress item) {
         if (item == null) return;
-        DaoFactory.sharedSessions()//
+        sharedSessions()//
                 .getGDAddressDao().insertOrReplace(item);
         DaoFactory.notifyDBDataChanged(GDAddressDao.class, DaoFactory.DATA_UPDATE, wrap(item));
+    }
+
+    /**
+     * 插入多条地址
+     * @param itemList
+     */
+    public static void insertAddressList(List<GDAddress> itemList) {
+        if (itemList == null) return;
+        for(GDAddress gdAddress:itemList)
+            insertOrReplaceAddress(gdAddress);
     }
 
     /**
@@ -109,7 +125,7 @@ public class DBUtils {
      */
     public static void updateGoods(GDAddress item) {
         if (item == null) return;
-        DaoFactory.sharedSessions()//
+        sharedSessions()//
                 .getGDAddressDao().update(item);
         DaoFactory.notifyDBDataChanged(GDAddressDao.class, DaoFactory.DATA_UPDATE, wrap(item));
     }
@@ -118,7 +134,7 @@ public class DBUtils {
      * 删除所有收获地址记录
      */
     public static void deleteAllAddress() {
-        DaoFactory.sharedSessions()//
+        sharedSessions()//
                 .getGDAddressDao().deleteAll();
     }
 
@@ -129,7 +145,7 @@ public class DBUtils {
     public static void deleteAddress(String userAndAddressId) {
         GDAddress item = queryAddress(userAndAddressId);
         if (item != null)
-            DaoFactory.sharedSessions()//
+            sharedSessions()//
                     .getGDAddressDao().delete(item);
     }
 
@@ -139,7 +155,7 @@ public class DBUtils {
      * @return
      */
     public static GDAddress queryAddress(String userAndAddressId) {
-        return DaoFactory.sharedSessions()
+        return sharedSessions()
                 .getGDAddressDao()
                 .queryBuilder().where(GDAddressDao.Properties.UserAddressId.eq(userAndAddressId)).unique();
     }
@@ -149,9 +165,27 @@ public class DBUtils {
      * @return
      */
     public static List<GDAddress> queryAllAddressList() {
-        return DaoFactory.sharedSessions()
+        return sharedSessions()
                 .getGDAddressDao()
                 .queryBuilder().where(GDAddressDao.Properties.UserId.eq(User.get().getId())).list();
+    }
+
+    /**
+     * 查询一个用户的默认收货地址
+     * @return
+     */
+    public static GDAddress queryDefAddress() {
+        List<GDAddress> gdAddressList = DaoFactory.sharedSessions()
+                .getGDAddressDao()
+                .queryBuilder().where(GDAddressDao.Properties.UserId.eq(User.get().getId())).list();
+        if(gdAddressList != null&&gdAddressList.size()>0) {
+            for (GDAddress gdAddress : gdAddressList) {
+                if (gdAddress.getStatus() == 1)
+                    return gdAddress;
+            }
+            return gdAddressList.get(0);
+        }
+        return null;
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -181,5 +215,27 @@ public class DBUtils {
         addressItem.setStatus(gdAddress.getStatus());
         addressItem.setUid(gdAddress.getUserId());
         return addressItem;
+    }
+
+    public static List<GDAddress> convertToGDAddressItemList(List<AddressItem> addressList) {
+        List<GDAddress> gdAddressList = new ArrayList<>();
+        if(addressList != null&&addressList.size()>0){
+            for(AddressItem addressItem:addressList){
+                gdAddressList.add(convertToGDAddress(addressItem));
+            }
+        }
+        return gdAddressList;
+    }
+
+    private static GDAddress convertToGDAddress(AddressItem addressItem) {
+        GDAddress gdAddress = new GDAddress();
+        gdAddress.setAddress(addressItem.getAddress());
+        gdAddress.setAddressId(addressItem.getId());
+        gdAddress.setCity(addressItem.getCityname());
+        gdAddress.setContact(addressItem.getContact());
+        gdAddress.setPhone(addressItem.getPhone());
+        gdAddress.setStatus(addressItem.getStatus());
+        gdAddress.setUserId(addressItem.getUid());
+        return gdAddress;
     }
 }

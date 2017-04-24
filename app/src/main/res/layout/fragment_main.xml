@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:collapsedTitleGravity="center"
-            app:contentScrim="?attr/colorPrimaryDark"
+            app:contentScrim="?attr/colorAccent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false">
 

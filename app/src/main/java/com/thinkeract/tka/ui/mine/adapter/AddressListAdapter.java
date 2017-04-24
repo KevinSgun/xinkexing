@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.shizhefei.mvc.IDataAdapter;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.data.api.entity.AddressItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,13 +21,14 @@ import java.util.List;
  * mail:minhengyan@gmail.com
  */
 
-public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.AddressHolder>{
+public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.AddressHolder> implements IDataAdapter<List<AddressItem>> {
 
     private Activity mContext;
     private List<AddressItem> mList;
 
     public AddressListAdapter(Activity context){
         mContext  = context;
+        mList = new ArrayList<>();
     }
 
     public void setItemList(List<AddressItem> itemList){
@@ -81,6 +84,37 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     @Override
     public int getItemCount() {
         return mList!=null?mList.size():0;
+    }
+
+
+    @Override
+    public void notifyDataChanged(List<AddressItem> items, boolean isRefresh) {
+        boolean empty = this.mList.isEmpty();
+        int sizeBeforeChange = this.mList.size();
+        if (isRefresh) {
+            this.mList.clear();
+        }
+        int size = this.mList.size();
+        this.mList.addAll(items);
+        if (isRefresh || empty) {
+            if (items.size() >= sizeBeforeChange) {
+                notifyItemRangeChanged(0, items.size());
+            } else {
+                notifyDataSetChanged();
+            }
+        } else {
+            notifyItemRangeInserted(size, items.size());
+        }
+    }
+
+    @Override
+    public List<AddressItem> getData() {
+        return mList;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return mList.isEmpty();
     }
 
     public static class AddressHolder extends RecyclerView.ViewHolder{

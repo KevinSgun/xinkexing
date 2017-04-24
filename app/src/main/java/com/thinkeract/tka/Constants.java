@@ -81,7 +81,7 @@ public class Constants {
         String DATA_EDIT_VO = "data_edit_vo";
         String NEWS_ID = "news_id";
         String GOODS_ID = "goods_id";
-
+        String ADDRESS_ITEM = "address_item";
     }
 
     public interface FragmentExtra {

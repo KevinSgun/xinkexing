@@ -10,9 +10,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.data.api.entity.StockSimple;
+import com.thinkeract.tka.data.db.greendao.GDGoodsItem;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.ValidDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by minHeng on 2017/4/6 18:35.
@@ -32,6 +39,13 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
     private SettlementDetailView detailLayout;
     private ViewAnimator contentAnimator;
     private OnSettlementClickListener onSettlementClickListener;
+    private float totalAmount;
+    private float goodsAmount;
+    private float freight;
+    private String stockString;
+    private TextView goodsPriceTv;
+    private TextView freightTv;
+    private TextView amountDetailTv;
 
     public SettlementDialog(Activity context) {
         super(context, R.style.BottomPushDialog);
@@ -50,6 +64,10 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
         toDetailLayout = (RelativeLayout) findViewById(R.id.toDetailLayout);
         amountTv = (TextView) findViewById(R.id.amountTv);
         commitOrderBtn = (Button) findViewById(R.id.commitOrderBtn);
+
+        goodsPriceTv = (TextView) findViewById(R.id.goodsPriceTv);
+        freightTv = (TextView) findViewById(R.id.freightTv);
+        amountDetailTv = (TextView) findViewById(R.id.amountDetailTv);
 
         addressLayout = (SettlementAddressView) findViewById(R.id.addressLayout);
         detailLayout = (SettlementDetailView) findViewById(R.id.detailLayout);
@@ -89,9 +107,54 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
         }
     }
 
+    public void setData(List<GDGoodsItem> goodsItemList, float totalAmount, float goodsAmount, float freight) {
+        List<StockSimple> stockSimples = new ArrayList<>();
+        for (GDGoodsItem goodsItem : goodsItemList) {
+            if (goodsItem.getGoodsId() != 0) {
+                StockSimple simple = new StockSimple();
+                simple.setId(String.valueOf(goodsItem.getGoodsId()));
+                simple.setPrice(String.valueOf(goodsItem.getPrice()));
+                simple.setQuantity(String.valueOf(goodsItem.getGoodsCount()));
+                simple.setSid(String.valueOf(goodsItem.getSid()));
+                stockSimples.add(simple);
+            }
+        }
+        Gson gson = new Gson();
+        stockString = gson.toJson(stockSimples, new TypeToken<List<StockSimple>>() {
+        }.getType());
+        this.totalAmount = totalAmount;
+        this.goodsAmount = goodsAmount;
+        this.freight = freight;
+
+        amountTv.setText(String.format(mContext.getResources().getString(R.string.rmb), totalAmount));
+        goodsPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb), goodsAmount));
+        freightTv.setText(String.format(mContext.getResources().getString(R.string.rmb), freight));
+        amountDetailTv.setText(String.format(mContext.getResources().getString(R.string.rmb), totalAmount));
+    }
+
+    public void setData(GDGoodsItem goodsItem, float totalAmount, float goodsAmount, float freight) {
+        List<StockSimple> stockSimples = new ArrayList<>();
+        StockSimple simple = new StockSimple();
+        simple.setId(String.valueOf(goodsItem.getGoodsId()));
+        simple.setPrice(String.valueOf(goodsItem.getPrice()));
+        simple.setQuantity(String.valueOf(goodsItem.getGoodsCount()));
+        simple.setSid(String.valueOf(goodsItem.getSid()));
+        stockSimples.add(simple);
+        Gson gson = new Gson();
+        stockString = gson.toJson(stockSimples, new TypeToken<List<StockSimple>>() {
+        }.getType());
+        this.totalAmount = totalAmount;
+        this.goodsAmount = goodsAmount;
+        this.freight = freight;
+
+        amountTv.setText(String.format(mContext.getResources().getString(R.string.rmb), totalAmount));
+        goodsPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb), goodsAmount));
+        freightTv.setText(String.format(mContext.getResources().getString(R.string.rmb), freight));
+    }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.toAddressLayout:
                 contentAnimator.setDisplayedChild(1);
                 break;
@@ -99,15 +162,16 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
                 contentAnimator.setDisplayedChild(2);
                 break;
             case R.id.commitOrderBtn:
+                //TODO 提交订单
                 break;
         }
     }
 
-    public void setOnSettlementClickListener(OnSettlementClickListener onSettlementClickListener){
+    public void setOnSettlementClickListener(OnSettlementClickListener onSettlementClickListener) {
         this.onSettlementClickListener = onSettlementClickListener;
     }
 
-    public interface OnSettlementClickListener{
+    public interface OnSettlementClickListener {
         void onSettlementClick();
     }
 }

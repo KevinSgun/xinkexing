@@ -13,6 +13,7 @@ import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.ui.home.adapter.OrganListAdapter;
 import com.thinkeract.tka.ui.home.contract.SecondDataContract;
 import com.thinkeract.tka.ui.home.presenter.SecondDataPresenter;
+import com.thinkeract.tka.widget.GridItemDecoration;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class OrganListActivity extends AppBarActivity implements SecondDataContr
 
         mAdapter = new OrganListAdapter(this);
         organRv.setLayoutManager(new GridLayoutManager(getContext(),4));
+        organRv.addItemDecoration(new GridItemDecoration(getContext(),4));
         organRv.setAdapter(mAdapter);
     }
 

@@ -25,6 +25,7 @@ public class GoodsItem {
     private String spec;
     private String subtitle;
     private List<String> photos;
+    private String descr;
 
     public float getMinprice() {
         return minprice;
@@ -88,5 +89,13 @@ public class GoodsItem {
 
     public void setPhotos(List<String> photos) {
         this.photos = photos;
+    }
+
+    public String getDescr() {
+        return descr;
+    }
+
+    public void setDescr(String descr) {
+        this.descr = descr;
     }
 }

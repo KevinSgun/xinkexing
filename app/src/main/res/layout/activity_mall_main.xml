@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"/>
     </FrameLayout>
     <FrameLayout
-        android:id="@+id/addCartLayout"
+        android:id="@+id/goToCartLayout"
         android:layout_width="@dimen/w90"
         android:layout_height="@dimen/w90"
         android:layout_gravity="bottom"
