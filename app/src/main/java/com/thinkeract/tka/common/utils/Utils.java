@@ -404,7 +404,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
         return fragment;
     }
 
-    public static String formatMoney(float amounts) {
+    public static String formatMoney(Double amounts) {
         double doubleAmounts = Double.valueOf(String.valueOf(amounts));
         DecimalFormat formater = new DecimalFormat();
         formater.setMaximumFractionDigits(0);
@@ -413,8 +413,8 @@ public class Utils extends com.zitech.framework.utils.Utils {
         return formater.format(doubleAmounts);
     }
 
-    public static float valueOfMoney(float value) {
-        return Float.valueOf(formatMoney(value));
+    public static Double valueOfMoney(Double value) {
+        return Double.valueOf(formatMoney(value));
     }
 
     /**
@@ -424,9 +424,9 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String floatAddString(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).add(new BigDecimal(Float.toString(b)));
-        return result.toString();
+    public static String DoubleAddString(Double a, Double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).add(new BigDecimal(Double.toString(b)));
+        return result.toPlainString();
     }
 
     /**
@@ -434,11 +434,11 @@ public class Utils extends com.zitech.framework.utils.Utils {
      *
      * @param a
      * @param b
-     * @return 返回float型
+     * @return 返回Double型
      */
-    public static float floatAddFloat(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).add(new BigDecimal(Float.toString(b)));
-        return result.floatValue();
+    public static Double DoubleAddDouble(Double a, Double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).add(new BigDecimal(Double.toString(b)));
+        return result.doubleValue();
     }
 
     /**
@@ -448,9 +448,9 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String floatSubString(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).subtract(new BigDecimal(Float.toString(b)));
-        return result.toString();
+    public static String DoubleSubString(Double a, Double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).subtract(new BigDecimal(Double.toString(b)));
+        return result.toPlainString();
     }
 
     /**
@@ -458,11 +458,11 @@ public class Utils extends com.zitech.framework.utils.Utils {
      *
      * @param a
      * @param b
-     * @return 返回float型
+     * @return 返回Double型
      */
-    public static float floatSubFloat(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).subtract(new BigDecimal(Float.toString(b)));
-        return result.floatValue();
+    public static Double DoubleSubDouble(Double a, Double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).subtract(new BigDecimal(Double.toString(b)));
+        return result.doubleValue();
     }
 
     /**
@@ -472,9 +472,9 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String floatDivideString(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).divide(new BigDecimal(Float.toString(b)),2,RoundingMode.HALF_UP);
-        return result.toString();
+    public static String DoubleDivideString(double a, double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).divide(new BigDecimal(Double.toString(b)),2,RoundingMode.HALF_EVEN);
+        return result.toPlainString();
     }
 
     /**
@@ -482,12 +482,12 @@ public class Utils extends com.zitech.framework.utils.Utils {
      *
      * @param a
      * @param b
-     * @return 返回float类型
+     * @return 返回Double类型
      */
-    public static float floatDivideFloat(float a, float b) {
-        if(b == 0) return 0;
-        BigDecimal result = new BigDecimal(Float.toString(a)).divide(new BigDecimal(Float.toString(b)),2,RoundingMode.HALF_UP);
-        return result.floatValue();
+    public static Double DoubleDivideDouble(double a, double b) {
+        if(b == 0) return 0d;
+        BigDecimal result = new BigDecimal(Double.toString(a)).divide(new BigDecimal(Double.toString(b)),2,RoundingMode.HALF_EVEN);
+        return result.doubleValue();
     }
 
     /**
@@ -497,9 +497,9 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String floatMultiplyString(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).multiply(new BigDecimal(Float.toString(b)));
-        return result.toString();
+    public static String DoubleMultiplyString(Double a, Double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).multiply(new BigDecimal(Double.toString(b)));
+        return result.toPlainString();
     }
 
     /**
@@ -507,11 +507,11 @@ public class Utils extends com.zitech.framework.utils.Utils {
      *
      * @param a
      * @param b
-     * @return 返回float类型
+     * @return 返回Double类型
      */
-    public static float floatMultiplyFloat(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).multiply(new BigDecimal(Float.toString(b)));
-        return result.floatValue();
+    public static Double DoubleMultiplyDouble(Double a, Double b) {
+        BigDecimal result = new BigDecimal(Double.toString(a)).multiply(new BigDecimal(Double.toString(b)));
+        return result.doubleValue();
     }
 
     public static boolean isEmpty(List<?> list) {
@@ -540,11 +540,11 @@ public class Utils extends com.zitech.framework.utils.Utils {
         return urls != null ? urls.split("@X@") : null;
     }
 
-//    public static String formartRmb(float items_price) {
+//    public static String formartRmb(Double items_price) {
 //        return String.format(BaseApplication.getInstance().getResources().getString(R.string.rmb), items_price);
 //    }
 //
-//    public static String formartYuan(float items_price) {
+//    public static String formartYuan(Double items_price) {
 //        return String.format(BaseApplication.getInstance().getResources().getString(R.string.yuan), items_price);
 //    }
 
