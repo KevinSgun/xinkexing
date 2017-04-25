@@ -473,7 +473,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @return 返回String类型
      */
     public static String floatDivideString(float a, float b) {
-        BigDecimal result = new BigDecimal(Float.toString(a)).divide(new BigDecimal(Float.toString(b)));
+        BigDecimal result = new BigDecimal(Float.toString(a)).divide(new BigDecimal(Float.toString(b)),2,RoundingMode.HALF_UP);
         return result.toString();
     }
 
