@@ -32,6 +32,7 @@
     <View style="@style/DividerLineHorizontal" />
 
     <RelativeLayout
+        android:id="@+id/goodsLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/h220"
         android:background="@drawable/sl_common_item"
@@ -59,7 +60,7 @@
             android:layout_toRightOf="@id/goodsPicIv"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="京东方说的得到的飒飒啊,京东方说的得到的飒飒啊京东方说的得到的飒飒啊,京东方说的得到的飒飒啊" />
+            android:text="" />
 
         <TextView
             android:id="@+id/goodsPriceTv"
@@ -68,7 +69,7 @@
             android:layout_alignBottom="@id/goodsPicIv"
             android:layout_marginBottom="@dimen/w4"
             android:layout_toRightOf="@id/goodsPicIv"
-            android:text="¥9999999"
+            android:text="¥0"
             android:textColor="@color/text_red" />
     </RelativeLayout>
     <View style="@style/DividerLineHorizontal"

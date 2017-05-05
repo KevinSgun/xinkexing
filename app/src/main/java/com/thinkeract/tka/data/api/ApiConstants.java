@@ -34,7 +34,7 @@ public class ApiConstants {
     static final String MY_ORDER_LIST = "xk021";//我的订单列表
     static final String ORDER_DETAIL = "xk022";//订单详情
     static final String COMMENT_ORDER = "xk023";//评论订单
-    static final String ORDER_LOGISTICS = "xk023";//查看订单物流信息
+    static final String ORDER_LOGISTICS = "xk024";//查看订单物流信息
 
     /*
          * 线上环境

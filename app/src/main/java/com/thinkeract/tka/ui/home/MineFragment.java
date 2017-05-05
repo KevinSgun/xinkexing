@@ -16,6 +16,7 @@ import com.thinkeract.tka.ui.BaseFragment;
 import com.thinkeract.tka.ui.login.LoginActivity;
 import com.thinkeract.tka.ui.mall.MallMainActivity;
 import com.thinkeract.tka.ui.mine.AccountSettingActivity;
+import com.thinkeract.tka.ui.mine.MyOrderListActivity;
 import com.thinkeract.tka.ui.mine.SettingActivity;
 import com.thinkeract.tka.ui.mine.ShippingAddressListActivity;
 import com.zitech.framework.transform.CropCircleTransformation;
@@ -128,6 +129,7 @@ public class MineFragment extends BaseFragment {
                     showActivity(LoginActivity.class);
                 break;
             case R.id.orderLayout://跳转到我的订单页面
+                showActivity(MyOrderListActivity.class);
                 break;
             case R.id.bodyCheckupLayout://跳转到体检报告页面
                 break;

@@ -44,6 +44,8 @@
             android:theme="@style/GoodsDetailTheme"/>
         <activity android:name=".ui.mine.UpdateAddressActivity"/>
         <activity android:name=".ui.mine.ShippingAddressListActivity"/>
+        <activity android:name=".ui.mine.MyOrderListActivity"/>
+        <activity android:name=".ui.mine.OrderDetailActivity"/>
     </application>
 
 </manifest>

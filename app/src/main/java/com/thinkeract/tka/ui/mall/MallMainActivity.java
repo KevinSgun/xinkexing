@@ -62,6 +62,9 @@ public class MallMainActivity extends AppBarActivity implements FilterDataContra
         cartGoodsCountTv = (TextView) findViewById(R.id.cartGoodsCountTv);
 
         mallMainRv.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+
+        swipeRefreshLayout.setColorSchemeResources(R.color.gplus_color_1, R.color.gplus_color_2, R.color.gplus_color_3, R.color.gplus_color_4);
+
     }
 
     @Override

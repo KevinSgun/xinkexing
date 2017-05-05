@@ -21,12 +21,13 @@ public class OrderDetailData {
      * date : 2017-04-12 21:22:04
      */
 
-    private float amount;
-    private float fare;
-    private float goodPrice;
+    private double amount;
+    private double fare;
+    private double goodPrice;
     private String name;
     private String po;
     private String date;
+    private OrderDetailGoods detailGoods;
     private List<OrderDetailGoods> goods;
 
 
@@ -38,11 +39,11 @@ public class OrderDetailData {
         this.itemType = itemType;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -62,11 +63,11 @@ public class OrderDetailData {
         this.name = name;
     }
 
-    public float getFare() {
+    public double getFare() {
         return fare;
     }
 
-    public void setFare(float fare) {
+    public void setFare(double fare) {
         this.fare = fare;
     }
 
@@ -78,11 +79,11 @@ public class OrderDetailData {
         this.po = po;
     }
 
-    public float getGoodPrice() {
+    public double getGoodPrice() {
         return goodPrice;
     }
 
-    public void setGoodPrice(float goodPrice) {
+    public void setGoodPrice(double goodPrice) {
         this.goodPrice = goodPrice;
     }
 
@@ -102,6 +103,14 @@ public class OrderDetailData {
         this.goods = goods;
     }
 
+    public OrderDetailGoods getDetailGoods() {
+        return detailGoods;
+    }
+
+    public void setDetailGoods(OrderDetailGoods detailGoods) {
+        this.detailGoods = detailGoods;
+    }
+
     public static class OrderDetailGoods {
         /**
          * comment : 0
@@ -117,7 +126,7 @@ public class OrderDetailData {
         private int comment;
         private int quantity;
         private int gid;
-        private int price;
+        private double price;
         private int id;
         private String name;
         private String cover;
@@ -155,11 +164,11 @@ public class OrderDetailData {
             this.name = name;
         }
 
-        public int getPrice() {
+        public double getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(double price) {
             this.price = price;
         }
 

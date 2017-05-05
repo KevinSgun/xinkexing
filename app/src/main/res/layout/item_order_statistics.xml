@@ -19,7 +19,8 @@
             android:textSize="@dimen/w24"
             android:textColor="@color/textColorPrimaryDark"
             android:background="@drawable/bg_gray_stroke_rectangle_corner_r100"
-            android:text="查看物流" />
+            android:text="查看物流"
+            android:visibility="gone"/>
     </LinearLayout>
     <View style="@style/DividerLineHorizontal"
        />

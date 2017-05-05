@@ -39,9 +39,9 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
     private SettlementDetailView detailLayout;
     private ViewAnimator contentAnimator;
     private OnSettlementClickListener onSettlementClickListener;
-    private float totalAmount;
-    private float goodsAmount;
-    private float freight;
+    private double totalAmount;
+    private double goodsAmount;
+    private double freight;
     private String stockString;
     private TextView goodsPriceTv;
     private TextView freightTv;
@@ -107,7 +107,7 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
         }
     }
 
-    public void setData(List<GDGoodsItem> goodsItemList, float totalAmount, float goodsAmount, float freight) {
+    public void setData(List<GDGoodsItem> goodsItemList, double totalAmount, double goodsAmount, double freight) {
         List<StockSimple> stockSimples = new ArrayList<>();
         for (GDGoodsItem goodsItem : goodsItemList) {
             if (goodsItem.getGoodsId() != 0) {
@@ -132,7 +132,7 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
         amountDetailTv.setText(String.format(mContext.getResources().getString(R.string.rmb), totalAmount));
     }
 
-    public void setData(GDGoodsItem goodsItem, float totalAmount, float goodsAmount, float freight) {
+    public void setData(GDGoodsItem goodsItem, double totalAmount, double goodsAmount, double freight) {
         List<StockSimple> stockSimples = new ArrayList<>();
         StockSimple simple = new StockSimple();
         simple.setId(String.valueOf(goodsItem.getGoodsId()));

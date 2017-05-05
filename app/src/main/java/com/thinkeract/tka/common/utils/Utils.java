@@ -424,7 +424,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String DoubleAddString(Double a, Double b) {
+    public static String doubleAddString(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).add(new BigDecimal(Double.toString(b)));
         return result.toPlainString();
     }
@@ -436,7 +436,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回Double型
      */
-    public static Double DoubleAddDouble(Double a, Double b) {
+    public static Double doubleAddDouble(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).add(new BigDecimal(Double.toString(b)));
         return result.doubleValue();
     }
@@ -448,7 +448,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String DoubleSubString(Double a, Double b) {
+    public static String doubleSubString(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).subtract(new BigDecimal(Double.toString(b)));
         return result.toPlainString();
     }
@@ -460,7 +460,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回Double型
      */
-    public static Double DoubleSubDouble(Double a, Double b) {
+    public static Double doubleSubDouble(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).subtract(new BigDecimal(Double.toString(b)));
         return result.doubleValue();
     }
@@ -472,7 +472,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String DoubleDivideString(double a, double b) {
+    public static String doubleDivideString(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).divide(new BigDecimal(Double.toString(b)),2,RoundingMode.HALF_EVEN);
         return result.toPlainString();
     }
@@ -484,7 +484,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回Double类型
      */
-    public static Double DoubleDivideDouble(double a, double b) {
+    public static Double doubleDivideDouble(Double a, Double b) {
         if(b == 0) return 0d;
         BigDecimal result = new BigDecimal(Double.toString(a)).divide(new BigDecimal(Double.toString(b)),2,RoundingMode.HALF_EVEN);
         return result.doubleValue();
@@ -497,7 +497,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回String类型
      */
-    public static String DoubleMultiplyString(Double a, Double b) {
+    public static String doubleMultiplyString(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).multiply(new BigDecimal(Double.toString(b)));
         return result.toPlainString();
     }
@@ -509,7 +509,7 @@ public class Utils extends com.zitech.framework.utils.Utils {
      * @param b
      * @return 返回Double类型
      */
-    public static Double DoubleMultiplyDouble(Double a, Double b) {
+    public static Double doubleMultiplyDouble(Double a, Double b) {
         BigDecimal result = new BigDecimal(Double.toString(a)).multiply(new BigDecimal(Double.toString(b)));
         return result.doubleValue();
     }

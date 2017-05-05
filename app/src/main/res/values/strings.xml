@@ -70,6 +70,7 @@
 
     <!-- Order start-->
     <string name="total_goods_count">共%d件商品</string>
+    <string name="x_count">x%d</string>
     <!-- Order end-->
 
     <!-- 我的相关 start-->
@@ -156,6 +157,7 @@
     <string name="organ_burden">脏器负担</string>
     <string name="surroundings_burden">环境负担</string>
     <string name="allergy_view">过敏检测</string>
+    <string name="order_num">订单号：%s</string>
 
     <!-- 订单支付相关 end-->
 

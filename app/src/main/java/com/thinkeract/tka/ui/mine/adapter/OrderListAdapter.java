@@ -6,14 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.shizhefei.mvc.IDataAdapter;
+import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.common.utils.Utils;
 import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.entity.OrderItem;
+import com.thinkeract.tka.ui.mine.OrderDetailActivity;
 import com.zitech.framework.widget.RemoteImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +33,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public OrderListAdapter(Activity context) {
         mContext = context;
+        mList = new ArrayList<>();
     }
 
     public void setItemList(List<OrderItem> itemList) {
@@ -44,31 +50,59 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final OrderItem item = mList.get(position);
         OrderHolder viewHolder = (OrderHolder) holder;
+        if(item.getGoods() != null&&item.getGoods().size()>0) {
+            viewHolder.totalGoodsCountTv.setText(String.format(mContext.getResources().getString(R.string.total_goods_count), getTotalGoodsCount(item.getGoods())));
+            viewHolder.orderStatusTv.setTextColor(mContext.getResources().getColor(ViewUtils.getOrderStatusColorRes(item.getStatus())));
+            viewHolder.orderStatusTv.setText(ViewUtils.getOrderStatusString(item.getStatus()));
 
-//        viewHolder.totalGoodsCountTv.setText(String.format(mContext.getResources().getString(R.string.total_goods_count),item.getTotalGoodsCount()));
-        viewHolder.orderStatusTv.setTextColor(mContext.getResources().getColor(ViewUtils.getOrderStatusColorRes(item.getStatus())));
-        viewHolder.orderStatusTv.setText(ViewUtils.getOrderStatusString(item.getStatus()));
+            viewHolder.goodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL, item.getGoods().get(0).getCover());
+            viewHolder.goodsPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb), item.getGoods().get(0).getPrice()));
+            viewHolder.actuallyPayTv.setText(String.format(mContext.getResources().getString(R.string.rmb), getTotalAmount(item.getGoods())));
+            viewHolder.goodsTitleTv.setText(item.getName());
 
-//        viewHolder.goodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,item.getC());
-        viewHolder.goodsPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb),item.getAmount()));
-        viewHolder.actuallyPayTv.setText(String.format(mContext.getResources().getString(R.string.rmb),item.getActuallyAmount()));
-        viewHolder.goodsTitleTv.setText(item.getName());
+            if (item.getStatus() == OrderItem.IS_SEND||item.getStatus() == OrderItem.WAIT_PAY) {
+                viewHolder.businessBtn.setVisibility(View.VISIBLE);
+                viewHolder.businessBtn.setBackgroundResource(ViewUtils.getOrderBusinessBackgroundRes(item.getStatus()));
+                viewHolder.businessBtn.setText(ViewUtils.getOrderStatusString(item.getStatus()));
 
-        viewHolder.businessBtn.setBackgroundResource(ViewUtils.getOrderBusinessBgRes(item.getStatus()));
-        viewHolder.businessBtn.setText(ViewUtils.getOrderStatusString(item.getStatus()));
-
-        viewHolder.businessBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(item.getStatus() == OrderItem.IS_SEND) {
-                    //TODO 查看物流
-                }else if(item.getStatus() == OrderItem.WAIT_PAY){
-                    //TODO 立即支付
-                }
+                viewHolder.businessBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (item.getStatus() == OrderItem.IS_SEND) {
+                            //TODO 查看物流
+                        } else if (item.getStatus() == OrderItem.WAIT_PAY) {
+                            //TODO 立即支付
+                        }
+                    }
+                });
+            }else {
+                viewHolder.businessBtn.setVisibility(View.GONE);
             }
-        });
 
+            viewHolder.goodsLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //进入查看订单详情页
+                    OrderDetailActivity.launch(mContext,item.getPo());
+                }
+            });
+        }
+    }
 
+    private double getTotalAmount(List<OrderItem.OrderGoods> goods) {
+        double totalAmount = 0.0;
+        for(OrderItem.OrderGoods goodItem:goods){
+            totalAmount = Utils.doubleAddDouble(totalAmount,Utils.doubleMultiplyDouble(goodItem.getPrice(), (double) goodItem.getQuantity()));
+        }
+        return totalAmount;
+    }
+
+    private int getTotalGoodsCount(List<OrderItem.OrderGoods> goods) {
+        int goodsCount = 0;
+        for(OrderItem.OrderGoods goodItem:goods){
+            goodsCount += goodItem.getQuantity();
+        }
+        return goodsCount;
     }
 
     @Override
@@ -77,6 +111,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public static class OrderHolder extends RecyclerView.ViewHolder {
+        private RelativeLayout goodsLayout;
         private TextView totalGoodsCountTv;
         private TextView orderStatusTv;
         private RemoteImageView goodsPicIv;
@@ -93,7 +128,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             goodsPriceTv = (TextView) itemView.findViewById(R.id.goodsPriceTv);
             actuallyPayTv = (TextView) itemView.findViewById(R.id.actuallyPayTv);
             businessBtn = (Button) itemView.findViewById(R.id.businessBtn);
-
+            goodsLayout = (RelativeLayout) itemView.findViewById(R.id.goodsLayout);
         }
     }
 

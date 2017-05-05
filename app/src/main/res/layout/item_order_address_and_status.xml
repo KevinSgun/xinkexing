@@ -93,12 +93,12 @@
 
         <TextView
             android:id="@+id/orderNameTv"
-            style="@style/SmallText"
+            style="@style/CommonText"
             android:text="包裹" />
         <View style="@style/SpaceAutoFit"/>
         <TextView
             android:id="@+id/shippingStatusTv"
-            style="@style/SmallText"
+            style="@style/CommonText"
             android:textColor="@color/green_93c94d"
             android:text="已签收" />
     </LinearLayout>

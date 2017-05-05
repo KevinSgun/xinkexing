@@ -2,6 +2,7 @@ package com.thinkeract.tka.ui;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 
 import java.util.List;
 

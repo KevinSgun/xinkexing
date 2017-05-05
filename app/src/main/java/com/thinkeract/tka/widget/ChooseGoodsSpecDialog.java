@@ -380,7 +380,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                                 //提交订单
                             }
                         });
-                        float totalGoodsPrice = Utils.floatMultiplyFloat(mGoodsItem.getMinprice(), goodsCount);
+                        double totalGoodsPrice = Utils.doubleMultiplyDouble((double) mGoodsItem.getMinprice(), (double)goodsCount);
                         settlementDialog.setData(goodsItem, totalGoodsPrice, totalGoodsPrice, 0);
                         settlementDialog.show();
                         dismiss();

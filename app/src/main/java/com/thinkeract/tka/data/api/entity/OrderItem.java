@@ -2,6 +2,8 @@ package com.thinkeract.tka.data.api.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.List;
+
 
 /**
  * Created by minHeng on 2016/12/14 11:32.
@@ -11,12 +13,10 @@ import android.os.Parcelable;
 public class OrderItem implements Parcelable{
 
     private int status;
-    private float actuallyAmount;
-    private float amount;
     private String name;
     private String po;
     private String date;
-    private OrderGoods goods;
+    private List<OrderGoods> goods;
 
     public static final int WAIT_PAY = 1;//待支付
     public static final int WAIT_SEND = 2;//待发货
@@ -31,23 +31,19 @@ public class OrderItem implements Parcelable{
 
     protected OrderItem(Parcel in) {
         status = in.readInt();
-        actuallyAmount = in.readFloat();
-        amount = in.readFloat();
         name = in.readString();
         po = in.readString();
         date = in.readString();
-        goods = in.readParcelable(OrderGoods.class.getClassLoader());
+        goods = in.createTypedArrayList(OrderGoods.CREATOR);
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(status);
-        dest.writeFloat(actuallyAmount);
-        dest.writeFloat(amount);
         dest.writeString(name);
         dest.writeString(po);
         dest.writeString(date);
-        dest.writeParcelable(goods, flags);
+        dest.writeTypedList(goods);
     }
 
     @Override
@@ -75,22 +71,6 @@ public class OrderItem implements Parcelable{
         this.status = status;
     }
 
-    public float getActuallyAmount() {
-        return actuallyAmount;
-    }
-
-    public void setActuallyAmount(float actuallyAmount) {
-        this.actuallyAmount = actuallyAmount;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
     public String getName() {
         return name;
     }
@@ -115,11 +95,11 @@ public class OrderItem implements Parcelable{
         this.date = date;
     }
 
-    public OrderGoods getGoods() {
+    public List<OrderGoods> getGoods() {
         return goods;
     }
 
-    public void setGoods(OrderGoods goods) {
+    public void setGoods(List<OrderGoods> goods) {
         this.goods = goods;
     }
 
@@ -134,14 +114,14 @@ public class OrderItem implements Parcelable{
          */
 
         private int quantity;
-        private float price;
+        private double price;
         private String name;
         private String cover;
         private String spec;
 
         protected OrderGoods(Parcel in) {
             quantity = in.readInt();
-            price = in.readFloat();
+            price = in.readDouble();
             name = in.readString();
             cover = in.readString();
             spec = in.readString();
@@ -150,7 +130,7 @@ public class OrderItem implements Parcelable{
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeInt(quantity);
-            dest.writeFloat(price);
+            dest.writeDouble(price);
             dest.writeString(name);
             dest.writeString(cover);
             dest.writeString(spec);
@@ -189,11 +169,11 @@ public class OrderItem implements Parcelable{
             this.name = name;
         }
 
-        public float getPrice() {
+        public double getPrice() {
             return price;
         }
 
-        public void setPrice(float price) {
+        public void setPrice(double price) {
             this.price = price;
         }
 

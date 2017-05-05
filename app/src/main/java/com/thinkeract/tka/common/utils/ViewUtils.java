@@ -35,6 +35,8 @@ public class ViewUtils extends com.zitech.framework.utils.ViewUtils {
         switch (orderStatus){
             case OrderItem.IS_FINISH:
                 return R.color.text_green_light;
+            case OrderItem.IS_SEND:
+                return R.color.text_green_light;
             case OrderItem.WAIT_PAY:
                 return R.color.text_red;
             case OrderItem.IS_CANCEL:
@@ -57,7 +59,20 @@ public class ViewUtils extends com.zitech.framework.utils.ViewUtils {
         }
     }
 
-    public static int getOrderBusinessBgRes(int orderStatus){
+    public static String getOrderStatusLongString(int orderStatus){
+        switch (orderStatus){
+            case OrderItem.IS_FINISH:
+                return "交易成功";
+            case OrderItem.WAIT_PAY:
+                return "订单待支付";
+            case OrderItem.IS_CANCEL:
+                return "订单已取消";
+            default:
+                return "订单已发货，请耐心等待";
+        }
+    }
+
+    public static int getOrderBusinessBackgroundRes(int orderStatus){
         switch (orderStatus){
             case OrderItem.IS_FINISH:
                 return R.drawable.bg_black_stroke_rectangle_corner_r100;

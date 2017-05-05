@@ -41,6 +41,9 @@ public class ShippingAddressListActivity extends AppBarActivity {
         addNewAddressBtn = (Button) findViewById(R.id.addNewAddressBtn);
 
         addNewAddressBtn.setOnClickListener(this);
+
+        swipeRefreshLayout.setColorSchemeResources(R.color.gplus_color_1, R.color.gplus_color_2, R.color.gplus_color_3, R.color.gplus_color_4);
+
     }
 
     @Override

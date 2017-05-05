@@ -1,6 +1,7 @@
 package com.thinkeract.tka.ui.mine.adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,12 @@ import android.widget.TextView;
 
 import com.shizhefei.mvc.IDataAdapter;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.entity.AddressItem;
+import com.thinkeract.tka.data.api.request.IdRequest;
+import com.thinkeract.tka.widget.CommonDialog;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +47,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(AddressHolder holder, int position) {
-        AddressItem item = mList.get(position);
+    public void onBindViewHolder(AddressHolder holder, final int position) {
+        final AddressItem item = mList.get(position);
 
         if(item.getStatus()==1) {
             holder.defaultAddressTv.setText("默认地址");
@@ -68,7 +74,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         holder.delTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO 删除地址
+                //删除地址
+                showDeleteTips(item,position);
             }
         });
 
@@ -79,6 +86,30 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
             }
         });
 
+    }
+
+    private void showDeleteTips(final AddressItem item,final int position) {
+        CommonDialog commonDialog = new CommonDialog(mContext,"删除后将无法恢复，确定删除吗");
+        commonDialog.setOnPositiveButtonClickListener(new CommonDialog.OnPositiveButtonClickListener() {
+            @Override
+            public void onClick(Dialog dialog) {
+                deleteItem(item,position);
+            }
+        });
+        commonDialog.show();
+    }
+
+    private void deleteItem(AddressItem item,final int position) {
+        IdRequest idRequest = new IdRequest();
+        idRequest.setId(String.valueOf(item.getId()));
+        ApiFactory.deleteAddress(idRequest).subscribe(new ProgressSubscriber<ApiResponse>(mContext){
+            @Override
+            public void onNext(ApiResponse value) {
+                super.onNext(value);
+                notifyItemRemoved(position);
+                mList.remove(position);
+            }
+        });
     }
 
     @Override

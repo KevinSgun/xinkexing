@@ -180,11 +180,11 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    private float calculationTotalFreight(List<GDGoodsItem> goodsItemList) {
-        float totalFreight = 0;
+    private double calculationTotalFreight(List<GDGoodsItem> goodsItemList) {
+        double totalFreight = 0;
         for (GDGoodsItem goodsItem : goodsItemList) {
             if (goodsItem.getIsCheck() && goodsItem.getGoodsId() != 0) {
-                totalFreight = Utils.floatAddFloat(totalFreight, goodsItem.getFreight());
+                totalFreight = Utils.doubleAddDouble(totalFreight, (double) goodsItem.getFreight());
             }
         }
         return totalFreight;

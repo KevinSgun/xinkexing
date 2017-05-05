@@ -54,11 +54,8 @@ public class MyOrderListActivity extends AppBarActivity{
         OrderListAdapter mAdapter = new OrderListAdapter(this);
         orderListRv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         mvcHelper = new MVCSwipeRefreshHelper<List<OrderItem>>(swipeRefreshLayout);
-//        ContentViewHolder contentViewHolder = (ContentViewHolder) mvcHelper.getLoadViewFactory().getContentViewHolder();
-//        contentViewHolder.setDefaultEmptyImage(R.mipmap.ic_no_data_def);
-//        contentViewHolder.setNoDataPrompt("暂无订单信息");
         // 设置数据源
-        mvcHelper.setDataSource(new OrderListDataSource());
+        mvcHelper.setDataSource(new OrderListDataSource("0"));
         // 设置适配器
         mvcHelper.setAdapter(mAdapter);
         // 加载数据

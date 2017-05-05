@@ -46,10 +46,10 @@ public class ShoppingCartActivity extends AppBarActivity {
     private Button settlementBtn;
     private ViewAnimator viewanimator;
     private ShoppingCartAdapter mAdapter;
-    private float totalGoodsPrice;
-    private float totalFreight;
+    private double totalGoodsPrice;
+    private double totalFreight;
     private int totalCount;
-    private float totalAmount;
+    private double totalAmount;
     private static final int GOODS_CART = 1;
     private static final int EMPTY = 0;
     private boolean noNeedChangeAll;
@@ -211,12 +211,12 @@ public class ShoppingCartActivity extends AppBarActivity {
         totalAmount = 0;
         for (GDGoodsItem goodsItem : goodsItemList) {
             if (goodsItem.getIsCheck() && goodsItem.getGoodsId() != 0) {
-                totalGoodsPrice = Utils.floatAddFloat(totalGoodsPrice, Utils.floatMultiplyFloat(goodsItem.getPrice(), goodsItem.getGoodsCount()));
-                totalFreight = Utils.floatAddFloat(totalFreight, goodsItem.getFreight());
+                totalGoodsPrice = Utils.doubleAddDouble(totalGoodsPrice, Utils.doubleMultiplyDouble((double) goodsItem.getPrice(), (double)goodsItem.getGoodsCount()));
+                totalFreight = Utils.doubleAddDouble(totalFreight, (double) goodsItem.getFreight());
                 totalCount += goodsItem.getGoodsCount();
             }
         }
-        totalAmount = Utils.floatAddFloat(totalGoodsPrice, totalFreight);
+        totalAmount = Utils.doubleAddDouble(totalGoodsPrice, totalFreight);
     }
 
     private void initializeView() {

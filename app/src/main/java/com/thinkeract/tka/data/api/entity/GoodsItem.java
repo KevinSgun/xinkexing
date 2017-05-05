@@ -19,7 +19,7 @@ public class GoodsItem {
 
     private int id;
     private int comments;
-    private float minprice;
+    private double minprice;
     private String name;
     private String cover;
     private String spec;
@@ -27,11 +27,11 @@ public class GoodsItem {
     private List<String> photos;
     private String descr;
 
-    public float getMinprice() {
+    public double getMinprice() {
         return minprice;
     }
 
-    public void setMinprice(float minprice) {
+    public void setMinprice(double minprice) {
         this.minprice = minprice;
     }
 

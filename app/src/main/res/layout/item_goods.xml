@@ -12,7 +12,6 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/w24"
         android:layout_marginLeft="@dimen/w24"
-        android:layout_toRightOf="@id/checkItem"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_loading_square"
 

@@ -8,10 +8,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.common.utils.Utils;
+import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.entity.OrderDetailData;
+import com.thinkeract.tka.data.api.entity.OrderItem;
 import com.thinkeract.tka.ui.ListAdapter;
 import com.zitech.framework.widget.RemoteImageView;
+
+import java.util.List;
 
 /**
  * Created by ymh on 2017/4/9 22:42
@@ -38,7 +44,7 @@ public class OrderDetailAdapter extends ListAdapter<OrderDetailData>{
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType){
             case ADDRESS_AND_STATUS:
-                return new AddressAndStatusHolder(LayoutInflater.from(mContext).inflate(R.layout.item_address_and_status,parent,false));
+                return new AddressAndStatusHolder(LayoutInflater.from(mContext).inflate(R.layout.item_order_address_and_status,parent,false));
             case GOODS_ITEM:
                 return new GoodsHolder(LayoutInflater.from(mContext).inflate(R.layout.item_order_goods,parent,false));
             default:
@@ -49,7 +55,82 @@ public class OrderDetailAdapter extends ListAdapter<OrderDetailData>{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         OrderDetailData item = mList.get(position);
+        int itemType = getItemViewType(position);
+        switch (itemType){
+            case ADDRESS_AND_STATUS:
+                AddressAndStatusHolder andStatusHolder = (AddressAndStatusHolder) holder;
+                andStatusHolder.orderStatusTopTv.setBackgroundColor(ViewUtils.getOrderStatusColorRes(item.getStatus()));
+                andStatusHolder.shippingStatusTv.setTextColor(ViewUtils.getOrderStatusColorRes(item.getStatus()));
 
+                andStatusHolder.orderStatusTopTv.setText(ViewUtils.getOrderStatusLongString(item.getStatus()));
+                andStatusHolder.shippingStatusTv.setText(ViewUtils.getOrderStatusString(item.getStatus()));
+
+                andStatusHolder.orderNameTv.setText(item.getName());
+
+//                andStatusHolder.addressTv.setText(item.get);
+//                andStatusHolder.contactNameTv.setText(item);
+//                andStatusHolder.phoneNumTv.setText(item.get);
+                andStatusHolder.orderNumTv.setText(String.format(mContext.getResources().getString(R.string.order_num),item.getPo()));
+                andStatusHolder.dateTv.setText(item.getDate());
+                break;
+            case GOODS_ITEM:
+                GoodsHolder goodsHolder = (GoodsHolder) holder;
+                OrderDetailData.OrderDetailGoods detailGoods = item.getDetailGoods();
+                goodsHolder.goodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,detailGoods.getCover());
+                goodsHolder.goodsTitleTv.setText(detailGoods.getName());
+                goodsHolder.goodsPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb),detailGoods.getPrice()));
+                goodsHolder.goodsCountTv.setText(String.format(mContext.getResources().getString(R.string.x_count),detailGoods.getQuantity()));
+                if(item.getStatus() == OrderItem.IS_FINISH){
+                    goodsHolder.postCommentBtn.setVisibility(View.VISIBLE);
+                    goodsHolder.postCommentBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO 发表评论
+                        }
+                    });
+                }else {
+                    goodsHolder.postCommentBtn.setVisibility(View.GONE);
+                }
+
+                break;
+            case ORDER_STATISTICS:
+                StatisticsHolder statisticsHolder = (StatisticsHolder) holder;
+                statisticsHolder.goodsAmountTv.setText(String.format(mContext.getResources().getString(R.string.rmb),getTotalAmount(item.getGoods())));
+                statisticsHolder.freightTv.setText(item.getFare()>0?String.format(mContext.getResources().getString(R.string.rmb),item.getFare()):"免运费");
+                statisticsHolder.actuallyAmountTv.setText(String.format(mContext.getResources().getString(R.string.rmb),getActualAmount(getTotalAmount(item.getGoods()),item.getFare())));
+                statisticsHolder.deleteOrderBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO 删除订单
+                    }
+                });
+
+                if(item.getStatus() == OrderItem.IS_FINISH ||item.getStatus() == OrderItem.IS_SEND ){
+                    statisticsHolder.viewLogisticsBtn.setVisibility(View.VISIBLE);
+                    statisticsHolder.viewLogisticsBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO 查看物流
+                        }
+                    });
+                }else {
+                    statisticsHolder.viewLogisticsBtn.setVisibility(View.GONE);
+                }
+                break;
+        }
+
+    }
+
+    private double getTotalAmount(List<OrderDetailData.OrderDetailGoods> goods) {
+        double totalAmount = 0.0;
+        for(OrderDetailData.OrderDetailGoods goodItem:goods){
+            totalAmount = Utils.doubleAddDouble(totalAmount,Utils.doubleMultiplyDouble(goodItem.getPrice(), (double) goodItem.getQuantity()));
+        }
+        return totalAmount;
+    }
+
+    private double getActualAmount(double goodsAmount,double freight) {
+        return Utils.doubleAddDouble(goodsAmount,freight);
     }
 
     public static class AddressAndStatusHolder extends RecyclerView.ViewHolder{
