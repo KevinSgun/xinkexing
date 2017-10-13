@@ -23,7 +23,7 @@ public class StockUtil {
         List<String> list = Arrays.asList(codeStrArr);
         if (list.size() > 0) {
             HashSet<List<String>> result = new HashSet<>();
-            for (int i = 0; i < Math.pow(2, list.size()); i++) {// 集合子集个数=2的该集合长度的乘方
+            for (int i = 0, size = (int) Math.pow(2, list.size()); i < size; i++) {// 集合子集个数=2的该集合长度的乘方
                 List<String> subSet = new ArrayList<>();
                 int index = i;// 索引从0一直到2的集合长度的乘方-1
                 for (int j = 0; j < list.size(); j++) {
@@ -33,12 +33,14 @@ public class StockUtil {
                     }
                     index >>= 1;// 索引右移一位
                 }
-                Collections.sort(subSet,new CompareStringList<String>());
-                result.add(subSet); // 把子集存储起来
+                if(subSet.size()>0) {
+                    Collections.sort(subSet, new CompareStringList<String>());
+                    result.add(subSet); // 把子集存储起来
+                }
             }
-            List<String> empty = new ArrayList<>();
-            if(result.contains(empty))
-                result.remove(empty);
+//            List<String> empty = new ArrayList<>();
+//            if(result.contains(empty))
+//                result.remove(empty);
             return result;
         } else {
             return new HashSet<>();

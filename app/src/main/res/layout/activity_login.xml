@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:background="@color/transparent"
             android:gravity="center_vertical"
-            android:inputType="number"
+            android:inputType="phone"
             android:maxLength="11"
             android:text="" />
     </LinearLayout>

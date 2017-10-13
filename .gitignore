@@ -1,19 +1,18 @@
 *.iml
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
 /build
 /captures
 .externalNativeBuild
-/.gradle/
 /.idea/
-/build/
 /framework/build/
-/framework/framework.iml
 /app/build/
-/app/app.iml
 .svn
 /.svn/
 
+app/libs/
+app/src/main/java/com/thinkeract/tka/common/provider/
+app/src/main/java/com/thinkeract/tka/data/db/entity/
+app/src/main/java/com/thinkeract/tka/data/entity/
+framework/libs/

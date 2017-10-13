@@ -46,7 +46,6 @@
             android:layout_height="@dimen/h160"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/w20"
-            android:layout_toRightOf="@id/checkItem"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_loading_square"
 
