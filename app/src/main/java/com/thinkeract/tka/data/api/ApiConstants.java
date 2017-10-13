@@ -41,7 +41,7 @@ public class ApiConstants {
          */
     //API接口地址
 //    public static final String RELEASE_URL = "http://maixiang.godochina.com:8080/";
-    public static String RELEASE_URL = "http://120.24.95.8:11111/";
+    public static String RELEASE_URL = "http://api.thinkeract.com:9090/";
 //    public static String RELEASE_URL = "http://192.168.2.121:8080/";
 
     /*
@@ -49,7 +49,7 @@ public class ApiConstants {
 	 */
     //API接口地址
 //    public static final String DAILY_URL = "http://maixiang.godochina.com:8080/";
-    public static final String DAILY_URL = "http://120.24.95.8:11111/";
+    public static final String DAILY_URL = "http://api.thinkeract.com:9090/";
 //    public static final String DAILY_URL = "http://192.168.2.121:8080/";
     public static final String BAIDU_MAP_API_URL= "http://api.map.baidu.com/";
     public static final String  GEO_CONVERT="geoconv/v1/";
