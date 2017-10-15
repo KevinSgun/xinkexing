@@ -24,6 +24,30 @@
         ]
     },
     {
+        "outputFile": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-port\\values-port.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 55,
+                    "endOffset": 106
+                },
+                "from": {
+                    "file": "C:\\Users\\minhe\\.android\\build-cache\\c4a7b1deb9bac148cb42ed301648312cbc014d02\\output\\res\\values-port\\values-port.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 55,
+                        "endOffset": 280
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-port\\values-port.xml",
         "map": [
             {

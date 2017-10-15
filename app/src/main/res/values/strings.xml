@@ -171,7 +171,8 @@
     <string name="gold">%.2f金币</string>
     <string name="diamond">钻石</string>
 
-   <string name="topic_detail">帖子详情</string>
+    <string name="topic_detail">帖子详情</string>
+    <string name="total_check_result">总器官检查</string>
 
     <string name="flash_light_on">ON</string>
     <string name="flash_light_off">OFF</string>

@@ -28,7 +28,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/h620"
+                    android:layout_height="@dimen/h640"
                     android:background="@color/white">
 
                     <ImageView
@@ -38,22 +38,30 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_purple_shadow" />
 
-                    <TextView
-                        style="@style/LargeText"
-                        android:layout_centerInParent="true"
-                        android:text="88"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/h100" />
+                    <com.thinkeract.tka.widget.DashboardView
+                        android:id="@+id/dashboardView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/h140"
+                        />
 
                     <TextView
+                        android:id="@+id/healthDescriptionTv"
                         style="@style/LargeText"
-                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="@dimen/h88"
+                        android:layout_below="@id/dashboardView"
                         android:text="当前状态良好，请继续保持!"
                         android:textColor="@color/white"
                         android:textSize="@dimen/h40" />
-
+                    <TextView
+                        style="@style/LargeText"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/healthDescriptionTv"
+                        android:layout_marginTop="@dimen/h20"
+                        android:text="点击下方项目查看详细评测报告"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/h24" />
                     <ImageView
                         android:layout_width="@dimen/w720"
                         android:layout_height="@dimen/h95"

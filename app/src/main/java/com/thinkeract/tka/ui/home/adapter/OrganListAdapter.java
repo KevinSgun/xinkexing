@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.data.api.entity.SecondReportItem;
+import com.thinkeract.tka.ui.home.CheckResultActivity;
 import com.zitech.framework.utils.ViewUtils;
 import com.zitech.framework.widget.RemoteImageView;
 
@@ -67,7 +68,8 @@ public class OrganListAdapter extends RecyclerView.Adapter{
             organHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO 进入查看详细数据
+                    //进入查看详细数据
+                    CheckResultActivity.launch(mContext,item.getId(),item.getName());
                 }
             });
         }

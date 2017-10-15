@@ -1,7 +1,11 @@
 [
     {
-        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_bg.9.png",
-        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_bg.9.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_middle_pressed.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_middle_pressed.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_bg.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_bg.9.png"
     },
     {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\download_horizontal_progressbar_foreground.png",
@@ -16,24 +20,12 @@
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png"
-    },
-    {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_middle_pressed.9.png",
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_middle_pressed.9.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_bg.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_bg.9.png"
-    },
-    {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png",
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_nor.png",
@@ -44,24 +36,124 @@
         "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_middle_pressed.9.png"
     },
     {
-        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_xiangce_sel.png",
-        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_xiangce_sel.png"
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png"
     },
     {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_top_pressed.9.png",
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_top_pressed.9.png"
     },
     {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\download_horizontal_progressbar_background.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\download_horizontal_progressbar_background.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_top_pressed.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_top_pressed.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\download_horizontal_progressbar_foreground.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\download_horizontal_progressbar_foreground.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_normal.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_normal.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_icon.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_icon.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_icon.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_icon.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_top_normal.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_top_normal.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_middle_normal.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_middle_normal.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_top_normal.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_top_normal.9.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_bg.9.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_bg.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_nor.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_back_nor.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_bg.9.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_bg.9.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png",
+        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_normal.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_normal.9.png"
+    },
+    {
+        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_xiangce_sel.png",
+        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_xiangce_sel.png"
+    },
+    {
         "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png",
         "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png"
     },
     {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\common_bottom_dialog_checked_icon.png",
@@ -100,16 +192,8 @@
         "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_xiangce.png"
     },
     {
-        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png",
-        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_sel.png"
-    },
-    {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png",
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png"
-    },
-    {
-        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png",
-        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_pressed.9.png"
     },
     {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_nor.png",
@@ -120,35 +204,27 @@
         "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_top_pressed.9.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_bottom_normal.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_bottom_normal.9.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_back_sel.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_normal.9.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_xiangce_sel.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_xiangce_sel.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_icon.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_icon.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_middle_normal.9.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_middle_normal.9.png"
     },
     {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png",
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_light_nor.png"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_single_pressed.9.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_icon.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_icon.png"
     },
     {
-        "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\loading_icon.png",
-        "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\loading_icon.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_middle_normal.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_middle_normal.9.png"
-    },
-    {
-        "merged": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\actionsheet_top_normal.9.png",
-        "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\actionsheet_top_normal.9.png"
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scan2code_icon_xiangce.png",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scan2code_icon_xiangce.png"
     }
 ]

@@ -10,9 +10,3 @@
 /app/build/
 .svn
 /.svn/
-
-app/libs/
-app/src/main/java/com/thinkeract/tka/common/provider/
-app/src/main/java/com/thinkeract/tka/data/db/entity/
-app/src/main/java/com/thinkeract/tka/data/entity/
-framework/libs/

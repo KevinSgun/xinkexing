@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checkResultItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/w60"
+    android:background="@color/pink_light">
+
+    <TextView
+        android:id="@+id/checkItemTv"
+        style="@style/SmallText"
+        android:layout_width="@dimen/w290"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="@dimen/w16"
+        android:text="积累器官-头部"
+        android:textColor="@color/textColorPrimary" />
+
+    <View
+        style="@style/DividerLineVertical"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/checkResultTv"
+        style="@style/SmallText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="@dimen/w16"
+        android:text="60"
+        android:textColor="@color/text_red" />
+
+    <View
+        style="@style/DividerLineVertical"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/referenceRangeTv"
+        style="@style/SmallText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="@dimen/w16"
+        android:text="40-50 单位"
+        android:textColor="@color/textColorPrimary" />
+</LinearLayout>

@@ -17,6 +17,7 @@ import com.thinkeract.tka.ui.BaseFragment;
 import com.thinkeract.tka.ui.home.adapter.NewsListAdapter;
 import com.thinkeract.tka.ui.home.contract.HomeDataContract;
 import com.thinkeract.tka.ui.home.presenter.HomeDataPresenter;
+import com.thinkeract.tka.widget.DashboardView;
 
 import java.util.List;
 
@@ -42,6 +43,9 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
     private String mOrganId;
     private String mAllergyId;
     private String mSourroundingsId;
+    private DashboardView mDashboardView;
+    private TextView mHealthDescriptionTv;
+    private int mSumScore;
 //    private MVCSwipeRefreshHelper<List<NewsItem>> mvcHelper;
 
     @Override
@@ -75,6 +79,8 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
         leftItemName = (TextView) contentView.findViewById(R.id.leftItemName);
         middleItemName = (TextView) contentView.findViewById(R.id.middleItemName);
         rightItemName = (TextView) contentView.findViewById(R.id.rightItemName);
+        mDashboardView = (DashboardView) contentView.findViewById(R.id.dashboardView);
+        mHealthDescriptionTv = (TextView) contentView.findViewById(R.id.healthDescriptionTv);
 
         leftItemLayout.setOnClickListener(this);
         middleItemLayout.setOnClickListener(this);
@@ -125,6 +131,9 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
     }
 
     private void refreshUI(HomePageData response) {
+        mSumScore = response.getSumScore();
+        mHealthDescriptionTv.setText(statusDescription());
+        mDashboardView.setCreditValue(mSumScore);
         List<HomePageData.ScoreBean> scoreBeanList = response.getScore();
         mAdapter.setItemList(response.getNews());
         for(int i=0,size = scoreBeanList.size();i<size;i++){
@@ -146,7 +155,19 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
                 mSourroundingsId = String.valueOf(scoreBean.getId());
             }
         }
+    }
 
+    private String statusDescription() {
+        if (mSumScore >= 90) {
+            return "当前状态极佳，请继续保持!";
+        } else if (mSumScore >= 80) {
+            return "当前状态良好，请继续保持!";
+        } else if (mSumScore >= 70) {
+            return "当前状态一般，请引起注意!";
+        } else if (mSumScore >= 60) {
+            return "当前状态欠佳，请引起注意";
+        }
+        return "当前状态较差，请找专业医生检查";
     }
 
 }

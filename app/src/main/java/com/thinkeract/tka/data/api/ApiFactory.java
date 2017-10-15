@@ -24,6 +24,7 @@ import com.thinkeract.tka.data.api.request.SubmitOrderBody;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
+import com.thinkeract.tka.data.api.response.CheckResultData;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
 import com.thinkeract.tka.data.api.response.HomePageData;
 import com.thinkeract.tka.data.api.response.ListData;
@@ -326,6 +327,16 @@ public class ApiFactory {
     public static Observable<ApiResponse> lookOrderLogistics(PoBody body) {
         Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.ORDER_LOGISTICS), body);
         return getMallService().lookOrderLogistics(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<LogisticsData>>applyExecutorSchedulers());
+    }
+
+    /**
+     * 查看订单物流信息
+     * @param body
+     * @return
+     */
+    public static Observable<ApiResponse<CheckResultData>> getCheckResult(IdRequest body) {
+        Request<IdRequest> request = new Request<>(RequestHeader.create(ApiConstants.CHECK_RESULT), body);
+        return getHomePageDataService().getCheckResult(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<LogisticsData>>applyExecutorSchedulers());
     }
 
    //-----------------------------------------------------------------------------------------------

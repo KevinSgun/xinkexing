@@ -83,6 +83,7 @@ public class Constants {
         String GOODS_ID = "goods_id";
         String ADDRESS_ITEM = "address_item";
         String PO = "po";
+        String TITLE = "title";
     }
 
     public interface FragmentExtra {

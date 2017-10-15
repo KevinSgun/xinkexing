@@ -38,6 +38,9 @@
     <color name="purple_dark">#c065e7</color>
     <color name="green_93c94d">#93c94d</color>
     <color name="gray_d2d2d2">#d2d2d2</color>
+    <color name="pink_light">#fce9e9</color>
+    <color name="gray_f7f7f7">#f7f7f7</color>
+    <color name="gray_f4faec">#f4faec</color>
 
     <color name="pldroid_streaming_white">#fff</color>
     <color name="pldroid_streaming_red">#f00</color>

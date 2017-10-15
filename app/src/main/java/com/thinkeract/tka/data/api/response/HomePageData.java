@@ -13,6 +13,7 @@ public class HomePageData {
 
     private List<ScoreBean> score;
     private List<NewsItem> news;
+    private int sumScore;
 
     public List<ScoreBean> getScore() {
         return score;
@@ -76,4 +77,11 @@ public class HomePageData {
         }
     }
 
+    public int getSumScore() {
+        return sumScore;
+    }
+
+    public void setSumScore(int sumScore) {
+        this.sumScore = sumScore;
+    }
 }

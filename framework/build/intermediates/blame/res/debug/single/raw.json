@@ -4,6 +4,10 @@
         "source": "D:\\AndroidStudioProjects\\XingKeXing\\framework\\src\\main\\res\\raw\\beep.ogg"
     },
     {
+        "merged": "D:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
+        "source": "D:\\AndroidStudioProject\\XingKeXing\\framework\\src\\main\\res\\raw\\beep.ogg"
+    },
+    {
         "merged": "C:\\AndroidStudioProject\\XingKeXing\\framework\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
         "source": "C:\\AndroidStudioProject\\XingKeXing\\framework\\src\\main\\res\\raw\\beep.ogg"
     }

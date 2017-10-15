@@ -5,6 +5,7 @@ import com.thinkeract.tka.data.api.entity.SecondReportItem;
 import com.thinkeract.tka.data.api.request.IdRequest;
 import com.thinkeract.tka.data.api.request.ListBody;
 import com.thinkeract.tka.data.api.request.Request;
+import com.thinkeract.tka.data.api.response.CheckResultData;
 import com.thinkeract.tka.data.api.response.HomePageData;
 import com.thinkeract.tka.data.api.response.ListData;
 import com.thinkeract.tka.data.api.response.NewsDetailData;
@@ -73,4 +74,14 @@ public interface HomePageDataService {
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     Observable<ApiResponse<List<SecondReportItem>>> secondReport(@Body Request<IdRequest> request);
+
+    /**
+     * 检测项目明细
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<CheckResultData>> getCheckResult(@Body Request<IdRequest> request);
 }
