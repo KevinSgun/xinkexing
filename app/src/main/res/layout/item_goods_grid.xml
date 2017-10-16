@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/w220"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/w24"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/h6"
+    android:paddingTop="@dimen/h20">
+
+    <com.zitech.framework.widget.RemoteImageView
+        android:id="@+id/goodsPicIv"
+        android:layout_width="@dimen/w220"
+        android:layout_height="@dimen/w220"
+        android:layout_gravity="center"
+        android:padding="0.5dp"
+        android:background="@drawable/bg_gray_stroke_gray_rectangle"/>
+
+    <TextView
+        android:id="@+id/goodsNameTv"
+        style="@style/CommonText"
+        android:layout_marginTop="@dimen/h16"
+        android:textColor="@color/textColorPrimary"
+        android:text="药名药名药" />
+
+    <TextView
+        android:id="@+id/priceTv"
+        style="@style/CommonText"
+        android:layout_marginTop="@dimen/h8"
+        android:text="¥88888.88"
+        android:textColor="@color/text_red"
+        />
+
+</LinearLayout>

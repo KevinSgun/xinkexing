@@ -172,7 +172,6 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
         goToShoppingCartLayout.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         super.onClick(v);

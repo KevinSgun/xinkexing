@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w24"
+        android:background="@color/white"/>
+    <View style="@style/DividerLineHorizontal"
+        />
+    <RelativeLayout
+        android:id="@+id/healthOptionLayout"
+        style="@style/ContentRelativeLayout"
+        android:background="@drawable/sl_common_item"
+        >
+
+        <ImageView
+            android:id="@+id/healthOptionIv"
+            android:layout_width="@dimen/w44"
+            android:layout_height="@dimen/w44"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/w24"
+            android:src="@mipmap/ic_account_setting" />
+
+        <TextView
+            android:id="@+id/healthOptionTv"
+            style="@style/CommonText"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/w28"
+            android:layout_toRightOf="@id/healthOptionIv"
+            android:text="健康选项" />
+        <TextView
+            style="@style/SmallText"
+            android:layout_alignBottom="@id/healthOptionTv"
+            android:layout_marginLeft="@dimen/w12"
+            android:layout_marginBottom="@dimen/w3"
+            android:textSize="@dimen/w20"
+            android:layout_toRightOf="@id/healthOptionTv"
+            android:textColor="@color/textColorPrimaryGray"
+            android:text="(点击重新测评)" />
+
+        <ImageView
+            android:layout_width="@dimen/w14"
+            android:layout_height="@dimen/w24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/w24"
+            android:src="@mipmap/ic_arrow_right" />
+
+        <View
+            style="@style/DividerLineHorizontal"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</LinearLayout>
