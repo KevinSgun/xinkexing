@@ -1,7 +1,6 @@
 package com.thinkeract.tka.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,15 +75,16 @@ public class ToolBarHelper {
     private void addContentLayout(int id) {
         mUserView = mInflater.inflate(id, null);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        TypedArray typedArray = mContext.getTheme().obtainStyledAttributes(android.support.v7.appcompat.R.styleable.Theme);
+//        TypedArray typedArray = mContext.getTheme().obtainStyledAttributes(android.support.v7.appcompat.R.styleable.AppCompatTheme);
         /*获取主题中定义的悬浮标志*/
-        boolean overly = typedArray.getBoolean(android.support.v7.appcompat.R.styleable.Theme_windowActionBarOverlay, false);
+//        boolean overly = typedArray.getBoolean(android.support.v7.appcompat.R.styleable.AppCompatTheme_windowActionBarOverlay, false);
         /*获取主题中定义的toolbar的高度*/
-        int toolBarSize = mContext.getResources().getDimensionPixelOffset(R.dimen.action_bar_size);
-        ;//(int) typedArray.getDimension(android.support.v7.appcompat.R.styleable.Theme_actionBarSize, (int) mContext.getResources().getDimension(R.dimen.abc_action_bar_default_height_material));
-        typedArray.recycle();
+//        int toolBarSize = mContext.getResources().getDimensionPixelOffset(R.dimen.action_bar_size);
+//        (int) typedArray.getDimension(android.support.v7.appcompat.R.styleable.AppCompatTheme_actionBarSize, (int) mContext.getResources().getDimension(R.dimen.abc_action_bar_default_height_material));
+//        typedArray.recycle();
         /*如果是悬浮状态，则不需要设置间距*/
-        params.topMargin = overly ? 0 : toolBarSize;
+//        params.topMargin = overly ? 0 : toolBarSize;
+        params.topMargin = mContext.getResources().getDimensionPixelOffset(R.dimen.action_bar_size);
         mContentView.addView(mUserView, params);
 
 

@@ -4,7 +4,7 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="22" />
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
@@ -14,6 +14,10 @@
         android:targetPackage="com.zitech.framework.test" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
 
     <application
         android:allowBackup="true"

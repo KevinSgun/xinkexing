@@ -181,7 +181,7 @@ public class FilterView extends LinearLayout implements View.OnClickListener {
         leftAdapter = new FilterLeftAdapter(mContext, filterData.getCategory());
         lvLeft.setAdapter(leftAdapter);
         if (leftSelectedCategoryEntity == null) {
-            leftSelectedCategoryEntity = filterData.getCategory().get(1);
+            leftSelectedCategoryEntity = filterData.getCategory().get(0);
         }
         leftAdapter.setSelectedEntity(leftSelectedCategoryEntity);
 

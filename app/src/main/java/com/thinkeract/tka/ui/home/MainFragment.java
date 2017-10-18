@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -58,12 +57,8 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
         super.onInflateView(contentView);
         Toolbar toolbar = (Toolbar) contentView.findViewById(R.id.toolbar);
         LinearLayout coverLayout = (LinearLayout) contentView.findViewById(R.id.coverLayout);
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             toolbar.setPadding(0, ViewUtils.getStatuBarHeight(getContext()), 0, 0);
-        } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-            ViewGroup.LayoutParams params = toolbar.getLayoutParams();
-            params.height = com.zitech.framework.utils.ViewUtils.dip2px(getContext(),45);
-            coverLayout.setFitsSystemWindows(true);
         }
         healthKnowledgeRv = (RecyclerView) contentView.findViewById(R.id.healthKnowledgeRv);
         leftCurrentScore = (TextView) contentView.findViewById(R.id.leftCurrentScore);

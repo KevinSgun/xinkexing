@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,13 +73,9 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
         tintManager.setStatusBarTintResource(R.drawable.bg_black_shadow_light);
         mGoodsId = getIntent().getStringExtra(Constants.ActivityExtra.GOODS_ID);
         initializeView();
-        setSupportActionBar(toolbar);
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+//        setSupportActionBar(toolbar);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             toolbar.setPadding(0, ViewUtils.getStatuBarHeight(getContext()), 0, 0);
-        } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-            ViewGroup.LayoutParams params = toolbar.getLayoutParams();
-            params.height = com.zitech.framework.utils.ViewUtils.dip2px(getContext(),45);
-            banner.setFitsSystemWindows(true);
         }
         actionBarTitle.setText("");
         appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {

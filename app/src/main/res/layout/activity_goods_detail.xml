@@ -41,13 +41,14 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="44dp">
+                    android:layout_height="44dp"
+                    >
 
                     <LinearLayout
                         android:id="@+id/actionBarLeft"
                         android:layout_width="@dimen/action_bar_size"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="left"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
                         android:gravity="center">
 
                         <ImageView

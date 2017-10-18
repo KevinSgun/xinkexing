@@ -24,7 +24,7 @@ task clean(type: Delete) {
 
 ext {
     // App dependencies
-    supportLibraryVersion = '23.1.1'
+    supportLibraryVersion = "${SUPPORT_LIBRARY_VERSION}"
     buildToolsVersion = "${BUILD_TOOLS_VERSION}"
     compileSdkVersion = COMPILE_SDK_VERSION.toInteger()
     minSdkVersion = MIN_SDK_VERSION;
