@@ -1,5 +1,7 @@
 package com.thinkeract.tka.data.api.request;
 
+import com.thinkeract.tka.data.api.entity.AddressItem;
+
 /**
  * Created by ymh on 2017/4/8 17:11
  * e-mail:minhengyan@gmail.com
@@ -22,6 +24,19 @@ public class UpdateAddressBody {
     private String cityname;
     private String address;
     private String status;
+
+    public UpdateAddressBody(){
+
+    }
+
+    public UpdateAddressBody(AddressItem addressItem){
+        this.id = String.valueOf(addressItem.getId());
+        this.phone = addressItem.getPhone();
+        this.contact = addressItem.getContact();
+        this.cityname = addressItem.getCityname();
+        this.address = addressItem.getAddress();
+        this.status = String.valueOf(addressItem.getStatus());
+    }
 
     public String getId() {
         return id;

@@ -42,14 +42,17 @@
             style="@style/CommonText"
             android:layout_centerVertical="true"
             android:text="手机号码"
-            android:textColor="@color/textColorPrimaryGray" />
+            android:textColor="@color/textColorPrimaryGray"
+            />
 
         <EditText
             android:id="@+id/phoneNumEt"
             style="@style/EditTextStyle"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/phoneTv"
-            android:inputType="numberDecimal"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:maxLength="11"
             android:paddingLeft="@dimen/w54"
             android:text=""
             android:textSize="@dimen/w28" />

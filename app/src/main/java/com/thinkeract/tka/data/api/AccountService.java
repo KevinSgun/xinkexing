@@ -4,7 +4,6 @@ package com.thinkeract.tka.data.api;
 import com.thinkeract.tka.data.api.entity.AddressItem;
 import com.thinkeract.tka.data.api.request.DoctorDataReviewBody;
 import com.thinkeract.tka.data.api.request.IdRequest;
-import com.thinkeract.tka.data.api.request.ListBody;
 import com.thinkeract.tka.data.api.request.LoginBody;
 import com.thinkeract.tka.data.api.request.Request;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
@@ -83,7 +82,7 @@ public interface AccountService {
      */
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    Observable<ApiResponse<List<AddressItem>>> getUserAddressList(@Body Request<ListBody> request);
+    Observable<ApiResponse<List<AddressItem>>> getUserAddressList(@Body Request request);
 
     /**
      * 新增用户收货地址

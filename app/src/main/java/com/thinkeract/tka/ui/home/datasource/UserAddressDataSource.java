@@ -52,20 +52,20 @@ public class UserAddressDataSource implements IAsyncDataSource<List<AddressItem>
         body.setPage(page);
         body.setPageSize(proxy.getPageSize());
 
-        final Disposable subscription = ApiFactory.getUserAddressList(body).subscribe(new Consumer<ApiResponse<List<AddressItem>>>() {
+        final Disposable subscription = ApiFactory.getUserAddressList().subscribe(new Consumer<ApiResponse<List<AddressItem>>>() {
             @Override
             public void accept(ApiResponse<List<AddressItem>> listDataApiResponse) throws Exception {
 //                if (!proxy.isPageCountSet()) {
 //                    proxy.setDataCount(listDataApiResponse.getData().getPageInfo().getCountX());
 //                }
-                proxy.setPageCount(1);
-                mIsOnlyOnePage = true;
-                List<AddressItem> items = listDataApiResponse.getData();
+//                mIsOnlyOnePage = listDataApiResponse.getData().getPageInfo().getPageCount() <= 1;
+//                proxy.setPageCount(1);
+//                mIsOnlyOnePage = true;
+//                List<AddressItem> items = listDataApiResponse.getData().getItems();
 //                if (items == null || items.size() == 0) {
 //                    proxy.setReachEnd(true);
 //                }
-                proxy.setReachEnd(false);
-                sender.sendData(items);
+//                sender.sendData(items);
             }
 
         }, new Consumer<Throwable>() {

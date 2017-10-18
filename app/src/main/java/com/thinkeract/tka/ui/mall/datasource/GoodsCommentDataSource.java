@@ -62,7 +62,7 @@ public class GoodsCommentDataSource implements IAsyncDataSource<List<GoodsCommen
                 if (!proxy.isPageCountSet()) {
                     proxy.setDataCount(listDataApiResponse.getData().getPageInfo().getCountX());
                 }
-                mIsOnlyOnePage = listDataApiResponse.getData().getPageInfo().getPageCount() == 1;
+                mIsOnlyOnePage = listDataApiResponse.getData().getPageInfo().getPageCount() <= 1;
                 mIsOnlyOnePage = true;
                 List<GoodsComment> items = listDataApiResponse.getData().getItems();
                 if (items == null || items.size() == 0) {

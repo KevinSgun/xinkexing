@@ -23,5 +23,4 @@ public interface OrderDetailContract {
         void getOrderDetail(String po);
     }
 
-
 }

@@ -42,4 +42,8 @@ public class Events {
         }
     }
 
+    public static class AddressChangeEvent{
+
+    }
+
 }

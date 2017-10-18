@@ -1,7 +1,6 @@
 package com.thinkeract.tka.ui.mine.adapter;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +11,8 @@ import android.widget.TextView;
 
 import com.shizhefei.mvc.IDataAdapter;
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.data.api.ApiFactory;
+import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.entity.AddressItem;
-import com.thinkeract.tka.data.api.request.IdRequest;
-import com.thinkeract.tka.widget.CommonDialog;
-import com.zitech.framework.data.network.response.ApiResponse;
-import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +26,7 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
 
     private Activity mContext;
     private List<AddressItem> mList;
+    private OnItemStuffClickListener onItemListener;
 
     public AddressListAdapter(Activity context){
         mContext  = context;
@@ -39,6 +35,7 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
 
     public void setItemList(List<AddressItem> itemList){
         mList = itemList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -47,8 +44,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(AddressHolder holder, final int position) {
-        final AddressItem item = mList.get(position);
+    public void onBindViewHolder(final AddressHolder holder, int position) {
+       AddressItem item = mList.get(position);
 
         if(item.getStatus()==1) {
             holder.defaultAddressTv.setText("默认地址");
@@ -68,6 +65,10 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
             @Override
             public void onClick(View v) {
                 //TODO 编辑地址
+                if(!ViewUtils.isFastDoubleClick()){
+                    if(onItemListener != null)
+                        onItemListener.onEditClick(holder.getLayoutPosition());
+                }
             }
         });
 
@@ -75,7 +76,11 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
             @Override
             public void onClick(View v) {
                 //删除地址
-                showDeleteTips(item,position);
+                if(!ViewUtils.isFastDoubleClick()){
+                    if(onItemListener != null)
+                        onItemListener.onDeleteClick(holder.getLayoutPosition());
+                }
+//                showDeleteTips(item,position);
             }
         });
 
@@ -83,33 +88,13 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
             @Override
             public void onClick(View v) {
                 //TODO 设为默认地址
+                if(!ViewUtils.isFastDoubleClick()){
+                    if(onItemListener != null)
+                        onItemListener.onSetDefClick(holder.getLayoutPosition());
+                }
             }
         });
 
-    }
-
-    private void showDeleteTips(final AddressItem item,final int position) {
-        CommonDialog commonDialog = new CommonDialog(mContext,"删除后将无法恢复，确定删除吗");
-        commonDialog.setOnPositiveButtonClickListener(new CommonDialog.OnPositiveButtonClickListener() {
-            @Override
-            public void onClick(Dialog dialog) {
-                deleteItem(item,position);
-            }
-        });
-        commonDialog.show();
-    }
-
-    private void deleteItem(AddressItem item,final int position) {
-        IdRequest idRequest = new IdRequest();
-        idRequest.setId(String.valueOf(item.getId()));
-        ApiFactory.deleteAddress(idRequest).subscribe(new ProgressSubscriber<ApiResponse>(mContext){
-            @Override
-            public void onNext(ApiResponse value) {
-                super.onNext(value);
-                notifyItemRemoved(position);
-                mList.remove(position);
-            }
-        });
     }
 
     @Override
@@ -168,6 +153,16 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
             defaultAddressTv = (TextView) itemView.findViewById(R.id.defaultAddressTv);
             defaultAddressIv = (ImageView) itemView.findViewById(R.id.defaultAddressIv);
         }
+    }
+
+    public void setOnItemStuffClickListener(OnItemStuffClickListener listener){
+        this.onItemListener = listener;
+    }
+
+    public interface OnItemStuffClickListener{
+        void onSetDefClick(int position);
+        void onEditClick(int position);
+        void onDeleteClick(int position);
     }
 
 }

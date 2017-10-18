@@ -133,11 +133,10 @@ public class ApiFactory {
 
     /**
      * 用户收货地址列表
-     * @param body
      * @return
      */
-    public static Observable<ApiResponse<List<AddressItem>>> getUserAddressList(ListBody body) {
-        Request<ListBody> request = new Request<>(RequestHeader.create(ApiConstants.USER_ADDRESS_LIST), body);
+    public static Observable<ApiResponse<List<AddressItem>>> getUserAddressList() {
+        Request request = new Request<>(RequestHeader.create(ApiConstants.USER_ADDRESS_LIST), null);
         return getApiService().getUserAddressList(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<ListData<AddressItem>>>applyExecutorSchedulers());
     }
 

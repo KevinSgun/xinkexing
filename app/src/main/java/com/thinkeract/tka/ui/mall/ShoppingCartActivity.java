@@ -18,7 +18,6 @@ import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.common.utils.Utils;
 import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.entity.AddressItem;
-import com.thinkeract.tka.data.api.request.ListBody;
 import com.thinkeract.tka.data.db.greendao.GDAddress;
 import com.thinkeract.tka.data.db.greendao.GDGoodsItem;
 import com.thinkeract.tka.ui.AppBarActivity;
@@ -160,10 +159,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     }
 
     private void requestAddressFromService() {
-        ListBody body=new ListBody();
-        body.setPage(1);
-        body.setPageSize(20);
-        ApiFactory.getUserAddressList(body).subscribe(new ProgressSubscriber<ApiResponse<List<AddressItem>>>(getContext(),false){
+        ApiFactory.getUserAddressList().subscribe(new ProgressSubscriber<ApiResponse<List<AddressItem>>>(getContext(),false){
             @Override
             public void onNext(ApiResponse<List<AddressItem>> value) {
                 super.onNext(value);
