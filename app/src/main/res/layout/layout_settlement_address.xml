@@ -22,14 +22,14 @@
             style="@style/CommonText"
             android:layout_marginLeft="@dimen/w24"
             android:layout_toRightOf="@id/shippingAddress"
-            android:text="张三" />
+            android:text="" />
 
         <TextView
             android:id="@+id/phoneNumTv"
             style="@style/CommonText"
             android:layout_marginLeft="@dimen/w24"
             android:layout_toRightOf="@id/contactNameTv"
-            android:text="188888888" />
+            android:text="" />
 
         <ImageView
             android:id="@+id/arrowAddressIv"
@@ -48,7 +48,7 @@
             android:layout_marginRight="@dimen/w24"
             android:layout_marginTop="@dimen/h30"
             android:layout_toLeftOf="@id/arrowAddressIv"
-            android:text="说的发生放大大方撒旦飞洒地方撒，阿萨德发生" />
+            android:text="" />
 
         <View
             style="@style/DividerLineHorizontal"

@@ -25,7 +25,6 @@ import com.thinkeract.tka.ui.mall.adapter.ShoppingCartAdapter;
 import com.thinkeract.tka.widget.SettlementDialog;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
-import com.zitech.framework.utils.ToastMaster;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -56,11 +55,11 @@ public class ShoppingCartActivity extends AppBarActivity {
     @Subscribe
     public void onGoodsSeltectedStatusChange(Events.GoodsSelectedStatusChange data) {
         if (data != null) {
-            if(data.selectedStatus!=3) {
+            if (data.selectedStatus != 3) {
                 noNeedChangeAll = (data.selectedStatus == 0);
                 if (!noNeedChangeAll) {
                     checkAll.setChecked(data.selectedStatus == 1);
-                }else{
+                } else {
                     checkAll.setChecked(false);
                 }
             }
@@ -75,7 +74,7 @@ public class ShoppingCartActivity extends AppBarActivity {
      * @param isSelector 全选或全不选
      */
     private void resetGoodsSelectorStatus(boolean isSelector, List<GDGoodsItem> goodsItemList) {
-        if(goodsItemList == null || goodsItemList.size() == 0) return;
+        if (goodsItemList == null || goodsItemList.size() == 0) return;
         for (GDGoodsItem goodsItem : goodsItemList) {
             if (goodsItem.getGoodsId() != 0) {
                 goodsItem.setIsCheck(isSelector);
@@ -104,7 +103,7 @@ public class ShoppingCartActivity extends AppBarActivity {
                         public void run() {
                             mAdapter.notifyDataSetChanged();
                         }
-                    },200);
+                    }, 200);
                 } else {
                     noNeedChangeAll = false;
                 }
@@ -122,20 +121,20 @@ public class ShoppingCartActivity extends AppBarActivity {
     public void onClick(View v) {
         super.onClick(v);
         if (v.getId() == R.id.settlementBtn) {
-            if(DBUtils.queryDefAddress() != null) {
-                SettlementDialog settlementDialog = new SettlementDialog(this);
-                settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
-                    @Override
-                    public void onSettlementClick() {
-                        //提交订单
-                    }
-                });
-                settlementDialog.setData(mAdapter.getItemList(), totalAmount, totalGoodsPrice, totalFreight);
-                settlementDialog.show();
-            }else{
-                //TODO 去添加收获地址
-                ToastMaster.shortToast("您还没有收获地址哦");
-            }
+//            if(DBUtils.queryDefAddress() != null) {
+            SettlementDialog settlementDialog = new SettlementDialog(this);
+            settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
+                @Override
+                public void onSettlementClick(double amount) {
+                    //提交订单
+                }
+            });
+            settlementDialog.setData(mAdapter.getItemList(), totalAmount, totalGoodsPrice, totalFreight);
+            settlementDialog.show();
+//            }else{
+//                //TODO 去添加收获地址
+//                ToastMaster.shortToast("您还没有收获地址哦");
+//            }
         }
     }
 
@@ -143,7 +142,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     protected void initData() {
         List<GDGoodsItem> goodsItemList = DBUtils.queryAllGoodsList();
         GDAddress gdAddress = DBUtils.queryDefAddress();
-        if(gdAddress == null){
+        if (gdAddress == null) {
             requestAddressFromService();
         }
         if (goodsItemList != null && goodsItemList.size() > 0) {
@@ -159,7 +158,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     }
 
     private void requestAddressFromService() {
-        ApiFactory.getUserAddressList().subscribe(new ProgressSubscriber<ApiResponse<List<AddressItem>>>(getContext(),false){
+        ApiFactory.getUserAddressList().subscribe(new ProgressSubscriber<ApiResponse<List<AddressItem>>>(getContext(), false) {
             @Override
             public void onNext(ApiResponse<List<AddressItem>> value) {
                 super.onNext(value);
@@ -176,7 +175,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     private void refreshUI() {
         if (mAdapter.getItemList() != null && mAdapter.getItemList().size() > 1) {
             totalAmountTv.setText(String.format(getResources().getString(R.string.rmb), totalAmount));
-            settlementBtn.setEnabled(totalAmount>0);
+            settlementBtn.setEnabled(totalAmount > 0);
         } else {
             viewanimator.setDisplayedChild(EMPTY);
         }
@@ -190,7 +189,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     private void checkAllSelectedStatus(List<GDGoodsItem> goodsItemList) {
         boolean allIsSelected = true;
         for (GDGoodsItem goodsItem : goodsItemList) {
-            if (goodsItem.getGoodsId()!=0&&!(allIsSelected = goodsItem.getIsCheck())) {
+            if (goodsItem.getGoodsId() != 0 && !(allIsSelected = goodsItem.getIsCheck())) {
                 break;
             }
         }
@@ -207,7 +206,7 @@ public class ShoppingCartActivity extends AppBarActivity {
         totalAmount = 0;
         for (GDGoodsItem goodsItem : goodsItemList) {
             if (goodsItem.getIsCheck() && goodsItem.getGoodsId() != 0) {
-                totalGoodsPrice = Utils.doubleAddDouble(totalGoodsPrice, Utils.doubleMultiplyDouble((double) goodsItem.getPrice(), (double)goodsItem.getGoodsCount()));
+                totalGoodsPrice = Utils.doubleAddDouble(totalGoodsPrice, Utils.doubleMultiplyDouble((double) goodsItem.getPrice(), (double) goodsItem.getGoodsCount()));
                 totalFreight = Utils.doubleAddDouble(totalFreight, (double) goodsItem.getFreight());
                 totalCount += goodsItem.getGoodsCount();
             }

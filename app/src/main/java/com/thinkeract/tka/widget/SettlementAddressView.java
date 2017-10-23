@@ -12,9 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.common.utils.DBUtils;
+import com.thinkeract.tka.data.api.entity.AddressItem;
 import com.thinkeract.tka.data.db.greendao.GDAddress;
 import com.thinkeract.tka.ui.mall.adapter.AddressSimpleAdapter;
+import com.thinkeract.tka.ui.mine.UpdateAddressActivity;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class SettlementAddressView extends LinearLayout{
     private OnAddressClickListener onAddressClickListener;
     private RelativeLayout backAddressLayout;
     private AddressSimpleAdapter mAdapter;
+    private GDAddress mDefAddress;
 
     public SettlementAddressView(Context context) {
         super(context);
@@ -79,13 +81,38 @@ public class SettlementAddressView extends LinearLayout{
         });
     }
 
-    public void setData(GDAddress defAddress, List<GDAddress> addressList, Activity context){
+    public void setData(GDAddress defAddress, List<GDAddress> addressList, final Activity context){
+        refreshDefAddress(defAddress);
         if(mAdapter == null) {
-            mAdapter = new AddressSimpleAdapter(context);
+            mAdapter = new AddressSimpleAdapter();
+            mAdapter.setOnItemClickListener(new AddressSimpleAdapter.OnItemClickListener() {
+                @Override
+                public void onEditAddress(GDAddress item) {
+                    UpdateAddressActivity.launch(context,new AddressItem(item));
+                }
+
+                @Override
+                public void onItemClick(GDAddress item) {
+                    refreshDefAddress(item);
+                }
+            });
             addressRv.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
             addressRv.setAdapter(mAdapter);
         }
-        mAdapter.setItemList(DBUtils.convertToAddressItemList(addressList));
+        mAdapter.setItemList(addressList);
+    }
+
+    private void refreshDefAddress(GDAddress defAddress) {
+        if(defAddress!=null){
+            contactNameTv.setText(defAddress.getContact());
+            phoneNumTv.setText(defAddress.getPhone());
+            addressTv.setText(defAddress.getProvince()+defAddress.getCity()+defAddress.getAddress());
+            mDefAddress = defAddress;
+        }
+    }
+
+    public GDAddress getDefAddress(){
+        return mDefAddress;
     }
 
     public void setOnAddressClickListener(OnAddressClickListener onAddressClickListener){

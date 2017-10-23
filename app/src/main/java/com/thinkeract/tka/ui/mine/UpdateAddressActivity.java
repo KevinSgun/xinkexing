@@ -269,4 +269,8 @@ public class UpdateAddressActivity extends AppBarActivity implements AddressStuf
         ViewUtils.anima(ViewUtils.RIGHT_IN, activity);
     }
 
+    public static void launch(Activity activity) {
+        launch(activity,null);
+    }
+
 }

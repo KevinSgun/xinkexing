@@ -18,11 +18,16 @@ import com.thinkeract.tka.User;
 import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.common.utils.StockUtil;
 import com.thinkeract.tka.common.utils.Utils;
+import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.entity.GoodsItem;
 import com.thinkeract.tka.data.api.entity.Sku;
+import com.thinkeract.tka.data.api.request.SubmitOrderBody;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
+import com.thinkeract.tka.data.api.response.PoData;
 import com.thinkeract.tka.data.db.greendao.GDGoodsItem;
 import com.thinkeract.tka.ui.mall.adapter.GoodsSpecAdapter;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 import com.zitech.framework.transform.RoundedCornersTransformation;
 import com.zitech.framework.utils.ToastMaster;
 import com.zitech.framework.utils.ViewUtils;
@@ -43,7 +48,6 @@ import java.util.List;
 
 public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickListener {
 
-    private int mBuyType;//0,加入购物车；1,直接购买
     private Activity mContext;
     private RemoteImageView goodsPicIv;
     private TextView goodsNameTv;
@@ -55,31 +59,31 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
     private Button submitBtn;
     private GoodsSpecAdapter mAdapter;
     private ImageView cancelIv;
-    private int goodsCount = 1;
     private HashSet<List<String>> pathList;
     private HashMap<Integer, String> selTempPath;
     private List<String> selLineValueList;
     private List<Integer> selLinePosList;
     private HashMap<String, GoodsDetailData.StockBean> codeMap;
-    private int MAX_COUNT;
     private GoodsDetailData.StockBean mStockBean;
     private GoodsItem mGoodsItem;
+    private int MAX_COUNT;
+    private int goodsCount = 1;
+    private int mBuyType;//0,加入购物车；1,直接购买
 
     /**
-     *
      * @param context
      * @param buyType 0,加入购物车；1,直接购买
      */
-    public ChooseGoodsSpecDialog(Activity context,int buyType) {
+    public ChooseGoodsSpecDialog(Activity context, int buyType) {
         super(context, R.style.BottomPushDialog);
         mContext = context;
         mBuyType = buyType;
         initView();
     }
 
-    public void setType(int buyType){
+    public void setType(int buyType) {
         mBuyType = buyType;
-        submitBtn.setText(mBuyType == 0?"加入购物车":"立即购买");
+        submitBtn.setText(mBuyType == 0 ? "加入购物车" : "立即购买");
     }
 
     @SuppressLint("UseSparseArrays")
@@ -100,7 +104,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
         plusIv.setOnClickListener(this);
         cancelIv.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
-        submitBtn.setText(mBuyType == 0?"加入购物车":"立即购买");
+        submitBtn.setText(mBuyType == 0 ? "加入购物车" : "立即购买");
 
         Window dialogWindow = getWindow();
         WindowManager.LayoutParams dialogParams;
@@ -137,9 +141,9 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                     for (int i = 0, size = skuList.size(); i < size; i++) {
                         Sku sku = skuList.get(i);
                         for (Sku.Spec specB : sku.getItems()) {
-                            if (i != selPos&&isChoose) {
+                            if (i != selPos && isChoose) {
                                 specB.setHasStock(false);
-                                if(selTempPath.containsKey(i))
+                                if (selTempPath.containsKey(i))
                                     selTempPath.remove(i);
                             } else {
                                 specB.setHasStock(true);
@@ -155,7 +159,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                                 selLineValueListTemp.add(specB.getPid() + ":" + specB.getId());
                                 Collections.sort(selLineValueListTemp, new CompareStringList<String>());
                                 specB.setHasStock(pathList.contains(selLineValueListTemp));
-                            }else if(selLinePosList.size() == 1){
+                            } else if (selLinePosList.size() == 1) {
                                 specB.setHasStock(true);
                             }
                         }
@@ -170,15 +174,15 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
     private void updateSubmitStatus() {
         boolean isSelDone = selTempPath.size() == mAdapter.getItemList().size();
         submitBtn.setEnabled(isSelDone);
-        if(isSelDone) {
+        if (isSelDone) {
             selLineValueList.clear();
             selLineValueList.addAll(selTempPath.values());
             StringBuilder sb = new StringBuilder();
             Collections.sort(selLineValueList, new CompareStringList<String>());
-            for(String codeValue:selLineValueList){
+            for (String codeValue : selLineValueList) {
                 sb.append(codeValue).append(";");
             }
-            sb.deleteCharAt(sb.length()-1);
+            sb.deleteCharAt(sb.length() - 1);
             if (codeMap.containsKey(sb.toString())) {
                 mStockBean = codeMap.get(sb.toString());
                 MAX_COUNT = mStockBean.getInventory();
@@ -201,7 +205,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
             String[] itemArrB = ((String) rhs).split(":");
             int itemIntA = Integer.parseInt(itemArrA[0]);
             int itemIntB = Integer.parseInt(itemArrB[0]);
-            return  itemIntA - itemIntB;
+            return itemIntA - itemIntB;
         }
     }
 
@@ -341,9 +345,9 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
 //        mAdapter.setItemList(skus);
 
         pathList = new HashSet<>();
-        codeMap = new HashMap<String,GoodsDetailData.StockBean>();
+        codeMap = new HashMap<String, GoodsDetailData.StockBean>();
         for (GoodsDetailData.StockBean stockBean : stockList) {
-            codeMap.put(stockBean.getCode(),stockBean);
+            codeMap.put(stockBean.getCode(), stockBean);
             pathList.addAll(StockUtil.getPowSet(stockBean.getCode()));
         }
 
@@ -354,10 +358,10 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submitBtn:
-                GDGoodsItem goodsItem = new GDGoodsItem();
+                final GDGoodsItem goodsItem = new GDGoodsItem();
                 goodsItem.setUserId(User.get().getId());
                 goodsItem.setName(mGoodsItem.getName());
-                goodsItem.setUserGoodsId(User.get().getId()+""+mGoodsItem.getId());
+                goodsItem.setUserGoodsId(User.get().getId() + "" + mGoodsItem.getId());
                 goodsItem.setGoodsImg(mGoodsItem.getCover());
                 goodsItem.setGoodsId(mGoodsItem.getId());
                 goodsItem.setInventory(mStockBean.getInventory());
@@ -365,29 +369,24 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                 goodsItem.setSpec(mGoodsItem.getSpec());
                 goodsItem.setSid(mStockBean.getId());
                 goodsItem.setGoodsCount(goodsCount);
-                if(mBuyType == 0){
+                if (mBuyType == 0) {
                     //加入购物车
                     DBUtils.insertOrReplaceGoods(goodsItem);
                     ToastMaster.shortToast("成功加入到购物车");
                     dismiss();
-                }else if(mBuyType == 1){
-                    //提交订单
-                    if(DBUtils.queryDefAddress() != null) {
-                        SettlementDialog settlementDialog = new SettlementDialog(mContext);
-                        settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
-                            @Override
-                            public void onSettlementClick() {
-                                //提交订单
-                            }
-                        });
-                        double totalGoodsPrice = Utils.doubleMultiplyDouble((double) mGoodsItem.getMinprice(), (double)goodsCount);
-                        settlementDialog.setData(goodsItem, totalGoodsPrice, totalGoodsPrice, 0);
-                        settlementDialog.show();
-                        dismiss();
-                    }else{
-                        //TODO 去添加收获地址
-                        ToastMaster.shortToast("您还没有收获地址哦");
-                    }
+                } else if (mBuyType == 1) {
+                    SettlementDialog settlementDialog = new SettlementDialog(mContext);
+                    settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
+                        @Override
+                        public void onSettlementClick(double totalAmount) {
+                            //提交订单
+//                                submitOrder(totalAmount);
+                        }
+                    });
+                    double totalGoodsPrice = Utils.doubleMultiplyDouble(mGoodsItem.getMinprice(), (double) goodsCount);
+                    settlementDialog.setData(goodsItem, totalGoodsPrice, totalGoodsPrice, 0);
+                    settlementDialog.show();
+
                 }
 
                 break;
@@ -401,7 +400,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                 if (goodsCount < MAX_COUNT) {
                     goodsCount++;
                     countTv.setText(String.valueOf(goodsCount));
-                }else{
+                } else {
                     ToastMaster.shortToast("已经是最大库存啦");
                 }
                 break;
@@ -409,5 +408,24 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                 dismiss();
                 break;
         }
+    }
+
+    private void submitOrder(double totalAmount,String addressId,String stockString) {
+        SubmitOrderBody body = new SubmitOrderBody();
+        body.setAddressId(addressId);
+        body.setStock(stockString);
+        body.setTotleAmount(String.valueOf(totalAmount));
+        ApiFactory.submit(body).subscribe(new ProgressSubscriber<ApiResponse<PoData>>(mContext) {
+            @Override
+            public void onNext(ApiResponse<PoData> value) {
+                super.onNext(value);
+                ToastMaster.shortToast(value.getMsg());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+            }
+        });
     }
 }

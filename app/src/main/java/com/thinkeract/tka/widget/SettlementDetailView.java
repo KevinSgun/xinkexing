@@ -45,7 +45,7 @@ public class SettlementDetailView extends LinearLayout{
 
     private void initializeView() {
         amountLayout = (RelativeLayout) findViewById(R.id.amountLayout);
-        amountTv = (TextView) findViewById(R.id.amountTv);
+        amountTv = (TextView) findViewById(R.id.amountDetailTv);
         goodsPriceTv = (TextView) findViewById(R.id.goodsPriceTv);
         freightTv = (TextView) findViewById(R.id.freightTv);
 
@@ -58,7 +58,7 @@ public class SettlementDetailView extends LinearLayout{
         });
     }
 
-    public void setData(float amount,float goodsPrice,float freight){
+    public void setData(double amount,double goodsPrice,double freight){
         amountTv.setText(String.format(getResources().getString(R.string.rmb),amount));
         goodsPriceTv.setText(String.format(getResources().getString(R.string.rmb),goodsPrice));
         freightTv.setText(String.format(getResources().getString(R.string.rmb),freight));

@@ -17,10 +17,14 @@ import android.widget.TextView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.common.utils.ViewUtils;
+import com.thinkeract.tka.data.api.ApiFactory;
+import com.thinkeract.tka.data.api.entity.AddressItem;
 import com.thinkeract.tka.data.api.entity.GoodsComment;
 import com.thinkeract.tka.data.api.entity.GoodsDetailItem;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
+import com.thinkeract.tka.data.db.greendao.GDAddress;
 import com.thinkeract.tka.ui.BaseActivity;
 import com.thinkeract.tka.ui.mall.adapter.GoodsDetailAdapter;
 import com.thinkeract.tka.ui.mall.contract.GoodsDetailDataContract;
@@ -32,6 +36,8 @@ import com.thinkeract.tka.widget.MVCSwipeRefreshHelper;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.transformer.DepthPageTransformer;
+import com.zitech.framework.data.network.response.ApiResponse;
+import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,6 +137,25 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
         goodsDetailRv.setItemAnimator(new DefaultItemAnimator());
         goodsDetailRv.setAdapter(goodsDetailAdapter);
 
+        GDAddress gdAddress = DBUtils.queryDefAddress();
+        if (gdAddress == null) {
+            requestAddressFromService();
+        }
+    }
+
+    private void requestAddressFromService() {
+        ApiFactory.getUserAddressList().subscribe(new ProgressSubscriber<ApiResponse<List<AddressItem>>>(getContext(), false) {
+            @Override
+            public void onNext(ApiResponse<List<AddressItem>> value) {
+                super.onNext(value);
+                DBUtils.insertAddressList(DBUtils.convertToGDAddressItemList(value.getData()));
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+            }
+        });
     }
 
     private void requestCommentData() {

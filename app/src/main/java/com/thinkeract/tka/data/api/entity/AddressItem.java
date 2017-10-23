@@ -33,6 +33,16 @@ public class AddressItem implements Parcelable{
 
     public AddressItem(){}
 
+    public AddressItem(GDAddress gdAddress){
+        this.id = gdAddress.getAddressId();
+        this.address = gdAddress.getAddress();
+        this.cityname = gdAddress.getCity();
+        this.contact = gdAddress.getContact();
+        this.phone = gdAddress.getPhone();
+        this.status = gdAddress.getStatus();
+        this.uid = gdAddress.getUserId();
+    }
+
     protected AddressItem(Parcel in) {
         id = in.readInt();
         uid = in.readInt();
