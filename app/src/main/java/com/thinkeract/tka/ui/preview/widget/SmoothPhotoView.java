@@ -13,10 +13,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
-
-import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.thinkeract.tka.common.utils.Logger;
-
 import uk.co.senab.photoview.PhotoView;
 
 /**
@@ -166,8 +163,6 @@ public class SmoothPhotoView extends PhotoView {
         if (mBitmap == null || mBitmap.isRecycled()) {
             if (getDrawable() instanceof BitmapDrawable) {
                 mBitmap = ((BitmapDrawable) getDrawable()).getBitmap();
-            } else if (getDrawable() instanceof GlideBitmapDrawable) {
-                mBitmap = ((GlideBitmapDrawable) getDrawable()).getBitmap();
             }
         }
         //防止mTransfrom重复的做同样的初始化

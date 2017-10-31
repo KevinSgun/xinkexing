@@ -30,6 +30,8 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.zitech.framework.utils.FastBlur;
 import com.zitech.framework.utils.RSBlur;
 
+import java.security.MessageDigest;
+
 public class BlurTransformation extends BitmapTransformation {
 
     private static int MAX_RADIUS = 30;
@@ -107,8 +109,8 @@ public class BlurTransformation extends BitmapTransformation {
         return "BlurTransformation(radius=" + mRadius + ", sampling=" + mSampling + ")";
     }
 
-//    @Override
-//    public void updateDiskCacheKey(MessageDigest messageDigest) {
-//        messageDigest.update(getId().getBytes(CHARSET));
-//    }
+    @Override
+    public void updateDiskCacheKey(MessageDigest messageDigest) {
+        messageDigest.update(getId().getBytes(CHARSET));
+    }
 }

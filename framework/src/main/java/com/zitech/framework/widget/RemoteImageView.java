@@ -6,21 +6,25 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.Transformation;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 
 /**
  * @author LuDaiqian
  */
-public class RemoteImageView extends ImageView {
+public class RemoteImageView extends android.support.v7.widget.AppCompatImageView {
 
     private static final int NONE = -1;
     /**
@@ -75,24 +79,20 @@ public class RemoteImageView extends ImageView {
             return;
         }
         mUrl = url;
-        DrawableTypeRequest<String> request=Glide.with(getContext()).load(url);
-        if (bitmapTransformation != null) {
-            request.bitmapTransform(bitmapTransformation);
-        }
-        if (mDefaultDrawable != null) {
-            request.placeholder(mDefaultDrawable);
-        } else if (mDefaultImageResource != NONE) {
-            request.placeholder(mDefaultImageResource);
-        }
-        if (mErrorDrawable != null) {
-            request.error(mErrorDrawable);
-        } else if (mErrorImageResource != NONE) {
-            request.error(mErrorImageResource);
-        }
-        request.listener(new RequestListener<String, GlideDrawable>() {
+        RequestBuilder<Drawable> request = Glide.with(getContext()).asDrawable().load(url);
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(mDefaultImageResource)
+                .error(mErrorImageResource)
+                .diskCacheStrategy(DiskCacheStrategy.NONE);
+        if(bitmapTransformation!=null)
+            options.transforms(bitmapTransformation);
+        request.apply(options)
+                .transition(new DrawableTransitionOptions().crossFade());
+        request.listener(new RequestListener<Drawable>() {
             @Override
-            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                if(mOnErrorListener!=null){
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                if (mOnErrorListener != null) {
                     mOnErrorListener.onLoadError(url);
                     return true;
                 }
@@ -100,7 +100,7 @@ public class RemoteImageView extends ImageView {
             }
 
             @Override
-            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                 return false;
             }
         });

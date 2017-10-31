@@ -16,16 +16,17 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 import java.nio.charset.Charset;
+import java.security.MessageDigest;
 
 public class CenterClipRoundImageProcessor extends BitmapTransformation {
 
+	public static final float POST_IMG_RATE = 173 / (float) 135;
 	private static final String ID = "com.fans.framework.image.CenterClipRoundImageProcessor";
 	private static String STRING_CHARSET_NAME = "UTF-8";
 	private static Charset CHARSET = Charset.forName(STRING_CHARSET_NAME);
 	private static final byte[] ID_BYTES = ID.getBytes(CHARSET);
 	private float roundPx = 22;
 	private float rate = 1f;// rate=w/h;
-	public static final float POST_IMG_RATE = 173 / (float) 135;
 	private boolean justTop;
 
 	public CenterClipRoundImageProcessor(Context context, float roundPx, float rate) {
@@ -120,8 +121,12 @@ public class CenterClipRoundImageProcessor extends BitmapTransformation {
 		return process(arg1);
 	}
 
-	@Override
 	public String getId() {
 		return "CenterClipRoundImageProcessor(radius=" + rate + ", roundPx=" + roundPx + ")";
+	}
+
+	@Override
+	public void updateDiskCacheKey(MessageDigest messageDigest) {
+		messageDigest.update(getId().getBytes(CHARSET));
 	}
 }
