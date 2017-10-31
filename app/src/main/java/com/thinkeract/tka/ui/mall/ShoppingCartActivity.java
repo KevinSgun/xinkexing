@@ -125,7 +125,7 @@ public class ShoppingCartActivity extends AppBarActivity {
             SettlementDialog settlementDialog = new SettlementDialog(this);
             settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
                 @Override
-                public void onSettlementClick(double amount) {
+                public void onSettlementClick(double totalAmount,String addressId,String stockString) {
                     //提交订单
                 }
             });

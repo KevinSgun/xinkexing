@@ -378,7 +378,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                     SettlementDialog settlementDialog = new SettlementDialog(mContext);
                     settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
                         @Override
-                        public void onSettlementClick(double totalAmount) {
+                        public void onSettlementClick(double totalAmount,String addressId,String stockString) {
                             //提交订单
 //                                submitOrder(totalAmount);
                         }
