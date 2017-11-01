@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coverLayout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/h900"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h640"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/coverIv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_purple_shadow" />
+
+        <com.thinkeract.tka.widget.DashboardView
+            android:id="@+id/dashboardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/h140" />
+
+        <TextView
+            android:id="@+id/healthDescriptionTv"
+            style="@style/LargeText"
+            android:layout_below="@id/dashboardView"
+            android:layout_centerHorizontal="true"
+            android:text="当前状态良好，请继续保持!"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h40" />
+
+        <TextView
+            style="@style/LargeText"
+            android:layout_below="@id/healthDescriptionTv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/h20"
+            android:text="点击下方项目查看详细评测报告"
+            android:textColor="@color/white"
+            android:textSize="@dimen/h24" />
+
+        <ImageView
+            android:layout_width="@dimen/w720"
+            android:layout_height="@dimen/h95"
+            android:layout_alignParentBottom="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_arc_white_bg" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:paddingTop="@dimen/h32">
+
+        <RelativeLayout
+            android:id="@+id/leftItemLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/leftItemPic"
+                android:layout_width="@dimen/h68"
+                android:layout_height="@dimen/w64"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_organ" />
+
+            <View
+                android:id="@+id/leftLine"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/leftItemPic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="-6dp" />
+
+            <TextView
+                android:id="@+id/leftCurrentScore"
+                style="@style/LargeText"
+                android:layout_below="@id/leftItemPic"
+                android:layout_marginTop="@dimen/h8"
+                android:layout_toLeftOf="@id/leftLine"
+                android:text="80"
+                android:textColor="@color/text_pink"
+                android:textSize="@dimen/w70" />
+
+            <TextView
+                android:id="@+id/leftTotalScore"
+                style="@style/SmallText"
+                android:layout_alignBottom="@id/leftCurrentScore"
+                android:layout_marginBottom="@dimen/h12"
+                android:layout_marginLeft="@dimen/w10"
+                android:layout_toRightOf="@id/leftCurrentScore"
+                android:text="/80"
+                android:textColor="@color/textColorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/leftItemName"
+                style="@style/SmallText"
+                android:layout_below="@id/leftCurrentScore"
+                android:layout_centerHorizontal="true"
+                android:text="脏器评分"
+                android:textColor="@color/textColorPrimaryDark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/middleItemLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/middleItemPic"
+                android:layout_width="@dimen/h68"
+                android:layout_height="@dimen/w64"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_sourroundings" />
+
+            <View
+                android:id="@+id/middleLine"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/middleItemPic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="-6dp" />
+
+            <TextView
+                android:id="@+id/middleCurrentScore"
+                style="@style/LargeText"
+                android:layout_below="@id/middleItemPic"
+                android:layout_marginTop="@dimen/h8"
+                android:layout_toLeftOf="@id/middleLine"
+                android:text="10"
+                android:textColor="@color/text_green"
+                android:textSize="@dimen/w70" />
+
+            <TextView
+                android:id="@+id/middleTotalScore"
+                style="@style/SmallText"
+                android:layout_alignBottom="@id/middleCurrentScore"
+                android:layout_marginBottom="@dimen/h12"
+                android:layout_marginLeft="@dimen/w10"
+                android:layout_toRightOf="@id/middleCurrentScore"
+                android:text="/10"
+                android:textColor="@color/textColorPrimaryDark" />
+            <TextView
+                android:id="@+id/middleItemName"
+                style="@style/SmallText"
+                android:layout_below="@id/middleCurrentScore"
+                android:layout_centerHorizontal="true"
+                android:text="环境负担"
+                android:textColor="@color/textColorPrimaryDark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rightItemLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/rightItemPic"
+                android:layout_width="@dimen/h68"
+                android:layout_height="@dimen/w64"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_allergy" />
+            <View
+                android:id="@+id/rightLine"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/rightItemPic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="-6dp" />
+            <TextView
+                android:id="@+id/rightCurrentScore"
+                style="@style/LargeText"
+                android:layout_below="@id/rightItemPic"
+                android:layout_marginTop="@dimen/h8"
+                android:layout_toLeftOf="@id/rightLine"
+                android:text="10"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/w70" />
+            <TextView
+                android:id="@+id/rightTotalScore"
+                style="@style/SmallText"
+                android:layout_alignBottom="@id/rightCurrentScore"
+                android:layout_marginBottom="@dimen/h12"
+                android:layout_marginLeft="@dimen/w10"
+                android:layout_toRightOf="@id/rightCurrentScore"
+                android:text="/10"
+                android:textColor="@color/textColorPrimaryDark" />
+            <TextView
+                android:id="@+id/rightItemName"
+                style="@style/SmallText"
+                android:layout_below="@id/rightCurrentScore"
+                android:layout_centerHorizontal="true"
+                android:text="过敏源检测"
+                android:textColor="@color/textColorPrimaryDark" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

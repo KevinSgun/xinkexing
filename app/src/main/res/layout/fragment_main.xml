@@ -1,272 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.thinkeract.tka.widget.ContentViewHolder xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootView"
+    android:id="@+id/contentViewHolder"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/com.thinkeract.tka.widget.FlingBehavior">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
+        <ImageView
+            android:id="@+id/parallax"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:collapsedTitleGravity="center"
-            app:contentScrim="?attr/colorAccent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleEnabled="false">
+            android:layout_height="180dp"
+            android:layout_marginTop="-75dp"
+            android:adjustViewBounds="true"
+            android:background="#deaeea"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            app:layout_collapseMode="parallax" />
 
-            <LinearLayout
-                android:id="@+id/coverLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/h900"
-                android:orientation="vertical">
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnablePreviewInEditMode="false">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/h640"
-                    android:background="@color/white">
-
-                    <ImageView
-                        android:id="@+id/coverIv"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/bg_purple_shadow" />
-
-                    <com.thinkeract.tka.widget.DashboardView
-                        android:id="@+id/dashboardView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="@dimen/h140"
-                        />
-
-                    <TextView
-                        android:id="@+id/healthDescriptionTv"
-                        style="@style/LargeText"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/dashboardView"
-                        android:text="当前状态良好，请继续保持!"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/h40" />
-                    <TextView
-                        style="@style/LargeText"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/healthDescriptionTv"
-                        android:layout_marginTop="@dimen/h20"
-                        android:text="点击下方项目查看详细评测报告"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/h24" />
-                    <ImageView
-                        android:layout_width="@dimen/w720"
-                        android:layout_height="@dimen/h95"
-                        android:layout_alignParentBottom="true"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_arc_white_bg" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:paddingTop="@dimen/h32"
-                    android:background="@color/white">
-
-                    <RelativeLayout
-                        android:id="@+id/leftItemLayout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        >
-
-                        <ImageView
-                            android:id="@+id/leftItemPic"
-                            android:layout_width="@dimen/h68"
-                            android:layout_height="@dimen/w64"
-                            android:layout_centerHorizontal="true"
-                            android:src="@mipmap/ic_organ" />
-
-                        <View
-                            android:id="@+id/leftLine"
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"
-                            android:layout_below="@id/leftItemPic"
-                            android:layout_marginLeft="-6dp"
-                            android:layout_centerHorizontal="true"
-                             />
-                        <TextView
-                            android:id="@+id/leftCurrentScore"
-                            style="@style/LargeText"
-                            android:layout_below="@id/leftItemPic"
-                            android:layout_toLeftOf="@id/leftLine"
-                            android:layout_marginTop="@dimen/h8"
-                            android:text="80"
-                            android:textColor="@color/text_pink"
-                            android:textSize="@dimen/w70" />
-
-                        <TextView
-                            android:id="@+id/leftTotalScore"
-                            style="@style/SmallText"
-                            android:layout_alignBottom="@id/leftCurrentScore"
-                            android:layout_marginBottom="@dimen/h12"
-                            android:layout_marginLeft="@dimen/w10"
-                            android:layout_toRightOf="@id/leftCurrentScore"
-                            android:text="/80"
-                            android:textColor="@color/textColorPrimaryDark" />
-
-                        <TextView
-                            android:id="@+id/leftItemName"
-                            style="@style/SmallText"
-                            android:layout_below="@id/leftCurrentScore"
-                            android:layout_centerHorizontal="true"
-                            android:text="脏器评分"
-                            android:textColor="@color/textColorPrimaryDark" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/middleItemLayout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        >
-
-                        <ImageView
-                            android:id="@+id/middleItemPic"
-                            android:layout_width="@dimen/h68"
-                            android:layout_height="@dimen/w64"
-                            android:layout_centerHorizontal="true"
-                            android:src="@mipmap/ic_sourroundings" />
-                        <View
-                            android:id="@+id/middleLine"
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"
-                            android:layout_below="@id/middleItemPic"
-                            android:layout_marginLeft="-6dp"
-                            android:layout_centerHorizontal="true"
-                            />
-                        <TextView
-                            android:id="@+id/middleCurrentScore"
-                            style="@style/LargeText"
-                            android:layout_below="@id/middleItemPic"
-                            android:layout_marginTop="@dimen/h8"
-                            android:layout_toLeftOf="@id/middleLine"
-                            android:text="10"
-                            android:textColor="@color/text_green"
-                            android:textSize="@dimen/w70" />
-
-                        <TextView
-                            android:id="@+id/middleTotalScore"
-                            style="@style/SmallText"
-                            android:layout_alignBottom="@id/middleCurrentScore"
-                            android:layout_marginBottom="@dimen/h12"
-                            android:layout_marginLeft="@dimen/w10"
-                            android:layout_toRightOf="@id/middleCurrentScore"
-                            android:text="/10"
-                            android:textColor="@color/textColorPrimaryDark" />
-
-                        <TextView
-                            android:id="@+id/middleItemName"
-                            style="@style/SmallText"
-                            android:layout_below="@id/middleCurrentScore"
-                            android:layout_centerHorizontal="true"
-                            android:text="环境负担"
-                            android:textColor="@color/textColorPrimaryDark" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/rightItemLayout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        >
-
-                        <ImageView
-                            android:id="@+id/rightItemPic"
-                            android:layout_width="@dimen/h68"
-                            android:layout_height="@dimen/w64"
-                            android:layout_centerHorizontal="true"
-                            android:src="@mipmap/ic_allergy" />
-                        <View
-                            android:id="@+id/rightLine"
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"
-                            android:layout_below="@id/rightItemPic"
-                            android:layout_marginLeft="-6dp"
-                            android:layout_centerHorizontal="true"
-                            />
-                        <TextView
-                            android:id="@+id/rightCurrentScore"
-                            style="@style/LargeText"
-                            android:layout_below="@id/rightItemPic"
-                            android:layout_marginTop="@dimen/h8"
-                            android:layout_toLeftOf="@id/rightLine"
-                            android:text="10"
-                            android:textColor="@color/text_blue"
-                            android:textSize="@dimen/w70" />
-
-                        <TextView
-                            android:id="@+id/rightTotalScore"
-                            style="@style/SmallText"
-                            android:layout_alignBottom="@id/rightCurrentScore"
-                            android:layout_marginBottom="@dimen/h12"
-                            android:layout_marginLeft="@dimen/w10"
-                            android:layout_toRightOf="@id/rightCurrentScore"
-                            android:text="/10"
-                            android:textColor="@color/textColorPrimaryDark" />
-
-                        <TextView
-                            android:id="@+id/rightItemName"
-                            style="@style/SmallText"
-                            android:layout_below="@id/rightCurrentScore"
-                            android:layout_centerHorizontal="true"
-                            android:text="过敏源检测"
-                            android:textColor="@color/textColorPrimaryDark" />
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:contentInsetEnd="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetStart="0dp"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:navigationIcon="@null">
+                app:srlAccentColor="@color/white" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/healthKnowledgeRv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-                    <TextView
-                        android:id="@+id/action_bar_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:maxWidth="@dimen/w550"
-                        android:minHeight="@dimen/action_bar_size"
-                        android:singleLine="true"
-                        android:text="健康评测"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/w34" />
-                </FrameLayout>
-            </android.support.v7.widget.Toolbar>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@null">
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+            <FrameLayout
+                android:id="@+id/actionBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
 
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/healthKnowledgeRv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-</android.support.design.widget.CoordinatorLayout>
+                <TextView
+                    android:id="@+id/action_bar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:maxWidth="@dimen/w550"
+                    android:minHeight="@dimen/action_bar_size"
+                    android:singleLine="true"
+                    android:text="健康评测"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/w34" />
+            </FrameLayout>
+        </android.support.v7.widget.Toolbar>
+    </FrameLayout>
+</com.thinkeract.tka.widget.ContentViewHolder>
