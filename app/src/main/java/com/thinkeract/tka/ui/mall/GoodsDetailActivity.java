@@ -38,11 +38,8 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.transformer.DepthPageTransformer;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.thinkeract.tka.R.id.buyNowLayout;
 
 /**
  * Created by minHeng on 2017/4/13 18:19.
@@ -205,7 +202,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
             case R.id.addToCartLayout:
                 showChooseSpecDialog(0);
                 break;
-            case buyNowLayout:
+            case R.id.buyNowLayout:
                 showChooseSpecDialog(1);
                 break;
         }

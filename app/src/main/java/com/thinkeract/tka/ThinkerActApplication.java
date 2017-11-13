@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.shizhefei.mvc.MVCHelper;
+import com.squareup.leakcanary.LeakCanary;
 import com.thinkeract.tka.common.utils.EnhancedPlaceManagerUtil;
 import com.thinkeract.tka.widget.MyLoadViewFactory;
 import com.zitech.framework.BaseApplication;
@@ -23,6 +24,7 @@ public class ThinkerActApplication extends BaseApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+        LeakCanary.install(this);
         user = new User();
         config = new Config();
         mainThreadHandler = new Handler(Looper.getMainLooper());

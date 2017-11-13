@@ -53,6 +53,9 @@ public class Constants {
     public static final String WEIBO_APP_ID = "294032740";
     public static final String WEIBO_APP_KEY = "cd5dce34b5fd63489915cff90c21623b";
 
+    public static final String PAY_BY_ZFB = "1";
+    public static final String PAY_BY_WX = "2";
+    public static final String PAY_BY_BALANCE = "3";
 
     //上传类型
     public static final int UPLOAD_TYPE_AVATAR = 1;

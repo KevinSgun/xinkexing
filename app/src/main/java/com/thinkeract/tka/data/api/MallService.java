@@ -15,8 +15,9 @@ import com.thinkeract.tka.data.api.request.SubmitOrderBody;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
 import com.thinkeract.tka.data.api.response.ListData;
 import com.thinkeract.tka.data.api.response.LogisticsData;
-import com.thinkeract.tka.data.api.response.PayResultData;
 import com.thinkeract.tka.data.api.response.PoData;
+import com.thinkeract.tka.pay.alipay.PayInfo;
+import com.thinkeract.tka.pay.alipay.PayInfoResponseData;
 import com.zitech.framework.data.network.response.ApiResponse;
 
 import io.reactivex.Observable;
@@ -88,7 +89,17 @@ public interface MallService {
      */
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    Observable<ApiResponse<PayResultData>> payForOrder(@Body Request<PoBody> request);
+    Observable<ApiResponse<PayInfoResponseData<PayInfo>>> payForOrderByWx(@Body Request<PoBody> request);
+
+    /**
+     * 订单支付
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<PayInfoResponseData<String>>> payForOrderByZFB(@Body Request<PoBody> request);
 
     /**
      * 我的订单列表

@@ -33,6 +33,8 @@ import com.thinkeract.tka.data.api.response.NewsDetailData;
 import com.thinkeract.tka.data.api.response.PayResultData;
 import com.thinkeract.tka.data.api.response.PoData;
 import com.thinkeract.tka.data.api.response.UserData;
+import com.thinkeract.tka.pay.alipay.PayInfo;
+import com.thinkeract.tka.pay.alipay.PayInfoResponseData;
 import com.zitech.framework.data.network.HttpResultFunc;
 import com.zitech.framework.data.network.RetrofitClient;
 import com.zitech.framework.data.network.response.ApiResponse;
@@ -279,14 +281,24 @@ public class ApiFactory {
     }
 
     /**
-     * 订单支付
+     * 订单支付 微信
      * @param body
      * @return
      */
-    public static Observable<ApiResponse<PayResultData>> payForOrder(PoBody body) {
+    public static Observable<ApiResponse<PayInfoResponseData<PayInfo>>> payForOrderByWx(PoBody body) {
         Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.PAY_FOR_ORDER), body);
-        return getMallService().payForOrder(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<PayResultData>>applyExecutorSchedulers());
+        return getMallService().payForOrderByWx(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<PayResultData>>applyExecutorSchedulers());
     }
+
+//    /**
+//     * 订单支付 支付宝
+//     * @param body
+//     * @return
+//     */
+//    public static Observable<ApiResponse<PayInfoResponseData<String>>> payForOrderByZFB(PoBody body) {
+//        Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.PAY_FOR_ORDER), body);
+//        return getMallService().payForOrderByZFB(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<PayResultData>>applyExecutorSchedulers());
+//    }
 
     /**
      * 我的订单列表
