@@ -66,6 +66,7 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
     private HashMap<String, GoodsDetailData.StockBean> codeMap;
     private GoodsDetailData.StockBean mStockBean;
     private GoodsItem mGoodsItem;
+    private OnGoPayListener onGoPayListener;
     private int MAX_COUNT;
     private int goodsCount = 1;
     private int mBuyType;//0,加入购物车；1,直接购买
@@ -419,7 +420,8 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
             @Override
             public void onNext(ApiResponse<PoData> value) {
                 super.onNext(value);
-                ToastMaster.shortToast(value.getMsg());
+                if(onGoPayListener != null)
+                    onGoPayListener.goPay(value.getData().getPo());
             }
 
             @Override
@@ -427,5 +429,13 @@ public class ChooseGoodsSpecDialog extends ValidDialog implements View.OnClickLi
                 super.onError(e);
             }
         });
+    }
+
+    public interface OnGoPayListener{
+        void goPay(String po);
+    }
+
+    public void setOnGoPayListener(OnGoPayListener onGoPayListener){
+        this.onGoPayListener = onGoPayListener;
     }
 }

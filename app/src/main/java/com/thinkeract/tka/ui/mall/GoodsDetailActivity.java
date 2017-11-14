@@ -23,13 +23,14 @@ import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.entity.AddressItem;
 import com.thinkeract.tka.data.api.entity.GoodsComment;
 import com.thinkeract.tka.data.api.entity.GoodsDetailItem;
+import com.thinkeract.tka.data.api.request.IdRequest;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
 import com.thinkeract.tka.data.db.greendao.GDAddress;
+import com.thinkeract.tka.pay.contract.OrderPayContract;
+import com.thinkeract.tka.pay.presenter.OrderPayPresenter;
 import com.thinkeract.tka.ui.BaseActivity;
 import com.thinkeract.tka.ui.mall.adapter.GoodsDetailAdapter;
-import com.thinkeract.tka.ui.mall.contract.GoodsDetailDataContract;
 import com.thinkeract.tka.ui.mall.datasource.GoodsCommentDataSource;
-import com.thinkeract.tka.ui.mall.presenter.GoodsDetailDataPresenter;
 import com.thinkeract.tka.widget.ChooseGoodsSpecDialog;
 import com.thinkeract.tka.widget.GlideImageLoader;
 import com.thinkeract.tka.widget.MVCSwipeRefreshHelper;
@@ -38,6 +39,8 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.transformer.DepthPageTransformer;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.utils.ToastMaster;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +49,7 @@ import java.util.List;
  * mail:minhengyan@gmail.com
  */
 
-public class GoodsDetailActivity extends BaseActivity implements GoodsDetailDataContract.View {
+public class GoodsDetailActivity extends BaseActivity implements OrderPayContract.View {
     private LinearLayout actionBarLeft;
     private TextView actionBarTitle;
     private Toolbar toolbar;
@@ -54,13 +57,13 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
     private RecyclerView goodsDetailRv;
     private String mGoodsId;
     private Banner banner;
-    private GoodsDetailDataPresenter goodsDetailPresenter;
     private CollapsingToolbarLayoutState state;
     private SwipeRefreshLayout swipeRefreshLayout;
     private GoodsDetailAdapter goodsDetailAdapter;
     private MVCSwipeRefreshHelper<List<GoodsComment>> mvcHelper;
     private GoodsDetailData mGoodsDetailData;
     private ChooseGoodsSpecDialog mSpecDialog;
+    private OrderPayPresenter mPayPresenter;
 
     @Override
     protected int getContentViewId() {
@@ -116,9 +119,8 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
 
     @Override
     protected void initData() {
-        goodsDetailPresenter = new GoodsDetailDataPresenter(this);
-        goodsDetailPresenter.getGoodsDetail(mGoodsId);
-
+        requestGoodsData();
+        mPayPresenter = new OrderPayPresenter(this);
         goodsDetailAdapter = new GoodsDetailAdapter(this);
         goodsDetailAdapter.setOnItemClickListener(new GoodsDetailAdapter.OnItemClickListener() {
             @Override
@@ -138,6 +140,23 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
         if (gdAddress == null) {
             requestAddressFromService();
         }
+    }
+
+    private void requestGoodsData() {
+        IdRequest idRequest = new IdRequest();
+        idRequest.setId(mGoodsId);
+        ApiFactory.goodsDetail(idRequest).subscribe(new ProgressSubscriber<ApiResponse<GoodsDetailData>>(this){
+            @Override
+            public void onNext(ApiResponse<GoodsDetailData> value) {
+                super.onNext(value);
+                refreshUI(value.getData());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+            }
+        });
     }
 
     private void requestAddressFromService() {
@@ -208,30 +227,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
         }
     }
 
-    private void showChooseSpecDialog(int buyType) {
-        if(mSpecDialog == null) {
-            mSpecDialog = new ChooseGoodsSpecDialog(this,buyType);
-        }
-
-        mSpecDialog.setData(mGoodsDetailData);
-        mSpecDialog.setType(buyType);
-        mSpecDialog.show();
-    }
-
-    public static void launch(Activity activity, String goodsId){
-        Intent intent = new Intent(activity,GoodsDetailActivity.class);
-        intent.putExtra(Constants.ActivityExtra.GOODS_ID,goodsId);
-        activity.startActivity(intent);
-        ViewUtils.anima(ViewUtils.RIGHT_IN,activity);
-    }
-
-    @Override
-    public void showError(String errorMsg) {
-
-    }
-
-    @Override
-    public void showSuccess(GoodsDetailData goodsDetailData) {
+    public void refreshUI(GoodsDetailData goodsDetailData) {
         mGoodsDetailData = goodsDetailData;
         List<String> stringList =  goodsDetailData.getGoods().getPhotos();
         if(stringList != null&&stringList.size()>0){
@@ -247,6 +243,38 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailData
         goodsDetailItems.add(goodsDetailItem);
         goodsDetailAdapter.setItemList(goodsDetailItems);
         requestCommentData();
+    }
+
+    private void showChooseSpecDialog(int buyType) {
+        if(mSpecDialog == null) {
+            mSpecDialog = new ChooseGoodsSpecDialog(this,buyType);
+            mSpecDialog.setOnGoPayListener(new ChooseGoodsSpecDialog.OnGoPayListener() {
+                @Override
+                public void goPay(String po) {
+                    mPayPresenter.payByWxPay(po);
+                }
+            });
+        }
+        mSpecDialog.setData(mGoodsDetailData);
+        mSpecDialog.setType(buyType);
+        mSpecDialog.show();
+    }
+
+    @Override
+    public void showPaySuccess(String msg) {
+        ToastMaster.shortToast(msg);
+    }
+
+    @Override
+    public void showPayFailed(String msg, int failedCode) {
+        ToastMaster.shortToast(msg);
+    }
+
+    public static void launch(Activity activity, String goodsId){
+        Intent intent = new Intent(activity,GoodsDetailActivity.class);
+        intent.putExtra(Constants.ActivityExtra.GOODS_ID,goodsId);
+        activity.startActivity(intent);
+        ViewUtils.anima(ViewUtils.RIGHT_IN,activity);
     }
 
     @Override
