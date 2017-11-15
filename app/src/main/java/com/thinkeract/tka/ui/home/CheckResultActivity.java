@@ -56,12 +56,18 @@ public class CheckResultActivity extends AppBarActivity implements CheckResultSt
         mDoctorSAdviceLayout = (LinearLayout) findViewById(R.id.doctorSAdviceLayout);
         mDoctorSAdviceTv = (TextView) findViewById(R.id.doctorSAdviceTv);
         mActionIv = (ImageView) findViewById(R.id.actionIv);
+        mActionIv.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
         mPresenter = new CheckResultStuffPresenter(this);
         mPresenter.getCheckResultData(String.valueOf(mId));
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
     }
 
     @Override
