@@ -17,6 +17,7 @@ import com.thinkeract.tka.widget.MultiRadioGroup;
 import com.zitech.framework.widget.RemoteImageView;
 
 /**
+ *
  * Created by minHeng on 2017/4/5 17:27.
  * mail:minhengyan@gmail.com
  */

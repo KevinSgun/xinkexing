@@ -90,8 +90,8 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
             genderTv.setText(User.get().getGenderValue());
         }
 
-        if (User.get().getAge()>0) {
-            ageTv.setText(String.format(getString(R.string.age),User.get().getAge()));
+        if (!TextUtils.isEmpty(User.get().getAge())) {
+            ageTv.setText(String.format(getString(R.string.age_str),User.get().getAge()));
         }
 
     }

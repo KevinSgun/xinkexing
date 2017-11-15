@@ -28,21 +28,23 @@ public class User {
     private static final String TOKEN = "token";
     private static final String IS_AGREE = "is_agree";
     private static final String PUSH_ID = "push_id";
+    private static final String IS_DOCTOR = "is_doctor";
     private SP sp;
 
     private int id;
     private int concernNumber;//关注数
     private int fansNumber;//粉丝数
     private int isUpdate;//是否已完善资料，0未完善，1完善
-    private float balance;//余额
+    private double balance;//余额
     private String mobile;
     private String name;
     private String portrait;//头像
     private String token;
     private String gender;
-    private int age;
+    private String age;
     private boolean isAgree;
     private String pushId;//极光推送的ID
+    private String isDoctor;//是否为医生，0不是 1是医生
 
     public static User get() {
         return ThinkerActApplication.getInstance().getUser();
@@ -62,8 +64,9 @@ public class User {
         token = sp.getString(TOKEN, "");
         isAgree = sp.getBoolean(IS_AGREE, false);
         pushId = sp.getString(PUSH_ID, "");
-        gender = sp.getString(GENDER,"");
-        age = sp.getInt(AGE,0);
+        gender = sp.getString(GENDER, "");
+        age = sp.getString(AGE, null);
+        isDoctor = sp.getString(IS_DOCTOR, null);
     }
 
     private void storeId(int id) {
@@ -93,16 +96,16 @@ public class User {
         sp.putInt(ISUPDATE, isUpdate);
     }
 
-    public void storeBalance(float balance) {
-        if(balance >=0){
+    public void storeBalance(double balance) {
+        if (balance >= 0) {
             this.balance = balance;
-            sp.putFloat(BALANCE, balance);
+            sp.putFloat(BALANCE, (float) balance);
         }
     }
 
-    public void storeBalanceNotify(float balance) {
+    public void storeBalanceNotify(double balance) {
         this.balance = balance;
-        sp.putFloat(BALANCE, balance);
+        sp.putFloat(BALANCE, (float) balance);
         notifyChange();
     }
 
@@ -148,6 +151,17 @@ public class User {
         }
     }
 
+    public void storeIsDoctor(String isDoctor) {
+        this.isDoctor = isDoctor;
+        sp.putString(IS_DOCTOR, isDoctor);
+    }
+
+    public void storeIsDoctorNotify(String isDoctor) {
+        this.isDoctor = isDoctor;
+        sp.putString(IS_DOCTOR, isDoctor);
+        notifyChange();
+    }
+
     public void loginOut() {
         clear();
         notifyChange();
@@ -169,18 +183,19 @@ public class User {
         storeToken(data.getToken());
         storeGender(data.getGender());
         storeAge(data.getAge());
+        storeIsDoctor(data.getIsDoctor());
         if (isNeedNotify)
             notifyChange();
     }
 
-    private void storeAge(int age) {
-        this.age =age;
-        sp.putInt(AGE,age);
+    private void storeAge(String age) {
+        this.age = age;
+        sp.putString(AGE, age);
     }
 
     private void storeGender(String gender) {
         this.gender = gender;
-        sp.putString(GENDER,gender);
+        sp.putString(GENDER, gender);
     }
 
     public void clear() {
@@ -220,7 +235,7 @@ public class User {
 
         //
         sp.remove(AGE);
-        age =0;
+        age = null;
 
         notifyChange();
     }
@@ -249,7 +264,7 @@ public class User {
         return isUpdate;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -297,32 +312,36 @@ public class User {
         return this.isAgree;
     }
 
-    public String getGender(){
+    public String getGender() {
         return gender;
     }
 
-    public String getGenderValue(){
-        if("1".equals(gender)){
+    public String getGenderValue() {
+        if ("1".equals(gender)) {
             return "男";
-        }else if("0".equals(gender)){
+        } else if ("0".equals(gender)) {
             return "女";
-        }else{
+        } else {
             return "";
         }
     }
 
-    public int getAge(){
+    public String getAge() {
         return age;
     }
 
+    public boolean isDoctor(){
+        return "1".equals(isDoctor);
+    }
+
     public void updateFrom(UpdateUserDataBody body) {
-        if(!TextUtils.isEmpty(body.getNickName())){
+        if (!TextUtils.isEmpty(body.getNickName())) {
             storeName(body.getNickName());
         }
-        if(!TextUtils.isEmpty(body.getAge())){
-            storeAge(Integer.parseInt(body.getAge()));
+        if (!TextUtils.isEmpty(body.getAge())) {
+            storeAge(body.getAge());
         }
-        if(!TextUtils.isEmpty(body.getGender())){
+        if (!TextUtils.isEmpty(body.getGender())) {
             storeGender(body.getGender());
         }
     }

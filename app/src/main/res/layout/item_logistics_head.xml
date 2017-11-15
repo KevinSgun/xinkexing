@@ -15,7 +15,7 @@
         android:id="@+id/expressCompanyTv"
         style="@style/CommonText"
         android:layout_toRightOf="@id/expressCompany"
-        android:text="顺丰速运"/>
+        android:text=""/>
     <TextView
         android:id="@+id/waybillNum"
         style="@style/CommonText"
@@ -30,7 +30,7 @@
         style="@style/CommonText"
         android:layout_toRightOf="@id/waybillNum"
         android:layout_alignTop="@id/waybillNum"
-        android:text="1354654986516354654"/>
+        android:text=""/>
     <View style="@style/DividerLineHorizontal"
         android:layout_below="@id/waybillNum"/>
     <View

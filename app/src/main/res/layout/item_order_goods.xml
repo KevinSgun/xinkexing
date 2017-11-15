@@ -56,7 +56,8 @@
         android:layout_alignBottom="@id/goodsPicIv"
         android:layout_alignParentRight="true"
         android:background="@drawable/bg_gray_stroke_rectangle_corner_r100"
-        android:text="发表评价" />
+        android:text="发表评价"
+        android:visibility="gone"/>
     <View style="@style/DividerLineHorizontal"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

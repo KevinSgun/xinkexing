@@ -12,6 +12,7 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">false</item>
     </style>
 
     <style name="NoBackgroundAndTitleMain" parent="Theme.AppCompat.Light.NoActionBar">
@@ -20,11 +21,12 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@color/transparent</item>
-        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">false</item>
     </style>
 
     <style name="GoodsDetailTheme" parent="Theme.AppCompat.Light.NoActionBar">

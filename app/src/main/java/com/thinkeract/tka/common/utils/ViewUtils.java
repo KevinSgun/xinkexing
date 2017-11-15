@@ -47,6 +47,21 @@ public class ViewUtils extends com.zitech.framework.utils.ViewUtils {
         }
     }
 
+    public static int getOrderStatusBgColorRes(int orderStatus){
+        switch (orderStatus){
+            case OrderItem.IS_FINISH:
+                return R.color.green_93c94d;
+            case OrderItem.IS_SEND:
+                return R.color.green_93c94d;
+            case OrderItem.WAIT_PAY:
+                return R.color.red_fd2740;
+            case OrderItem.IS_CANCEL:
+                return R.color.textColorPrimaryGray;
+            default:
+                return R.color.textColorPrimary;
+        }
+    }
+
     public static String getOrderStatusString(int orderStatus){
         switch (orderStatus){
             case OrderItem.IS_FINISH:

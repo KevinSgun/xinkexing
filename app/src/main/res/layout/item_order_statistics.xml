@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/h90"
@@ -17,7 +17,7 @@
             android:layout_width="@dimen/w160"
             android:layout_height="@dimen/h48"
             android:textSize="@dimen/w24"
-            android:textColor="@color/textColorPrimaryDark"
+            android:textColor="@color/textColorPrimary"
             android:background="@drawable/bg_gray_stroke_rectangle_corner_r100"
             android:text="查看物流"
             android:visibility="gone"/>
@@ -94,5 +94,6 @@
         android:background="@drawable/bg_gray_stroke_gray_rectangle_corner_r10"
         android:textColor="@color/text_gray"
         android:layout_marginTop="@dimen/h50"
+        android:layout_marginBottom="@dimen/h50"
         android:text="删除订单"/>
 </LinearLayout>

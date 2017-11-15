@@ -63,7 +63,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             if (item.getStatus() == OrderItem.IS_SEND||item.getStatus() == OrderItem.WAIT_PAY) {
                 viewHolder.businessBtn.setVisibility(View.VISIBLE);
                 viewHolder.businessBtn.setBackgroundResource(ViewUtils.getOrderBusinessBackgroundRes(item.getStatus()));
-                viewHolder.businessBtn.setText(ViewUtils.getOrderStatusString(item.getStatus()));
+                viewHolder.businessBtn.setText(ViewUtils.getOrderBusinessString(item.getStatus()));
+                viewHolder.businessBtn.setTextColor(mContext.getResources().getColor(ViewUtils.getOrderStatusColorRes(item.getStatus())));
 
                 viewHolder.businessBtn.setOnClickListener(new View.OnClickListener() {
                     @Override

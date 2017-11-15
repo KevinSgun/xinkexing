@@ -85,91 +85,10 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
         super.onClick(v);
         switch (v.getId()) {
             case R.id.loginBtn://普通登录请求
-                String name = this.inputPhoneNumEt.getText().toString();
-                if (!validatePhone(name)) {
-                    return;
-                }
-                String validateNum = this.inputValidateNumEt.getText().toString();
-                if (!validateCode(inputValidateNumEt.getText().toString())) {
-                    return;
-                }
-                loginPresenter.login(name, validateNum);
+                loginStuff();
                 break;
             case R.id.doctorLoginBtn: //医生登录请求
-//                showActivity(MainActivity.class);
-//                showActivity(IdentityReviewActivity.class);
-//                showActivity(ShoppingCartActivity.class);
-//                ChooseGoodsSpecDialog chooseGoodsSpecDialog = new ChooseGoodsSpecDialog(this);
-//                List<Sku> gList = new ArrayList<>();
-//                Sku goodsSpec = new Sku();
-//                Sku goodsSpec2 = new Sku();
-//                Sku goodsSpec3 = new Sku();
-//                List<Sku.Spec> gSpecList = new ArrayList<>();
-//                List<Sku.Spec> gSpecList2 = new ArrayList<>();
-//                List<Sku.Spec> gSpecList3 = new ArrayList<>();
-//                Sku.Spec gs1 = new Sku.Spec();
-//                gs1.setName("500ml");
-//                Sku.Spec gs11 = new Sku.Spec();
-//                gs11.setName("1000ml");
-//                Sku.Spec gs22 = new Sku.Spec();
-//                gs22.setName("2000ml");
-//                Sku.Spec gs23 = new Sku.Spec();
-//                gs23.setName("20000ml");
-//                Sku.Spec gs24 = new Sku.Spec();
-//                gs24.setName("40000ml");
-//                Sku.Spec gs25 = new Sku.Spec();
-//                gs25.setName("800000ml");
-//                gSpecList.add(gs1);
-//                gSpecList.add(gs11);
-//                gSpecList.add(gs22);
-//
-//                goodsSpec.setName("容量");
-//                goodsSpec.setItems(gSpecList);
-//
-//                Sku.Spec gs2 = new Sku.Spec();
-//                gs2.setName("黄色");
-//                Sku.Spec gs3 = new Sku.Spec();
-//                gs3.setName("红色");
-//                Sku.Spec gs4 = new Sku.Spec();
-//                gs4.setName("蓝色");
-//                Sku.Spec gs5 = new Sku.Spec();
-//                gs5.setName("绿色");
-//                Sku.Spec gs6 = new Sku.Spec();
-//                gs6.setName("梦幻紫色");
-//                gSpecList2.add(gs2);
-//                gSpecList2.add(gs3);
-//                gSpecList2.add(gs4);
-//                gSpecList2.add(gs5);
-//                gSpecList2.add(gs6);
-//
-//                goodsSpec2.setName("炫酷的颜色");
-//                goodsSpec2.setItems(gSpecList2);
-//
-//                Sku.Spec gs44 = new Sku.Spec();
-//                gs44.setName("黄色");
-//                Sku.Spec gs41 = new Sku.Spec();
-//                gs41.setName("红色");
-//                Sku.Spec gs42 = new Sku.Spec();
-//                gs42.setName("蓝色");
-//                Sku.Spec gs43 = new Sku.Spec();
-//                gs43.setName("绿色");
-//                Sku.Spec gs45 = new Sku.Spec();
-//                gs45.setName("梦幻紫色");
-//                gSpecList3.add(gs44);
-//                gSpecList3.add(gs41);
-//                gSpecList3.add(gs42);
-//                gSpecList3.add(gs43);
-//                gSpecList3.add(gs45);
-//
-//                goodsSpec3.setName("不同的颜色");
-//                goodsSpec3.setItems(gSpecList3);
-//
-//                gList.add(goodsSpec);
-//                gList.add(goodsSpec2);
-//                gList.add(goodsSpec3);
-//
-//                chooseGoodsSpecDialog.setData(gList);
-//                chooseGoodsSpecDialog.show();
+                loginStuff();
                 break;
             case R.id.weChatLoginLayout: //微信登录请求
 
@@ -178,6 +97,18 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
 
                 break;
         }
+    }
+
+    private void loginStuff() {
+        String name = this.inputPhoneNumEt.getText().toString();
+        if (!validatePhone(name)) {
+            return;
+        }
+        String validateNum = this.inputValidateNumEt.getText().toString();
+        if (!validateCode(inputValidateNumEt.getText().toString())) {
+            return;
+        }
+        loginPresenter.login(name, validateNum);
     }
 
 

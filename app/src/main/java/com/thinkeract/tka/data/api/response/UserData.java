@@ -11,10 +11,9 @@ public class UserData {
     private int id;
     private int concernNumber;//关注数
     private int fansNumber;//粉丝数
-    private int isProfessional;//是否为专家，0不是，1是
     private int isUpdate;//是否已完善资料，0未完善，1完善
-    private int age;
-    private float balance;//余额
+    private double balance;//余额
+    private String age;
     private String mobile;
     private String nickName;
     private String position;//所在职位
@@ -23,6 +22,7 @@ public class UserData {
     private String status;//1.正常，2已被禁用
     private String token;
     private String gender;
+    private String isDoctor;//是否为医生，0不是 1是医生
 
     public int getId() {
         return id;
@@ -40,14 +40,6 @@ public class UserData {
         this.mobile = mobile;
     }
 
-    public int getIsProfessional() {
-        return isProfessional;
-    }
-
-    public void setIsProfessional(int isProfessional) {
-        this.isProfessional = isProfessional;
-    }
-
     public int getIsUpdate() {
         return isUpdate;
     }
@@ -56,11 +48,11 @@ public class UserData {
         this.isUpdate = isUpdate;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -136,11 +128,19 @@ public class UserData {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getIsDoctor() {
+        return isDoctor;
+    }
+
+    public void setIsDoctor(String isDoctor) {
+        this.isDoctor = isDoctor;
     }
 }

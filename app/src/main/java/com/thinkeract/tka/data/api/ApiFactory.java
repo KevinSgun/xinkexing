@@ -189,7 +189,6 @@ public class ApiFactory {
     public static Observable<ApiResponse<List<NewsItem>>> newsRecommendList() {
         Request request = new Request<>(RequestHeader.create(ApiConstants.NEWS_RECOMMEND), null);
         return getHomePageDataService().newsRecommendList(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<List<NewsItem>>>applyExecutorSchedulers());
-
     }
 
     /**
@@ -335,13 +334,13 @@ public class ApiFactory {
      * @param body
      * @return
      */
-    public static Observable<ApiResponse> lookOrderLogistics(PoBody body) {
+    public static Observable<ApiResponse<LogisticsData>> lookOrderLogistics(PoBody body) {
         Request<PoBody> request = new Request<>(RequestHeader.create(ApiConstants.ORDER_LOGISTICS), body);
         return getMallService().lookOrderLogistics(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<LogisticsData>>applyExecutorSchedulers());
     }
 
     /**
-     * 查看订单物流信息
+     * 检测项目明细
      * @param body
      * @return
      */

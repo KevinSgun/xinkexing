@@ -56,7 +56,6 @@ public class OrderDetailPresenter implements OrderDetailContract.Presenter {
             goodsItem.setDetailGoods(goods);
             orderDetailDatas.add(goodsItem);
         }
-
         orderDetailDatas.add(data);
         return orderDetailDatas;
     }

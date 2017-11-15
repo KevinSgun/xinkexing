@@ -119,7 +119,7 @@ public class SettlementDialog extends ValidDialog implements View.OnClickListene
         if(defAddress!=null){
             contactNameTv.setText(defAddress.getContact());
             phoneNumTv.setText(defAddress.getPhone());
-            addressTv.setText(defAddress.getProvince()+defAddress.getCity()+defAddress.getAddress());
+            addressTv.setText(defAddress.getCity()+defAddress.getAddress());
             mDefAddress = defAddress;
         }
     }

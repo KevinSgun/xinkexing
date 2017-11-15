@@ -107,6 +107,7 @@
     <string name="watch_live">观看直播</string>
     <string name="go_to_mall">进入商城</string>
     <string name="mall">商城</string>
+    <string name="order_detail">订单详情</string>
 
     <string name="select_bank_tips">请选择开户银行</string>
     <string name="input_user_name_tips">请填写开户人姓名</string>
@@ -127,6 +128,7 @@
     <string name="content_introduce">内容介绍</string>
     <string name="identity_review">身份审核</string>
     <string name="age">%d岁</string>
+    <string name="age_str">%s岁</string>
 
     <!-- 我的相关 end-->
 
