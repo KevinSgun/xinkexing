@@ -9,6 +9,7 @@ import com.thinkeract.tka.data.api.request.Request;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
+import com.thinkeract.tka.data.api.response.DoctorAuthData;
 import com.thinkeract.tka.data.api.response.UserData;
 import com.zitech.framework.data.network.response.ApiResponse;
 
@@ -116,7 +117,7 @@ public interface AccountService {
     Observable<ApiResponse> modifyAddress(@Body Request<UpdateAddressBody> request);
 
     /**
-     * 医生审核资料
+     * 上传医生审核资料
      *
      * @param request
      * @return
@@ -124,6 +125,16 @@ public interface AccountService {
     @POST(ApiConstants.COMMON_REQUEST)
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     Observable<ApiResponse> doctorDataReview(@Body Request<DoctorDataReviewBody> request);
+
+    /**
+     * 查看医生审核资料
+     *
+     * @param request
+     * @return
+     */
+    @POST(ApiConstants.COMMON_REQUEST)
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    Observable<ApiResponse<DoctorAuthData>> lookDoctorData(@Body Request request);
 
     //------------------------------------------------------------------------------------------------
     /**

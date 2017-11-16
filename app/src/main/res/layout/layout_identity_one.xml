@@ -64,7 +64,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/w76"
                     android:maxLength="16"
-                    android:text="阿萨德发生的方法大阿萨德发生的方"
+                    android:text=""
                     android:hint="请填写医院" />
 
                 <View

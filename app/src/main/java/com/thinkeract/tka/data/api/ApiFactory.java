@@ -10,6 +10,7 @@ import com.thinkeract.tka.data.api.entity.NewsItem;
 import com.thinkeract.tka.data.api.entity.OrderDetailData;
 import com.thinkeract.tka.data.api.entity.OrderItem;
 import com.thinkeract.tka.data.api.entity.SecondReportItem;
+import com.thinkeract.tka.data.api.entity.StepItem;
 import com.thinkeract.tka.data.api.request.CommentOrderBody;
 import com.thinkeract.tka.data.api.request.DoctorDataReviewBody;
 import com.thinkeract.tka.data.api.request.GIdListBody;
@@ -20,11 +21,13 @@ import com.thinkeract.tka.data.api.request.PoBody;
 import com.thinkeract.tka.data.api.request.Request;
 import com.thinkeract.tka.data.api.request.RequestHeader;
 import com.thinkeract.tka.data.api.request.StatusListBody;
+import com.thinkeract.tka.data.api.request.StepsBody;
 import com.thinkeract.tka.data.api.request.SubmitOrderBody;
 import com.thinkeract.tka.data.api.request.UpdateAddressBody;
 import com.thinkeract.tka.data.api.request.UpdateUserDataBody;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
 import com.thinkeract.tka.data.api.response.CheckResultData;
+import com.thinkeract.tka.data.api.response.DoctorAuthData;
 import com.thinkeract.tka.data.api.response.GoodsDetailData;
 import com.thinkeract.tka.data.api.response.HomePageData;
 import com.thinkeract.tka.data.api.response.ListData;
@@ -340,13 +343,40 @@ public class ApiFactory {
     }
 
     /**
+     * 查看医生审核资料
+     * @return
+     */
+    public static Observable<ApiResponse<DoctorAuthData>> lookDoctorData() {
+        Request request = new Request<>(RequestHeader.create(ApiConstants.LOOK_AUTH_DATA), null);
+        return getApiService().lookDoctorData(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse>applyExecutorSchedulers());
+    }
+
+    /**
+     * 上传计步数据
+     * @return
+     */
+    public static Observable<ApiResponse> upStepCount(StepsBody body) {
+        Request<StepsBody> request = new Request<>(RequestHeader.create(ApiConstants.UP_STEP_COUNT), body);
+        return getMineService().upStepCount(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse>applyExecutorSchedulers());
+    }
+
+    /**
+     * 计步数据统计
+     * @return
+     */
+    public static Observable<ApiResponse<List<StepItem>>> stepCountData() {
+        Request request = new Request<>(RequestHeader.create(ApiConstants.STEP_COUNT_DATA), null);
+        return getMineService().stepCountData(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse>applyExecutorSchedulers());
+    }
+
+    /**
      * 检测项目明细
      * @param body
      * @return
      */
     public static Observable<ApiResponse<CheckResultData>> getCheckResult(IdRequest body) {
         Request<IdRequest> request = new Request<>(RequestHeader.create(ApiConstants.CHECK_RESULT), body);
-        return getHomePageDataService().getCheckResult(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse<LogisticsData>>applyExecutorSchedulers());
+        return getHomePageDataService().getCheckResult(request.sign()).map(new HttpResultFunc()).compose(SchedulersCompat.<ApiResponse>applyExecutorSchedulers());
     }
 
    //-----------------------------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 package com.thinkeract.tka.ui.mine;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,6 +15,7 @@ import com.thinkeract.tka.R;
 import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.ui.preview.PhotoPickingActivity;
 import com.thinkeract.tka.widget.MultiRadioGroup;
+import com.zitech.framework.utils.ToastMaster;
 import com.zitech.framework.widget.RemoteImageView;
 
 /**
@@ -37,6 +39,8 @@ public class IdentityReviewActivity extends PhotoPickingActivity {
     private Button nextBtn;
     private RemoteImageView doctorCertificateIv;
     private Button commitForReviewBtn;
+    private String mName;
+    private String mHospital;
 
     @Override
     protected int getContentViewId() {
@@ -89,10 +93,28 @@ public class IdentityReviewActivity extends PhotoPickingActivity {
         super.onClick(v);
         switch (v.getId()){
             case R.id.nextBtn:
-                identityAnimator.setDisplayedChild(1);
-                mainRadioGroup.check(R.id.identityRb);
+                if(checkBasicDataStatus()) {
+                    identityAnimator.setDisplayedChild(1);
+                    mainRadioGroup.check(R.id.identityRb);
+                }
                 break;
         }
+    }
+
+    private boolean checkBasicDataStatus() {
+        mName = userNameEt.getText().toString();
+        if(TextUtils.isEmpty(mName)){
+            ToastMaster.shortToast("姓名不能为空");
+            return false;
+        }
+
+        mHospital = hospitalNameEt.getText().toString();
+        if(TextUtils.isEmpty(mHospital)){
+            ToastMaster.shortToast("所在医院不能为空");
+            return false;
+        }
+
+        return true;
     }
 
     @Override
