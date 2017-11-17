@@ -34,6 +34,7 @@
     <string name="handle">操作</string>
     <string name="choose_picture">选择图片上传方式</string>
     <string name="change_avatar">更换头像</string>
+    <string name="doctor_certificate">医师执业证书</string>
 
     <string name="please_set_business_card">请选择您的名片</string>
     <string name="please_input_email">请填写您的邮箱</string>

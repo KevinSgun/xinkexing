@@ -57,7 +57,7 @@
             style="@style/SmallText"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/h80"
-            android:text="审核专线：5555555"
+            android:text="审核专线："
             android:textColor="@color/textColorPrimaryGray" />
     </LinearLayout>
     <LinearLayout

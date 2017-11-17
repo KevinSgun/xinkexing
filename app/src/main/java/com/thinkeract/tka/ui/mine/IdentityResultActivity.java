@@ -1,5 +1,6 @@
 package com.thinkeract.tka.ui.mine;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,7 +31,15 @@ public class IdentityResultActivity extends AppBarActivity {
 
     @Override
     protected void initData() {
+        identityAgainBtn.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        if(v.getId() == R.id.identityAgainBtn){
+
+        }
     }
 
     private void initializeView() {

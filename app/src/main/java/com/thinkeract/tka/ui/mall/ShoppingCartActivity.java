@@ -18,13 +18,19 @@ import com.thinkeract.tka.common.utils.DBUtils;
 import com.thinkeract.tka.common.utils.Utils;
 import com.thinkeract.tka.data.api.ApiFactory;
 import com.thinkeract.tka.data.api.entity.AddressItem;
+import com.thinkeract.tka.data.api.request.SubmitOrderBody;
+import com.thinkeract.tka.data.api.response.PoData;
 import com.thinkeract.tka.data.db.greendao.GDAddress;
 import com.thinkeract.tka.data.db.greendao.GDGoodsItem;
+import com.thinkeract.tka.pay.contract.OrderPayContract;
+import com.thinkeract.tka.pay.presenter.OrderPayPresenter;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.ui.mall.adapter.ShoppingCartAdapter;
+import com.thinkeract.tka.ui.mine.UpdateAddressActivity;
 import com.thinkeract.tka.widget.SettlementDialog;
 import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.data.network.subscribe.ProgressSubscriber;
+import com.zitech.framework.utils.ToastMaster;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -35,7 +41,7 @@ import java.util.List;
  * mail:minhengyan@gmail.com
  */
 
-public class ShoppingCartActivity extends AppBarActivity {
+public class ShoppingCartActivity extends AppBarActivity implements OrderPayContract.View {
 
     private CheckBox checkAll;
     private RelativeLayout selAllLayout;
@@ -51,6 +57,7 @@ public class ShoppingCartActivity extends AppBarActivity {
     private static final int GOODS_CART = 1;
     private static final int EMPTY = 0;
     private boolean noNeedChangeAll;
+    private OrderPayPresenter mPayPresenter;
 
     @Subscribe
     public void onGoodsSeltectedStatusChange(Events.GoodsSelectedStatusChange data) {
@@ -117,34 +124,29 @@ public class ShoppingCartActivity extends AppBarActivity {
         cartListRv.setAdapter(mAdapter);
     }
 
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        if (v.getId() == R.id.settlementBtn) {
-//            if(DBUtils.queryDefAddress() != null) {
-            SettlementDialog settlementDialog = new SettlementDialog(this);
-            settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
-                @Override
-                public void onSettlementClick(double totalAmount,String addressId,String stockString) {
-                    //提交订单
-                }
-            });
-            settlementDialog.setData(mAdapter.getItemList(), totalAmount, totalGoodsPrice, totalFreight);
-            settlementDialog.show();
-//            }else{
-//                //TODO 去添加收获地址
-//                ToastMaster.shortToast("您还没有收获地址哦");
-//            }
-        }
+
+    private void initializeView() {
+        checkAll = (CheckBox) findViewById(R.id.checkAll);
+        selAllLayout = (RelativeLayout) findViewById(R.id.selAllLayout);
+        cartListRv = (RecyclerView) findViewById(R.id.cartListRv);
+        totalAmountTv = (TextView) findViewById(R.id.totalAmountTv);
+        settlementBtn = (Button) findViewById(R.id.settlementBtn);
+        viewanimator = (ViewAnimator) findViewById(R.id.view_animator);
     }
+
 
     @Override
     protected void initData() {
-        List<GDGoodsItem> goodsItemList = DBUtils.queryAllGoodsList();
+        mPayPresenter = new OrderPayPresenter(this);
         GDAddress gdAddress = DBUtils.queryDefAddress();
         if (gdAddress == null) {
             requestAddressFromService();
         }
+        setShoppingCartGoods();
+    }
+
+    private void setShoppingCartGoods() {
+        List<GDGoodsItem> goodsItemList = DBUtils.queryAllGoodsList();
         if (goodsItemList != null && goodsItemList.size() > 0) {
             viewanimator.setDisplayedChild(GOODS_CART);
             goodsItemList.add(new GDGoodsItem());
@@ -214,18 +216,63 @@ public class ShoppingCartActivity extends AppBarActivity {
         totalAmount = Utils.doubleAddDouble(totalGoodsPrice, totalFreight);
     }
 
-    private void initializeView() {
-        checkAll = (CheckBox) findViewById(R.id.checkAll);
-        selAllLayout = (RelativeLayout) findViewById(R.id.selAllLayout);
-        cartListRv = (RecyclerView) findViewById(R.id.cartListRv);
-        totalAmountTv = (TextView) findViewById(R.id.totalAmountTv);
-        settlementBtn = (Button) findViewById(R.id.settlementBtn);
-        viewanimator = (ViewAnimator) findViewById(R.id.view_animator);
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        if (v.getId() == R.id.settlementBtn) {
+            if (DBUtils.queryDefAddress() != null) {
+                SettlementDialog settlementDialog = new SettlementDialog(this);
+                settlementDialog.setOnSettlementClickListener(new SettlementDialog.OnSettlementClickListener() {
+                    @Override
+                    public void onSettlementClick(double totalAmount, String addressId, String stockString) {
+                        //提交订单
+                        submitOrder(totalAmount,addressId,stockString);
+                    }
+                });
+                settlementDialog.setData(mAdapter.getItemList(), totalAmount, totalGoodsPrice, totalFreight);
+                settlementDialog.show();
+            } else {
+                //TODO 去添加收获地址
+                ToastMaster.shortToast("您还没有收获地址哦");
+                UpdateAddressActivity.launch(this);
+            }
+        }
     }
+
+    private void submitOrder(double totalAmount, String addressId, String stockString) {
+        SubmitOrderBody body = new SubmitOrderBody();
+        body.setAddressId(addressId);
+        body.setStock(stockString);
+        body.setTotleAmount(String.valueOf(totalAmount));
+        ApiFactory.submit(body).subscribe(new ProgressSubscriber<ApiResponse<PoData>>(this) {
+            @Override
+            public void onNext(ApiResponse<PoData> value) {
+                super.onNext(value);
+                mPayPresenter.payByWxPay(value.getData().getPo());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+            }
+        });
+    }
+
 
     @Override
     protected void onDestroy() {
         DBUtils.insertOrReplaceAll(mAdapter.getItemList());
         super.onDestroy();
+    }
+
+    @Override
+    public void showPaySuccess(String msg) {
+        ToastMaster.shortToast(msg);
+        setShoppingCartGoods();
+    }
+
+    @Override
+    public void showPayFailed(String msg, int failedCode) {
+        ToastMaster.shortToast(msg);
     }
 }

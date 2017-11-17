@@ -75,6 +75,10 @@ public class Constants {
     public static final String INVITATION_URL = ApiConstants.getRootUrl()+"mb/invite/";
     public static final String SHARE_LIVE_URL = ApiConstants.getRootUrl() + "mb/live/";
 
+    public static final String PHOTO_TYPE = "photo_type";
+    public static final int AVATAR = 18;
+    public static final int DOCTOR_AUTH = 19;
+
     public interface ActivityExtra {
         String BUSI_ID = "busi_id";
         String PHOTOS = "photos";

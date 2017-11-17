@@ -197,7 +197,7 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
     }
 
     private void chooseAndUploadAvatar() {
-        requestTakePhoto(getString(R.string.change_avatar), EFFECT_TYPE_CUT, new PhotoTakeListener() {
+        requestTakePhoto(getString(R.string.change_avatar), EFFECT_TYPE_CUT,Constants.AVATAR, new PhotoTakeListener() {
             @Override
             public void onPhotoTake(String picturePath) {
 
@@ -205,21 +205,7 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
 
             @Override
             public void onPhotoCut(String picturePath, String cutPicturePath) {
-                avatarIv.setImageUri("file://" + cutPicturePath);
-                ApiFactory.upload(Constants.UPLOAD_TYPE_AVATAR, new File(cutPicturePath)).subscribe(new Consumer<ApiResponse<String>>() {
-
-                    @Override
-                    public void accept(ApiResponse<String> stringApiResponse) throws Exception {
-                        User.get().storePortraitNotify(stringApiResponse.getData());
-                        setAvatar = true;
-                    }
-
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        ToastMaster.shortToast("上传头像失败");
-                    }
-                });
+                upAvatar(cutPicturePath);
             }
 
             @Override
@@ -227,6 +213,30 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
 
             }
         });
+    }
+
+    private void upAvatar(String picturePath) {
+        if(TextUtils.isEmpty(picturePath)) return;
+        avatarIv.setImageUri("file://" + picturePath);
+        ApiFactory.uploadSingle(Constants.UPLOAD_TYPE_AVATAR, new File(picturePath)).subscribe(new Consumer<ApiResponse<String>>() {
+
+            @Override
+            public void accept(ApiResponse<String> stringApiResponse) throws Exception {
+                User.get().storePortraitNotify(stringApiResponse.getData());
+                setAvatar = true;
+            }
+
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                ToastMaster.shortToast("上传头像失败");
+            }
+        });
+    }
+
+    @Override
+    public void onFinalPhotoTakeResult(int listenerType, String picturePath) {
+        upAvatar(picturePath);
     }
 
     @Override

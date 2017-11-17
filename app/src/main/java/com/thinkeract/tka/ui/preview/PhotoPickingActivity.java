@@ -5,14 +5,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 
+import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.User;
 import com.thinkeract.tka.common.utils.PermissionUtils;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.widget.BottomLinearPicker;
 import com.thinkeract.tka.widget.CommonDialog;
+import com.zitech.framework.SP;
 import com.zitech.framework.crop.CropActivity;
 import com.zitech.framework.utils.ImageUtils;
 import com.zitech.framework.utils.ToastMaster;
@@ -41,6 +44,8 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
 
     protected static final int READ_WRITE_FOR_AVATAR = 103;//读写权限
     protected static final int CAMERA_AVATAR = 105;//相机权限
+    protected static final int READ_WRITE_FOR_CAMERA = 106;//访问相机需要的读写权限
+    private int listenerType;
     private BottomLinearPicker bottomLinearPicker;
 
     public interface PhotoTakeListener {
@@ -63,15 +68,24 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
 
     private PhotoTakeListener listener;
 
-    public void requestTakePhoto(String tilte, int effecType, float ratio, PhotoTakeListener listener) {
+    public void requestTakePhoto(String title, int effecType, int listenerType, PhotoTakeListener listener, float ratio) {
         this.ratio = ratio;
-        requestTakePhoto(tilte, effecType, listener);
+        this.effecType = effecType;
+        this.listener = listener;
+        this.listenerType = listenerType;
+        initDialogMenu(title);
+    }
+
+    public void requestTakePhoto(String title, int effecType, int listenerType, PhotoTakeListener listener) {
+        requestTakePhoto(title, effecType, listenerType, listener, 1f);
     }
 
     public void requestTakePhoto(String title, int effecType, PhotoTakeListener listener) {
-        this.effecType = effecType;
-        this.listener = listener;
-        initDialogMenu(title);
+        requestTakePhoto(title, effecType, 0, listener);
+    }
+
+    public void requestTakePhoto(int effecType, PhotoTakeListener listener) {
+        requestTakePhoto(null, effecType, listener);
     }
 
     @Override
@@ -81,16 +95,19 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
         if (resultCode == RESULT_OK) {
             try {
                 if (requestCode == TAKE_PHOTO) {
-                    File photoTookedPath = getPhotoTookPath();
-                    if (photoTookedPath != null && photoTookedPath.exists()) {
+                    File photoTookPath = getPhotoTookPath();
+                    if (photoTookPath != null && photoTookPath.exists()) {
                         if (effecType == EFFECT_TYPE_CUT) {
-                            cutPhoto(Uri.fromFile(photoTookedPath), ImageUtils.MAX_LIMIT);
+                            cutPhoto(Uri.fromFile(photoTookPath), ImageUtils.MAX_LIMIT);
                         } else {
-                            String picturePath = ImageUtils.compressNoLargePhoto(this, photoTookedPath, getCompressedPhotoPath(),
+                            String picturePath = ImageUtils.compressNoLargePhoto(this, photoTookPath, getCompressedPhotoPath(),
                                     true, ImageUtils.MAX_LIMIT);
                             if (listener != null) {
                                 listener.onPhotoTake(picturePath);
                                 listener = null;
+                            } else {
+                                int listenerType = SP.getDefaultSP().getInt(Constants.PHOTO_TYPE, 0);
+                                onFinalPhotoTakeResult(listenerType, picturePath);
                             }
                         }
                     } else {
@@ -118,6 +135,9 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
                         if (listener != null) {
                             listener.onPhotoTake(picturePath);
                             listener = null;
+                        } else {
+                            int listenerType = SP.getDefaultSP().getInt(Constants.PHOTO_TYPE, 0);
+                            onFinalPhotoTakeResult(listenerType, picturePath);
                         }
                     }
                 } else if (requestCode == CROP_PIC) {
@@ -133,6 +153,9 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
                     if (listener != null) {
                         listener.onPhotoCut(picturePath, data.getExtras().getString("data"));
                         listener = null;
+                    } else {
+                        int listenerType = SP.getDefaultSP().getInt(Constants.PHOTO_TYPE, 0);
+                        onFinalPhotoTakeResult(listenerType, picturePath);
                     }
                 }
             } catch (Exception e) {
@@ -152,6 +175,15 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
 
     }
 
+    /**
+     * 重载该方法用来获得因为Activity因为资源不足被系统收回时得不到回调的照片文件路径
+     *
+     * @param listenerType 照片监听回调的类型
+     * @param picturePath  照片文件路径
+     */
+    public void onFinalPhotoTakeResult(int listenerType, String picturePath) {
+
+    }
 
     public void cutPhoto(Uri uri) {
         Intent intent = new Intent(this, CropActivity.class);
@@ -163,14 +195,14 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
 
     public void onItemClick(int itemId) {
         switch (itemId) {
-            case 2:
-                if (PermissionUtils.isGrantExternalRW(this, READ_WRITE_FOR_AVATAR)) {
-                    selectFromAlbum(listener);
-                }
-                break;
             case 1:
                 if (PermissionUtils.isGrantCamera(this, CAMERA_AVATAR)) {
                     takePhoto(listener);
+                }
+                break;
+            case 2:
+                if (PermissionUtils.isGrantExternalRW(this, READ_WRITE_FOR_AVATAR)) {
+                    selectFromAlbum(listener);
                 }
                 break;
 
@@ -186,9 +218,13 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             //业务逻辑
             if (requestCode == CAMERA_AVATAR) {
-                takePhoto(listener);
-            }else if (requestCode == READ_WRITE_FOR_AVATAR){
+                if (PermissionUtils.isGrantExternalRW(this, READ_WRITE_FOR_CAMERA)) {
+                    takePhoto(listener);
+                }
+            } else if (requestCode == READ_WRITE_FOR_AVATAR) {
                 selectFromAlbum(listener);
+            } else if (requestCode == READ_WRITE_FOR_CAMERA) {
+                takePhoto(listener);
             }
         } else {
             //授权被拒绝，不再进行基于该权限的功能
@@ -210,27 +246,9 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
         }
     }
 
-
     @SuppressWarnings("deprecation")
     private void initDialogMenu(String title) {
-//        final ActionSheet sheet = (ActionSheet) ActionSheetHelper.createDialog(this, null);
-//        String[] items = null;
-//        items = getResources().getStringArray(R.array.detail_camer_pic);
-//        sheet.addButton(items[0], ActionSheet.WHITE_STYLE_BTN);
-//        sheet.addButton(items[1], ActionSheet.WHITE_STYLE_BTN);
-//        sheet.setMainTitle(title);
-//        sheet.setOnButtonClickListener(new ActionSheet.OnButtonClickListener() {
-//
-//            @Override
-//            public void OnClick(View clickedView, int which) {
-//                // TODO Auto-generated method stub
-//                onItemClick(which);
-//                sheet.dismiss();
-//            }
-//        });
-//        sheet.addCancelButton(items[2]);
-//        sheet.show();
-        if(bottomLinearPicker == null) {
+        if (bottomLinearPicker == null) {
             bottomLinearPicker = new BottomLinearPicker(this, title);
             bottomLinearPicker.addText("拍照", R.color.blue_5080d8);
             bottomLinearPicker.addText("从手机相册选择", R.color.text_pink);
@@ -287,6 +305,12 @@ public abstract class PhotoPickingActivity extends AppBarActivity {
         intent.putExtra("limit", limit);
         startActivityForResult(intent, CROP_PIC);
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        SP.getDefaultSP().putInt(Constants.PHOTO_TYPE, listenerType);
     }
 
 }

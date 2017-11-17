@@ -43,7 +43,7 @@ public class DBUtils {
     }
 
     public static void insertOrReplaceAll(List<GDGoodsItem> goodsItemList){
-        if(goodsItemList == null) return;
+        if(goodsItemList == null||goodsItemList.size()==0) return;
         for(GDGoodsItem goodsItem:goodsItemList){
             if(goodsItem.getGoodsId() != 0)
             sharedSessions()//

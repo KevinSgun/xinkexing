@@ -22,10 +22,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.data.api.entity.ActionTitleItem;
-
 import me.drakeet.multitype.ItemViewBinder;
 
 /**

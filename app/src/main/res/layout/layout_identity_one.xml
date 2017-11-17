@@ -86,7 +86,19 @@
                     android:layout_marginLeft="@dimen/w24"
                     android:text="所在科室" />
 
-                <TextView
+                <EditText
+                    android:id="@+id/departmentNameEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w76"
+                    android:maxLength="16"
+                    android:text=""
+                    android:hint="请填写科室" />
+
+             <!--   <TextView
                     android:id="@+id/departmentNameTv"
                     style="@style/CommonText"
                     android:layout_alignParentRight="true"
@@ -101,7 +113,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/w24"
-                    android:src="@mipmap/ic_arrow_right" />
+                    android:src="@mipmap/ic_arrow_right" />-->
 
                 <View
                     style="@style/DividerLineHorizontal"
@@ -122,7 +134,19 @@
                     android:layout_marginLeft="@dimen/w24"
                     android:text="职称" />
 
-                <TextView
+                <EditText
+                    android:id="@+id/positionNameEt"
+                    style="@style/CommonText"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/w76"
+                    android:maxLength="16"
+                    android:text=""
+                    android:hint="请填写职称" />
+
+            <!--    <TextView
                     android:id="@+id/positionNameTv"
                     style="@style/CommonText"
                     android:layout_alignParentRight="true"
@@ -137,7 +161,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/w24"
-                    android:src="@mipmap/ic_arrow_right" />
+                    android:src="@mipmap/ic_arrow_right" />-->
 
                 <View
                     style="@style/DividerLineHorizontal"
