@@ -99,7 +99,8 @@
         android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:text="或者，您可以"
-        android:textColor="@color/text_gray" />
+        android:textColor="@color/text_gray"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/weChatLoginLayout"
@@ -107,7 +108,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/h40"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:visibility="gone">
         <ImageView
             android:layout_width="@dimen/w100"
             android:layout_height="@dimen/w100"

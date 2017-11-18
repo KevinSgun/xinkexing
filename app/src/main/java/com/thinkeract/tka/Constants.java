@@ -91,6 +91,7 @@ public class Constants {
         String ADDRESS_ITEM = "address_item";
         String PO = "po";
         String TITLE = "title";
+        String SHOULD_LAUNCH_MAIN = "SHOULD_LAUNCH_MAIN";
     }
 
     public interface FragmentExtra {

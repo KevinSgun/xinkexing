@@ -1,6 +1,8 @@
 package com.thinkeract.tka.ui.mine;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -60,6 +62,8 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
     private String mDepartmentPhone;//科室电话号码
     private String mGoodAtIntroduce;
     private DoctorAuthPresenter mPresenter;
+    private String mDoctorAuthPhotoUrl;
+    private boolean mShouldLaunchMain;
 
     @Override
     protected int getContentViewId() {
@@ -68,6 +72,7 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
 
     @Override
     protected void initView() {
+        mShouldLaunchMain = getIntent().getBooleanExtra(Constants.ActivityExtra.SHOULD_LAUNCH_MAIN,false);
         setTitle(R.string.identity_review);
         initializeView();
 
@@ -122,7 +127,27 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
             case R.id.doctorCertificateIv:
                 chooseAndUploadCertificate();
                 break;
+            case R.id.commitForReviewBtn:
+                if(TextUtils.isEmpty(mDoctorAuthPhotoUrl)){
+                    ToastMaster.shortToast("请上传医师职业证书");
+                    return;
+                }
+                requestAuth();
+                break;
         }
+    }
+
+    private void requestAuth() {
+        User.get().notifyChange();
+        DoctorDataReviewBody body = new DoctorDataReviewBody();
+        body.setName(mName);
+        body.setHospital(mHospital);
+        body.setSection(mDepartmentName);
+        body.setJobTitle(mPositionName);
+        body.setQualifications(mDoctorAuthPhotoUrl);
+        body.setPhoneNumber(mAreaNum+mDepartmentPhone);
+        body.setRemark(mGoodAtIntroduce);
+        mPresenter.doDoctorAuth(body);
     }
 
     private void chooseAndUploadCertificate() {
@@ -151,16 +176,7 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
 
             @Override
             public void accept(ApiResponse<String> stringApiResponse) throws Exception {
-                User.get().notifyChange();
-                DoctorDataReviewBody body = new DoctorDataReviewBody();
-                body.setName(mName);
-                body.setHospital(mHospital);
-                body.setSection(mDepartmentName);
-                body.setJobTitle(mPositionName);
-                body.setQualifications(stringApiResponse.getData());
-                body.setPhoneNumber(mAreaNum+mDepartmentPhone);
-                body.setRemark(mGoodAtIntroduce);
-                mPresenter.doDoctorAuth(body);
+                mDoctorAuthPhotoUrl = stringApiResponse.getData();
 //                User.get().storePortraitNotify(stringApiResponse.getData());
 //                setAvatar = true;
             }
@@ -180,7 +196,7 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
         ThinkerActApplication.getInstance().postDelay(new Runnable() {
             @Override
             public void run() {
-                showActivity(IdentityResultActivity.class);
+                IdentityResultActivity.launch(IdentityReviewActivity.this,mShouldLaunchMain);
                 finish();
             }
         },400);
@@ -232,8 +248,6 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
             ToastMaster.shortToast("电话号码不能为空");
             return false;
         }
-
-
         mGoodAtIntroduce = goodAtIntroduceEt.getText().toString();
         return true;
     }
@@ -255,5 +269,16 @@ public class IdentityReviewActivity extends PhotoPickingActivity implements Doct
             return true;
         }
         return onTouchEvent(ev);
+    }
+
+    public static void launch(Activity activity,boolean shouldLaunchMain){
+        Intent intent = new Intent(activity,IdentityReviewActivity.class);
+        intent.putExtra(Constants.ActivityExtra.SHOULD_LAUNCH_MAIN,shouldLaunchMain);
+        activity.startActivity(intent);
+        ViewUtils.anima(ViewUtils.RIGHT_IN,activity);
+    }
+
+    public static void launch(Activity activity){
+       launch(activity,false);
     }
 }

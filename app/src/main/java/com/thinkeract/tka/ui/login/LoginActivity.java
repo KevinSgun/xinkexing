@@ -11,11 +11,13 @@ import android.widget.TextView;
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.Events;
 import com.thinkeract.tka.R;
+import com.thinkeract.tka.User;
 import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.request.ValidationCodeBody;
 import com.thinkeract.tka.ui.home.MainActivity;
 import com.thinkeract.tka.ui.login.contract.LoginContract;
 import com.thinkeract.tka.ui.login.presenter.LoginPresenter;
+import com.thinkeract.tka.ui.mine.IdentityReviewActivity;
 import com.zitech.framework.utils.ToastMaster;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,6 +37,7 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
     private TextView userProtocolTv;
     private long exitTime;
     private boolean launchHome;
+    private boolean mIsDoctorLogin;
 
     @Override
     protected int getContentViewId() {
@@ -44,7 +47,7 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
     @Override
     protected void initView() {
         setTitle(R.string.sign_in);
-        launchHome = getIntent().getBooleanExtra(Constants.ActivityExtra.LAUNCH_HOME,false);
+        launchHome = getIntent().getBooleanExtra(Constants.ActivityExtra.LAUNCH_HOME, false);
         setTranslucentStatus(true);
         initializeView();
         doctorLoginBtn.setOnClickListener(this);
@@ -85,9 +88,11 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
         super.onClick(v);
         switch (v.getId()) {
             case R.id.loginBtn://普通登录请求
+                mIsDoctorLogin = false;
                 loginStuff();
                 break;
             case R.id.doctorLoginBtn: //医生登录请求
+                mIsDoctorLogin = true;
                 loginStuff();
                 break;
             case R.id.weChatLoginLayout: //微信登录请求
@@ -134,7 +139,12 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
 
     @Override
     public void showSuccess() {
-        EventBus.getDefault().post(new Events.CloseEvent(Events.CloseEvent.FINISH_PERFECT_DATA));
+        if (mIsDoctorLogin && !User.get().isDoctor()) {
+            ToastMaster.shortToast("您还不是医生，请先进行身份审核");
+            showActivity(IdentityReviewActivity.class);
+        } else {
+            EventBus.getDefault().post(new Events.CloseEvent(Events.CloseEvent.FINISH_PERFECT_DATA));
+        }
     }
 
     @Override
@@ -168,6 +178,6 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
         Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra(Constants.ActivityExtra.LAUNCH_HOME, launchHome);
         context.startActivity(intent);
-        ViewUtils.anima(ViewUtils.RIGHT_IN,context);
+        ViewUtils.anima(ViewUtils.RIGHT_IN, context);
     }
 }
