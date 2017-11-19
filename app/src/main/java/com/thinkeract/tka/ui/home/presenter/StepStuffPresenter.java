@@ -51,7 +51,6 @@ public class StepStuffPresenter implements StepStuffContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-                super.onError(e);
                 mView.showError(e.getMessage());
             }
         });

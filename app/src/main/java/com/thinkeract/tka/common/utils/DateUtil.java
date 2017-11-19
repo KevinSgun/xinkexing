@@ -305,4 +305,52 @@ public class DateUtil {
         return format.format(date);
     }
 
+    public static String getWeek(String pTime) {
+
+        String Week = "周";
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(format.parse(pTime));
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 1) {
+            Week += "日";
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 2) {
+            Week += "一";
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 3) {
+            Week += "二";
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 4) {
+            Week += "三";
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 5) {
+            Week += "四";
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 6) {
+            Week += "五";
+        }
+        if (c.get(Calendar.DAY_OF_WEEK) == 7) {
+            Week += "六";
+        }
+
+        return Week;
+    }
+
+    public static String getMonthDay(String dateStr){
+        if(TextUtils.isEmpty(dateStr)) return "";
+        String[] dateArray = dateStr.split("-");
+        if(dateArray.length>2){
+            return dateArray[1]+"-"+dateArray[2];
+        }
+
+        return "";
+
+    }
+
 }

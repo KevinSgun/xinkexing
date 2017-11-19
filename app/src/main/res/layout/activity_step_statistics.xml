@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/w500"
         android:background="@color/gray_535353">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom">
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w22"
-                >
+                android:layout_marginLeft="@dimen/w22">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressA"
                     android:layout_width="@dimen/w80"
@@ -23,29 +27,30 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="10000"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/theme_color"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateATv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-03\n周一"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w20"
-                >
+                android:layout_marginLeft="@dimen/w20">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressB"
                     android:layout_width="@dimen/w80"
@@ -53,29 +58,30 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="9000"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/theme_color"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateBTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-04\n周二"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w20"
-                >
+                android:layout_marginLeft="@dimen/w20">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressC"
                     android:layout_width="@dimen/w80"
@@ -83,29 +89,30 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="14241"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/theme_color"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateCTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-05\n周三"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w20"
-                >
+                android:layout_marginLeft="@dimen/w20">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressD"
                     android:layout_width="@dimen/w80"
@@ -113,29 +120,30 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="10287"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/theme_color"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateDTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-06\n周四"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w20"
-                >
+                android:layout_marginLeft="@dimen/w20">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressE"
                     android:layout_width="@dimen/w80"
@@ -143,29 +151,30 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="7000"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/theme_color"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateETv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-07\n周五"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w20"
-                >
+                android:layout_marginLeft="@dimen/w20">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressF"
                     android:layout_width="@dimen/w80"
@@ -173,29 +182,30 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="400"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/theme_color"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateFTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-08\n周六"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/w20"
-                >
+                android:layout_marginLeft="@dimen/w20">
+
                 <com.thinkeract.tka.widget.roundcornerprogressbar.TextRoundCornerProgressBar
                     android:id="@+id/progressG"
                     android:layout_width="@dimen/w80"
@@ -203,75 +213,174 @@
                     android:layout_marginBottom="-3dp"
                     app:rcBackgroundColor="@color/gray_4b4b4b"
                     app:rcMax="20000"
-                    app:rcProgress="5900"
+                    app:rcOrientationVertical="true"
+                    app:rcProgress="0"
                     app:rcProgressColor="@color/white"
                     app:rcReverse="true"
                     app:rcTextProgressColor="@color/text_gray"
-                    app:rcTextProgressMargin="4dp"
-                    app:rcOrientationVertical="true"/>
+                    app:rcTextProgressMargin="4dp" />
+
                 <TextView
                     android:id="@+id/dateGTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/theme_color"
-                    android:textSize="@dimen/w20"
-                    android:gravity="center"
-                    android:lineSpacingExtra="4dp"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:text="11-09\n周日"/>
+                    android:gravity="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/w20" />
             </FrameLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/w3"
             android:layout_marginTop="@dimen/w280"
-            android:background="@mipmap/ic_dash_line"/>
+            android:background="@mipmap/ic_dash_line" />
     </FrameLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/w120"
-        android:layout_marginTop="@dimen/w50"
-        android:layout_marginLeft="@dimen/w60">
+        android:layout_marginLeft="@dimen/w60"
+        android:layout_marginTop="@dimen/w50">
+
         <ImageView
             android:id="@+id/stepLeftIv"
             android:layout_width="@dimen/w48"
             android:layout_height="@dimen/w48"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_step_target"/>
+            android:src="@mipmap/ic_step_target" />
+
         <LinearLayout
             android:id="@+id/stepCountLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/stepLeftIv"
             android:layout_marginLeft="@dimen/w24"
-            >
+            android:layout_toRightOf="@id/stepLeftIv">
+
             <TextView
                 android:id="@+id/stepLeftTv"
                 style="@style/SmallText"
-                android:textColor="@color/textColorPrimary"
                 android:text="今天走了"
-                />
+                android:textColor="@color/textColorPrimary" />
+
             <TextView
                 android:id="@+id/stepCountTv"
                 style="@style/LargeText"
-                android:textSize="@dimen/w46"
                 android:layout_marginLeft="@dimen/w14"
                 android:layout_marginRight="@dimen/w14"
-                android:text="5900"
-                />
+                android:text="0"
+                android:textSize="@dimen/w46" />
+
             <TextView
                 style="@style/SmallText"
-                android:textColor="@color/textColorPrimary"
                 android:text=" 步"
-                />
+                android:textColor="@color/textColorPrimary" />
         </LinearLayout>
+
         <TextView
+            android:id="@+id/equivalenceStepTv"
             style="@style/ContentText"
-            android:textColor="#878787"
-            android:layout_below="@id/stepLeftIv"
             android:layout_alignLeft="@id/stepCountLayout"
-            android:text="相当于走了5公里"
-            />
+            android:layout_below="@id/stepLeftIv"
+            android:text="相当于走了0公里"
+            android:textColor="#878787" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w120"
+        android:layout_marginLeft="@dimen/w60"
+        android:layout_marginTop="@dimen/w50">
+
+        <ImageView
+            android:id="@+id/energyLeftIv"
+            android:layout_width="@dimen/w48"
+            android:layout_height="@dimen/w48"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_step_target" />
+
+        <LinearLayout
+            android:id="@+id/energyDepleteLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w24"
+            android:layout_toRightOf="@id/energyLeftIv">
+
+            <TextView
+                android:id="@+id/energyLeftTv"
+                style="@style/SmallText"
+                android:text="消耗能量"
+                android:textColor="@color/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/energyDepleteTv"
+                style="@style/LargeText"
+                android:layout_marginLeft="@dimen/w14"
+                android:layout_marginRight="@dimen/w14"
+                android:text="0"
+                android:textSize="@dimen/w46" />
+
+            <TextView
+                style="@style/SmallText"
+                android:text=" 千卡"
+                android:textColor="@color/textColorPrimary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/equivalenceFatTv"
+            style="@style/ContentText"
+            android:layout_alignLeft="@id/energyDepleteLayout"
+            android:layout_below="@id/energyLeftIv"
+            android:text="相当于燃烧了0克脂肪"
+            android:textColor="#878787" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w120"
+        android:layout_marginLeft="@dimen/w60"
+        android:layout_marginTop="@dimen/w50">
+
+        <ImageView
+            android:id="@+id/targetLeftIv"
+            android:layout_width="@dimen/w48"
+            android:layout_height="@dimen/w48"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_step_target" />
+
+        <LinearLayout
+            android:id="@+id/targetLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w24"
+            android:layout_toRightOf="@id/targetLeftIv">
+
+            <TextView
+                android:id="@+id/targetTv"
+                style="@style/SmallText"
+                android:text="我的目标"
+                android:layout_above="@+id/targetLeftIv"
+                android:layout_toRightOf="@id/targetLeftIv"
+                android:textColor="@color/textColorPrimary" />
+
+            <TextView
+                style="@style/LargeText"
+                android:layout_marginLeft="@dimen/w14"
+                android:layout_marginRight="@dimen/w14"
+                android:text="144"
+                android:textSize="@dimen/w46"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/targetCountTv"
+            style="@style/ContentText"
+            android:layout_alignLeft="@id/targetLayout"
+            android:layout_below="@id/targetLayout"
+            android:text="10000步"
+            android:textColor="#878787" />
     </RelativeLayout>
 </LinearLayout>

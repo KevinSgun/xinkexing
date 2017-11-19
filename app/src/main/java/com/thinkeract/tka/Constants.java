@@ -78,6 +78,7 @@ public class Constants {
     public static final String PHOTO_TYPE = "photo_type";
     public static final int AVATAR = 18;
     public static final int DOCTOR_AUTH = 19;
+    public static final String STEP_COUNT = "step_count";//计步统计
 
     public interface ActivityExtra {
         String BUSI_ID = "busi_id";

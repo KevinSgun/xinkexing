@@ -14,7 +14,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.common.utils.Logger;
 import com.thinkeract.tka.common.utils.StatusBarUtil;
 import com.thinkeract.tka.data.api.response.HomePageData;
 import com.thinkeract.tka.ui.BaseFragment;
@@ -80,7 +79,7 @@ public class MainFragment extends BaseFragment implements HomeDataContract.View 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Logger.i("qwert","h = "+height+","+"dx = "+dx+",scrollY = "+dy);
+//                Logger.i("qwert","h = "+height+","+"dx = "+dx+",scrollY = "+dy);
                 overallXScroll = overallXScroll + dy;// 累加y值 解决滑动一半y值为0
                 mScrollY = overallXScroll;
                 if (overallXScroll <= 0) {   //设置标题的背景颜色
