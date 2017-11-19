@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.User;
@@ -27,9 +26,7 @@ import com.zitech.framework.data.network.response.ApiResponse;
 import com.zitech.framework.transform.CropCircleTransformation;
 import com.zitech.framework.utils.ToastMaster;
 import com.zitech.framework.widget.RemoteImageView;
-
 import java.io.File;
-
 import io.reactivex.functions.Consumer;
 
 /**
@@ -71,6 +68,7 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
         userNameLayout.setOnClickListener(this);
         ageLayout.setOnClickListener(this);
         genderLayout.setOnClickListener(this);
+        identityAgainTv.setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +90,12 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
 
         if (!TextUtils.isEmpty(User.get().getAge())) {
             ageTv.setText(String.format(getString(R.string.age_str),User.get().getAge()));
+        }
+
+        if(User.get().isDoctor()){
+            identityAgainLayout.setVisibility(View.VISIBLE);
+        }else{
+            identityAgainLayout.setVisibility(View.GONE);
         }
 
     }
@@ -135,6 +139,9 @@ public class AccountSettingActivity extends PhotoPickingActivity implements Perf
                 break;
             case R.id.ageLayout:
                 chooseAge();
+                break;
+            case R.id.identityAgainTv:
+                IdentityReviewActivity.launch(this);
                 break;
             case R.id.logoutBtn:
                 showLogOutDialog();

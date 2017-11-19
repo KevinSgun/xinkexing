@@ -42,10 +42,11 @@
                             android:background="@drawable/bg_purple_shadow" />
 
                         <View
+                            android:id="@+id/maskBottomView"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/h55"
                             android:layout_gravity="bottom"
-                            android:background="@mipmap/ic_arc_bg" />
+                            android:background="@mipmap/ic_wave_bg" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -80,17 +81,19 @@
                     </LinearLayout>
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/normalPeopleStuffLayout"
                         android:layout_width="@dimen/w680"
                         android:layout_height="@dimen/w182"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="@dimen/h16"
-                        android:visibility="visible"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="@dimen/w10"
                         app:cardElevation="@dimen/w8"
                         app:cardPreventCornerOverlap="false"
-                        app:cardUseCompatPadding="false">
+                        app:cardUseCompatPadding="false"
+                        android:visibility="visible"
+                        >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -168,6 +171,43 @@
                     android:layout_marginTop="@dimen/h10"
                     android:background="@drawable/bg_white_rectangle_corner_r10"
                     android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/iWantLiveLayout"
+                        style="@style/ContentRelativeLayout"
+                        android:layout_height="@dimen/h98"
+                        android:background="@drawable/sl_common_item_top_corner"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iWantLiveIv"
+                            android:layout_width="@dimen/w44"
+                            android:layout_height="@dimen/w44"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/w24"
+                            android:src="@mipmap/ic_live_s" />
+
+                        <TextView
+                            style="@style/CommonText"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/w28"
+                            android:layout_toRightOf="@id/iWantLiveIv"
+                            android:text="@string/i_want_live" />
+
+                        <ImageView
+                            android:layout_width="@dimen/w20"
+                            android:layout_height="@dimen/w34"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/w24"
+                            android:src="@mipmap/ic_arrow_right" />
+
+                        <View
+                            style="@style/DividerLineHorizontal"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="@dimen/w24"
+                            android:layout_marginRight="@dimen/w24" />
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/accountSettingLayout"

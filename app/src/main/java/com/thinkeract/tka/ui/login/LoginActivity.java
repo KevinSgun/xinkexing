@@ -134,7 +134,6 @@ public class LoginActivity extends ValidateActivity implements LoginContract.Vie
 
     @Override
     public void showError(String message) {
-        EventBus.getDefault().post(new Events.CloseEvent(Events.CloseEvent.FINISH_PERFECT_DATA));
     }
 
     @Override

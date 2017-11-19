@@ -51,6 +51,7 @@
         <activity android:name=".ui.home.CheckResultActivity"/>
         <activity android:name=".ui.home.ActionActivity"/>
         <activity android:name=".ui.mine.LogisticsDetailActivity" />
+        <activity android:name=".ui.home.StepStatisticsActivity" />
     </application>
 
 </manifest>

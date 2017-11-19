@@ -1,6 +1,7 @@
 package com.thinkeract.tka.ui.home;
 
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,10 @@ public class MineFragment extends BaseFragment {
     private RelativeLayout sysSettingLayout;
     private RelativeLayout aboutUsLayout;
     private RelativeLayout mallLayout;
+    private RelativeLayout iWantLiveLayout;
+    private View maskBottomView;
+    private CardView normalPeopleStuffLayout;
+    private RelativeLayout coverLayout;
 
     @Override
     protected void onPreInflate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,6 +88,10 @@ public class MineFragment extends BaseFragment {
         sysSettingLayout = (RelativeLayout) contentView.findViewById(R.id.sysSettingLayout);
         aboutUsLayout = (RelativeLayout) contentView.findViewById(R.id.aboutUsLayout);
         mallLayout = (RelativeLayout) contentView.findViewById(R.id.mallLayout);
+        iWantLiveLayout = (RelativeLayout) contentView.findViewById(R.id.iWantLiveLayout);
+        maskBottomView = contentView.findViewById(R.id.maskBottomView);
+        normalPeopleStuffLayout = (CardView) contentView.findViewById(R.id.normalPeopleStuffLayout);
+        coverLayout = (RelativeLayout) contentView.findViewById(R.id.coverLayout);
 
         avatarLayout.setOnClickListener(this);
         orderLayout.setOnClickListener(this);
@@ -94,6 +103,7 @@ public class MineFragment extends BaseFragment {
         sysSettingLayout.setOnClickListener(this);
         aboutUsLayout.setOnClickListener(this);
         mallLayout.setOnClickListener(this);
+        iWantLiveLayout.setOnClickListener(this);
     }
 
     @Override
@@ -111,6 +121,29 @@ public class MineFragment extends BaseFragment {
             userAvatarIv.setBitmapTransformation(new CropCircleTransformation(getContext()));
             userAvatarIv.setImageUri(Constants.ImageDefResId.DEF_AVA_NORMAL, user.getPortrait());
             userNameTv.setText(user.getName());
+
+            if(User.get().isDoctor()){
+                iWantLiveLayout.setVisibility(View.VISIBLE);
+                accountSettingLayout.setBackgroundResource(R.drawable.sl_common_item);
+                mallLayout.setVisibility(View.GONE);
+                shippingAddressLayout.setVisibility(View.GONE);
+                normalPeopleStuffLayout.setVisibility(View.GONE);
+
+                ViewGroup.LayoutParams params = coverLayout.getLayoutParams();
+                params.height = ViewUtils.getDimenPx(R.dimen.w482);
+                coverLayout.setLayoutParams(params);
+            }else{
+                iWantLiveLayout.setVisibility(View.GONE);
+                mallLayout.setVisibility(View.VISIBLE);
+                shippingAddressLayout.setVisibility(View.VISIBLE);
+                customerServiceLayout.setVisibility(View.VISIBLE);
+                normalPeopleStuffLayout.setVisibility(View.VISIBLE);
+
+                accountSettingLayout.setBackgroundResource(R.drawable.sl_common_item_top_corner);
+                ViewGroup.LayoutParams params = coverLayout.getLayoutParams();
+                params.height = ViewUtils.getDimenPx(R.dimen.w632);
+                coverLayout.setLayoutParams(params);
+            }
         }
 
     }

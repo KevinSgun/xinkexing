@@ -68,6 +68,9 @@ public class CheckResultActivity extends AppBarActivity implements CheckResultSt
     @Override
     public void onClick(View v) {
         super.onClick(v);
+        if(v.getId() == R.id.actionIv){
+            showActivity(StepStatisticsActivity.class);
+        }
     }
 
     @Override

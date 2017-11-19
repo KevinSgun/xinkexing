@@ -7,10 +7,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.thinkeract.tka.Constants;
+import com.thinkeract.tka.Events;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.ui.home.MainActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by minHeng on 2017/4/5 20:15.
@@ -64,6 +67,7 @@ public class IdentityResultActivity extends AppBarActivity {
         }else{
             super.onBackPressed();
         }
+        EventBus.getDefault().post(new Events.CloseEvent(Events.CloseEvent.FINISH_PERFECT_DATA));
     }
 
     public static void launch(Activity activity, boolean shouldLaunchMain){
