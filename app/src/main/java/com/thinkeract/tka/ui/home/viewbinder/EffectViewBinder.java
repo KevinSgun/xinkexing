@@ -25,14 +25,16 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.data.api.entity.ActionTitleItem;
+import com.thinkeract.tka.data.api.entity.EffectItem;
+import com.thinkeract.tka.ui.home.StepStatisticsActivity;
 
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
+ * 健康选项
  * @author ymh
  */
-public class EffectViewBinder extends ItemViewBinder<ActionTitleItem, EffectViewBinder.ViewHolder> {
+public class EffectViewBinder extends ItemViewBinder<EffectItem, EffectViewBinder.ViewHolder> {
 
     private Activity mContext;
 
@@ -47,11 +49,12 @@ public class EffectViewBinder extends ItemViewBinder<ActionTitleItem, EffectView
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull ActionTitleItem item) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull EffectItem item) {
         holder.mHealthOptionLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO 重新测评健康
+                StepStatisticsActivity.launch(mContext);
             }
         });
     }

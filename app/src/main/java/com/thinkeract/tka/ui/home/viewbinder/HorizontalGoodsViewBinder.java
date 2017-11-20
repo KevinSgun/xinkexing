@@ -31,6 +31,7 @@ import com.thinkeract.tka.ui.home.adapter.GoodsGridAdapter;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
+ * 非介入性治疗
  * @author ymh
  */
 public class HorizontalGoodsViewBinder

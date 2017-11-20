@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/w24"
@@ -17,11 +17,11 @@
 
         <ImageView
             android:id="@+id/healthOptionIv"
-            android:layout_width="@dimen/w44"
-            android:layout_height="@dimen/w44"
+            android:layout_width="@dimen/w40"
+            android:layout_height="@dimen/w40"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/w24"
-            android:src="@mipmap/ic_account_setting" />
+            android:src="@mipmap/ic_health_option" />
 
         <TextView
             android:id="@+id/healthOptionTv"

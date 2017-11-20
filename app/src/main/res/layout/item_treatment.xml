@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/w24"
+    android:paddingRight="@dimen/w24"
+    android:paddingTop="@dimen/w24"
+    android:background="@color/white"
+    >
+    <TextView
+       style="@style/SmallText"
+        android:textColor="@color/textColorPrimary"
+        android:lineSpacingExtra="@dimen/w6"
+        android:text="已证明肺癌、心管疾病、呼吸道疾病及其他多种疾病与吸烟有关。请保持不吸烟，同时注意被动吸烟和主动吸烟一样受害，因此希望您远离吸烟的环境!
 
+严重的睡眠不足会引起疲劳乏力，影响工作效率，甚至诱发急性心脑血管疾病。您需要开始规律的生活，消除不利于睡眠的因素，做有利于睡眠的活动，迅速改善睡眠状况。"/>
+    <View style="@style/DividerLineHorizontal"/>
 </LinearLayout>

@@ -14,11 +14,10 @@ public class NewsItem {
      * id : 13
      */
 
-    private String id;
+    private int id;
     private String title;
     private String cover;
     private String subTitle;
-
 
     public String getTitle() {
         return title;
@@ -44,11 +43,11 @@ public class NewsItem {
         this.subTitle = subTitle;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

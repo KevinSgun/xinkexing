@@ -61,7 +61,7 @@ public class NewsListAdapter extends RecyclerView.Adapter implements IDataAdapte
                 @Override
                 public void onClick(View v) {
                     //TODO 进入新闻详情页面
-                    NewsDetailActivity.launch(mContext,item.getId());
+                    NewsDetailActivity.launch(mContext, String.valueOf(item.getId()));
                 }
             });
         }

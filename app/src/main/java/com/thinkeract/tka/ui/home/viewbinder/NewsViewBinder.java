@@ -26,15 +26,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.data.api.entity.NewsItem;
-import com.thinkeract.tka.ui.home.NewsDetailActivity;
 import com.zitech.framework.widget.RemoteImageView;
 
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
+ * 自体康复
  * @author ymh
  */
 public class NewsViewBinder extends ItemViewBinder<NewsItem, NewsViewBinder.ViewHolder> {
@@ -53,7 +52,8 @@ public class NewsViewBinder extends ItemViewBinder<NewsItem, NewsViewBinder.View
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder,final @NonNull NewsItem item) {
-        holder.newsItemPicIv.setImageUri(Constants.ImageDefResId.DEF_LAND_PIC_NORMAL,item.getCover());
+//        holder.newsItemPicIv.setImageUri(Constants.ImageDefResId.DEF_LAND_PIC_NORMAL,item.getCover());
+        holder.newsItemPicIv.setImageResource(item.getId());
         holder.newsTitleTv.setText(item.getTitle());
         holder.newsSubTitleTv.setText(item.getSubTitle());
 
@@ -61,7 +61,7 @@ public class NewsViewBinder extends ItemViewBinder<NewsItem, NewsViewBinder.View
             @Override
             public void onClick(View v) {
                 //TODO 进入新闻详情页面
-                NewsDetailActivity.launch(mContext,item.getId());
+//                NewsDetailActivity.launch(mContext,item.getId());
             }
         });
     }

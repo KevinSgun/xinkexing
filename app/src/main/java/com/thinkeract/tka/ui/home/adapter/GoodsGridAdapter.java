@@ -24,10 +24,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.data.api.entity.GoodsItem;
-import com.thinkeract.tka.ui.mall.GoodsDetailActivity;
 import com.zitech.framework.widget.RemoteImageView;
 
 import java.util.Collections;
@@ -60,7 +58,8 @@ public class GoodsGridAdapter extends RecyclerView.Adapter<GoodsGridAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final GoodsItem item = goodsItems.get(position);
-        holder.mGoodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,item.getCover());
+//        holder.mGoodsPicIv.setImageUri(Constants.ImageDefResId.DEF_SQUARE_PIC_NORMAL,item.getCover());
+        holder.mGoodsPicIv.setImageResource(item.getId());
         holder.mGoodsNameTv.setText(item.getName());
         holder.mPriceTv.setText(String.format(mContext.getResources().getString(R.string.rmb),item.getMinprice()));
 
@@ -68,7 +67,7 @@ public class GoodsGridAdapter extends RecyclerView.Adapter<GoodsGridAdapter.View
             @Override
             public void onClick(View v) {
                 //进入商品详情页
-                GoodsDetailActivity.launch(mContext,String.valueOf(item.getId()));
+//                GoodsDetailActivity.launch(mContext,String.valueOf(item.getId()));
             }
         });
     }

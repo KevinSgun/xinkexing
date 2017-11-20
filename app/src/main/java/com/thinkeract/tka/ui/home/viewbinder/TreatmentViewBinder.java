@@ -24,14 +24,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.thinkeract.tka.R;
-import com.thinkeract.tka.data.api.entity.ActionTitleItem;
+import com.thinkeract.tka.data.api.entity.TreatmentItem;
 
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author ymh
  */
-public class TreatmentViewBinder extends ItemViewBinder<ActionTitleItem, TreatmentViewBinder.ViewHolder> {
+public class TreatmentViewBinder extends ItemViewBinder<TreatmentItem, TreatmentViewBinder.ViewHolder> {
 
     private Activity mContext;
 
@@ -46,7 +46,7 @@ public class TreatmentViewBinder extends ItemViewBinder<ActionTitleItem, Treatme
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull ActionTitleItem item) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull TreatmentItem item) {
 
     }
 

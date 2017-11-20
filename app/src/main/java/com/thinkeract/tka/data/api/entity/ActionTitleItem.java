@@ -21,6 +21,14 @@ public class ActionTitleItem {
     public static final int RED = 2;
     public static final int BLUE = 3;
 
+    public ActionTitleItem(){
+    }
+
+    public ActionTitleItem(String title,int colorType){
+        this.title = title;
+        this.colorType = colorType;
+    }
+
     public String getTitle() {
         return title;
     }

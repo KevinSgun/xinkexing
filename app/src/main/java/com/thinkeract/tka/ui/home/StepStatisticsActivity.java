@@ -1,5 +1,7 @@
 package com.thinkeract.tka.ui.home;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
@@ -8,6 +10,7 @@ import com.thinkeract.tka.Constants;
 import com.thinkeract.tka.R;
 import com.thinkeract.tka.common.utils.DateUtil;
 import com.thinkeract.tka.common.utils.Logger;
+import com.thinkeract.tka.common.utils.ViewUtils;
 import com.thinkeract.tka.data.api.entity.StepItem;
 import com.thinkeract.tka.ui.AppBarActivity;
 import com.thinkeract.tka.ui.home.contract.StepStuffContract;
@@ -176,5 +179,11 @@ public class StepStatisticsActivity extends AppBarActivity implements StepStuffC
     protected void onDestroy() {
         super.onDestroy();
         mDelayHandler.removeCallbacks(null);
+    }
+
+    public static void launch(Activity activity){
+        Intent intent = new Intent(activity,StepStatisticsActivity.class);
+        activity.startActivity(intent);
+        ViewUtils.anima(ViewUtils.RIGHT_IN,activity);
     }
 }

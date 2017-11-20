@@ -111,6 +111,7 @@
     <string name="mall">商城</string>
     <string name="order_detail">订单详情</string>
     <string name="activity">活动</string>
+    <string name="action">行动</string>
 
     <string name="select_bank_tips">请选择开户银行</string>
     <string name="input_user_name_tips">请填写开户人姓名</string>

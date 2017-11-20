@@ -84,7 +84,7 @@ public class HomeAdapter extends RecyclerView.Adapter{
                     @Override
                     public void onClick(View v) {
                         //进入新闻详情页面
-                        NewsDetailActivity.launch(mContext, item.getId());
+                        NewsDetailActivity.launch(mContext, String.valueOf(item.getId()));
                     }
                 });
             }
