@@ -1,6 +1,7 @@
 package com.zitech.framework;
 
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +16,8 @@ import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-
-import com.mozillaonline.providers.DownloadManager;
 import com.zitech.framework.utils.NetworkUtil;
 import com.zitech.framework.utils.Utils;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -137,14 +135,6 @@ public class Session extends Observable {
 
 	public void removeNetworkChangedListener(NetworkChangedListener networkChangedListener) {
 		networkChangedListeners.remove(networkChangedListener);
-	}
-
-
-	public DownloadManager getDownloadManager() {
-		if (mDownloadManager == null) {
-			mDownloadManager = new DownloadManager(mContext.getContentResolver(), getPackageName());
-		}
-		return mDownloadManager;
 	}
 
 	public static interface NetworkChangedListener {

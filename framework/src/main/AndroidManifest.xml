@@ -2,9 +2,12 @@
     package="com.zitech.framework">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
+        android:allowBackup="false"
+        android:supportsRtl="false">
 
         <activity android:name=".crop.CropActivity" />
     </application>

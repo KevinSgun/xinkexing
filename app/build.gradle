@@ -11,6 +11,7 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        flavorDimensions "versionCode"
     }
     sourceSets {
         main {
@@ -52,8 +53,8 @@ dependencies {
     compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
-    compile 'com.youth.banner:banner:1.4.9'
-    compile 'me.drakeet.multitype:multitype:3.3.2'
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'me.drakeet.multitype:multitype:3.4.0'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.4.0'
     implementation files('libs/alipaySdk-20170922.jar')

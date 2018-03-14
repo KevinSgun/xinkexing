@@ -73,6 +73,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                             //TODO 查看物流
                         } else if (item.getStatus() == OrderItem.WAIT_PAY) {
                             //TODO 立即支付
+                            OrderDetailActivity.launch(mContext,item.getPo());
                         }
                     }
                 });

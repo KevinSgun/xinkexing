@@ -17,19 +17,16 @@ android {
         }
     }
 
-    publishNonDefault true
     sourceSets {
         main {
             manifest.srcFile 'src/main/AndroidManifest.xml'
-            java.srcDirs = ['lib-download', 'lib-mvchelper', 'lib-photoview', 'src/main/java', 'lib-swiplistview']
-            resources.srcDirs = ['lib-download', 'lib-mvchelper', 'lib-photoview', 'src/main/java', 'lib-swiplistview']
-            aidl.srcDirs = ['lib-download', 'lib-mvchelper', 'lib-photoview', 'src/main/java', 'lib-swiplistview']
-            renderscript.srcDirs = ['lib-download', 'lib-mvchelper', 'lib-photoview', 'src/main/java', 'lib-swiplistview']
+            java.srcDirs = ['lib-mvchelper', 'lib-photoview', 'src/main/java']
+            resources.srcDirs = ['lib-mvchelper', 'lib-photoview', 'src/main/java']
+            aidl.srcDirs = ['lib-mvchelper', 'lib-photoview', 'src/main/java']
+            renderscript.srcDirs = ['lib-mvchelper', 'lib-photoview', 'src/main/java']
             res.srcDirs = ['src/main/res']
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
-
-
         }
 
         // Move the tests to tests/java, tests/res, etc...
@@ -57,7 +54,7 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
 
     compile 'org.greenrobot:greendao:2.2.1'
-    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'org.greenrobot:eventbus:3.1.1'
 
     // retrofit2
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -69,11 +66,16 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
     // rxjava2
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
     compile "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
 
     //glide
-    compile 'com.github.bumptech.glide:glide:4.2.0'
-    compile 'com.android.support:multidex:1.0.2'
+    compile 'com.github.bumptech.glide:glide:4.4.0'
+    compile 'com.github.bumptech.glide:annotations:4.4.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
+    compile "com.github.bumptech.glide:okhttp3-integration:4.4.0"
+
+    // multidex
+    compile 'com.android.support:multidex:1.0.3'
 
 }

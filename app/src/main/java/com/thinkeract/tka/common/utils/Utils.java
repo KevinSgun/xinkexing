@@ -10,15 +10,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.mozillaonline.providers.DownloadManager;
-import com.mozillaonline.providers.downloads.DownloadInfo;
 import com.thinkeract.tka.Constants;
 import com.zitech.framework.BaseApplication;
 import com.zitech.framework.Session;
@@ -245,24 +242,6 @@ public class Utils extends com.zitech.framework.utils.Utils {
             default:
                 return 30;
         }
-    }
-
-    public static String downloadAcc(String url) {
-        DownloadManager manager = Session.getInstance().getDownloadManager();
-        DownloadInfo info = manager.query(url);
-        if (info == null) {
-            String path = "/";
-            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-            request.setTitle("acc文件");
-            request.setShowRunningNotification(false);
-            request.setMimeType(com.mozillaonline.providers.downloads.Constants.MIMETYPE_ACC);
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, path);
-            request.setUid(url);
-            manager.enqueue(request);
-            return null;
-        }
-
-        return info.mFileName;
     }
 
     private static String mappingAccId(String path) {
